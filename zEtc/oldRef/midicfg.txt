@@ -1,0 +1,71 @@
+<div id="main"><pre>
+<h1>Use MidiConfiger to set up your midi devices</h1>
+
+SETUP_PIANOCHEETAH.exe will start MidiConfiger.
+or get to it by PianoCheetah's "black midi plug" toolbar button.
+
+Here's an (old - sorry) screenshot:
+<img src="img/midicfg.png">
+
+Here's a (hopefully ok) video:
+<iframe width="853" height="480" src="http://www.youtube.com/embed/z8GrGOujeps"
+ frameborder="0" allowfullscreen></iframe>
+
+If you have Vista or Win7,
+   please wait for it to download my soundfont softsynth.  (Sorry - 35 megs:)
+
+Name and order your midi devices.  Keep names short and sweet.
+I named my keyboards "dude" and "rockin88".
+A digital piano has both a
+   midiIn  (keyboard controller) -and-
+   midiOut (sound synthesizer).
+So give 'em the same name if they're the same device.
+
+Scoot the devices up and down into the order you wish to use them.
+Click on a line then the up/down toolbar arrows.
+
+Set the "junky" devices to devicetype = OFF
+That Microsoft synth uses laaaame 22KHz samples and has terrible latency.
+
+If you ever install/uninstall midi devices,
+click the little refresh toolbar button to add/remove devices that are new/gone.
+
+For now, we just leave all the devicesType as DEFAULT
+________________________________________________________________________________
+
+<h1>Test your devices.</h1>
+Can you hear me now???  good...
+
+<h3>Input test:</h3>
+Press any midi key or control, and it should show up in the right side
+   of MidiConfiger giving the device name and note/control info.
+Hit some keys, tweak pitchbend, modwheel, stomp some pedals...
+   It may look cryptic, but as long as you see STUFF coming in...
+good.
+
+<h3>Output test:</h3>
+Click on a MidiOut device, click that play button in bottom right.
+It should play a little scale.
+Do check that MS Window's "volume control panel" ain't muted, etc.
+PianoCheetah's softsynth <b>takes over</b> the sound device to get good latency.
+________________________________________________________________________________
+
+<h1>Set the CommandNote:</h1>
+The top midiin device in MidiConfigerer has the <b>CommandNote</b>.
+Set the highest note that keyboard has in the
+Pianocheetah global config dialog (world under checkmark button).
+
+Holding the top note on your midi keyboard will make PianoCheetah
+"do" stuff when you hit certain MIDI keys like:
+   adjust tempo,  pick next song,  hop to a new loop,  save recording, etc.
+
+PianoCheetah will pop a window listing the commands:
+(Sorry, this is really old, too.)
+<img src="img/pcheat_hp.png">
+
+When that CommandNote is released, help window shuts and notes play as usual.
+Remember, only that key of the <b>top</b> MidiIn device does this.
+
+
+
+</pre></div>

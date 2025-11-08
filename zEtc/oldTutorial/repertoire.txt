@@ -1,0 +1,85 @@
+<div id="main"><pre>
+<h1>Repertoire - keeping your songs in your fingers (and brain)</h1>
+
+
+<h1>Finding songs</h1>
+I've got a few packs of songs for you to download.
+They're not the greatest, but they're a start.
+Click <img src="img/slst.png"> for SongList dialog.
+Click <img src="img/zap.png"> to list some songs to download into your Queue.
+   <b>By the way, hovering over PianoCheetah toolbar buttons pops some help.</b>
+
+Or put <b>midi</b>, a song's <b>title</b>, and <b>artist</b> into google.
+Download every single one to try because the arrangement may suck for piano.
+They're often for karaoke.  We'll talk about rearranging songs for piano later.
+
+If you learn the song, <b>buy</b> it.  You owe the composer.  Don't be evil.
+
+
+
+<h1>Keeping songs</h1>
+Once you learn a song, you <b>still</b> need to practice it.
+If you don't, it'll slip from your fingers (brain).
+So put your "repertoire" songs on a weekly rotation <em>with</em>
+your daily rotation of songs you're currently learning.
+
+PianoCheetah keeps track of the songs you learn by
+scribbling down the day <em>into</em> the midi file when you practice a song.
+It rebuilds your list of songs for today based on their last practice date.
+<img src="img/scfg.png">
+You now have <b>proof</b> of how many days it took you to learn a song.
+   People always say "That's an easy one - done in 2 weeks".
+   Yeah, riiiiiiight...  Prove it!
+
+
+
+<h1>Where are they?</h1>
+You picked a PianoCheetahSongs dir when you installed.
+
+You can find it by clicking this guy:  <img src="img/slst.png">
+
+That'll pop the SongList dialog which has a toolbar with (sorry) the same
+dang icon.  Click that guy to browse to your PianoCheetahSongs dir.
+
+Any midi song file outside PianoCheetahSongs will <b>not</b> be edited.
+Once you've loaded a song into PianoCheetah, Click this guy:
+<img src="img/cfg.png"> to open the song's config.
+From here, set <b>practice stage</b> to Queue or Learning to
+copy it in so PianoCheetah can edit it.
+
+<b>Don't</b> keep your monster pile of midis in PianoCheetahSongs.
+   It's only for songs you plan on <em>practicing</em> near term.
+
+<b>Do</b> keep a backup of PianoCheetahSongs.  Please.
+
+
+
+PianoCheetahSongs organizes your songs in subdirectories:
+
+<h1>Queue</h1>
+   It all starts with <em>that song is awesome - i neeeed to learn it!!</em>...
+   Stick 'em here.  Don't let this pile get too huge.
+   They sort to the end of the song list as there's no point in seeing
+                                                 all that during daily practice.
+<h1>Learning</h1>
+   Songs you're actively working on every day.  Usually a couple of them.
+
+<h1>Repertoire</h1>
+   Songs you already know and want to keep <b>fresh</b>.  Practice these weekly.
+
+<h1>Done</h1>
+   You've got a good recording of it and don't need it in your brain anymore.
+   But you've got nice fingering, loops, and cues saved so you can pick it up
+      again some day with ease.
+
+<h1>...DELETE IT</h1>
+   That song sucked after all.  No mercy!
+   But if it's just too hard for <b>now</b>, throw it back in Queue.
+
+
+
+Now the rubber meets pavement - <a href="practice.html">piano practice</a> !
+
+
+
+</pre></div>

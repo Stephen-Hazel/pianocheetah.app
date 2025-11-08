@@ -1,0 +1,58 @@
+<div id="main">
+<h1>Tinkerer - viewing songs</h1>
+<pre>
+
+Tinkerer's goal in life is NON realtime editing of songs.
+   All the things you don't have time to do while PLAYING songs.
+   Composition, editing and all that.
+________________________________________________________________________________
+
+Use Tinkerer to view a song's tracks' notes/drums/controls...
+
+Clicking on the eye button in PianoCheetah will
+   load the current song into Tinkerer
+   and sync the current bar in Tinkerer's display to the bar playing.
+   Click the eye button again to toggle syncing off.
+
+If you're going to EDIT the song, EXIT PianoCheetah since PianoCheetah will
+   save on TOP of your edits when it changes songs...:(
+
+<img src="img/tinker.png">
+
+Tinkerer gives you a GOOD view of the song's tracks' events.
+
+Notes are displayed in piano roll style.
+   - Durations are shown horizontally in time.
+        See the bar lines and beat lines?  This song has a time sig of 2/4
+
+   - Notes are shown vertically in black and white (like piano keys).
+        See the black keys and white keys?
+        C notes are a little whiter, and middle C is the whitest.
+
+   - Note velocities shown in color.
+        There's a thin rainbow-y color scale at the top of the note area.
+        showing the colors that map to velocities 1..127
+           So green..blue means -barely- touched and
+           red..yellow means BANGED on, etc.
+
+   - You can also color notes by track or by sound.  (via the Col: droplist)
+
+   You can click on the Track droplist to pick which tracks to look at.
+   The default is "all of em at once" - kinda gory sometimes.
+
+Drums are displayed just below notes.
+   I give the drums short 4 character labels.  Kinda cryptic, but oh well.
+   The ones above stand for TomFloorLow, CrashCymbal2, CrashCymbal, RideCymbal2,
+      RideCymbal, SnareDrum2, SnareDrum.  (No KickDrum in this song)
+
+Controls are displayed below the drums.
+   Click in the Ctrl: droplist to pick the ones you want to see.
+   Some are shown as text,
+   Some with a teeny square around each individual event with lines between
+
+Play around with the fields at the top of the window to scroll and zoom, etc.
+
+
+
+
+</pre></div>

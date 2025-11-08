@@ -1,0 +1,74 @@
+my notes for installing raspberry pi 4b
+cpu=bcm2711(4 core);  disk=microsd/usb3disk;  ram=4gb
+ports=usb3x2, usb2x2, mhdmix2, microsd, enet, 3.5mm, usbc(power),
+cambus,pinbus
+
+osimage=Raspberry Pi OS(32 full sw)
+
+uname -a 
+Linux raspberrypi 5.15.32-v7l+ #1538 SMP Thu Mar 31 19:39:41 BST 2022 
+armv7l GNU/Linux
+
+cat /etc/debian_version 
+11.3
+
+apt list raspberrypi-ui-mods --installed
+raspberrypi-ui-mods/stable,now 1.20220302 armhf [installed]
+
+Qt 5.15.2 (GCC 10.2.1 20210110, 32 bit)
+
+init:
+use raspi imager (on windows/kubuntu)
+    to put full standard 32bit image onto sd card
+boot with it (wait) and do full update when prompted (and reboot)
+menu/preferences/screen configuration (sigh)
+sudo apt update
+sudo apt upgrade
+
+install Qt:
+sudo apt install qtcreator qtbase5-dev qt5-qmake cmake libasound2-dev
+    (asound is for alsa midi)
+
+right click taskbar -> panel settings -> panel applets -> 
+double click application launch bar ->
+drop down Programming on right -> double click qtcreator
+
+run qtcreator...
+ - file/sessions/manage -> restore session on startup
+
+ - tools/options
+
+ -  desktop kit should be ok already but:
+
+ -    in kit tab, click desktop and
+
+ -       kit, c++, gdb, cmake should be picked for kit.
+
+ -       c++ compiler should be gcc (clang is ok)
+
+ -       kit is the qmake - should be found
+
+ -       else look for qmake in kit tab and Add it
+
+ -          usually somewhere in /usr/lib/qt*
+
+ -    text editor - font size 12
+
+ -       behavior - tab size, indent size 3 !
+
+ -    and anything else...
+
+install python:
+sudo apt install python3 python3-pip
+pip3 install bs4 requests
+(curl already there)
+
+hook up my usb drive:   
+cd
+ln -s /media/sh/BOCK/_ras _
+copy .ssh files from bock _app
+
+other apps:
+sudo apt install filezilla baobab
+    (disk usage analyzer)
+ 

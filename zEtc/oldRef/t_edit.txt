@@ -1,0 +1,108 @@
+<div id="main">
+<h1>Tinkerer - editing</h1>
+<pre>
+
+Using Tinkerer to click in a drum track  (and note editing in general)
+
+Start Tinkerer:
+<img src="img/tinker2.png">
+
+First off, you need to tell Tinkerer which
+   tracks and controls and drums (oh my!) to let you edit.
+   Click the "Edit Track, Drum, and Control lists" button  (rightmost one).
+   to see...
+   <img src="img/tinker_lst.png">
+
+Add Track:
+   Click in the track area.
+   Click the "Insert line" button (leftmost one).
+   fill in a TrackName: and
+   set Sound: to Drum\Drum (very topmost in list)
+         Note that Sound possibilities will change if Device is changed.
+
+Add Drums:
+   Click in the Drum area.
+   Click the "Insert line" button.
+      You'll get a default (first available) drum.
+      Click the droplist and pick HHOp (hihat cymbal open)
+   3 more times to get:
+      HHCl (closed)
+      Snar (snare drum)
+      Kick (bass drum)
+
+
+Click in notes via the mouse:
+   Okay, we're done with that dialog so close it.
+   We're back in the main screen now...
+
+   You must have ONLY ONE track selected in the Track: droplist to edit notes.
+
+   Click the Snap: droplist and pick 1/16.
+   <img src="img/tinker_ed.png">
+
+   Regular mouse button over an empty spot starts dragging in a note.
+      The note will have the note on and off velocities shown in top/right
+                                                                  edit controls.
+   Clicking over an existing note moves the note's On or Off time.
+      Depending over which half of the note you clicked.
+
+   When the note area HAS FOCUS (the => rectangle is GREEN),
+      Hovering over the left 3rd of a note,
+                  the mouse scroll wheel edits note on velocity.
+      Hovering over right 3rd of a note edits note off velocity.
+      Hoverer over middle 3rd to choose fingering for a note.
+
+      Yes, you CAN edit fingering :)
+
+
+Put in some DRUMs:
+   Put a 16th note on Kick on beats 1 and 3 of the 1st bar.
+      on Snar on beats 2 and 4.
+      on HHCl on every 16th note except the last.
+      On HHOp on the last 16th note of the bar.
+
+   Click the * toolbar button to select everything
+      (See the bracketting red lines?)
+   Hover over the 2nd bar.
+   And move up into the toolbar area being careful not to hover over other bars.
+
+   Click the green plus to copy the 1st bar into a 2nd bar.
+   Click *
+   Hover over the 3rd bar.
+   Click +
+
+   Now you'll have 4 bars (etc, etc).
+
+   Click *, Click the note button to play it in PianoCheetah.
+
+
+Erase stuff:
+   ...by dragging a rectangle with the RIGHT (other) mouse button.
+
+   By default this deletes notes inside.
+   You can pick from the Mov: droplist to instead
+      move the notes to another track.
+
+   Sorry, but I don't yet have group modification of stuff :(
+      The idea is that you'll move the set of events you want to mess with
+      to an "extra" track.  (bouncing tracks...)
+      Mess with em there.  Then move em back to the original track.
+   Got ideas about how to set up a better user interface?  I'm all ears!!
+                                                    Click blue feedback thingy=>
+
+Editing Controls:
+   Clicking in the control area on an existing control event will update it.
+      Else, you'll get a new control event.
+      (careful of Snap:)
+   Add new control TYPES the same way you added new drums
+      - in that 1st dialog we used.
+
+Trim the song:
+   Hover over the first bar you want.
+   click the [ toolbar button.
+   Same with the ] toolbar button.
+   click the red X to trash everything between.
+
+
+
+</pre></div>

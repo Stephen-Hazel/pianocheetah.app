@@ -1,0 +1,431 @@
+<div id="main">
+<h1>Txt2Mid - converting Steve's .TXT song file format to a .MID file</h1>
+<pre>
+
+Once you've got your .TXT files setup in the format described below,
+   right click it in Windows Explorer and pick either
+   "Play with PianoCheetah"  or  "Edit with Tinkerer"
+
+   (Txt2Mid is used "behind the scenes")
+
+
+When I first tried out a sequencer called Bars&Pipes for my
+   ooooooooole Amiga 500, I was kind of upset that I had to "click" in sheet
+   music if I wanted to get the sequencer to play it.
+
+   Click the "add" tool, Click the quarter note duration,
+   find out where middle C was on the display and Click it,
+   Click this.  Click that.  Sheesh!
+
+   I wanted a "text file music format" so I could TYPE in sheet music.
+   So I came up with one and a program that converts it to midi.
+
+   One top level song.txt file includes other .txt files per track
+      in it's same directory or in
+      ...\PianoCheetahSongs\SongClip\... dirs
+      (You can put any common tracks in the SongClip dir like drum patterns)
+
+   Also, repeating sections can be typed in just ONCE.
+________________________________________________________________________________
+
+song Example:
+
+</pre><pre class="fix">
+   Use PianoCheetah's leftmost toolbar button to get to the songpack downloader.
+   Download the "_Txt" song pack and check out
+   ...\PianoCheaterSongs\Do\_Txt\Nushooz_CantWait\
+         _CantWait_song.txt
+         drum.txt
+         lh.txt
+         rh.txt
+         vocal.txt
+         bass_a.txt
+         bass_b.txt
+         bass_c.txt
+
+
+Take a look at _CantWait_song.txt:
+         !name=drum                    track name
+         $cd@fga@                      scale (flatten e and b)
+         !Tmpo=120
+         #Drum                         load in drum track's notes
+         NextTrack                     NEXT !!
+         --                            (comment)
+         !name=lh
+         !sound=Bass\Syn1              pick the sound
+         #lh                           load in left hand track's nots
+         NextTrack
+         --
+         !name=rh                      ditto for RH
+         !sound=SynLead\Sawtooth
+         #rh
+         NextTrack
+         --
+         -- markers in here
+         !name=vocal                   vocal track
+         !sound=SynLead\Voice
+         #Vocal
+         --
+         unroll                        now "unroll" the sections into the
+         intro                            whole song (dup'ing some sections)
+         verse
+         chorus
+         bridge1
+         intro                         use this guy again, etc...
+         verse
+         chorus
+         bridge2
+         coda
+         coda
+
+         So we have 4 tracks: lh (bass), rh, vocal, and Drum.
+________________________________________________________________________________
+
+Drum.txt in turn has the drum track referencing the drum clips...
+
+         ------- intro
+         -- 8 bars of drums in ABABABAC pattern using rock 5,7,fill9
+         #Drum\Pat\1\Rock\05
+         #Drum\Pat\1\Rock\07
+         #Drum\Pat\1\Rock\05
+         #Drum\Pat\1\Rock\07
+         #Drum\Pat\1\Rock\05
+         #Drum\Pat\1\Rock\07
+         #Drum\Pat\1\Rock\05
+         #Drum\Fill\1\Rock\09
+         ------- verse
+         #Drum\Pat\1\Rock\05
+         #Drum\Pat\1\Rock\07
+         #Drum\Pat\1\Rock\05
+         #Drum\Pat\1\Rock\07
+         #Drum\Pat\1\Rock\05
+         #Drum\Pat\1\Rock\07
+         #Drum\Pat\1\Rock\05
+         #Drum\Fill\1\Rock\09
+         ...etc...
+________________________________________________________________________________
+
+...\PianoCheetahSongs\SongClip\Drum\Pat\1\Rock\05.txt (for example) in turn has:
+         --- Rock 5
+         s kick      hhcl
+         s
+         s kick      hhcl
+         s
+         s      snar!hhcl!
+         s
+         s kick      hhcl
+         s
+         s           hhcl
+         s
+         s kick      hhcl
+         s
+         s      snar!hhcl!
+         s
+         s kick      hhcl
+         s
+
+         s means sixteenth note
+         kick turns into the standard midi note of 2b
+         (octave 2 note b maps to kick in general midi's standard drum map)
+         hhcl maps to 3f#, etc.
+         ! means play the note at max velocity (127 instead of normal=100)
+________________________________________________________________________________
+
+After the full drum track is built, there's a
+   NextTrack  command to, well, start the next track, derrr...
+
+   We do the left hand piano track next.
+   It uses 3 one bar bass patterns (bass_a, bass_b and bass_c.txt)
+   Then right hand piano track and finally the vocal track.
+
+   For example, right.txt has...
+
+         !vol=80
+         ---------------------------------------- intro 1
+         e 4b,   h eg
+         e b
+         e 5d
+         e c
+         e 4gb,  q e
+         s 5c
+         s 4g
+         e
+         e b
+         ----------
+         e  4b,  q.s df
+         e  b
+         e  5d
+         s  c
+         sq 4dfgb
+         e
+         e  b
+         ---------- 3
+         ...etc...
+
+
+   !vol=80
+      means set volume control to 80  (of 127)
+      and then we start the notes (remembering the scale we set)
+
+   e 4b, h eg
+      means play an eighth note on octave 4 note b    (oct 4 has middle c in it)
+         (which will be flatted to 4a#=4b@(flat) per our scale)
+      and at the same time start a half note with e and g  (same octave)
+
+   in general, lines start with a Duration then OctaveNote.
+
+   A trailing comma means that another note group starts at the same time
+   with a different (usually longer) duration
+
+   our leftmost duration was an eighth so
+   the next line down's note starts RIGHT after that eigth
+      (while the e and g keep sustaining for a bit).
+
+   The articulation for the note defaults to leggerio (3/4 the full duration).
+   You can set the default articulation (effecting ALL following notes, too) to
+      staccato < (1/4 dur)
+      portato  = (1/2 dur)
+      leggerio > (3/4 dur - the default if ommitted) or
+      legato   - (full dur)
+
+   I tend to put -- lines at the bar boundaries
+      and number the bars at the beginning of a line (row?) of sheet music
+      (in the left margin on the sheet, and to right of -- bar marker)
+________________________________________________________________________________
+
+In the vocal track you'll find lines like:
+         !vol=80
+         ---------------------------------------- intro 1
+         !marker=intro
+         w
+         w
+         w
+         w
+         w
+         w
+         w
+         ----------
+         h
+         e
+         s 4b
+         s b
+         e b
+         e, q- g
+         ---------------------------------------- verse 9
+         !marker=verse
+         e
+         e b
+         q
+         h
+         ----------
+         ...etc...
+
+         Note the marker lines that say HEY!  At =this= time,
+            section "intro" starts (and goes until next marker)
+
+         This tells unroll how to duplicate the sections correctly.
+
+
+So when you right click _CantWait_song.txt and pick "Play with PianoCheetah",
+   you'll have yourself a full fledged song !!
+________________________________________________________________________________
+________________________________________________________________________________
+
+Snippet examples:
+
+                   assume that the scale is...
+   $cd@fga@        will flatten all E and B notes:  @=flat, #=sharp
+
+   q 4ceg          makes a minor chord on middle C (e is flattened by scale)
+                   played for a quarter note duration
+                   with leggerio articulation
+                                    (note is released 3/4 way thru the duration)
+
+   q ce%g          makes a major chord
+                   % suffix on a note makes it natural - overrides the scale
+
+   h.e.- 4b%       makes a middle octave B  (no flatting from the scale)
+                   with a duration of a dotted half plus dotted eighth
+                   with a legato articulation (-)
+                               (note isn't released until full duration is over)
+   h- 4e
+   h  d            make a slurred middle E flat (cuzu the scale)  to middle D
+                   The E@ is played at time 0
+                      with a half note duration
+                      with legato articulation
+                   The D is played after a half note and will sound RIGHT
+                                                                    after the E@
+                      with a half note duration
+                      with leggerio articulation
+
+
+   Note that the "start time" of each notegroup is determined by
+   the duration of the FIRST (leftmost) notegroup in each line
+
+   If you have notes that have durations that cross measures you may want to go:
+
+   h     4fa5c
+   h, h. 4ce%g
+   -- next note starts while prev measure's c chord has only played for half dur
+   h     5c
+________________________________________________________________________________
+
+   chords:
+   you can use simple chords, too (no inversions or suspensions for now - sorry)
+   a trailing + for major,
+              +- minor, ++ aug, +* dim,
+              +7 dom7, +7- min7, +7+ maj7
+              +6 6th, ...
+   examples:
+   q 4c+      will play a major chord rooted at middle c for a quarter note
+   w 4c+7     will do a dominant 7th over middle c for a whole note
+   fingering syntax...:)
+________________________________________________________________________________
+
+   add a [fingering] right after note
+   q 4c[1]e[3]g[5]      will put little fingering numbers by the note
+   q 4c[23]             press with finger2 and hold with finger3
+                        (thumb is finger 1 of either hand .. pinky is 5)
+   (or just use PianoCheetah and click em in)
+________________________________________________________________________________
+________________________________________________________________________________
+
+Full Syntax:
+
+   I tried to make this notation as flexible as sheet music is
+   so the format is a bit complex.
+   (although limitations ARE there.  Esp note velocity, etc)
+
+
+
+-
+lines starting with the '-' character are comments.  They're ignored.
+
+
+#
+lines starting with the '#' character mean to include the named .txt file.
+ex:  #drum 80     will include the drum.txt file 80 times
+
+
+other lines are note event lines in this format:
+    [this means optional]  {this means 0 or many}  (this means 1 or many)
+
+notegroup[,notegroup]
+
+notegroup    = duration {frequency}
+
+duration     = [rolled](value[modifier])[articulation]
+
+rolled       = ~  roll the notes (a 64th note gap in start times)
+
+value        = W  hole note        H  alf
+               Q  uarter           E  ighth
+               S  ixteenth         T  hirtysecond
+               6  tyfourth         1  hundred twenty eighth
+               2  hundred fifty sixth...:)
+
+               G  grace note - end note RIGHT before current time and start it
+                  a legato 32nd note before that
+
+modifier     = .  dotted
+               3  triplet
+                  ...else unaltered duration
+
+articulation = <  stacatto  1/4
+               =  portato   1/2
+               >  leggerio  3/4    default unless tacked to end of current scale
+               -  legato    1
+
+frequency    = [Vvelo][octave]note[shFlNat][loud][fingering]
+               [Vvelo]drumnote[loud]
+
+octave       = 0 1 2 3 4 5 6 7 8       ...4 is middle octave 4c=middle c
+
+note         = C D E F G A B
+
+shFlNat      = #  sharpen it
+               @  flatten it
+               %  naturalize it   ...ignore current scale
+                  ...else use current scale
+
+velo         = 0 1 2 3 4 5 6 7 8 9
+
+loud         = !  use velo=127 for prev note (only)
+                  ...else use default velo
+
+fingering    = ex:  [5]
+                    [23]
+                    ...etc
+
+drumnote     = Kick  BassDrumAcoustic      Kik2  BassDrum1
+               Stik  SideStick             Snar  SnareAcoustic
+               Clap  HandClap              Snr2  SnareElectric
+               TflL  TomFloorLo            HHCl  HiHatClosed
+               TflH  TomFloorHi            HHPd  HiHatPedal
+               TomL  TomLo                 HHOp  HiHatOpen
+               TMdL  TomMidLo              TMdH  TomMidHi
+               Cras  CymbalCrash1          TomH  TomHi
+               Ride  CymbalRide1(Edge)     Chin  CymbalChinese
+               RdBl  CymbalRideBell        Tamb  Tambourine
+               Spla  CymbalSplash          Cowb  Cowbell
+               Cra2  CymbalCrash2          Slap  Vibraslap
+               Rid2  CymbalRide2           BonH  BongoHi
+               BonL  BongoLo               ConM  CongaHiMute
+               ConO  CongaHiOpen           ConL  CongaLo
+               TimH  TimbaleHi             TimL  TimbaleLo
+               AgoH  AgogoHi               AgoL  AgogoLo
+               Caba  Cabasa                Mara  Maracas
+               Whis  WhistleShort          WhiL  WhistleLong
+               GuiS  GuiroShort            GuiL  GuiroLong
+               Clav  Claves                BlkH  WoodBlockHi
+               BlkL  WoodBlockLo           CuiH  CuicaHi
+               CuiL  CuicaLo               TriM  TriangleMute
+               TriO  TriangleOpen
+
+$
+lines starting with the '$' character define the scale and default articulation
+   for example...
+$##e###b<          will make all C,D,F,G and A notes into C#,D#,F#,G# and A# and
+                   the default articulation stacatto
+$cd@fga@>          will make all E and B notes into Eb and Bb (umm, flat) and
+                   the default articulation leggerio
+
+!
+lines starting with the '!' character are control change events
+for example...
+!Vol=100
+!PBnd=64
+!Tmpo=120      (in BPM - which is actually defined as QUARTER NOTES per minute)
+               (BPM ignores what the timesig says our beat is - by definition)
+!TSig=6/8
+!Hold=64
+
+Here are all the controls:
+   Prog, Prss, PBnd,
+   Vol,  Expr, Pan,  Bal,
+   Mod,  Brth, Pedl,
+   Hold, Hld2, Soft, Sust, Lega,
+   Sld1, Sld2, Sld3, Sld4,
+   Btn1, Btn2, Btn3, Btn4,
+   Tmpo
+
+Duration breakout (for those into gory detail - timing 'ticks' per duration)
+    normal  dotted=.  triplet=3
+ w  768     1152      512
+ h  384      576      256
+ q  192      288      128
+ e   96      144       64
+ s   48       72       32
+ t   24       36       16
+ 6   12       18        8
+ 1    6        9        4
+ 2    3        4? :/    1
+
+
+Ok, that's it for Txt2Mid (finally)
+
+
+
+
+</pre>
+</div>

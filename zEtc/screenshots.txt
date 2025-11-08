@@ -1,0 +1,70 @@
+Here's the toolbar
+<img src="toolbar.png">
+Hovering over the toolbar icons will pop a tooltip explaining them.
+
+<hr>
+Here's the help menu for keyboard shortcuts (regular and piano)
+Hit F1 to show it.  Hit F1 again to hide it.
+<img src="help.png">
+<hr>
+When PianoCheetah starts, it'll want you to pick a song.
+<img src="songload.png">
+It'll list only the songs you're learning unless All is checked.
+You can sort the good songs to the top with those arrows.
+There's some stats on the song to the right.
+
+And you can search your big huge directory of midi files from here.
+
+<hr>
+So let's see what the notes look like !!
+<img src="notes.png">
+We have columns of bars.  Not rows of bars like in standard notation.
+So your fingers align with the screen.
+We don't need to see notes we don't play.
+
+See the 3 red dots?  I was holding down those 3 keys, but they're wrooong.
+And the green dot means "Hey!  You didn't get this guy in time."
+The green bar is where you are in time.  It moves.  Not the notes.
+Cuz tracking moving notes while trying to play piano is unnecessary work for your eyes.
+
+You can see the 2 black key group and 3 black key group (a little lighter n wider).
+That's how you feel your way around on the piano without looking down.
+
+Red is the note of the key signature.  blue is the 5th.  
+There are 12 colors - one for each note of the octave.
+Usually you'll see primarily 7 colors as the scale primarily uses 7 notes per octave.
+With a smattering of others for, well, for color :)
+
+A light blue hue touches the left hand and the left hand notes' little dots tilt left.
+Remember Atari's Dig Dug game?  Each note is a little dude :)
+
+And you can see the dark thick bar lines and thinner beat lines.
+They change height based on note density and where the notes land.
+So for example, bar 14 is pretty short cuz the notes are all only on beat 1.
+<hr>
+Those are the main areas.  But clicking in various spots brings up other dialogs.
+
+Clicking - when the cursor changes, that's a place you can click.
+
+Clicking on the keyboard picks whether to show chords or not and which "controls" to show.
+Controls are anything midi sends along besides notes.
+For example, pitch bend, modulation wheel, sliders, knobs, buttons, keytar tilt, stuff like that.
+
+Clicking on the bottom half of a note will change it's duration.
+
+Clicking the top half will let you change the note (sliding it left/right)
+
+Clicking in the Cues area (yellow strip to left of notes)
+will let you mark the times as verse, chorus, break, or other.
+And also you can put in little symbols or text for reminders.
+The sad face could be for a place that needs work.
+The angry face is for tough sections :)
+<img src="markers.png">
+<hr>
+I'm afraid that not everything is to GUI perfection yet.
+There are some things that you can do that just aren't very obvious.
+(Like turn on chords, add chords to an empty song, and, eh, there's a lot :)
+
+I'll try to make PianoCheetah better, but these things take time.
+
+I'll also try to make these docs better.  Later.  :)

@@ -1,0 +1,26 @@
+what is a pianocheetah ??
+ - it's for playing a song on piano and drums.
+
+ - and practicing.  playing and practicing are different.
+
+ - shows notes in a <b>piano roll</b> format that's a little bit fancy.
+
+ - you practice the piano parts and<br>
+   the bass, drums and vocals sync to your tempo.
+
+ - not a DAW!!  We're here to get a take, not to mix down.
+
+ - getting a song into your head and fingers is the aim.
+
+Ok ok ok <a pop href="https://youtu.be/1Qh76D03y4Q?si=ruuBUk2K3O0F5FKU&t=155"
+           >intro video</a>
+
+And screenshots...
+Here's Clair de Lune.  Hmmm, that looks easy-ish.
+<img src="img/screen_ez.png">
+
+
+The real song looks like this:
+<img src="img/screen.png">
+
+Let's get this thing installed and off the ground...

@@ -1,0 +1,24 @@
+      only allow correct trk modes - esp learn OR play goin mute w .ht
+         rec trk can never have #,?
+         goin from ? to play/mute, kill ht?  (reusin ht ... :/ )
+         drum tracks can't have ht=l,r
+         rec tracks  can't have mute=non\0, ht=show
+                  mute/            |       bg/
+         drum/    bg/  show        |       lrn/
+         melo rec lrn  type  icon  | shown rec
+         !=9      #          x     | n     bg
+         !=9      #    show  x     | y     bg
+         !=9      \0         play  | n     bg
+         !=9      \0   show  eye   | y     bg
+         !=9      ?    (ht)  ht    | y     lrn
+         !=9      ?    rh    rh    | y     lrn
+         !=9      ?    lh    lh    | y     lrn
+         !=9  y   \0   (ht)  rec   | y     rec
+         !=9  y   \0   rh    rec   | y     rec
+         !=9  y   \0   lh    rec   | y     rec
+         9        #          x     | n     bg
+         9        #    show  x     | y     bg
+         9        \0         play  | n     bg
+         9        \0   show  eye   | y     bg
+         9        ?          drum  | y     lrn
+         9    y   \0         rec   | y     rec

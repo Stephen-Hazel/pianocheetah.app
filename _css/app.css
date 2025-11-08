@@ -1,0 +1,237 @@
+/* pianoceetah.app stylesheet    (375 css pixels for google) */
+
+/* main font, fixed width font */
+@import url(https://fonts.googleapis.com/css?family=Inter);
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+
+:root {
+   --red: #FF8080;  /* red */
+   --ora: #FFC080;  /* orange */
+   --yel: #FFFF80;  /* yellow */
+   --ygr: #C0FF80;  /* yellow green */
+   --gre: #80FF80;  /* green */
+   --gaq: #80FFC0;  /* green aqua */
+   --aqu: #80FFFF;  /* aqua */
+   --baq: #80C0FF;  /* blue aqua */
+   --blu: #8080FF;  /* blue */
+   --bpu: #C080FF;  /* blue purple */
+   --pur: #FF80FF;  /* purple */
+   --mag: #FF80C0;  /* magenta */
+   --cText: #111;   /* text color */
+   --cMain: #fff;   /* main color */
+   --cHili: var(--yel);  /* hilite color */
+   --cHovr: var(--pur);  /* hover color */
+}
+
+body {
+   font-family: "inter", sans-serif;
+   font-size: 18pt;
+}
+
+pre {font-family: "inconsolata";}
+
+img    {max-width: 100%;}
+img.hd {max-width: none;}
+
+
+/* jqueryui font,padding change */
+.ui-widget,
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+   font-family: "inter", sans-serif;
+}
+.ui-button {padding: 0.2em 0.3em;}
+
+/* nav menu */
+#menu ul {
+   position: fixed;
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+   float: left;
+}
+.menu-pick {
+   padding: 0.3em 1em;
+   font-weight: bold;
+}
+.c0 {color: var(--red);}
+.c1 {color: var(--ora);}
+.c2 {color: var(--yel);}
+.c3 {color: var(--ygr);}
+.c4 {color: var(--gre);}
+.c5 {color: var(--gaq);}
+.c6 {color: var(--aqu);}
+.c7 {color: var(--baq);}
+.c8 {color: var(--blu);}
+.c9 {color: var(--bpu);}
+.ca {color: var(--pur);}
+.cb {color: var(--mag);}
+
+.menu-0  {color: black !important; background: var(--red)}
+.menu-1  {color: black !important; background: var(--ora)}
+.menu-2  {color: black !important; background: var(--yel)}
+.menu-3  {color: black !important; background: var(--ygr)}
+.menu-4  {color: black !important; background: var(--gre)}
+.menu-5  {color: black !important; background: var(--gaq)}
+.menu-6  {color: black !important; background: var(--aqu)}
+.menu-7  {color: black !important; background: var(--baq)}
+.menu-8  {color: black !important; background: var(--blu)}
+.menu-9  {color: black !important; background: var(--bpu)}
+.menu-10 {color: black !important; background: var(--pur)}
+.menu-11 {color: black !important; background: var(--mag)}
+
+/* better tooltips */
+.tip {
+   position: relative;
+}
+.tip::after {
+   content: attr(tip);
+   position: absolute;
+   top: 0;
+   left: 100%;
+   visibility: hidden;
+   opacity: 0;
+   transition: opacity 0.5s ease, visibility 0.5s ease;
+   z-index: 10;
+
+   background-color: #555;
+   color: #fff;
+   font-weight: bold;
+   white-space: nowrap;
+   padding: 8px 12px;
+   border-radius: 6px;
+}
+.tip:hover::after {
+   delay: 0;
+   visibility: visible;
+   opacity: 1;
+}
+
+/* SUBpage stuff */
+main.doc {
+   width: 700px;
+   margin: 0 auto;
+}
+
+main h1 {
+   font-size: 1.7em;
+   color: white;
+   background-color: #ff8080; /*#6fbe62;*/
+   border-radius: .4em;
+   padding: 0 .4em;
+   margin-block-start: 0;
+   margin-block-end: 0;
+}
+
+main h1 {
+   font-size: 1.45em;
+   color: white;
+   background-color: #ff8080; /*#6fbe62;*/
+   border-radius: .4em;
+   padding: 0 .4em;
+   margin-block-start: 0;
+   margin-block-end: 0;
+}
+
+main h3 {
+   font-size: 1.2em;
+   color: white;
+   background-color: #80bfff;
+   border-radius: .4em;
+   padding: 0 .4em;
+   margin-block-start: 0;
+   margin-block-end: 0;
+}
+
+div.bul {
+   margin-top: .5em;
+   margin-left: 1.5em;
+   padding-left: .7em;
+   background-image: url('../_img/bul.png');
+   background-repeat: no-repeat;
+   background-position: left .4em;
+}
+
+
+/* homepage */
+#logo  {display: block;   margin: 0 auto;}
+#logotxt {
+   font-size: 4em;
+   font-weight: bold;
+}
+#blurb {width: 25em;      margin: 0 auto;}
+#free  {vertical-align: middle;}
+
+/* footer#1 - fancy 1st footer row w me/addr/contact */
+#foot {
+   background-color:#e7e7e7;
+   margin-top:     10px;
+   padding-top:    45px;
+   padding-bottom: 20px;
+   border-top:1px solid #d0d0d0;
+   background-image:-moz-linear-gradient(
+      top, #fff 0px, #e6e6e6 1px, #fff 15%, #fff 85%, #e6e6e6 100%);
+   background-image:-webkit-gradient(
+      linear, left top, left bottom,
+      color-stop( 0%,#fff), color-stop(0.6%,#e6e6e6), color-stop(15%,#fff),
+      color-stop(85%,#fff), color-stop(100%,#e6e6e6));
+   background-image:-webkit-linear-gradient(
+      top, #fff 0px, #e6e6e6 1px, #fff 15%, #fff 85%, #e6e6e6 100%);
+   background-image:-o-linear-gradient(
+      top, #fff 0px, #e6e6e6 1px, #fff 15%, #fff 85%, #e6e6e6 100%);
+   -moz-box-shadow:0px 1px 1px #e0e0e0;
+   -webkit-box-shadow:0px 1px 1px #e0e0e0;
+   box-shadow:0px 1px 1px #e0e0e0;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100%;
+}
+#row1 {
+   display: flex;
+   justify-content: space-between;
+   width: 80%;
+}
+/*
+#lft,#mid,#rit {
+   padding: 10px;
+/*   text-align: center;
+}
+*/
+
+/* responsive youtube videos */
+.yt {
+ position: relative;
+ padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+ padding-top: 25px;
+ height: 0;
+}
+.yt iframe {
+ position: absolute;
+ left: 0;
+ top:  0;
+ width:  100%;
+ height: 100%;
+}
+
+
+/* media query time...:(
+** 375px is google's min.  so breakpoints at 750,1125
+*/
+@media all and (max-width: 1124px) {  /* wider, but not yet desktop */
+   #bod                  {width: 100%;}
+   img#dl                {float: none;   display: block;   margin: 0 auto;}
+   .my-resp .ui-block-a,
+   .my-resp .ui-block-b  {width: 50%;}
+   .my-resp .ui-block-c  {width: 100%;   display: block;   float: none;}
+   .my-resp .ui-block-c:before  {content:'';   display: block;   clear: both;}
+}
+
+@media all and (max-width: 599px) {   /* cell phone portrait */
+   #menuspc              {display: inline-block;}
+   div#blurb             {width: 100%;}
+   .my-resp .ui-block-a,
+   .my-resp .ui-block-b  {width: 100%;   display: block;   float: none;}
+}

@@ -1,0 +1,36 @@
+midi cable hookup
+Midi in to the PC let's you use PianoCheetah to show and record midi.
+Midi out from the PC let's PianoCheetah play the keyboard.
+
+
+There are 2 Midi possibilities...
+
+usb <img src="img/usb.png">  versus  <img src="img/midi.png"> midi
+
+USB can send notes both directions in one cable.
+A regular midi cable sends notes in only one direction.
+
+
+<hr>
+
+Hopefully your keyboard has a USB midi port.
+<img src="img/usbc.png">
+
+Just a single USB cable from piano to PC.
+Install driver software from keyboard manufacturer.
+
+USB midi can <b>very</b> rarely cause audio interference.
+If so, swap to standard midi cables.  They never do.
+
+
+<hr>
+
+Otherwise, you're stuck with "old school" midi cables.
+<img src="img/midiint.png">
+
+You'll need a midi interface for your PC.
+ connecting your PC's usb port to midi in and out plugs.
+ Install driver software from the <b>midi interface manufacturer</b>
+ (not from the keyboard manufacturer).
+
+Don't get a <b>really</b> cheap one or the driver may have bugs.

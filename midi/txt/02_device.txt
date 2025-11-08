@@ -1,0 +1,28 @@
+midi devices - computer controlled piano and drums
+Midi "devices" can...
+
+ - send out midi when keys are hit and knobs are tweaked -
+   a "midi controllers"
+
+ - receive midi and generate a .WAV file or send sound out your speakers -
+   a "sound module"
+
+ - or both
+
+
+A midi controller keyboard sends out note and control messages on a "channel".
+ Every device has 16 channels max.  Channel 10 is (usually) dedicated to drums.
+ Most controllers send notes out on one channel.
+ You can tweak most controllers to do a "split" by messing with the
+ (usually terrible) menus on the instrument.
+ This sends lower notes out one channel and higher notes out another.
+ But, typically a keyboard sends notes out on one channel.
+
+A midi sound module receives midi events and creates audio.
+ Usually listening on all 16 available channels.
+ Some lame older ones don't do all 16.
+ Again, channel 10 is usually a drum channel.
+ The other channels (1-9,11-16) are used for melodic sounds.
+ All sound modules have a list of available sounds to pick from.  Sometimes
+ you can load in new sounds.  Often not.  But the majority let you change the
+ sounds with "control change" messages.

@@ -1,0 +1,60 @@
+Let's get this thing installed !
+Pianocheetah uses <a pop
+ href="https://flathub.org/apps/app.pianocheetah.pianocheetah">flatpak</a> so
+ - go into KDE's Discover or Gnome's Software app
+
+ - search: pianocheetah
+
+ - hit install button
+
+It'll end up in your start menu's <b>multimedia</b> group.
+
+The first time you run PianoCheetah, you'll see...
+<img src="img/oh_hi.png">
+Pick the directory to <b>-put-</b> the pianocheetah dir into.
+(don't include "pianocheetah" part)
+<img src="img/pick.png">
+Then you'll have to wait around (sorry).
+<img src="img/wait.png">
+After that, MidiConfig will pop up:
+<img src="img/midicfg.png">
+Where you pick each midi device's name and type.
+
+I suggest "rockin88" for your piano.
+I just name my drums "drum".
+If a device is only for midi input,
+ give it a type of OFF in the output list.
+
+After you close MidiConfig,
+ you'll finally see PianoCheetah !
+
+Time to pick a song - I'd suggest
+
+ - _demo / LegendOfZeldaOcarinaOfTime / TempleOfTime
+
+<img src="img/time1.png">
+Let's set it up in easy mode:
+
+ - pick the Lrn column of the Piano track so it's a green triangle.
+   that's the track you'll play.
+
+ - pick the Hand column and set it to R for right hand.
+
+ - pick the Dev.Chan column so it's syn.  The built in softsynth.
+
+ - pick the Sound column so it's Elec1_aria.
+   Electric piano from the free Aria soundbank.
+
+ - now click the ez button in the toolbar so it's hilighted.
+
+ - now click on the toolbar ear/finger/brain button until it's on
+   finger=hear.  (The others are play and practice)
+
+ - ok!  press w to wipe any notes you hit accidentally.
+
+ - press 1 to go back to bar 1.
+
+ - and you'll be playing that song with your right hand
+   never having to hop - easy !
+
+Ok.  Let's go over what some of these crazy parts of the screen actually are...

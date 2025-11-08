@@ -1,0 +1,100 @@
+<div id="main"><pre>
+<h1>Practice - Let's prep that song for practice and PLAY IT!</h1>
+
+
+<h1>What's a track?</h1>
+Here's what the track control looks like:
+<img src="img/trk.png">
+If you don't see it, click this little guy: <img src="img/trk_on.png">
+
+Midi files hold notes for lots of instruments, not just piano.
+A track holds notes for <em>one</em> of the instruments.
+   Maybe even for just a part.
+
+We keep piano left and right hand notes in seperate tracks so
+ - they show up differently.
+ - as we practice one hand, PianoCheetah can play the other.
+
+
+<h1>Finding the piano tracks and splitting left and right hands</h1>
+Hopefully the midi files you find have nicely named piano tracks split into
+left and right hand.
+PianoCheetah tries to sort piano tracks to the top.  (It takes guesswork.)
+
+Click the leftmost column of a track you suspect is piano.
+It'll turn into a hand, show it in the note display, and make you play it.
+<img src="img/hand.png">
+Green arrow tracks are autoplayed and their notes aren't shown.
+If you're not seeing any notes, click this guy: <img src="img/note.png">
+
+Set learn mode to "Hear Mine"
+<img src="img/lrn.png">
+And see if it sounds like a keyboard part.
+   If not, click it back to autoplay.
+   If so, click the Hand column (next over) to set it to LH or RH.
+   (whichever side it has the most notes on.)
+
+Now you're ready to start moving notes to the other hand (or killing 'em).
+If you don't have a track for the missing hand, add one by...
+   click on the <b>Events</b> column of the piano track you <em>do</em> have.
+   click the plus button to add a track like it.
+   click the <b>Hand</b> column to set LH or RH.
+
+Now move the notes to the correct hand.
+Click <em>near</em> to one corner of the notes (not <em>on</em> a note),
+   and drag a rectangle around the (starts of) notes to move.
+   Then pick the hand to move them to.
+
+OK!  Now we can practice !!
+
+
+<h1>Phases of Piano Practice</h1>
+Now that there are tracks to practice, we set <b>how</b> we'll practice.
+Click this guy again and set it to <b>Learn</b>:
+<img src="img/lrn.png">
+
+<h1>HearAll</h1>
+Plays <b>all</b> the tracks.  What your audience hears.
+
+<h1>HearMine</h1>
+Plays <b>only</b> your practice tracks.
+
+<h1>Learn</h1>
+<em>Waits</em> for you to get the notes right.
+This'll help you
+ - Find the notes you need.
+ - Figure out when to change hand positions and fingering.
+   (Can you reach the leftmost with your thumb and rightmost with pinky?)
+ - Learn the rhythms in detail.
+   (Especially against a drum track with 16th notes.  metronome = ANNOYING !!)
+<em>Your</em> overall playing volume will <b>scale</b> the backgrounds'.
+The background automatically <em>follows</em> your "feel".
+
+<h1>Lead</h1>
+Sorry - this doesn't work well yet...
+You lead the song's time with your live playing.
+As you play, PianoCheetah tracks (guesses) where you are and syncs the
+tempo and background tracks.  According to <b>your</b> playing.
+Keeping the background tracks in LOCK STEP with you.
+Taking into account your rubato.
+As I say, umm, much work to do.  It <em>kind of</em> works...:/
+
+<h1>Follow</h1>
+This only shows you the notes going by...  You record live as best you can.
+
+
+
+<h1>Save!</h1>
+PianoCheetah is always recording.  Press F1 to see help and do "save song".
+If you happen to get a good recording during practice, <b>save it</b>.
+You'll find it in the <b>Recorded</b> dir within PianoCheetahSongs.
+
+
+
+<h1>Ok, play that song through <b>only</b> once or twice.  Then we do...</h1>
+
+<a href="fingering.html">piano practice 2.0</a> !!
+
+
+
+</pre></div>

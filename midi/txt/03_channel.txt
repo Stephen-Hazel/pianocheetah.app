@@ -1,0 +1,54 @@
+midi channels - parallel notes
+Think of a "channel" as a <i>guy playing an instrument</i>.
+ - At any given time, a guy can pick up only <i>one</i> instrument.
+
+ - He can play tons of notes at once on the instrument.
+
+ - He can swap instruments any time he wants.
+
+But only one instrument at a time.
+
+
+
+<h3>ProgramChanges</h3>
+A channel has an assigned sound.  Defaulting to drums on channel 10 and
+ piano on the other 15.
+ Assigning a sound to a channel is called a "program change".
+
+Midi defines 128 standard melodic sounds and about 61 standard drum notes.
+ These are only the standard ones.
+ In practice, this is <i>way</i> too few available instruments for everyone in
+ the whole world to limit themselves to.
+ So you usually end up using custom ones.
+ And mapping these custom instruments back to the closest standard one
+ when giving the song to somebody else.
+
+
+
+<h3>Midi Maximums</h3>
+You can have as many melodic and percussive instruments as you want.
+ But per device, only 15 melodic instruments can be used at a given instant
+ on the melodic channels.  Plus channel 10 of drums sounds.  Drum channels are
+ weird with a sound per note as no pitch is needed.  For melodic sounds, one
+ sound per channel.
+
+If you want more simultaneous sounds, you need more sound module devices.
+ Most of the time, you've got a couple of em.
+ So you can have 30 (plus 2 drumsets) with 2 devices.
+ Or 45 sounds (plus 3 drumsets) at once with 3 devices.
+ If that's not plenty, just get more devices.
+
+Plus, you can switch off a channel to another sound at <i>any</i> time.
+ (With a "program change" control message.)
+ So within a bar of music, you could have a zillion instruments playing.
+
+However, doing program changes can sometimes cause an audible bzzzt.
+ And lots of program change events can make it hard to keep your music
+ easy to understand.
+
+
+
+<h3>WHY all these wierd numbered limits?</h3>
+ Well, MIDI was designed in the 1980s when computers were weak...
+ (And MUCH simpler.  And I was a younger man...)
+ That's all the explanation you get for now.  Sorry.

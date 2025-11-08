@@ -1,0 +1,38 @@
+<div id="main"><pre>
+<h1>PianoCheetah - adding lyrics to your songs</h1>
+
+There are tons of lyrics websites out there.  Yay!
+I started out with PianoCheetah hilighting syllables.
+But it's <b>way</b> too much of a pain to enter syllables in.  Yuck!
+
+So it's a line at a time now.
+Just copy the text from one of those lyric websites and put bars in the start
+of each line.
+
+PianoCheetah has a global config (click "world behind checkmark" toolbar button)
+that you can check that'll put the current bar onto the clipboard as the
+song ticks along.
+
+Load up those lyrics in your favorite text editor.
+Start PianoCheetah playing the midi file.
+When the lyric is <em>juuuust</em> about to start, press control-V when
+your cursor is at the start of the line to jam the bar# into the front.
+
+Put LYRIC in the first line of the file.
+Save the .txt file somewhere (just in case).
+
+Uncheck PianoCheetah's "copy bar to clipboard" thingy.
+
+In the text editor, Press control-A and then control-C to put the whole
+thing into the clipboard.
+
+Reload your song in PianoCheetah - BAM - it has lyrics now.
+Change songs - BAM - it's saved.
+
+
+
+You're done.  Thank you.  Thank you.
+
+
+
+</pre></div>

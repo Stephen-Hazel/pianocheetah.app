@@ -1,0 +1,16 @@
+<div id="main">
+<h1>Screen shots...</h1>
+<br />
+
+PianoCheetah needs to show as much music as possible.<br />
+So you're gonna have to scroll this here page...<br />
+
+<img src="img/screen1.png"><br><br>
+<img src="img/screen2.png"><br><br>
+<img src="img/screen3.png"><br><br>
+<img src="img/screen4.png"><br><br>
+<img src="img/screen5.png"><br><br>
+
+<br><br><br><br>
+
+</div>

@@ -1,0 +1,46 @@
+midi sequencer - the top of the mountain
+MIDI starts getting interesting when you introduce a midi
+<b>sequencer</b>.
+
+it's a computer program that sits in between your keyboard controller and
+ your sound module.  It's usually a program you install on your PC.  But some
+ (lame) ones exist on keyboards.  Lame due to their terrible user interface.
+
+It records all the midi events coming in,
+ Plays em with "backing tracks" of prerecorded midi events.
+ Shows em on the screen in a fancy note/control display.
+ Saves and loads the events to a midi file.
+
+Sitting in the middle there, a sequencer can listen to the midi coming from the
+ keyboard controller and record it into a "track".
+
+A track is similar to a midi channel, but there's no "16 max" limit on tracks.
+ You tell a track to listen to a midi channel (or set of em) and record all
+ the notes and controls it hears.
+
+These are played out together (sequenced) with other already recorded tracks.
+ You can...
+ - display the tracks' notes on screen
+
+ - save em in a .mid file<br>
+   (If you need a .WAV or .MP3, install Audacity and have it capture what
+    your synthesizers are putting out.)
+
+ - load em from a file
+
+ - edit em on screen
+
+ - add auto accompaniment
+
+ - juggle which track has which sound
+
+ - juggle which tracks go to which sound module channels
+
+The midi sequencer is what gives the keyboard player the capabilities of a
+ whole orchestra.  Well, you know, not a real one...
+
+
+If you need a way fancier sequencer than PianoCheetah, hit google.
+ But with PianoCheetah, I can help ya.
+
+Okay, that's all I got for ya on midi.

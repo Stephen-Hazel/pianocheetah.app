@@ -1,0 +1,100 @@
+which piano should i get?
+I categorize keyboards by price.
+ - cheapo
+
+ - beginner
+
+ - serious
+
+ - acoustic
+
+<h3>Cheapo - under $300</h3>
+Unweighted keys make a lousy first keyboard for a piano player.
+Less than 88 keys will make you mad.
+
+You can't easily rest your hands on the keyboard without hitting keys.
+ Holding your hands up introduces tension.
+ It's hard to play evenly, smoothly, and softly.
+ Playing loud is easy.  Playing softly takes practice and skill.
+ Don't let your keyboard limit your expressivity.
+
+Also, keys that light up might look cool now.  But they <i>won't</i> later...
+
+These keyboards are great when you get into sound synthesis, though.
+ Lots of sliders and wheels for tweaking sounds live.
+ They make glissandos easier, too.  But they should be your <b>second</b>
+ keyboard.  Why should you have two?  Because buying one keyboard that
+ has <i>both</i> weighted keys <i>and</i> sliders is more expensive than
+ buying two.  Plus you get an extra keyboard.
+
+For your <b>2nd</b> keyboard...
+ - no less than 61 keys (5 octaves).
+
+ - something that will fit on top your weighted keyboard.
+
+ - lots of sliders, pitchbend wheel, mod wheel, aftertouch, and pedal jacks.
+
+Maybe a Novation LaunchKey61 or an M-Audio.
+<img src="img/n_launchkey.png">
+
+
+<h3>Beginner - above $300</h3>
+Weighted keys are important for playing softly.  Anybody can play loud.
+ They also let your hands relax.  Playing piano incorrectly can destroy the
+ tendons in your wrist.
+ Make sure you play using the least possible amount of effort.
+
+the Casio Privia line...
+<img src="img/c_px320.png">
+
+or Yamaha YPG,DGX lines...
+<img src="img/y_ypg535.png">
+
+Great starter pianos.  Inexpensive.  88 weighted keys.
+ But they're <b>clacky</b>.  The keys <b>bang</b> on keybed and on key return.
+ This may not annoy you right now.  But it will later.
+
+
+<h3>Serious - $800 or more</h3>
+I recommend the Yamaha CP-33 or something similar.
+<img src="img/y_cp33.png">
+
+I'd recommend something Yamaha, Kawaii, Roland or Nord.
+ - Yamaha feels good and isn't as expensive as Kawaii.
+
+ - Kawaii feels better but is spendy.
+
+ - Roland is cheaper than Yamaha but doesn't feel as good.
+
+ - Nord feels good but is super spendy.  Good tweakable sounds, though.
+
+These are <b>my</b> opinions.  Decide for yourself.
+
+
+<h3>Acoustic - WAY over $4000</h3>
+If you can afford one, you can afford a digital to go with.
+ Be ready to move it, tune it quarterly, and deal with your annoyed family.
+ They are <b>awesome</b>.  If you can afford one.  (I can't)
+
+
+<h3>Do research</h3>
+at <a rel="x" href="https://www.pianoworld.com/forum/ubbthreads.php/forums/6"
+ >pianoworld.com's digital piano forum</a>
+
+and especially
+ <a rel="x" href=
+ "https://www.pianoworld.com/forum/ubbthreads.php/ubb/showflat/Number/1201029"
+ >the prices paid thread</a>
+
+
+<h3>Hit a local piano/band store</h3>
+ - Don't buy till you <b>feel</b> it.
+   Keyboard actions are almost all different and can't ever change.  Ever.
+   Feel is the <b>most</b> important quality of a keyboard.
+
+ - Bring headphones.  Their speakers may be lame.
+
+ - Sounds are kind of important for playing live.
+   But PianoCheetah (PC based software synths) can add missing sounds.
+
+Good luck !!

@@ -1,0 +1,119 @@
+I will NEEEVER install LINUX !!
+Do you like windows update?  That alone is why I use Linux.
+<a rel="x" 
+   href="https://youtu.be/abjoHkf-OII">video for the lazy</a>
+
+<b>Oh and if you already got linux installed hit the menu
+<==over there</b>
+
+<h3>Can you do it?</h3>
+I keep windows because of work.  Or maybe if you game.
+If you wanna keep windows, you'll need to know
+ - how to use a screwdriver
+
+ - how to connect a little plastic connector
+
+Then get a usb stick and - boom - you totally got this.
+
+
+We're installing kubuntu cuz it's the best distro.
+Other ones install exactly the same.
+
+Also get a <a rel="x" href="raspi.html">raspberry pi</a> !
+
+
+<h3>Keeping windows safe</h3>
+Windows and Linux should never -EVER- live on the same hard drive.
+
+It's possible but just don't.  The problems:
+ - partitioning the hard drive - dangerous.
+
+ - grub boot loader - DUMB - Your BIOS can already do this.
+
+
+They =should= live on the same PC, though.
+So it will need 2 drive connectors (we'll find out if it does soon).
+
+Windows and Linux must never know about each other!
+When you install linux on a windows PC, 
+you need to physically disconnect the windows drive.
+Otherwise the linux installer will give you options you do NOT want.
+
+Here's where your screwdriver and plastic connector skills come in.
+
+
+<h3>Don't kill your files</h3>
+We're going to install an operating system on a harddrive.
+Get your files OFF it.
+
+They're best kept on a USB drive that both operating systems will share.
+(So reformat that USB drive as exFAT - not NTFS)
+
+Or getta NAS (network attached storage) for perfection.
+
+
+<h3>Let's go!</h3>
+Prep is gonna be googling the model on your pc's serial# sticker to find out:
+ - what key to hold down on boot to get to the bios menu
+
+ - for windows, see if your pc has 2 drive connectors built in
+
+Setup usb stick:
+ - download the kubuntu <a rel="x" href="https://kubuntu.org/getkubuntu">.iso file</a>.
+
+ - install and run <a rel="x" href="https://etcher.balena.io">balenaEtcher</a> 
+   to get that onto your usb stick.  (Remember what your usb stick's name is)
+
+
+<h3>Install!</h3>
+take out the windows drive to keep it (and linux) safe.
+ - unscrew the case and find the hard drive 
+
+ - it will either be an M2 connector - unscrew and lift out.
+
+ - or a SATA connector - disconnect the plastic connector.
+
+ - connect the new drive for linux and reassemble the case.
+
+
+<h3>Plug in the usb stick and reboot</h3>
+ - and make sure to hold down that key to get you into the bios menu.  
+   (it's usually F2, F1, Esc or Del)
+
+ - look through this crazy menu for how to change the drive boot order.
+
+ - order your usb stick to the top
+
+ - save then exit and you should see the kubuntu installer kick in.
+
+
+<h3>Hitting next a lot</h3>
+You're not in the installer yet.  You're in the "live" mode which is dumb.
+There's some icon to double click to get to the installer.
+
+The installer questions are pretty easy - yes - the whole disk - all of it.
+You want "3rd party drivers".  That's the whole point of ubuntu.
+give it the wifi password and all the usual stuff.
+name your computer some kind of penguin.  Or the installer will fail.  :)
+
+In the end, it'll tell you it needs to reboot.  
+Click ok.  Then it'll say "Take out the dang usb stick, PAL!".
+
+Dooone !!  See?  I told you !  You got this !
+
+
+<h3>Windows again</h3>
+Now put the windows drive back in.
+Hold down that bios key on boot to pick whether you boot to windows or to kubuntu.
+Scoot the drive you want to the top and DISABLE the other drive(s).
+Pick the other one as the top to change back and forth.
+But you'll always reboot to the RIGHT one.
+
+
+<h3>Tweaking :/</h3>
+just like windows, linux needs tweaking.  Here's what I do for
+ - <a rel="x" href='kubuntu.html'>kubuntu</a>
+
+ - <a rel="x" href='raspi.html'>raspi</a>
+
+Now which apps to use on linux...  Hmmm...

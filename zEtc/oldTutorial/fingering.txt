@@ -1,0 +1,116 @@
+<div id="main"><pre>
+<h1>Fingering, Fractures, and Feel (oh my!)</h1>
+Playing through a song from start to finish is <b>not</b> practicing it.
+Playing through is your reward when your practice for the day is complete.
+
+To improve, you'll need to practice carefully and <b>efficiently</b>.
+ - Mark where hands hop and fingering gets tricky.
+ - Stop wasting time practicing repeated sections.
+ - Find and loop the tricky sections so we can nail them to the wall.
+ - Make Cues to remind yourself how the feel should go.
+
+Let's break it down.
+
+
+<h1>Fingering</h1>
+We need to mark fingering so we practice <b>one</b> movement.
+   Each practice rep needs to be identical so our brains can memorize, store
+   and optimize the movement.  (This all happens overnight.  Get good sleep.)
+
+Click on the top half of a note to pick fingering for it.
+                                <img style="float:right;" src="img/fing.png">
+Don't put fingering on every dang note.
+   Only when your finger needs to <b>move</b> to a note.
+   (during hand position changes or <em>reuse</em> of a finger)
+   Don't label 1 and 5 very much.  They're obvious - they're on the edges.
+   Only finger <em>tricky</em> parts.
+   (Some fingering tips are over <a rel="x"
+                                    href="../practice/fingering.html">here</a>.)
+
+<h1>Skip the repeats and loop it up</h1>
+Songs repeat.  A <b>lot</b>.
+That's great - we can practice all those sections <em>just</em> once.
+Click in the Cues area of the note display.
+Click the orange loop thing:
+<img src="img/loopinit.png">
+PianoCheetah looks through all your bars and finds the duplicates.
+It marks sections to <em>skip</em> with ( and ) .
+It also loops up the remaining bars into 4 bar loops with [ and ]
+so you can concentrate and master each one individually.
+Much better than fixing almost nothing as you mindlessly plow through every bar.
+
+
+<h1>Fractures</h1>
+Charles Cooke in "Playing the Piano for Pleasure" writes
+   "Surgeons tell us that a broken arm or leg, if it is correctly set,
+    becomes strongest at the point of fracture."
+He goes on to explain <b>fractures</b> as the tricky parts of songs where things
+can <em>break down</em>.
+We should systematically label these areas and practice them very carefully.
+
+Identifying tricky spots is your primary job during practice.
+Once found, click in the Cues area and put a loop starting with [* around it.
+   Which brings us to the type of loop [, [*, [LH/RH, and [LH/RH/HT.
+   [ loops will be wiped and redone on each AutoLoop recalc.
+   [* means the loop is permanent.
+   [LH/RH means alternate LH and RH each time through the loop.
+   And the last adds a hands together alternate.
+Remember - although LH and RH may individually repeat a <em>lot</em>,
+in HT there may be very few repeats - due to hand combinations.
+Here's a full scale screen shot of looping.
+Those light blue shaded areas are <b>all</b> repeats.  Already practiced!
+Green now line is at the start of the loop which is a bolder red as it's the
+current loop you're on.
+There's a quarter bar lead in and let out so your loops overlap and you practice
+the transition.
+<img src="img/looping.png">
+I don't know about you, but I think that's pretty dang cool.
+
+
+<h1>Now we need to carefully practice it</h1>
+First, without looping, go through the piece and wherever your hand hops or
+fingering is tricky, label the note with the finger.
+
+Next, turn looping on by clicking that arrow button.
+   straight arrow means looping off, circle arrow means looping on.
+
+cursor right/left (or command note) hops you to the next/previous loop.
+
+One useful trick is to practice the <em>last</em>loop of the song and on
+back to the start.
+Practicing the <em>end</em> of the song most will <em>nail</em> the finish!
+
+
+<h1>Practice the right stuff first</h1>
+<b>Slow, smooth, and exact</b> comes first.
+If you can't play it slow, it'll be slop when you play it fast.
+
+Next, play it as <em>relaxed</em> as possible.
+If your body isn't relaxed, you'll tire and start flubbing things.
+Or worse, you'll start getting some serious pain.
+Make sure you're <em>shaken out</em> and limber.
+Your piano teacher will help you with this.
+
+Next, add speed to get it to tempo.  Speed <b>last</b>.
+
+Oh wait, <em>riiiiight</em> before speed comes...
+
+
+<h1>Feel</h1>
+Feel refers to careful adjusting of individual note volumes and use of legato.
+Also to use of pedal, and small variations to the tempo to make a song
+<b>feel</b> more expressive and natural and just plain <em>better</em>.
+
+You can also click in the Cues area to the right of the notes to add
+dynamics, text notes, or any text, really.
+(I use <- for crescendo, >- for decrescendo, and -< and -> at their end)
+
+Label it so you remember it (possibly <em>years</em>) later !!
+
+
+
+Next up, <a href="chords.html">chords and styles</a>
+
+
+
+</pre></div>

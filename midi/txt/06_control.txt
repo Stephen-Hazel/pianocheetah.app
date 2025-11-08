@@ -1,0 +1,153 @@
+midi controls - changing how a note sounds
+"control" events are sent along midi just like note events.
+
+Terminoligy problem here.  Controller != Control.
+ There's a midi "controller" device and a midi "control change" event.
+ We're talking about the event here.  "sound control" would be a better term.
+
+
+Let's say you pick an electronic piano sound and use the pitchbend wheel.
+Over midi, you'll see events something like:
+ <pre>
+ 1 program   4        (pick elec piano sound)
+ 1 noteDown  4c 100   (note event)
+ 1 pitchBend 65
+ 1 pitchbend 67
+ 1 pitchbend 100
+ 1 pitchbend 127
+ 1 pitchbend 80
+ 1 pitchbend 64
+ 1 noteUp    4c 64      (note event)
+ </pre>
+ - channel<br>
+   you used channel 1 and the sound for it was picked with
+   a programchange button: 4=electronic piano.
+
+ - control id<br>
+   a number matching the midi standard control map is what's actually sent.
+   Not a nice little string like "programChange" or "pitchBend".
+   But you need to think of control as a name for which control you're tweaking.
+
+ - control value<br>
+   usually a number from 0 to 127.
+   This value can be interpretted as a signed number (-64 .. 0 .. 63).
+   Or a 2 value on/off (0 = off, 64 = on  (or maybe 127 = on)).
+   In the case of ProgramChange, the 0..127 maps to one of the standard midi
+   sounds...
+
+
+<h3>What about those control IDs...?</h3>
+There a bunch of different controls.
+ And midi is actually only using a little teeny number to identify it.
+ Unfortunately, you may need to know what <b>that</b> number is.
+ And the midi standard here is terrible across different devices.
+
+
+<h3>Some common controls are</h3>
+ <pre>
+ ProgramChange   assigns a new instrument (sound) to the channel
+ MasterTune      tunes all channels of the sound module up or down
+ Transpose       transposes the notes in a channel up or down
+ PitchBend       bends the playing notes' frequency up or down
+ PitchBendRange  sets how far "all the way up/down" is in halfsteps
+ MasterVolume    overall volume for all channels of a device
+ Volume          setting per channel usually at time=0
+ Expression      offset to Volume - what a mixer would record
+ MasterBalance   overall pan for all channels of the sound module
+ Pan             setting per channel
+ Balance         offset to Pan - what a mixer would record
+ HoldPedal       sustain/damper pedal
+ HoldPedal2      sustain/damper pedal #2
+ SoftPedal
+ SustenutoPedal
+ LegatoPedal
+ ReverbAmount    reverb fx amount - maybe per channel, probably per device
+ ChorusAmount    same deal for chorus fx
+
+ <i>Hmmm, what do these do exactly...??</i>
+ Pressure, ModulationWheel, BreathControl, Pedal,
+
+ <i>Hmmm, not all sound modules respond to these...</i>
+ PortamentoOnOff, PortamentoTime, PortamentoTimeL, PortamentoNote,
+ AllSoundsOff, AllControlReset, AllNotesOff, LocalControlOnOff,
+ OmniOff, OmniOn, MonoMode, PolyMode
+
+ <i>...and there are a lot more</i>
+ </pre>
+<h3>Control problems</h3>
+What number is it???
+People identify controls by name.
+ Midi has a very complex numbering method that breaks down controls into
+ groups.  Groups that you don't care about.
+ If you hear terms like "registered parameter number" or "system common" or
+ "system exclusive", well, my advice is to complain to the software author.
+
+
+<h3>Is it Input or Output?</h3>
+People need to know which slider on the midi controller
+ does what on the midi sound module.
+
+When I listed off controls up there...
+ You'll note that <i>some</i> have a well defined thing they do on
+ the sound module.  (Ex: Expression)
+ And some don't.  (Ex: Pedal)
+
+You'll also note that some identify which doodad on the keyboard
+ sends em. (Ex: Pedal)
+ And some don't. (Ex: Expression)
+
+Notice a pattern here?
+ Some controls identify a physical slider or bender or doodad on the keyboard.
+ Some identify what happens on the sound module.  Like pan, volume, etc.
+ And it's often up to <i>you</i> to make sure these wierd control numbers are
+ the <i>right ones</i> all the way through the midi input / sequencer / output
+ music recording process...
+
+
+<h3>How do you do this?</h3>
+Well, it's just difficult.  My PianoCheetah tries to organize them.  But your
+ midi sequencer may behave differently.  It's just difficult.
+
+
+<h3>What about the control values?</h3>
+The value a control sends along depends on the type of control...
+ There are several kinds of controls on most keyboards.
+ - buttons<br>
+   one shot:<br>
+   some just send values of 64 (maybe 127) when pressed and 0 when released.
+   toggle:<br>
+   some send a 64 when pressed once, then send 0 when pressed again,
+   and then 64 when pressed again, etc...
+   note:<br>
+   some send note ons and note offs (with or without velocities).
+
+ - pedals<br>
+   Some (hold pedals) send only on/off like a one shot button.<br>
+   Some (expression pedals) send a value from 0..127.<br>
+   Some pedals spring back to 0.  Some stay where you leave em.
+
+ - sliders/wheels/knobs/ribbons<br>
+   These usually just send values from 0..127<br>
+   Sometimes they spring back to 0.  Sometime they stay put.
+
+ - benders<br>
+   These are like sliders, except the value they send is signed.
+   It's sending -64 .. 0 .. +63 (which happens to map to 0-127).
+   And they usually spring back to 0.
+
+ - keyboard pressure<br>
+   when you "lean" on the keyboard while playing notes,
+   some keyboards send "keyboard pressure" also known as
+   "channel pressure" or "mono aftertouch".
+   A value of 0 (not pressed down) to 127 (leaning HARD on it).
+
+ - note pressure<br>
+   this is technically part of a note.
+   This is a per channel per <b>note</b> control that does <i>something</i>
+   to each individual note on the channel.
+   What does it do?  Whatever you configure the sound module to do.
+   And that's sound module specific...
+   It's <i>very</i> rare to actually find a midi keyboard capable of this.
+
+
+Let's get back to that program change...

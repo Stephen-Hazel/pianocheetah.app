@@ -1,0 +1,55 @@
+<div id="main"><h1 id="rnhead">The GUTS...</h1><div id="rnbody"><br>
+<br>
+<h2>Ok, let's get to the "too detailed for the tutorial" stuff...</h2>
+<br>
+<ul>
+ <li><a href="midicfg.html">MidiConfiger - setting up midi devices</a></li>
+ <li><a href="lyric.html"  >PianoCheetah - putting in lyrics</a></li>
+ <li><a href="syn.html"    >SYN - my software synth - adding sounds</a></li>
+ <li><a href="txt2mid.html">my midi .txt format for typing in songs</a></li>
+ <li><a href="t_view.html" >Tinkerer - viewing midi</a></li>
+ <li><a href="t_edit.html" >Tinkerer - editing midi</a></li>
+ <li><a href="t_stamp.html">Tinkerer - track stamper</a></li>
+</ul>
+<br><br><br>
+
+
+<h1>And here's a junky one page explanation of other stuff :/</h1>
+<br><pre>
+
+Tinkerer
+   shows the midi file in typical piano roll notation.
+   Eventually, everything in here will move to PianoCheetah.
+   It names, tests, configures and organizes your midi devices.
+
+Mid2Wav
+   Right click a midi file in Windows Explorer and pick
+   "Convert to WAV".
+   Turns your .MID (plus your .WAV instruments) into an output .WAV
+   to put on the web, give to your Mom, etc.
+   Done withOUT playing it live (quickly:)
+
+WavPlayer
+   lets you listen to a TON of .WAV files at once.
+   but just plays them (and lists freq, bits, stereo/mono, etc).
+   Use it to preview a big dir of .WAV files to see
+   if they're worth beans.
+   Right click a directory of .WAV files in Windows Explorer and pick
+   "Play WAVs"
+
+Waver
+   shows samples of a .WAV file pretty well.
+   can't edit the samples, but WILL edit params of the .WAV
+   like loop points, frequency, sampled note, etc.
+   Right click a .WAV file in Windows Explorer and pick
+   "Edit with Waver"
+
+Sounder
+   what I use to make a sound.txt file for a new device type.
+
+RepRpt
+   currently broke :(  Creates a repertoire report for ya
+   once I stitch it back together again.
+
+<br><br><br><br>
+</pre></div></div>

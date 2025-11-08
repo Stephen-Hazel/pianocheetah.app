@@ -1,0 +1,24 @@
+midi sysex - wtf is THAT?
+There's one other type of event that can go across MIDI - the SYSEX event.
+Sysex stands for "system exclusive" and is a garbage pile of
+ "anything else you'ld want to send across the wire".
+ None of the synth manufacturers can agree to send presets or
+ other non note/control info in a standard format.
+ So each manufacturer(system) has their own(exclusive) way of sending these
+ presets, banks, system data, etc, etc.
+
+I run away from system exclusive events.
+ I find the easiest way to back up each of my synths' settings
+ (usually by sysex)
+ And then try to use only notes and controls.
+
+Let's face it, we all succumb to gear lust.
+ Move from one piece of gear to the next and the sysex messages change.
+ Stay away from that stuff.
+
+Well, you may not be able to.
+ It may be the only way for you to do something you want to.
+ You'll need to find a programmer, or become one to deal with the stuff.
+ Even if you're an experienced programmer, sysex may make you scream.
+
+Ok, enough about sysex.  Try to forget it exists.

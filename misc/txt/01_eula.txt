@@ -1,0 +1,14 @@
+end user license agreement
+PianoCheetah is <b>ThankyouWare</b>, a variation on FreeWare.
+
+If you use it for a month, you are <b>legally obligated</b>
+ to send Steve an email saying <i>thank you</i>.
+
+Steve in turn is <b>legally obligated</b> to reply to said email
+ with <i>you're welcome</i>
+ and to never share said email with anyone.
+
+
+ - ok ok ok it's MIT license - pure open source
+
+Contact Steve at <h3>sh@shaz.app</h3>

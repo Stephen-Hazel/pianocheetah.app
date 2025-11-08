@@ -1,0 +1,29 @@
+<div id="main">
+<h1>SynSound</h1>
+<pre>
+
+SYN can have a =huge= number of .WAV files to use.
+
+Well, PianoCheetah doesn't want to have to constantly sort that MONDO directory.
+   So it does that ONLY IF something has changed.
+   (checked when PianoCheetah loads a midi file.)
+
+This is done by checking the dates of the dirs within ...\device\syn
+   and comparing to ...\device\syn\sound.txt's date.
+
+Unfortunately, if you change a file DEEP within that folder,
+Windows seems to not always update the parent folders' dates :(
+
+Sooooooo, rename one of the top level folders and rename it back.
+That'll change the date.  And I'll try to think of a better way...:(
+________________________________________________________________________________
+
+Sound sorting is done by...
+   sound group (keyboard, orchestral, bass, soundfx, drums)
+   sound directory
+   rating (if a sound starts with a_ or b_ or c_ it sorts above others)
+   name
+
+
+
+</pre></div>

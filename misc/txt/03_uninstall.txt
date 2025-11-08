@@ -1,0 +1,9 @@
+how to uninstall pianocheetah
+...the usual flatpak way
+
+ - Right click in pianocheetah in start menu / multimedia
+
+ - pick uninstall
+
+But <b>thank you</b> for trying out PianoCheetah !!
+It'll improve over time, so please try it again some day.

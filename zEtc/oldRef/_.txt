@@ -1,0 +1,11 @@
+# htmlfilename [title]
+index the GUTS
+midicfg MidiConfigerer
+lyric Adding Lyrics
+syn SYN
+txt2mid Txt2Mid
+mod2mid Mod2Mid
+synsound SynSound
+t_view Tinkerer Viewing
+t_edit Tinkerer Editing
+t_stamp Tinkerer TrackStamper

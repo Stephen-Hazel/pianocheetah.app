@@ -1,0 +1,137 @@
+midi sound - how are notes turned into sound?
+Ok, you've just done a programchange on channel 1 and picked epiano
+ That's a 4, remember?
+
+How the heck does that 4 get you to an epiano sound??
+
+SoundBanks:
+Each sound module has a sound bank.
+ Sounds are assigned numbers from 0 to the max # of sounds the sound module
+ can do.
+ 0..127 are reserved for standard sounds.
+ But if you think you can live with only 128 sounds, you need help.
+
+How many sounds?
+My cp-33 has only 16.  But I also use my drumkit's sounds and PianoCheetah's
+ SYN.exe (software synthesizer) sounds.
+
+But synthesizer sounds differ...
+ - Some have only a handful like my cp-33.
+
+ - Some have only the standard 128.  (See below.)
+
+ - Some have drum sounds, too.
+
+ - Most sound modules have hundreds of sounds.  Some thousands.
+
+ - Some let you modify the sounds.
+
+ - Some let you load in entirely new sounds.
+
+
+<h3>Midi Standard Sound Map</h3>
+ <pre>
+  0 Piano\AcousticGrand       64 Reed\SaxSoprano
+  1 Piano\AcousticBright      65 Reed\SaxAlto
+  2 Piano\ElecGrand           66 Reed\SaxTenor
+  3 Piano\HonkyTonk           67 Reed\SaxBaritone
+  4 Piano\Elec1               68 Reed\Oboe
+  5 Piano\Elec2               69 Reed\EnglishHorn
+  6 Piano\Harpsichord         70 Reed\Bassoon
+  7 Piano\Clavinet            71 Reed\Clarinet
+  8 ChromPerc\Celesta         72 Pipe\Piccolo
+  9 ChromPerc\Glockenspiel    73 Pipe\Flute
+ 10 ChromPerc\MusicBox        74 Pipe\Recorder
+ 11 ChromPerc\Vibraphone      75 Pipe\FlutePan
+ 12 ChromPerc\Marimba         76 Pipe\BlownBottle
+ 13 ChromPerc\Xylophone       77 Pipe\Skakuhachi
+ 14 ChromPerc\TubularBells    78 Pipe\Whistle
+ 15 ChromPerc\Dulcimer        79 Pipe\Ocarina
+ 16 Organ\Drawbar             80 SynLead\Square
+ 17 Organ\Perc                81 SynLead\Sawtooth
+ 18 Organ\Rock                82 SynLead\Calliope
+ 19 Organ\Church              83 SynLead\Chiff
+ 20 Organ\Reed                84 SynLead\Charang
+ 21 Organ\Accordian           85 SynLead\Voice
+ 22 Organ\Harmonica           86 SynLead\Fifths
+ 23 Organ\AccordianTango      87 SynLead\Bass+Lead
+ 24 Guitar\NylonStr           88 SynPad\NewAge
+ 25 Guitar\SteelStr           89 SynPad\Warm
+ 26 Guitar\ElecJazz           90 SynPad\PolySyn
+ 27 Guitar\ElecClean          91 SynPad\Choir
+ 28 Guitar\ElecMuted          92 SynPad\Bowed
+ 29 Guitar\Overdriven         93 SynPad\Metallic
+ 30 Guitar\Distortion         94 SynPad\Halo
+ 31 Guitar\Harmonics          95 SynPad\Sweep
+ 32 Bass\Acoustic             96 SynFX\Rain
+ 33 Bass\ElecFinger           97 SynFX\Soundtrack
+ 34 Bass\ElecPick             98 SynFX\Crystal
+ 35 Bass\Fretless             99 SynFX\Atmosphere
+ 36 Bass\Slap1               100 SynFX\Brightness
+ 37 Bass\Slap2               101 SynFX\Goblins
+ 38 Bass\Syn1                102 SynFX\Echoes
+ 39 Bass\Syn2                103 SynFX\SciFi
+ 40 SoloStr\Violin           104 Ethnic\Sitar
+ 41 SoloStr\Viola            105 Ethnic\Banjo
+ 42 SoloStr\Cello            106 Ethnic\Shamisen
+ 43 SoloStr\Contrabass       107 Ethnic\Koto
+ 44 SoloStr\Tremolo          108 Ethnic\Kalimba
+ 45 SoloStr\Pizzicato        109 Ethnic\Bagpipe
+ 46 SoloStr\Orchestral       110 Ethnic\Fiddle
+ 47 SoloStr\Timpani          111 Ethnic\Shanai
+ 48 Ensemble\Str1            112 Perc\TinkleBell
+ 49 Ensemble\Str2            113 Perc\Agogo
+ 50 Ensemble\SynStrs1        114 Perc\SteelDrums
+ 51 Ensemble\SynStrs2        115 Perc\WoodBlock
+ 52 Ensemble\ChoirAahs       116 Perc\TaikoDrum
+ 53 Ensemble\VoiceOohs       117 Perc\MelodicTom
+ 54 Ensemble\SynVoice        118 Perc\SynDrum
+ 55 Ensemble\OrchestraHit    119 Perc\RvrsCymbal
+ 56 Brass\Trumpet            120 SndFX\GuitarFret
+ 57 Brass\Trombone           121 SndFX\BreathNoise
+ 58 Brass\Tuba               122 SndFX\Seashore
+ 59 Brass\TrumpetMuted       123 SndFX\BirdTweet
+ 60 Brass\FrenchHorn         124 SndFX\TeleRing
+ 61 Brass\BrassSection       125 SndFX\Helicopter
+ 62 Brass\Syn1               126 SndFX\Applause
+ 63 Brass\Syn2               127 SndFX\Gunshot
+ </pre>
+
+
+<h3>presets</h3>
+in midi, sounds go by several names:
+ presets, patches, instruments, program changes, or just sound.
+
+But the numbered <b>slot</b> for a sound is usually called a preset.
+
+So that 4 for epiano means preset #4, slot #4
+ that stores what epiano "sounds like"...
+
+When you pick a preset with a programChange control,
+ the sound module gets ready:
+ - the set of samples used to generate this sound
+   Usually a sample per range of notes.
+   (If you "stretch" a sample too much it starts sounding bad.)<br>
+   Often a sample for each individual note.
+   Sometimes a different sample per note per "velocity range".
+   (Especially for piano.
+   Low velocities use one sample, medium another, hi velocities another.)
+
+ - "settings" that say what the defaults are for
+   fx parameters, volume, pan, and other "user configurable" settings:
+   envelopes, LFOs, filter cutoff, etc.
+
+ - the set of control mappings that can change the sound.
+   (Ex:  modWheel causes vibrato, softer velocity increases filter cutoff)
+
+ - drumkit settings: on channel 10, each note maps to a different drum sound.
+   so each note could have all the things I just mentioned.
+
+All of these "sound" parameters lead you to a whole new world.
+ The world of sound synthesis.
+ There's FM synthesis, additive synthesis, subtractive synthesis.
+ Subtractive is the usual one.
+ There are lots of good books on this topic.
+ And it is a <i>fascinating</i> topic.
+
+But, unfortunately for you, not for now.

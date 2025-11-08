@@ -1,0 +1,38 @@
+<div id="main">
+<h1>Tinkerer - Track Stamper</h1>
+<pre>
+
+   knits together a track from single bar "snippet"s according to a "pattern".
+      and kicks PianoCheetah.
+
+   Sometimes you just want a simple drum track to record over.
+   Sometimes you just want a click track.
+   TrackStamper does that.
+
+   <img src="img/tstamp.png">
+
+   The default pattern is
+      an intro bar ("i" is a 4 click count in bar) followed by
+      24 reps of [a b a b a b a c]
+
+      where a..j are single track .mid or .txt files.
+
+      You pick which snippets to use for a, b and c with the a..j droplists.
+
+   If "Play via PianoCheetah" is checked,
+      well, you can guess what happens...
+      Might want to leave it unchecked while adjusting lots of stuff :)
+   <img src="img/tstamp_pcheat.png">
+
+   I've included some demo drum bar clips in this archive
+      in the ...\PianoCheetahSongs\SongClip\Drum\Pat and \Fill directories.
+      They are in my .txt format   (see Txt2Mid reference docs)
+
+   Unfortunately, Tinkerer doesn't REMEMBER which patterns you used if you
+      go back into TrackStamper.
+      That's on the "to do" list...:/
+
+
+
+
+</pre></div>

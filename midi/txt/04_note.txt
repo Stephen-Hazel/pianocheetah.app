@@ -1,0 +1,88 @@
+midi notes - what makes em?
+So your midi controller sends notes and controls on channels to a sound module.
+ What exactly <i>is</i> a note then...?
+
+Each time you press or release a key on your controller, a little "event" is
+ sent across the midi wire containing the note info.
+ Let's say you played a c major chord and held it for a second.
+ The activity on the midi cable would look something like this:
+ <pre>
+ Time     Chan  Note  Up/Dn  Velocity
+ 0001.1.0    1  4c    Down   100
+ 0001.1.0    1  4e    Down    98
+ 0001.1.0    1  4g    Down    98
+ 0001.1.100  1  4c    Up      64
+ 0001.1.100  1  4g    Up      64
+ 0001.1.103  1  4e    Up      64
+ </pre>
+ - time<br>
+   time is a number of "ticks" in music time.  It's usually displayed as
+   bars.beats.ticks
+
+ - channel<br>
+   1 means you used channel 1 and the sound for the chord will be whatever
+   sound is assigned to channel 1.  Probably piano.
+
+ - note<br>
+   4c means octave 4 note C (middle C)
+
+ - down/up<br>
+   Down means the key was pressed.
+   You get a seperate Up event when the key is released later.
+
+ - velocity<br>
+   how fast (or hard) the key was pressed/released.
+   1   for VERY softly - probably no sound.
+   127 for banged on as HARD as possible - loud!
+   Some keyboards also give a velocity on the key up event.
+   Some just always set it to 0 or 64.
+
+
+Note that in this example, you pressed the C note a little harder than the
+ other 2 in the chord.
+ Also note that you let up on the G a little earlier than the E.
+ Possibly by a few microseconds.  Midi timing is <i>very</i> precise.
+
+
+When these note down (note on) and note up (note off) events are stuffed
+ into a file, the exact time that each event happened is stuffed in too.
+ This let's a midi sequencer (a music program) repeat your exact performance.
+
+
+Really exact?
+ Well, some would argue that this isn't an <i>exact</i> replication since your
+ keypresses are turned into 1..127
+ Not the possibly more subtle velocities a human is capable of.
+ But, well, I'll let you decide about that.
+ To me, 1..127 seems pretty dang dead on.
+
+
+<h3>Octaves</h3>
+Synth manufacturers don't agree on how to number octaves.
+ The <b>standard</b> is that octave 4 is middle C.
+ Note that octaves start at 0.  A0 is the usual lowest note on an 88 key
+ keyboard.  But there's no G0.
+ Just be careful reading octaves in the docs for your synth.
+
+
+<h3>How midi compares to sheet music</h3>
+Midi is an <b>exact</b> performance of a song.
+ Sheet music doesn't get this detailed.
+ It doesn't specify how hard to press and release <b>each</b> note.  All times
+ are divisions of the beat - no ticks.
+
+There are timing and dynamics markings in sheet music.  But these are pretty
+ general and left up to you for an actual interpretation.
+
+Going from sheet music to midi is pretty straight forward.  But if you play
+ that out a midi sequencer, it'll be pretty boring.  Every note
+ at velocity 100.  No rubato ever.  Not how a human would play it.
+
+Going from midi to sheet music is even worse.
+ A note time or duration in midi will likely not convert to standard notation
+ well at all.  Sheet music notes have "perfect durations".
+ Playing legato or stacatto may not map to standard notation durations.
+ At all.
+
+Often, you'll have <i>one</i> midi file of "just the sheet music" to learn.
+ And <i>another</i> midi file of your performance with "expressive" notes.

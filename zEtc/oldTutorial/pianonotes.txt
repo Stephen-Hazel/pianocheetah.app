@@ -1,0 +1,107 @@
+<div id="main"><pre>
+<h1>PianoNotes - a nice way for piano players to read music</h1>
+Let's jump right in with an example.
+Here's a nice simple song in standard notation:
+
+<img src='img/row_sn.png'>
+
+
+
+<h1> And again in PianoNotes notation</h1>
+
+<img src='img/row_pn.png'>
+
+
+We have a grid of <b>time</b> (up/down) and <b>notes</b> (left/right).
+
+
+<h1>Time</h1>
+Time starts at the top and goes to the bottom, continuing in the next column.
+
+It's broken into bars (thick dark blue lines),  then beats (light grey),
+and optionally subbeats (not shown here - to show 16ths, etc).
+This is your current "time signature".  3 beats per bar in this song.
+
+See how some bars are squished shorter when they're not very busy?
+Bars are numbered so you can sync up with somebody else.
+
+
+<h1>Notes</h1>
+Notes are oriented exactly as they are on piano.
+
+This song uses only white keys, but black ones will show up narrower and with
+a leading black dot instead of the white one.
+
+There's a "key signature" of colored squares on top the header keyboard showing
+the current scale.  Dark red is the tonic.  So this is C Major:
+   Since it's major, the 3rd is regular green.
+   If it was minor, the 3rd would be yellow-green one key left.  6th and 7th too
+
+
+<img src='img/row_pn2.png'>
+The darker thin vertical red line shows middle C.
+Lighter ones show other B|C (octave) borders.
+                                   <img style="float:right;" src="img/fing.png">
+Some notes have a fingering number leading them =>
+
+Notes <b>lean</b> left or right depending on the hand used to play them.
+
+Notes can be colored by note of the scale (shown here), by track, and velocity.
+
+
+<h1>Active Notation</h1>
+PianoNotes move.  They <em>know</em> what you're playing.
+
+<img src="img/act.png">
+That green line will scoot on down the page - always at your place in time.
+When it reach notes, <b>play</b> 'em, man !!
+When it leaves them, just let 'em go...
+
+If you miss a note, a <b>green light</b> shows  <em>hey play me</em>.
+If you hit a wrong note, a <b>red light</b> means  <em>wrong one</em>, dude.
+PianoNotes pause until you get it right.
+Once you do, all is clear and time marches on.
+
+Those bumpy black notes are your signposts.  You <b>never</b> have to look down.
+Even when the hops are far, practice them watching only the <em>dots</em> and
+<em>feeling</em> the result.
+Feel the 2 versus 3 black keys for where your hands are.
+They're slighly different hues on screen, too.
+
+As you play, pink trails show <em>your</em> notes on top of the ones to learn.
+                                                                     (see video)
+
+<h1>Lyrics, etc</h1><img style="float:right;" src="img/lyr.png">
+Lyrics show in the top, right corner of PianoCheetah's window.
+2 lines with the current syllable hilighted.
+
+Chords and Cues are shown in columns to the right of the notes.
+Cues are textual notations for parts of the song.
+Things like pp, F, crescendo, decrescendo, etc.
+Chords, loops, and drum notes will be discussed later.
+
+
+<h1>Ok,</h1>
+I realize this looks kind of cryptic at first.
+
+But in the (<em>not so</em>) long run, you'll be able to
+read the rhythms and notes <b>much</b> more quickly than from standard notation.
+
+In standard notation, many things need to be <b>interpretted</b> by your brain.
+   staff + 8va + line/space + key signature + sharp/flat => key
+   dot + flags + beams + ties + time signature => time/duration
+
+That's what slows you down and frustrates you about standard notation.
+As you use it a <em>lot</em> more, they slow and frustrate you less.
+But they'll always slow and frustrate you <b>some</b>.
+
+With PianoNotes, these things are seen plainly and directly.
+(Not saying things won't be a <em>little</em> frustrating at the start.)
+
+
+
+Ok, let's go <em>get</em> some songs to <a href='repertoire.html'>play</a>.
+
+
+
+</pre></div>

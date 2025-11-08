@@ -1,0 +1,65 @@
+<div id="main"><pre>
+<h1>Chords and Styles</h1>
+
+<h1>oh my god i haaate writing docs!!!  from here on out the docs will be
+sketchy and messy until i can find time and patience to neaten them up!!!</h1>
+
+PianoCheetah will take a shot at guessing your song's chords.
+Click in the Chords area to the right of the notes and you'll see:
+<img src="img/chd.png">
+
+Click the lightning bolt button
+   PianoCheetah will look at your notes to practice
+   (not the background tracks - make them a "to practice" track
+    if you want them to be used in the chord guessing.)
+   and put some chords into the chord track to the right of the notes.
+
+   Then you can click on them and edit them until they're correct.
+
+Once you have chords edited, you can mess with the song's background.
+
+Go out on the internet and find a bunch of .sty files.
+They're a weird format of midi for background tracks.
+Put them all in this directory:
+   ...\PianoCheetahSongs\SongClip\Style
+
+Go back into the chord dialog and click the green refresh arrows button.
+   That converts all the .sty files in that ...\SongClip\Style dir.
+   It makes 4 directories (main, fill, intro, outro) in that same dir.
+   In there is a .mid file per style "part".
+
+Edit the first chord in the song and give it Section=main, StyleID=a
+It'll show in the Chords track as C.a  (.a tacked onto whichever chord).
+   G7!b would be "fill" style b.
+
+The .a keeps going across chords without any .a or !a until the next style spec.
+
+Then you pick style clips (midi clips) to <b>use</b> for <b>.a</b>.
+So it's easy to swap to a different style.
+
+When you do this, PianoCheetah will <b>trash</b> your drumtrack with whatever
+those style have.  Be ready for that...
+
+
+I'm hoping this'll help me in composing new songs given existing ones.
+
+And eventually I'll work in some kind of "play background chords live" thingy.
+Not quite sure how I wanna go about that part yet.
+But triggered from the (midi) keyboard.
+
+
+
+<h1>That's all I got for now.  Stay tuned for
+<b>styles as a metronome</b>
+<b>drum notes</b>
+<b>other stuffs:/</b></h1>
+
+
+
+Ok, hit my <a href="/">homepage</a> to install PianoCheetah.
+
+Or hit the <a href="../ref/index.html">reference pages</a> for more details.
+
+
+
+</pre></div>

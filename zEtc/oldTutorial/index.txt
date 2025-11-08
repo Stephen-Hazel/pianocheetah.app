@@ -1,0 +1,70 @@
+<div id="main"><pre>
+
+
+<div class="yt">
+ <iframe width="640" height="480" src="https://youtu.be/Ek0LT-8sVHU"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h1>Goooooooal !! - our goal with PianoCheetah</h1>
+
+Our goal is to become a good keyboard musician - a piano and synthesizer player.
+
+But not in the traditional way (with an acoustic piano and paper sheet music).
+We'll be using a digital piano and PianoCheetah.
+
+There's absolutely nothing wrong with the traditional way.
+My main goal is to do things the traditional way as much as possible.
+But with a <b>dang</b> computer.  And in simpler ways when possible.
+
+
+
+<h1>Your Piano</h1>
+
+It'd be great if we could all have an acoustic piano.
+If you've got money, space, and understanding family/neighbors, <b>great</b>!
+And if you can afford an acoustic, you sure as heck can afford a digital to
+go with.  (Why burn out your tuning and family's nerves on early practices?)
+
+Start with a <a rel="x" href="../piano/index.html">digital piano rig</a>.
+
+
+
+<h1>Standard Notation</h1>
+
+Sheet music is <b>hard</b> to read.
+
+Now, there's no getting around it - you need to be able to read it.
+But let's start with <b>PianoNotes</b> notation.
+
+You can learn standard notation from your piano teacher or on your own.
+I've spent a <em>lot</em> of time trying to cram all the good stuff standard
+notation does <em>into</em> PianoNotes notation.
+
+I don't expect PianoNotes to ever become the standard.
+But it is just plain <b>faster</b> to learn a song with it.  Period.
+
+PianoCheetah will eventually show standard notation, too.
+It <em>used</em> to.  But I need it out so I can get new functions in faster.
+It'll be back when things simmer down.
+
+
+
+<h1>Piano Practice = FUN !!</h1>
+
+PianoCheetah has a lot of cool things it can do to help you out.  It can...
+ - spoon feed you the notes and pause as you try to grok 'em.
+ - split up notes per hand and stamp fingerings so you practice <b>one</b> way.
+ - skip over repeated bars so you're not wasting your time with them.
+ - loop up the tough parts so you can nail them to wall.
+
+There's more stuff it'll do.  But this is an intro.  Onward!
+
+
+
+Let's dive into <a href='pianonotes.html'>PianoNotes</a> notation so
+you can start playing songs.  It'll be quick and fun, I promise.
+
+
+
+</pre></div>

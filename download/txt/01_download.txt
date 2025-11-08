@@ -1,0 +1,40 @@
+download pianocheetah app :)
+PianoCheetah uses <a pop
+ href="https://flathub.org/apps/app.pianocheetah.pianocheetah">flatpak</a>.
+
+ - Search for it in KDE Discover or Gnome Software.
+
+After install, you'll find it in your start menu's <b>multimedia</b> group.
+
+The first time you run PianoCheetah, it'll download a big samples file.  Please
+be patient :)
+
+<a href="../doc/install.html">More install help.</a>
+
+
+<h3>Uninstalling</h3>
+is the usual flatpak way
+
+ - Right click in pianocheetah in start menu / multimedia
+
+ - pick uninstall
+
+
+<h3>Notes as of 2024-08-08</h3>
+ - syn now plays all sounds PROPERLY !
+
+ - add instrument samples (.sfz) to syn.
+
+ - convert a .song file right to .WAV (if it uses syn).
+
+ - I'm still working on getting it to run on Raspberry Pi - sorry :/
+
+
+and here is my <a pop href="do.txt">do</a> list.
+
+
+Hey!  Don't be a stranger - if you got questions I'm here ta answer em.
+                                                              <b>sh@shaz.app</b>
+
+
+I've also got some utility apps...

@@ -1,0 +1,162 @@
+<div id="main"><pre>
+<h1>SYN - PianoCheetah's software [SYN]thesizer</h1>
+
+turns notes (midi) into audio
+  according to the .WAV instrument sounds you've got.
+
+Needs Windows Vista,7,8, or better.  <em>Please</em> replace that old XP pc.
+If you only have XP, you'll need to use your midi keyboard's sounds.
+They're possibly better, anyways.
+
+SYN uses the lowest latency your soundcard says it can handle (so no config).
+
+It'll load any .WAV file you got.  It becomes a sound you can use from midi.
+That includes full stereo mixes at 32 bit, 96MHz.  It's now a midi instrument.
+That also includes 8 bit mono soundtracker samples.
+________________________________________________________________________________
+
+I'm pretty proud of SYN.  Everything is written from scratch in C++.
+Unfortunately, SYN is still in it's infancy.
+But it does filter, volume adjust, pan, and mix multisampled .WAV files
+with effects.
+
+It doesn't come with a full general midi set of sounds.
+You're gonna have to find those on the web and add 'em in.
+
+SYN has no GUI yet :/
+If you want to know:
+ - if samples are failing to load
+ - how much polyphony you're using (it'll do 128:)
+ - if distortion is affecting your max mix level (making things too quiet)
+You'll unfortunately need <a rel="x" href=
+                 "http://technet.microsoft.com/en-us/sysinternals/bb896647.aspx"
+                 >DbgView</a>
+________________________________________________________________________________
+
+In most synthesizers, there's a "patch format" that specifies all the
+envelope, LFO, modulation, effects parameters (among tons of other parameters)
+These are applied to a limited list of samples.
+
+SYN does things a teeny bit differently.
+
+A sound starts as either a single .WAV file or a directory of .WAV files.
+   (Multisampled over a range of notes and optionally velocities, too.)
+It can be looped, or not.  Stereo or Mono.
+Any resolution of bits and frequency <em>should</em> work.
+Email me if not.
+
+When a sample is loaded, it's converted to double floating point precision.
+and scaled between -1.0 and 1.0.
+
+Upon noteDown,
+   the Key sets the frequency (unless it's a drum .WAV).
+   Velocity sets amplitude and filter cutoff.
+   (key and velo also pick which sample of the multisample gets used.)
+
+Upon noteUp,
+   a short ramp is applied to amplitude to bring it to 0, then note is shut off.
+
+Upon control changes,
+   Vol - adjusts amplitude.
+   Pan - adjusts balance.
+   VCut - adjusts filter cutoff.
+      0 is default meaning filter cutoff is high for low velocities.
+      1 and up decreases the amount of filter cutoff.
+      127 means use whatever the cut control has in it.
+   Cut - (can) set filter cutoff directly.
+   Res - sets filter resonance amount
+   PBnd and PBnR - adjust frequency with noteDown key
+   Chor and Rvrb - set amount of effects.
+   chorus controls:  cNr, cLevel, cSpeed, cDepth, cType
+   reverb controls:  rRoom, rLevel, rWidth, rDamp
+   rPan and roto control a rotary speaker effect, but still need MUCH work :(
+
+When mixing,
+   the mix is always scaled to -1.0 and 1.0 before sending samples out.
+   this can mean volume goes low if effects make the mix screechy and
+      overall amplitude shoots up.  Instead of distortion, things get quieter.
+      This is reset upon "reset all controls".
+________________________________________________________________________________
+
+You can add any .WAV files you've got to SYN !
+
+Unfortunately, the directory you toss these .WAV files into is buried pretty
+deep thanks to the dumb way Windows stores application specific files...:/
+
+You have to dig to:
+   c:\Users\[yourUserID]\AppData\Roaming\PianoCheetah\device\syn\<...whew>
+
+Sorry about that, I'll think of some way to make it nicer in a future release.
+MidiConfigerer will open a windows explorer window there for ya.
+
+But all ya do is find good .WAV files and plop em in a directory.
+You could pile them all in one directory, but try to keep to the existing
+General Midi directories syn already has so that the sound will make
+a track of a midi file USING it map back to the correct general midi
+patch number.
+
+If you have a multisample, make a directory who's name ends in .WAV.
+Look at existing samples in the Drum and Piano directories.
+NO SPACES IN THOSE multisample directory names !
+PianoCheetah expects sound paths/names to not have spaces.
+SynSound will automatically rename .WAV -files- so spaces become _s.
+But it won't do that for directories !!  (yet - sorry:)
+
+If the .WAV files of a multisample aren't set to the right sampled key,
+You can rename the .WAV files with the note as the name's suffix.
+If it's a velocity multisample, use _v999 suffix after the note (or at end).
+If it's a mono sample you want to use with another .WAV to make a stereo
+sample, the filename should end in _R or _L.wav.
+________________________________________________________________________________
+
+Where can you find good .WAV files?
+There are tons of em on the internet:
+
+You can also get (low quality) samples from .MOD files :)
+Right click a .MOD file and pick "Convert .MOD to .MID" and you'll see that
+mod's samples in ...\device\syn\_\[modfilename]\[samplename].WAV :)
+
+You can get some decent 16 bit .WAVs from .SF2 files.
+See my UnSF2 docs.
+
+
+Try these...
+
+Most of SYN's drums are from:
+<a rel="x" href="http://rhythm-lab.com/">rhythm-lab.com</a>
+
+Tons here:
+<a rel="x" href="http://hexawe.net/mess">hexawe.net</a>
+<a rel="x" href="http://samples.kb6.de/">samples.kb6.de</a>
+
+get uTorrent and then hit:
+<a rel="x" href="http://tracker.modarchive.org/">tracker.modarchive.org</a>
+<a rel="x" href="http://www.milkytracker.org/?download">milkytracker</a>
+
+Here's some more:  (tracker sites in general are great places)
+<a rel="x" href="ftp://ftp.modland.com/pub/modules/">here</a>
+<a rel="x" href="http://www.dcee.net/Files/Music/Samples/">here</a>
+<a rel="x" href="ftp://ftp.scene.org/mirrors/hornet/music/samples/">here</a>
+<a rel="x" href="http://freepats.zenvoid.org/samples/freepats/">here</a>
+<a rel="x" href="http://milkcrate.com.au/_other/downloads/sample_sets/">here</a>
+<a rel="x" href="http://bassandtrouble.com/sounds/wavs3000/wavs3000.htm">etc</a>
+<a rel="x" href="http://sonof8bits.com/downloads/samples">etc</a>
+<a rel="x" href="http://www.exotica.org.uk/wiki/Modland">etc</a>
+<a rel="x" href="http://www.tomsecrets.com/mod-archive.php">etc</a>
+<a rel="x" href="http://modarchive.org/">etc</a>
+
+Computer Music Magazine has a free DVD of samples, too.
+________________________________________________________________________________
+
+Keeping track of your samples is TOUGH !!
+
+Make sure you preview the .WAV files you find with WAVPlayer and
+=DO NOT= mix new unreviewed samples with your "known good" set.
+Always put new samples into a "to review" directory (I use a _ dir).
+
+
+Ok, go and build your sounds !!   :)))
+
+
+
+</pre></div>

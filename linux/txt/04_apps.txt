@@ -1,0 +1,17 @@
+a list of the apps I like
+- notepadqq for editing big wide text files that NEd can't handle
+
+- kde's dolphin for my file explorer
+
+- chrome
+
+- filezilla for sftp
+
+- kolourpaint is a solid mspaint replacement
+
+- kde's kdenlive for video editings
+
+- SimpleScreen Recorder for screen video capture
+
+- 'disk usage analyzer' to see what's eatin your disk
+  sometimes called 'baobab'

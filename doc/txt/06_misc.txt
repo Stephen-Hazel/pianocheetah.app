@@ -1,0 +1,139 @@
+Some weird miscellaneous stuff
+<pre>
+<h3>setting .song files to associate with pianocheetah on kde</h3>
+System Settings
+   Applications
+      File Associations
+         click text
+            click add
+               song
+            in Filename Patterns
+               click add
+               *.song
+            in Description, put 
+               PianoCheetah Song
+            in Application Preference Order
+               click add
+                  pick PianoCheetah
+            click on the icon and pick the application-ogg one
+     
+<h3>10 second freeze on boot and shutdown</h3>
+I notice that if some midi devices that don't really have a midiout 
+(for example, your keytar or midi controller)
+are not set to devicetype OFF there's a 10 second delay while they close :(
+That's part of the raw linux midi device - not my fault...:/
+</pre>
+
+Steve's notes ta remember.  Sorry.  It's in Stephen-eze.
+
+<h3>TrkEZ:</h3>
+<pre>
+   if 2 tracks, store times where both hands hit in sam [ns]
+   per track:
+      get times,pseudodurs between em
+      mark grace notes w super short durs in seq (1,2,3etc)
+         kill a sam[] if not 1st grc note in seq
+      10 reps to find best "common" rhythms:
+         find poss with max len and max gots (longest rhy + #reps)
+            (compare w ngot*len)
+      kill a sam[] if within rhythm
+      add notes with reset to finger 1 when grace,rhythm startsm
+   bring in sam[] times to finger 1 n cascade till next grc/rhy start
+      UNLESS doin that would make a 11 at start or end of recascade
+</pre>
+
+
+<h3>practice/backing/record track</h3>
+<pre>
+lyrics... time,txt
+   _lyr no prefix (if starts w ?!* give leading _)
+        song lyrics with txt being a line, word, syllable (usually line)
+*  _chd * prefix with [root][quality][/bass][section][pattern]
+                      Dbdim/G!b
+                      root=Db,quality=dim,bass=G,section=fill,pattern=b
+        drawn over cues unless *HIDE is saved in(picked by gui)
+        *HIDE sets _lrn.chd
+?  _cue ? prefix
+        ?[/dur]txt sets .tend of cue for range cues
+        range cues:  [ loop   < crescendo   > decresc
+        sect cues:   (v erse  (c horus  (b reak  (othername
+        icon cues:   `fer mata   `tre molo   `sta r   `hap py   `sad   `mad
+        else leading . just shows . till hover;  else regular shown text
+                       including .drumpat=rock_02,rock_07,disco_02
+!  _bug !hits
+           hits is int -9..9  (3+ are shown, else just remembering/aging off)
+           after loop/song, go thru start-end of played songtime
+              gather all existing bugs within time
+                 if not in current bugset, decr hits/del if hit -9
+                 if in current bugset, incr hits/limited at 9
+              if new bug, add songtime to _bug w hits=1
+
+_trk
+ grp  + or .
+ shh  bool
+ lrn  \0   backing
+      ?    play
+      1-8  ezOct
+ ht   L  LH
+      R  RH
+      S  SH
+      \0 HT
+
+
+flow:
+   fingering
+      play. play through to add fingering.  (no need if ez mode:)
+   first plays
+      play. 3 times through song to find bugz.
+   prac
+      loops ordered by bug count(if times>=3) and spaced repetition
+         tempoHop to 60%
+         squish loop around bugs
+         practice away the bugs
+         tempoHop up to 100%, unsquish
+         when nailed, mark loop n setLp to next one
+         spaced rep when all are at 0
+            on 0 bugs, put loop in spaced repetition list
+            (1st good, skip 1 prac, 2nd good skip 2,
+             3rd 4, 4th 8, etc)
+
+
+song file format:
+   track:
+   drum:
+
+   note format:
+      oct note / drum
+      down / prs / up - _ ~ ^
+      velo
+      fingering @1 (down only)
+
+   cc format:
+      !ctrl=valu val2
+       tmpo, tsig, ksig, prog have special valus
+
+</pre>
+
+
+<h3>overall compo:</h3>
+<pre>
+   sections:  intro   verse chorus   verse chorus   bridge   chorus
+   components are lyric, melody, chord, bass, drum
+   lyrics drive rhythmic n bass/chord "emphasis"
+      lyrics=> melody+chordprog from a chosen song / rand picker tree
+    RHYTHM:
+      lyrics =>
+         strong accent times drive chord prog TIME
+            chord change (incl bass hit/drum hit) times
+         lyric stanza length drives bar and melody length
+            melody going up, similary melody going down
+            melody rhythm should drive/sync w bass riff/ostinato
+         bass rhy drives drum rhy
+   PITCH:
+      melody and bass pitches over a stanza fragment drive chord prog TYPE
+         bass likes to step down / up
+         chords like to be 3f-4e and voice lead down/up/arp'd
+   SECTIONS:
+      drop in n out for variety
+   ...sync up bass and kick hits
+</pre>

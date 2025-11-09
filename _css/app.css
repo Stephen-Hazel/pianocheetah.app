@@ -23,11 +23,21 @@
    --cHovr: var(--pur);  /* hover color */
 }
 
-body {
-   font-family: "inter", sans-serif;
-   font-size: 18pt;
+*{ /* clear! */
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
 }
-
+html {
+   font: 18pt "inter";
+   color: var(--cText);
+   scroll-behavior: smooth; /* for nav */
+}
+body {
+   min-height: 100vh;
+   min-height: 100dvh;
+   background-color: var(--cMain);
+}
 pre {font-family: "inconsolata";}
 
 img    {max-width: 100%;}
@@ -44,13 +54,18 @@ img.hd {max-width: none;}
 }
 .ui-button {padding: 0.2em 0.3em;}
 
-/* nav menu */
-#menu ul {
+/* nav (menu) */
+nav {
    position: fixed;
-   list-style-type: none;
-   padding: 0;
-   margin: 0;
-   float: left;
+   z-index: 9;
+}
+nav ul {
+   list-style: none;
+   display: flex;
+   flex-direction: column;
+}
+nav li {
+   display: flex;
 }
 .menu-pick {
    padding: 0.3em 1em;
@@ -68,7 +83,6 @@ img.hd {max-width: none;}
 .c9 {color: var(--bpu);}
 .ca {color: var(--pur);}
 .cb {color: var(--mag);}
-
 .menu-0  {color: black !important; background: var(--red)}
 .menu-1  {color: black !important; background: var(--ora)}
 .menu-2  {color: black !important; background: var(--yel)}
@@ -81,6 +95,22 @@ img.hd {max-width: none;}
 .menu-9  {color: black !important; background: var(--bpu)}
 .menu-10 {color: black !important; background: var(--pur)}
 .menu-11 {color: black !important; background: var(--mag)}
+#nav-open {
+   display: none;
+   background: none;
+   border: none;
+   padding: 1em;
+   margin-left: auto;
+   cursor: pointer;
+}
+#nav-shut {
+   background: rgba(0, 0, 0, 0.5);
+   position: fixed;
+   inset: 0;
+   z-index: 9;
+   display: none;
+}
+
 
 /* better tooltips */
 .tip {
@@ -94,7 +124,7 @@ img.hd {max-width: none;}
    visibility: hidden;
    opacity: 0;
    transition: opacity 0.5s ease, visibility 0.5s ease;
-   z-index: 10;
+   z-index: 9;
 
    background-color: #555;
    color: #fff;
@@ -110,9 +140,13 @@ img.hd {max-width: none;}
 }
 
 /* SUBpage stuff */
-main.doc {
+main.desktop {
    width: 700px;
    margin: 0 auto;
+}
+main.mobile {
+   width: 100%;
+   padding: 4px;
 }
 
 main h1 {
@@ -149,7 +183,7 @@ div.bul {
    margin-top: .5em;
    margin-left: 1.5em;
    padding-left: .7em;
-   background-image: url('../_img/bul.png');
+   background-image: url('../img/bul.png');
    background-repeat: no-repeat;
    background-position: left .4em;
 }
@@ -158,7 +192,7 @@ div.bul {
 /* homepage */
 #logo  {display: block;   margin: 0 auto;}
 #logotxt {
-   font-size: 4em;
+   font-size: 3.5em;
    font-weight: bold;
 }
 #blurb {width: 25em;      margin: 0 auto;}
@@ -167,7 +201,7 @@ div.bul {
 /* footer#1 - fancy 1st footer row w me/addr/contact */
 #foot {
    background-color:#e7e7e7;
-   margin-top:     10px;
+   margin: 0;
    padding-top:    45px;
    padding-bottom: 20px;
    border-top:1px solid #d0d0d0;
@@ -192,14 +226,8 @@ div.bul {
 #row1 {
    display: flex;
    justify-content: space-between;
-   width: 80%;
+   width: 95%;
 }
-/*
-#lft,#mid,#rit {
-   padding: 10px;
-/*   text-align: center;
-}
-*/
 
 /* responsive youtube videos */
 .yt {

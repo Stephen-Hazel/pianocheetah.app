@@ -1,9 +1,45 @@
-// app.js - jquery init, jrumble, pop attribute, etc
+// app.js
+// less typin'  (sorry not sorry) :/
+let dbg = console.log.bind (console);
+function el  (s)  {return document.getElementById   (s);}
+function all (s)  {return document.querySelectorAll (s);}
+function hasAt (e,a)  {return e.hasAttribute (a);}
+function setAt (e,a,v)       {e.setAttribute (a, v);}
+function clrAt (e,a)      {e.removeAttribute (a);}
 
-let dbg = console.log.bind (console);  // don't make me type thatt
+function navOpen ()  {$('#nav-open').hide ();   $('nav').show ();
+                      $('#nav-shut').show ();}
+function navShut ()  {$('#nav-open').show ();   $('nav').hide ();
+                      $('#nav-shut').hide ();}
 
-function menuOpen ()
+let pMobile = 99;                      // force navUpd to kick on init
+
+function navUpd ()
+{ let m = ($(window).width () < 700);
+dbg("m="+m);
+   if (pMobile != m) {
+dbg("   diff");
+      $('main').removeClass (    'mobile     desktop');
+      $('main'   ).addClass (m ? 'mobile' : 'desktop');
+      if (m) navShut ();
+      else  {navOpen ();   $('#nav-shut').hide ();}
+      pMobile = m;
+   }
+}
+
+function navInit ()
 {
+dbg("navInit");
+   navUpd ();   $(window).resize (navUpd);
+   $('#nav-open').button ().click (navOpen);
+   $('#nav-shut'          ).click (navShut);
+}
+
+function jRum (id, ix, iy, irot)       // sorry i like ittt
+{  $('#'+id).jrumble ({x: ix, y: iy, rotation: irot});
+   $('#'+id).hover (function () { $(this).trigger ('startRumble'); },
+                    function () { $(this).trigger ('stopRumble' ); }
+   );
 }
 
 function aPop ()  // any a with pop attribute gets target='_blank'
@@ -15,13 +51,17 @@ function aPop ()  // any a with pop attribute gets target='_blank'
 
 function aBtn ()  // all a with btn attribute become jqui buttons
 {  $("a").each (function (ind, ele) {
-      if ($(this).attr ('btn') !== undefined)  $(this).button ();
+      if ($(this).attr ('btn') !== undefined)
+         $(this).button ();
    });
 }
 
-function home ()  // home page init
-{  aPop ();   aBtn ();
+function home ()  // home page init w crazy jRumble, diff button setup
+{  aPop ();
+   aBtn ();
+   $('#nav-open').button ();
    $('nav ul a').button ();
+   navInit ();
 //   $('#menubtn').button ({event: "click hoverintent"});
    jRum ('logo', 10, 10, 4);
    jRum ('free',  2,  0, 0);
@@ -31,7 +71,8 @@ function home ()  // home page init
 
 function init ()  // for subpages
 {  aPop ();
-   $("a").button ();                   // all a become buttons
+   $("a").button ();  // all a become buttons
+   navInit ();
 }
 
 

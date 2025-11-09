@@ -26,7 +26,7 @@ require_once "_inc/app.php";
 </center></span>
 <a href="doc"><img id='logo' src="img/logo.png"></a>
 <div id='blurb'><br>
- <h3>a linux app for playing pop songs on piano n drum.</h3>
+ <h1>a linux app for playing pop songs on piano n drum.</h1>
  It's made for Steve.<br><br>
 
  It makes any song easy to play :)<br>
@@ -35,27 +35,25 @@ require_once "_inc/app.php";
  Look at the pretty notes in my <a btn href="doc">docs</a> !<br><br>
  Oh, and it's <a href="misc/?pg=0"><img id="free" src="img/free.png"></a>
 </div>
-<div id='foot'>
- <div id='row1'>
-  <div id='lft'>
-   <a pop href="https://shaz.app/me">
-    <img id="me" src="img/bot_me.png" title='...meee'></a>
-  </div>
-  <div id="mid">
-   <h3>Happy to help!</h3>
-   email me:
-   <a btn href="mailto:sh@shaz.app?subject=pianocheetah">sh@shaz.app</a><br>
-   facebook:
-   <a btn pop href="https://facebook.com/PianoCheetah">blog</a>
-  </div>
-  <div id='rit'>
-   <h3>...meh</h3>
-   <a btn href="misc/?pg=1">Privacy Policy</a><br>
-   <a btn href="misc/?pg=0">EULA</a><br>
-   <a btn href="misc/?pg=2">Uninstalling</a>
-  </div>
+<div id='foot'><div id='row1'>
+ <div id='lft'>
+  <a pop href="https://shaz.app/me">
+   <img id="me" src="img/bot_me.png" title='...meee'></a>
  </div>
-</div>
+ <div id="mid">
+  <h3>Happy to help!</h3>
+  email me:
+  <a btn href="mailto:sh@shaz.app?subject=pianocheetah">sh@shaz.app</a><br>
+  facebook:
+  <a btn pop href="https://facebook.com/PianoCheetah">blog</a>
+ </div>
+ <div id='rit'>
+  <h3>...meh</h3>
+  <a btn href="misc/?pg=1">privacy policy</a><br>
+  <a btn href="misc/?pg=0">EULA</a><br>
+  <a btn href="misc/?pg=2">uninstalling</a>
+ </div>
+</div></div>
 <h4> &nbsp; Meet shorty :)  Think I can play Clair de Lune on this baby?</h4>
 <img src="img/shorty.jpg">
 

@@ -171,14 +171,17 @@ function pg_head ($ttl, $css, $js)     ## html head title css js
 #_______________________________________________________________________________
 function pg_body ($ttl, $menu)         ## /head body nav /nav main
 { global $UC;
-   $mcl = ($ttl == 'home') ? '' : 'doc';
 ?>
 </head>
 <body>
 <? require_once "google_tag_body.html";
 ##<a id='btn-menu' onclick='menuOpen()'><img src='../_img/menu.svg'></a>
    echo "
-<nav id='menu'><ul>\n";
+<a   id='nav-open'><span
+ class='c0'>M</span><span class='c3'>E</span><span
+ class='c6'>N</span><span class='c9'>U</span></a>
+<div id='nav-shut'></div>
+<nav id='nav'><ul>\n";
    foreach ($menu as $i => $n) {
       $tt = $n [0];   $ln = $n [1];   $tip = $n [2];
       if ($ln == '') {
@@ -187,13 +190,13 @@ function pg_body ($ttl, $menu)         ## /head body nav /nav main
       }
       $pop = (substr ($ln,0,4) == "http") ? "pop" : "";
       echo " <li class='tip' tip='$tip'><a $pop href='$ln' class='menu-$i'" .
-                             ">$tt</a></li>\n";
-      if (($ttl != 'home') && ($i == 0))    ## lil gap between home n rest
-         echo " <li style='padding: 2px'></li>\n";
+               ">$tt</a></li>\n";
+   ## lil gap between home n rest
+      if ($tt == 'home')  echo " <li style='padding: 2px'></li>\n";
    }
    echo "
 </ul></nav>
-<main class='$mcl'>\n";
+<main>\n";
 }
 #_______________________________________________________________________________
 function pg_foot ()                    ## /main /body /html
@@ -249,11 +252,12 @@ function doc ($dir)
    }
 
 ## trail nav - link to next,home
-   $out .= "<br>\n";
-   if ($ipg+1 < count ($pLst))
-      $out .= "<a href='?pg=" . ($ipg+1) . "'>next ".$UC['ar-rit'].
-              "</a> &nbsp; &nbsp; &nbsp; ";
-   $out .= "<a href='../'>".$UC['ar-lftup']." home</a>";
+   $out .= "<br><center>\n";
+   if ($ipg+1 < count ($pLst))  $out .=
+           "<a href='?pg=" . ($ipg+1) . "'>next ".$UC['ar-rit'].
+           "</a> &nbsp; &nbsp; ";
+   $out .= "<a href='../'>".$UC['ar-lftup']." home</a>\n".
+           "</center>\n";
 
    echo "$out\n<br><br>\n";
    pg_foot ();

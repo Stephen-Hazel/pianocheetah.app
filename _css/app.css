@@ -192,8 +192,7 @@ div.bul {
    font-size: 3.5em;
    font-weight: bold;
 }
-#blurb {width: 25em;      margin: 0 auto;}
-#free  {vertical-align: middle;}
+#free {vertical-align: middle;}
 
 /* footer#1 - fancy 1st footer row w me/addr/contact */
 #foot {
@@ -215,15 +214,22 @@ div.bul {
    -moz-box-shadow:0px 1px 1px #e0e0e0;
    -webkit-box-shadow:0px 1px 1px #e0e0e0;
    box-shadow:0px 1px 1px #e0e0e0;
+
    display: flex;
    flex-direction: column;
+   justify-content: space-between;
    align-items: center;
    width: 100%;
 }
-#row1 {
-   display: flex;
-   justify-content: space-between;
-   width: 95%;
+#mid {
+   padding-bottom: 1em;
+}
+body.dtop #foot {
+   flex-direction: row;
+   align-items: flex-start;
+}
+body.dtop #lft,#mid,#rit {
+   margin: 0 auto;
 }
 
 /* responsive youtube videos */
@@ -239,24 +245,4 @@ div.bul {
  top:  0;
  width:  100%;
  height: 100%;
-}
-
-
-/* media query time...:(
-** 375px is google's min.  so breakpoints at 750,1125
-*/
-@media all and (max-width: 1124px) {  /* wider, but not yet desktop */
-   #bod                  {width: 100%;}
-   img#dl                {float: none;   display: block;   margin: 0 auto;}
-   .my-resp .ui-block-a,
-   .my-resp .ui-block-b  {width: 50%;}
-   .my-resp .ui-block-c  {width: 100%;   display: block;   float: none;}
-   .my-resp .ui-block-c:before  {content:'';   display: block;   clear: both;}
-}
-
-@media all and (max-width: 599px) {   /* cell phone portrait */
-   #menuspc              {display: inline-block;}
-   div#blurb             {width: 100%;}
-   .my-resp .ui-block-a,
-   .my-resp .ui-block-b  {width: 100%;   display: block;   float: none;}
 }

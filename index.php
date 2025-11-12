@@ -36,7 +36,7 @@ require_once "_inc/app.php";
 </div>
 </main>
 
-<div id='foot'><div id='row1'>
+<div id='foot'>
  <div id='lft'>
   <a pop href="https://shaz.app/me">
    <img id="me" src="img/bot_me.png" title='...meee'></a>
@@ -54,7 +54,7 @@ require_once "_inc/app.php";
   <a btn href="misc/?pg=0">EULA</a><br>
   <a btn href="misc/?pg=2">uninstalling</a>
  </div>
-</div></div>
+</div>
 <h4> Meet shorty :)  Think I can play Clair de Lune on this baby?</h4>
 <img src="img/shorty.jpg">
 </body></html>

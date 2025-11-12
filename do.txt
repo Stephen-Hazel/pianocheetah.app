@@ -1,1 +1,1 @@
-make mobile pop menu from button
+split the footer into 3 on mobile

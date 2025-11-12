@@ -12,25 +12,21 @@ function navOpen ()  {$('#nav-open').hide ();   $('nav').show ();
 function navShut ()  {$('#nav-open').show ();   $('nav').hide ();
                       $('#nav-shut').hide ();}
 
-let pMobile = 99;                      // force navUpd to kick on init
+let pMobl = 99  ;                      // force navUpd to kick on init
 
 function navUpd ()
 { let m = ($(window).width () < 700);
-dbg("m="+m);
-   if (pMobile != m) {
-dbg("   diff");
-      $('main').removeClass (    'mobile     desktop');
-      $('main'   ).addClass (m ? 'mobile' : 'desktop');
+   if (pMobl != m) {
+      $('body').removeClass (    'mobl     dtop');
+      $('body'   ).addClass (m ? 'mobl' : 'dtop');
       if (m) navShut ();
       else  {navOpen ();   $('#nav-shut').hide ();}
-      pMobile = m;
+      pMobl = m;
    }
 }
 
 function navInit ()
-{
-dbg("navInit");
-   navUpd ();   $(window).resize (navUpd);
+{  navUpd ();   $(window).resize (navUpd);
    $('#nav-open').button ().click (navOpen);
    $('#nav-shut'          ).click (navShut);
 }

@@ -22,21 +22,32 @@
    --cHili: var(--yel);  /* hilite color */
    --cHovr: var(--pur);  /* hover color */
 }
+.c0 {color: var(--red);}
+.c1 {color: var(--ora);}
+.c2 {color: var(--yel);}
+.c3 {color: var(--ygr);}
+.c4 {color: var(--gre);}
+.c5 {color: var(--gaq);}
+.c6 {color: var(--aqu);}
+.c7 {color: var(--baq);}
+.c8 {color: var(--blu);}
+.c9 {color: var(--bpu);}
+.ca {color: var(--pur);}
+.cb {color: var(--mag);}
 
-*{ /* clear! */
+*{ /* clear out the junk! */
    margin: 0;
    padding: 0;
    box-sizing: border-box;
 }
-html {
+body {
    font: 18pt "inter";
    color: var(--cText);
+   background-color: var(--cMain);
    scroll-behavior: smooth; /* for nav */
-}
-body {
    min-height: 100vh;
    min-height: 100dvh;
-   background-color: var(--cMain);
+   padding: 3px;
 }
 pre {font-family: "inconsolata";}
 
@@ -55,6 +66,12 @@ img.hd {max-width: none;}
 .ui-button {padding: 0.2em 0.3em;}
 
 /* nav (menu) */
+#nav-open {
+   position: sticky;
+   top: 0;
+   z-index: 9;
+   background: black;
+}
 nav {
    position: fixed;
    z-index: 9;
@@ -64,45 +81,24 @@ nav ul {
    display: flex;
    flex-direction: column;
 }
+body.mobl nav ul {background-color: white;}
+
 nav li {
    display: flex;
 }
-.menu-pick {
-   padding: 0.3em 1em;
-   font-weight: bold;
-}
-.c0 {color: var(--red);}
-.c1 {color: var(--ora);}
-.c2 {color: var(--yel);}
-.c3 {color: var(--ygr);}
-.c4 {color: var(--gre);}
-.c5 {color: var(--gaq);}
-.c6 {color: var(--aqu);}
-.c7 {color: var(--baq);}
-.c8 {color: var(--blu);}
-.c9 {color: var(--bpu);}
-.ca {color: var(--pur);}
-.cb {color: var(--mag);}
-.menu-0  {color: black !important; background: var(--red)}
-.menu-1  {color: black !important; background: var(--ora)}
-.menu-2  {color: black !important; background: var(--yel)}
-.menu-3  {color: black !important; background: var(--ygr)}
-.menu-4  {color: black !important; background: var(--gre)}
-.menu-5  {color: black !important; background: var(--gaq)}
-.menu-6  {color: black !important; background: var(--aqu)}
-.menu-7  {color: black !important; background: var(--baq)}
-.menu-8  {color: black !important; background: var(--blu)}
-.menu-9  {color: black !important; background: var(--bpu)}
-.menu-10 {color: black !important; background: var(--pur)}
-.menu-11 {color: black !important; background: var(--mag)}
-#nav-open {
-   display: none;
-   background: none;
-   border: none;
-   padding: 1em;
-   margin-left: auto;
-   cursor: pointer;
-}
+.nav-0  {color: black !important; background: var(--red)}
+.nav-1  {color: black !important; background: var(--ora)}
+.nav-2  {color: black !important; background: var(--yel)}
+.nav-3  {color: black !important; background: var(--ygr)}
+.nav-4  {color: black !important; background: var(--gre)}
+.nav-5  {color: black !important; background: var(--gaq)}
+.nav-6  {color: black !important; background: var(--aqu)}
+.nav-7  {color: black !important; background: var(--baq)}
+.nav-8  {color: black !important; background: var(--blu)}
+.nav-9  {color: black !important; background: var(--bpu)}
+.nav-10 {color: black !important; background: var(--pur)}
+.nav-11 {color: black !important; background: var(--mag)}
+#nav-open {display: none;}
 #nav-shut {
    background: rgba(0, 0, 0, 0.5);
    position: fixed;
@@ -140,16 +136,17 @@ nav li {
 }
 
 /* SUBpage stuff */
-main.desktop {
+body.dtop main {
    width: 700px;
    margin: 0 auto;
 }
-main.mobile {
+body.mobl main {
    width: 100%;
-   padding: 4px;
 }
+body.mobl #logotxt {font-size: 3em;}
+body.dtop #logotxt {font-size: 4em;}
 
-main h1 {
+h1 {
    font-size: 1.7em;
    color: white;
    background-color: #ff8080; /*#6fbe62;*/
@@ -159,7 +156,7 @@ main h1 {
    margin-block-end: 0;
 }
 
-main h1 {
+h2 {
    font-size: 1.45em;
    color: white;
    background-color: #ff8080; /*#6fbe62;*/
@@ -169,7 +166,7 @@ main h1 {
    margin-block-end: 0;
 }
 
-main h3 {
+h3 {
    font-size: 1.2em;
    color: white;
    background-color: #80bfff;

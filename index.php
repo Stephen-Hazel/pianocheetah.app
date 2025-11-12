@@ -3,21 +3,20 @@
 require_once "_inc/app.php";
 
   global $UC;
-   pg_head ("home", "jqui app", "jqui jquery.jrumble app");
+   pg_head ("pianocheetah", "jqui app", "jqui jquery.jrumble app", 'home');
 ?>
  <script>
    $(function () {home ();});
  </script>
-<? $menu = [
+<? pg_body ([
       ["get it",   "doc/?pg=1", "how do i get pianocheetah ?"],
       ["docs",     "doc",       "what does pianocheetah even do ?"],
       ["piano",    "piano",     "what kinda piano should I get ?"],
       ["practice", "practice",  "goin about piano practice"],
       ["midi",     "midi",      "what the heck is MIDI ???"],
       ["linux",    "linux",     "stuff about linux"],
-      ["meee",     "https://shaz.app/me", "bout meee"]
-   ];
-   pg_body ("home", $menu); ?>
+      ["meee",     "https://shaz.app/me", "bout Steve"]
+   ]); ?>
 <span id='logotxt'><center><span
  class='c0'>p</span><span class='c1'>i</span><span class='c2'>a</span><span
  class='c3'>n</span><span class='c4'>o</span><span class='c5'>c</span><span
@@ -35,6 +34,8 @@ require_once "_inc/app.php";
  Look at the pretty notes in my <a btn href="doc">docs</a> !<br><br>
  Oh, and it's <a href="misc/?pg=0"><img id="free" src="img/free.png"></a>
 </div>
+</main>
+
 <div id='foot'><div id='row1'>
  <div id='lft'>
   <a pop href="https://shaz.app/me">
@@ -54,7 +55,6 @@ require_once "_inc/app.php";
   <a btn href="misc/?pg=2">uninstalling</a>
  </div>
 </div></div>
-<h4> &nbsp; Meet shorty :)  Think I can play Clair de Lune on this baby?</h4>
+<h4> Meet shorty :)  Think I can play Clair de Lune on this baby?</h4>
 <img src="img/shorty.jpg">
-
-<? pg_foot ();
+</body></html>

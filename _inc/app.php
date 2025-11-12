@@ -2,18 +2,6 @@
 
 $ROOT = "pianocheetah.app";
 $DESC = "pianocheetah, software, piano, practice";
-$Menu = [
-   ["home",        "."],
-   ["download",    "dl"],
-   ["docs",        "doc"],
-   ["which piano", "piano"],
-   ["practice",    "prac"],
-   ["midi",        "midi"],
-   ["misc",        "misc"],
-   ["meee",     "https://shaz.app/me"],
-   ["videos",   "https://youtube.com/@SteveHazel"],
-   ["facebook", "https://www.facebook.com/stephen.hazel"]
-];
 $UC = [
    "ar-lft"   => "&#9664;",
    "ar-rit"   => "&#9658;",
@@ -65,7 +53,7 @@ function nows ()
 function dbg ($s)  {App ("dbg.txt", nows () . " $s\n");}
 
 function dump ($ttl, $h, $lvl = 0)
-// dump a hash (usually) to dbg - but should do all types now :)
+## dump a hash (usually) to dbg - but should do all types now :)
 {  $ind = "";   for ($n = 0;  $n < $lvl;  $n++)  $ind .= "   ";
    if (is_array ($h)) {
       dbg ($ind . '{ ' . $ttl . '   count=' . count ($h));
@@ -85,7 +73,7 @@ function dump ($ttl, $h, $lvl = 0)
    else if (is_object   ($h))  dbg ("$ind$ttl=OBJ ".get_class ($h));
    else if (is_null     ($h))  dbg ("$ind$ttl=NULL");
    else                        dbg ("$ind$ttl=$h");
-//dbg ($ttl."\n".print_r ($h, true));
+#dbg ($ttl."\n".print_r ($h, true));
 }
 
 function callstack ()
@@ -93,19 +81,19 @@ function callstack ()
    ob_end_clean ();         dbg ("callstack:\n$d");
 }
 #_______________________________________________________________________________
-function aHas ($a, $k)                 // php8 please
+function aHas ($a, $k)                 ## php8 sigh
 {  if (! is_array ($a)) {
 dbg("aHas NOT ARRAY k=$k\n".print_r (debug_backtrace (), true));
       return false;
    }
-   return array_key_exists ($k, $a);   // way too much to type :/
+   return array_key_exists ($k, $a);   ## way too much to type :/
 }
 
 function  aGet ($a, $k, $dflt = '')
 {  return aHas ($a, $k) ? $a [$k] : $dflt;  }
 
-function aKill (&$a, $v)               // i'm sick o doin dis
-{  $o = array ();                      // yeah i could splice :/
+function aKill (&$a, $v)               ## i'm sick o doin dis
+{  $o = array ();                      ## yeah i could splice :/
    foreach ($a as $r)  if ($r != $v)  $o[] = $r;
    $a = $o;
 }
@@ -115,12 +103,12 @@ function page ()  {return        $_SERVER['REQUEST_URI'];}
 function me   ()  {return        $_SERVER['PHP_SELF'];}
 function args ()  {return (($s = $_SERVER['QUERY_STRING'])=='') ? '' : "?$s";}
 function arg  ($k, $def = '')  {return aGet ($_REQUEST, $k, $def);}
-function argx ($n)             {return       $_REQUEST [$n];} // raw arrays,etc
+function argx ($n)             {return       $_REQUEST [$n];} ## raw arrays,etc
 function sess ($k, $def = '')  {return aGet ($_SESSION, $k, $def);}
 function setsess ($k, $val = '')            {$_SESSION [$k] = $val;}
 function unsess  ($k)          {unset       ($_SESSION [$k]);     }
 #_______________________________________________________________________________
-// html is sooo uglyyy...   so...
+## html is sooo uglyyy...   so...
 function pg_css ($css, $p)
 {  foreach (explode (' ', $css) as $c)      ## v= to not cache
       echo " <link href='$p"."_css/$c".".css?v=".filemtime ($p."_css/$c.css").
@@ -137,10 +125,10 @@ function pg_js ($js, $p)
    }
 }
 #_______________________________________________________________________________
-function pg_head ($ttl, $css, $js)     ## html head title css js
+function pg_head ($ttl, $css, $js, $h = '')      ## html head title css js
 { global $ROOT, $DESC;
    header ("set Access-Control-Allow-Origin '*'");
-   $pre = ($ttl == 'home') ? "" : "../";
+   $pre = ($h != '') ? "" : "../";     ## home doesn't need ../ path prefix
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -169,37 +157,30 @@ function pg_head ($ttl, $css, $js)     ## html head title css js
    pg_js ($js, $pre);
 }
 #_______________________________________________________________________________
-function pg_body ($ttl, $menu)         ## /head body nav /nav main
-{ global $UC;
-?>
+function pg_body ($nav)                ## /head body nav /nav main
+{ global $UC; ?>
 </head>
 <body>
-<? require_once "google_tag_body.html";
-##<a id='btn-menu' onclick='menuOpen()'><img src='../_img/menu.svg'></a>
-   echo "
-<a   id='nav-open'><span
- class='c0'>M</span><span class='c3'>E</span><span
- class='c6'>N</span><span class='c9'>U</span></a>
+<? require_once "google_tag_body.html"; ?>
+<a   id='nav-open'><span class='c0'>m</span><span class='c3'>e</span><span
+                         class='c6'>n</span><span class='c9'>u</span></a>
 <div id='nav-shut'></div>
-<nav id='nav'><ul>\n";
-   foreach ($menu as $i => $n) {
+<nav id='nav'><ul>
+<? foreach ($nav as $i => $n) {
       $tt = $n [0];   $ln = $n [1];   $tip = $n [2];
-      if ($ln == '') {
-         echo " <li class='tip menu-pick' tip='$tip'>$tt</li>\n";
-         continue;
-      }
+      if ($tt == '')  {echo " <li style='padding: 3px'></li>\n";
+                       continue;}      ## lil gap between home n rest
       $pop = (substr ($ln,0,4) == "http") ? "pop" : "";
-      echo " <li class='tip' tip='$tip'><a $pop href='$ln' class='menu-$i'" .
-               ">$tt</a></li>\n";
-   ## lil gap between home n rest
-      if ($tt == 'home')  echo " <li style='padding: 2px'></li>\n";
+      echo " <li class='tip' tip=\"$tip\"><a $pop href='$ln' class='nav-$i'>" .
+                                                               "$tt</a></li>\n";
    }
-   echo "
+?>
 </ul></nav>
-<main>\n";
+<main>
+<?
 }
 #_______________________________________________________________________________
-function pg_foot ()                    ## /main /body /html
+function pg_foot ()                    ## /main /body /html  (dumb for now)
 {  echo "</main>\n\n</body></html>\n";  }
 #_______________________________________________________________________________
 function doc ($dir)
@@ -210,13 +191,14 @@ function doc ($dir)
    $pg   = $pLst [$ipg];
    $ttl  = substr ($pg, 3, -4);
    $pTtl = [];
-
-   $menu = [ [$UC['ar-lftup']."home", "..", "...take me back hooome"] ];
+   $nav = [ [$UC['ar-lftup']."home",  "..",  "...take me back hooome"],
+            ['','','']                 ## lil gap
+          ];
    foreach ($pLst as $i => $fn) {
       $p = substr ($fn, 3, -4);
       $pTtl [$i] = Get1 ("txt/$fn");
-      $menu[] = ($ipg == $i) ? [$p.' '.$UC['ar-rit'],  '',  $pTtl [$i]]
-                             : [$p,  "?pg=$i",              $pTtl [$i]];
+      $nav[] = ($ipg == $i) ? [$UC['ar-rit']." $p",  '',  $pTtl [$i]]
+                            : [$p,  "?pg=$i",             $pTtl [$i]];
    }
 
    pg_head ($pTtl [$ipg], "jqui app", "jqui app");
@@ -224,7 +206,7 @@ function doc ($dir)
  <script>
    $(function () {init ();});
  </script>
-<? pg_body ($pTtl [$ipg], $menu);
+<? pg_body ($nav);
    $aLn = explode ("\n", Get ("txt/$pg"));
    array_shift ($aLn);
 
@@ -306,7 +288,7 @@ function table ($id, $hdr, $row)
 }
 
 function table1 ($id, $hdr, $row)
-// table w only 1 column
+## table w only 1 column
 {  echo
 "<table id='$id' name='$id'>\n" .
 " <thead><tr><th><b>$hdr</b></th></tr></thead>\n" .

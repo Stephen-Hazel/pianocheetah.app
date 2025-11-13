@@ -4,8 +4,8 @@ Here's what I ended up with keyboard-wise...
  New digital drum kit in the living room, too.  Yes, I'm single...
  Big huge tv for PC monitor.
 
-<img src="../me/rig1.png">
-<img src="../me/rig2.png">
+<img src="img/rig1.png">
+<img src="img/rig2.png">
 
 
 <h3>Components</h3>
@@ -35,5 +35,4 @@ PianoCheetah's SYN.exe gives me 3 millisec latency audio using .WAV files.
 
 Ok, We're done.  Time to go play some music :)
 
-<a id='prac' class='ui-btn ui-btn-inline' href='../practice/index.html'
- >Time to learn a little 'bout piano practice?</a>
+<a href='../practice'>Time to learn a little 'bout piano practice?</a>

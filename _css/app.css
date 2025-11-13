@@ -56,18 +56,15 @@ img.hd {max-width: none;}
 
 
 /* jqueryui font,padding change */
-.ui-widget,
-.ui-widget input,
-.ui-widget select,
-.ui-widget textarea,
-.ui-widget button {
+.ui-widget,.ui-widget select,.ui-widget button {
    font-family: "inter", sans-serif;
 }
 .ui-button {padding: 0.2em 0.3em;}
 
+
 /* nav (menu) */
 #nav-open {
-   position: sticky;
+   position: fixed;
    top: 0;
    z-index: 9;
    background: black;

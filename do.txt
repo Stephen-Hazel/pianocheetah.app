@@ -1,1 +1,2 @@
-split the footer into 3 on mobile
+pre is wrecking headers
+rewrite aaaall the docs

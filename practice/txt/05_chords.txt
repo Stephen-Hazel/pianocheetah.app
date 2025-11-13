@@ -223,5 +223,4 @@ Also, keeping the note jumps small when going to the next chord
  makes it sound way better.
  This is called "voice leading" and is too big a topic for right here.
 
-<a id='prac' class='ui-btn ui-btn-inline' href='../midi/index.html'
- >Time to learn a little 'bout midi?</a>
+<a href='../midi'>Time to learn a little 'bout midi?</a>

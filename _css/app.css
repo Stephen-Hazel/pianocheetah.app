@@ -65,7 +65,7 @@ img.hd {max-width: none;}
 /* nav (menu) */
 #nav-open {
    position: sticky;
-   top: 2px;
+   top: 1em;
    transform: translate3d(0, 0, 0);
    z-index: 9;
    background: black;

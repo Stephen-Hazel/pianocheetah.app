@@ -65,7 +65,7 @@ img.hd {max-width: none;}
 /* nav (menu) */
 #nav-open {
    position: sticky;
-   top: 1em;
+   top: 2px;
    transform: translate3d(0, 0, 0);
    z-index: 9;
    background: black;
@@ -190,6 +190,7 @@ div.bul {
    font-size: 3.5em;
    font-weight: bold;
 }
+body.mobile #logotxt {font-size: 2.5em;}
 #free {vertical-align: middle;}
 
 /* footer#1 - fancy 1st footer row w me/addr/contact */

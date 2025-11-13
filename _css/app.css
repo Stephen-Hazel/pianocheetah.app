@@ -190,7 +190,7 @@ div.bul {
    font-size: 3.5em;
    font-weight: bold;
 }
-body.mobile #logotxt {font-size: .1em;}
+body.mobile #logotxt {font-size: 2em;}
 #free {vertical-align: middle;}
 
 /* footer#1 - fancy 1st footer row w me/addr/contact */

@@ -141,8 +141,6 @@ body.dtop main {
 body.mobl main {
    width: 100%;
 }
-body.mobl #logotxt {font-size: 3em;}
-body.dtop #logotxt {font-size: 4em;}
 
 h1 {
    font-size: 1.7em;
@@ -185,12 +183,13 @@ div.bul {
 
 
 /* homepage */
-#logo  {display: block;   margin: 0 auto;}
+#logo {display: block;   margin: 0 auto;}
 #logotxt {
-   font-size: 3.5em;
+   font-size: 4em;
    font-weight: bold;
 }
-body.mobile #logotxt {font-size: 2em;}
+body.mobl #logotxt {font-size: 2em;}
+
 #free {vertical-align: middle;}
 
 /* footer#1 - fancy 1st footer row w me/addr/contact */

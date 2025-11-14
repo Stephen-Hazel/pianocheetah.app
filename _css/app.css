@@ -45,7 +45,6 @@ body {
    color: var(--cText);
    background-color: var(--cMain);
    scroll-behavior: smooth; /* for nav */
-   min-height: 100vh;
    min-height: 100dvh;
    padding: 3px;
 }
@@ -64,12 +63,22 @@ img.hd {max-width: none;}
 
 /* nav (menu) */
 #nav-open {
+   display: none;
    position: sticky;
    top: 2px;
    transform: translate3d(0, 0, 0);
    z-index: 9;
    background: black;
+   margin-bottom: 0.5em;
 }
+#nav-shut {
+background: rgba(0, 0, 0, 0.5);
+position: fixed;
+inset: 0;
+z-index: 9;
+display: none;
+}
+
 nav {
    position: fixed;
    z-index: 9;
@@ -96,14 +105,6 @@ nav li {
 .nav-9  {color: black !important; background: var(--bpu)}
 .nav-10 {color: black !important; background: var(--pur)}
 .nav-11 {color: black !important; background: var(--mag)}
-#nav-open {display: none;}
-#nav-shut {
-   background: rgba(0, 0, 0, 0.5);
-   position: fixed;
-   inset: 0;
-   z-index: 9;
-   display: none;
-}
 
 
 /* better tooltips */

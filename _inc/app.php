@@ -3,11 +3,11 @@
 $ROOT = "pianocheetah.app";
 $DESC = "pianocheetah, software, piano, practice";
 $UC = [
-   "ar-lft"   => "&#9664;",
-   "ar-rit"   => "&#9658;",
-   "ar-up"    => "&#9650;",
-   "ar-dn"    => "&#9660;",
-   "ar-lftup" => "&#9700;"
+   "ar-lft" => "&#9664;",
+   "ar-rit" => "&#9658;",
+   "ar-up"  => "&#9650;",
+   "ar-dn"  => "&#9660;",
+   "home"   => "&#9700;"
 ];
 #_______________________________________________________________________________
 function Got ($fn)  {return file_exists ($fn);}
@@ -191,7 +191,7 @@ function doc ($dir)
    $pg   = $pLst [$ipg];
    $ttl  = substr ($pg, 3, -4);
    $pTtl = [];
-   $nav = [ [$UC['ar-lftup']."home",  "..",  "...take me back hooome"],
+   $nav = [ [$UC['home']." home",  "..",  "...take me back hooome"],
             ['','','']                 ## lil gap
           ];
    foreach ($pLst as $i => $fn) {
@@ -236,10 +236,9 @@ function doc ($dir)
 ## trail nav - link to next,home
    $out .= "<br><center>\n";
    if ($ipg+1 < count ($pLst))  $out .=
-           "<a href='?pg=" . ($ipg+1) . "'>next ".$UC['ar-rit'].
-           "</a> &nbsp; &nbsp; ";
-   $out .= "<a href='../'>".$UC['ar-lftup']." home</a>\n".
-           "</center>\n";
+           "<a href='?pg=" . ($ipg+1) . "'>".
+                           .$UC['ar-rit']." next</a> &nbsp; &nbsp; ";
+   $out .= "<a href='../'>".$UC['home'  ]." home</a>\n";
 
    echo "$out\n<br><br>\n";
    pg_foot ();

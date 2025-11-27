@@ -14,8 +14,8 @@ require_once "_inc/app.php";
       ["piano",    "piano",     "what kinda piano should I get ?"],
       ["practice", "practice",  "goin about piano practice"],
       ["midi",     "midi",      "what the heck is MIDI ???"],
-      ["linux",    "linux",     "stuff about linux"],
-      ["meee",     "https://shaz.app/me", "bout Steve"]
+      ["linux",    "https://shaz.app/linux", "stuff about linux"],
+      ["meee",     "https://shaz.app/me",    "bout Steve"]
    ]); ?>
 <span id='logotxt'><center><span
  class='c0'>p</span><span class='c1'>i</span><span class='c2'>a</span><span

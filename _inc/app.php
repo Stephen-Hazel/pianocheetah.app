@@ -237,7 +237,7 @@ function doc ($dir)
    $out .= "<br><center>\n";
    if ($ipg+1 < count ($pLst))  $out .=
            "<a href='?pg=" . ($ipg+1) . "'>".
-                           .$UC['ar-rit']." next</a> &nbsp; &nbsp; ";
+                            $UC['ar-rit']." next</a> &nbsp; ";
    $out .= "<a href='../'>".$UC['home'  ]." home</a>\n";
 
    echo "$out\n<br><br>\n";

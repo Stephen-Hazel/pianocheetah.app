@@ -1,2 +1,11 @@
+.htaccess
+error_log
+dbg.txt
+*/.htaccess
+*/error_log
+*/dbg.txt
 download/pianocheetah*
-shaz.app/
+shaz.app/pic/pic
+shaz.app/pic/idx
+shaz.app/song/song
+shaz.app/song/did*

@@ -1,2 +1,23 @@
-pre is wrecking headers
-rewrite aaaall the docs
+mobile menu should show tooltips too
+page previews (header stuff) should really only be for pic
+
+linux
+   video of simplest install
+
+doc
+piano
+practice
+   shorten n redo
+   split out chords,etc
+
+me
+   latest me
+
+song
+   did.php - use sep lists and kill only that list upon completion
+      fully test it
+   keep header fixed during scroll
+   pop a page by group|etc|title to search for if i got it
+
+pic
+   some kinda post to facebook thingo?

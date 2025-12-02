@@ -34,6 +34,18 @@
 .c9 {color: var(--bpu);}
 .ca {color: var(--pur);}
 .cb {color: var(--mag);}
+.bg0 {background-color: var(--red);}
+.bg1 {background-color: var(--ora);}
+.bg2 {background-color: var(--yel);}
+.bg3 {background-color: var(--ygr);}
+.bg4 {background-color: var(--gre);}
+.bg5 {background-color: var(--gaq);}
+.bg6 {background-color: var(--aqu);}
+.bg7 {background-color: var(--baq);}
+.bg8 {background-color: var(--blu);}
+.bg9 {background-color: var(--bpu);}
+.bga {background-color: var(--pur);}
+.bgb {background-color: var(--mag);}
 
 *{ /* clear out the junk! */
    margin: 0;

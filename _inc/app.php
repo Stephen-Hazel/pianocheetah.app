@@ -191,54 +191,72 @@ function doc ($dir)
    $pg   = $pLst [$ipg];
    $ttl  = substr ($pg, 3, -4);
    $pTtl = [];
-   $nav = [ [$UC['home']." home",  "..",  "...take me back hooome"],
-            ['','','']                 ## lil gap
-          ];
+   $nav = [ [$UC['home']." home",  "..",  "...take me back hooome"] ];
    foreach ($pLst as $i => $fn) {
       $p = substr ($fn, 3, -4);
       $pTtl [$i] = Get1 ("txt/$fn");
       $nav[] = ($ipg == $i) ? [$UC['ar-rit']." $p",  '',  $pTtl [$i]]
-                            : [$p,  "?pg=$i",             $pTtl [$i]];
+      : [$p,  "?pg=$i",             $pTtl [$i]];
    }
 
    pg_head ($pTtl [$ipg], "jqui app", "jqui app");
-?>
- <script>
+   ?>
+   <script>
    $(function () {init ();});
- </script>
-<? pg_body ($nav);
+   </script>
+   <? pg_body ($nav);
    $aLn = explode ("\n", Get ("txt/$pg"));
    array_shift ($aLn);
 
    $out = "<h1>".$pTtl [$ipg]."</h1><br>\n";
    $li  = 0;
    foreach ($aLn as $i => $ln) {
-#dbg("   $i '$ln'");
+      #dbg("   $i \n$ln");
+      ## look for `fmt`...` in line
+      while (($p = strpos ($ln, '`'      )) !== false) {
+         if (($b = strpos ($ln, '`', $p+1)) === false)  break;
+         if (($e = strpos ($ln, '`', $b+1)) === false)  break;
 
-   ## start list of bullets ?
+         $pre = substr ($ln, 0, $p);
+         $fmt = substr ($ln, $p+1, $b-$p-1);
+         $mid = substr ($ln, $b+1, $e-$b-1);
+         $suf = substr ($ln, $e+1);
+         #dbg("p=$p b=$b e=$e pre='$pre' fmt='$fmt' mid='$mid' suf='$suf'");
+         $cl = '';
+         if      ($fmt == 'b')  $tag = 'b';
+         else if ($fmt == 'i')  $tag = 'i';
+         else                {$tag = 'span';   $cl = " class='$fmt'";}
+         #dbg("tag=$tag cl=$cl");
+         $ln = "$pre<$tag$cl>$mid</$tag>$suf";
+         #dbg($ln);
+      }
+
+      ## start list of bullets ?
       if ((strlen ($ln) > 3) && (substr ($ln, 0, 3) == " - ")) {
          if ($li)
             dbg("   unterm'd li !!  (needs cr)  line $i\n");
          $out .= "<div class='bul'>";
          $ln = substr ($ln, 3);   $li = 1;
       }
+
       $out .= $ln;
 
-   ## end of list
+      ## end of list
       if (($ln == '') && $li)  {$out .= "</div>";   $li = 0;}
 
-   ## done w line n start next bullet?
+      ## done w line n start next bullet?
       if ((($i+1) >= count($aLn)) || (substr ($aLn [$i+1], 0, 1) != ' '))
          $out .= "<br>";
+
       $out .= "\n";
    }
 
-## trail nav - link to next,home
-   $out .= "<br><center>\n";
+   ## trail nav - link to next,home
+   $out .= "<br>\n";
    if ($ipg+1 < count ($pLst))  $out .=
-           "<a href='?pg=" . ($ipg+1) . "'>".
-                            $UC['ar-rit']." next</a> &nbsp; ";
-   $out .= "<a href='../'>".$UC['home'  ]." home</a>\n";
+      "<a href='?pg=" . ($ipg+1) . "'>" . $UC['ar-rit'] . " next" .
+      "</a> &nbsp; &nbsp; ";
+   $out .= "<a href='../'>".$UC['home']." home</a>\n";
 
    echo "$out\n<br><br>\n";
    pg_foot ();

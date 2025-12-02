@@ -1,0 +1,151 @@
+they were the best
+<h3>1970 - 1st grade</h3>
+Dad decided we'd be missionaries in Japan.
+<img src="img/tojapan.png">
+
+Road trip through churches in California to raise support (ask for money).
+ Sang "Happiness is the Lord" in front of a LOT of churches.
+
+Road trip to Illinois.  Lived there while my Dad got a principal cert.
+ Had a grand piano at the house we stayed at.
+ Back then you watched a lot of TV and got into trouble outside.
+ Hit Yellowstone on the way back to Seattle.
+ <img src="img/support.png">
+
+
+<h3>1971 - 2nd,3rd grade</h3>
+<img src="img/ocs.png">
+At Osaka Christian School where my Dad was principal of a
+ one house, 2 room school for grades 1-12 for missionary kids.
+ He taught 7-12, My teacher (Ms. Hertz) taught 1-6.
+
+<img src="img/ocs2.png">
+ School had 2 big fields.  (probably previously rice patties).
+ with butterflies, weird beetles, frogs, ants.  ^^^Frog.
+
+Got to school on the back of my Dad's teeny motorcycle and walked home.
+ Played in huge rice field hay piles on the way home.
+
+Japanese culture was pretty shocking.
+ Everything extremely compact and weird.  Especially bathrooms.
+ Candy and toy complexity and variety blew me away.
+ Porn: two story posters at movie theaters.  Ads in grocery stores.
+ Buddist/Shinto shrines/temples and neighborhood festivals and parades.
+ Swimming pool complexes the size of about 8 x 8 city blocks.
+ Huge loop pool with water jets to make a current.
+
+Lived in old converted army base housing.
+ Had an upright piano.
+<img src="img/piano.png">
+
+Summer vacations at the warm sea in tents and cabins.
+<img src="img/sea.png">
+Everywhere I went I heard "Gaijin Da".
+ meaning "there's a white dude" ("foreigner over there")
+
+
+<h3>1973 - 4th grade</h3>
+Back to Seattle cuz of my Dad's manic depression.
+ One year of cub scouts and the shock of American grade school.
+ Then somehow we got to go back to Japan - no idea why.
+Learned electronics a bit cuz
+ my Dad would stop at Radio Shack with his free battery card.  So I got
+<img src="epk160.png">
+Electronic components on cardboard schematic graphics.
+ Connected to springs to slip wires into.
+ Electronics 101 in a box for kids.
+ Radio Shack used to be the coolest place in the world.  Now not so much.
+
+
+<h3>1974 - 5th,6th grade</h3>
+Took my sister on the back of my bike and then 2 trains to new school.
+ Lost my sisters occasionally.
+ They usually showed up pretty quick on the video surveilance
+ of the train platforms.
+Took an interest in math and
+ Japan had much cooler electronic project sets.
+ Wayyy better transformers - turned into more than cars, had magnets.
+Saw my first calculator.  That was a BIG DEAL for me.
+
+
+<h3>1976 - Whitman Junior High in Seattle</h3>
+Yeah, my Dad had another manic episode and no more Japan for us.
+Good little Christian Steve was thrown in with the swearing pot smokers.
+ Was surprised that all these kids didn't know they were going to hell.
+ ...I changed my ways pretty fast and joined them.
+
+Was verrry shy.  Had 2 best friends, and few others.
+ Went to church till part way through college.
+ Was done deciding on atheism before high school, though.
+ I'd read all the bible, memorized literally hundreds of verses.
+ For me, God did not compute.  Error.  Kinda freaked out my family.
+
+Popular Electronics was a GREAT magazine.
+<img src="img/pop.png">
+Learned about integrated circuits, soldering and breadboards from it.
+ Favorite project was a dice display with red LEDs that would "roll" while
+ you held a pushbutton.
+ Also, blinking sequence of LEDs in a line.
+
+Breadboards minimized the soldering (which I suck at).
+<img src="img/bb.png">
+<img src="img/bb2.png">
+
+My most advanced project was a shift adder.
+Pushing a button 8 times did a binary add with carry of
+ each LED "binary digit".
+This is how computers add bytes.
+ And how they subtract bytes.  (Adding the 2s complement is subtracting)
+ And subtracting bytes lets you compare bytes
+ negative?  do one thing.  positive?  do another.
+ the most rudimentary part of all IF statements.
+So that's electrons making a decision - thought occuring in wires.
+
+I stole my Atari 2600 from the Bon Marche downtown.  On the highway to hell.
+<img src="img/2600a.png">
+<img src="img/2600b.png">
+I still threw away a HUGE FORTUNE in quarters playing
+ Pac Man, Space Invaders, Asteroids, Dig Dug, Pole Position, Tempest,
+ Centipede, Galaga, etc in the arcades with my buddy Richard.
+ At least I learned ONE thing:
+ games are a big waste of time and keep you from writing code.
+
+First software I wrote was for calculators
+<img src="img/ti30.png">
+<img src="img/hp15c.png">
+MINE was a hp16c!  Converted between ALL number bases.
+ Reverse Polish Notation and sequences of calculator ops - that was
+ my intro to software
+
+
+<h3>1979 - Ingraham Highschool</h3>
+First job!  Dishwasher=>Cook at the Omelette House by the zoo.
+ Worked here till college.
+
+Real computers entered my life at school.  Commodore Pet
+<img src="img/pet.png">
+<img src="img/petscr.png">
+
+TRS 80 Model 3 (Tandy Radio Shack)
+<img src="img/trs.png">
+
+ - When I first laid eyes on the Pet, I was hooked.
+   I RAN for it and sat there wondering what to do.
+   The 5 other kids I had to share it with wanted to turn it ON and
+   I think one guy actually knew how to.  But I wouldn't let him.
+   I just sat there staring in wonder.
+
+ - BASIC
+   I learned the wierd dialects of Commodore and TRS 80 BASIC.
+   Had casette tape drives for storing programs.
+   Loading programs back wasn't a thing that always happened.
+   Took quite some time to load a 2K program.
+   PETs had no graphics mode - just a 40 x 25 text grid to print * in.
+   TRS 80s had a 128 x 48 graphics mode by
+   dividing a character (64 x 24) into quarters.
+
+I was taking geometry and could use the COS and SIN functions to plot out
+ circles and sin curves.  Polar equations for a rotating line!
+ I was able to put math on the screen - pretty cool.
+
+Still no printing.

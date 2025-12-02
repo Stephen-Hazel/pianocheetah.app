@@ -1,0 +1,74 @@
+#!/usr/bin/env php
+<? ## go.php - setup my site pic dir with index .txt files and thumbnails
+
+function Got ($fn)  {return file_exists ($fn);}
+function Get ($fn)  {return file_get_contents ($fn);}
+function Put ($fn, $s)     {file_put_contents ($fn, $s);}
+
+function LstDir ($p, $df)
+{  $lst = [];
+   $naw = ['.', '..'];
+   $d = dir ($p);
+   while (($e = $d->read ()) !== false)
+      if ( (($df == 'd') &&    is_dir ("$p/$e") && (! in_array ($e, $naw))) ||
+           (($df != 'd') && (! is_dir ("$p/$e"))) )
+         $lst [] = $e;
+   return $lst;
+}
+
+$Top = "/home/sh/_/web/shaz.app/pic/pic";
+$Idx = "/home/sh/_/web/shaz.app/pic/idx";
+
+$x = LstDir ("$Top", 'd');
+sort ($x);
+$yLst = [];
+foreach ($x as $dir)  if (substr ($dir,0,1) == '2')  $yLst[] = $dir;
+
+foreach ($yLst as $y) {
+echo "$y\n";
+   if (   ! Got ("$Idx/$y"))     mkdir ("$Idx/$y");
+   $setLst = LstDir ("$Top/$y", 'd');
+   sort ($setLst);
+
+   foreach ($setLst as $s) {
+      if (! Got ("$Idx/$y/$s"))  mkdir ("$Idx/$y/$s");
+echo "   $s\n";
+
+      if (Got ("$Idx/$y/$s.txt")) {
+echo "      got\n";
+         continue;                          // it's fine as iz
+      }
+
+   // wanna rethumb if  idx/y/new_set.txt  cuz P/L change or del'd, etc
+      if (Got (  "$Idx/$y/new_$s.txt")) {
+         rename ("$Idx/$y/new_$s.txt", "$Idx/$y/$s.txt");
+echo "      rethumb\n";
+      }
+      else {                                // make fresh idx/y/set.txt
+echo "      makin\n";
+         $fLst = LstDir ("$Top/$y/$s", 'f');
+         sort ($fLst);
+         $idx = [];
+         foreach ($fLst as $f) {
+            $i = "$Top/$y/$s/$f";
+            list ($w, $h, $type, $attr) = getimagesize ($i);
+            if ($w > $h)  $LP = 'L';   else $LP = 'P';
+            $idx[] = "$LP|$f|";
+         }
+         Put ("$Idx/$y/$s.txt", implode ("\n", $idx) . "\n");
+      }
+
+      system ('rm -f "'."$Idx/$y/$s/*".'"');
+      foreach (explode ("\n", Get ("$Idx/$y/$s.txt")) as $x) {
+         if ($x == '')  continue;      // price of always \n term'd lines
+                                       // from text editors
+         list ($LP, $f, $cm) = explode ('|', $x);
+         $i = "$Top/$y/$s/$f";
+         $o = "$Idx/$y/$s/$f";
+         if ($LP == 'L')
+              $c = 'ffmpeg -i "'.$i.'" -vf scale=-1:320 "'.$o.'"';
+         else $c = 'ffmpeg -i "'.$i.'" -vf scale=-1:480 "'.$o.'"';
+         system ("$c 2>/dev/null");
+      }
+   }
+}

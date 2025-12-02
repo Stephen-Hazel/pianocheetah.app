@@ -1,0 +1,150 @@
+flatpak is <b>THEEE</b> linux packaging format
+And there's <a pop href="https://flathub.org">flathub</a>
+ that'll (nicely) publish your app with all the others.
+
+It'll do multi-architecture and multi-distro.
+
+<h3>flatpak's main deal</h3>
+is that when you build your source,
+ it will link to a standard set of shared libs provided
+ by a "flatpak runtime".
+
+So what's actually going on, is that the shared libs in the
+ flatpak runtime do what your distro should have done a long
+ long LONG time ago and set a standard.
+
+At some point, I'd expect at <i>least</i> the desktop of each distro
+ to be written on top of flatpak runtimes.  Hopefully soon.
+
+<h3>special directories</h3>
+Flatpak executables run in a pseudo-sandbox.
+ The idea is to protect the user from malicious apps.
+ But, in practice, most of that protection is circumvented
+ so your app can do all the things it actually <i>does</i> need to do.
+
+But one nice thing is that your apps have a "virtual"
+ install and config directory all to themselves.
+
+When your apps of the flatpak run, the binaries are at
+
+ - /app/bin/my_executable
+
+And your config files go into
+
+ - /var/config/my_whatev.conf
+
+Those files are persisted in the user's home dir at:
+
+ - /home/user/.var/app/app-triplet/etc-etc-etc
+
+If you want to see your app's runtime layout, here's how to "enter the virtual w
+orld" your app sees:
+
+flatpak run --command=sh app.pianocheetah.pianocheetaha
+
+That'll put you in a shell and you can
+
+ - cd /app
+
+ - ls
+
+ - cd /var  ...etc etc etc
+
+These directory paths only exist while the flatpak exes run.
+ This will mean a minor rewrite to some of your code.
+ If you start other executables that are part of the flatpak,
+ you'll need to system() them in /app/bin/whatever_exe
+
+And when you write config files,
+ no more ~/.config/my_package/my_conf.conf -
+ you'll need to path to /var/config/my_conf.conf
+
+<h3>Let's git started</h3>
+The flatpak docs are <a pop href="https://docs.flatpak.org">here</a>
+
+They're very good but also very, uh, slim...
+
+The first thing to do though is...
+
+<h3>setup a manifest</h3>
+I do mine in 2 steps since pianocheetah is closed source:
+
+ - build manifest
+
+ - distribute manifest for flathub
+
+<h3>build manifest</h3>
+Ok, this is my build manifest - not your's.  I use qt6 and c++.
+<a pop href="_manif">here</a>
+
+The first part lists your app id - a "triplet" in "reverse dns format".
+Since my website here is pianocheetah.com every flatpak I make has this prefix.
+Not super thrilled about that, but that's how it has to be.
+And you can't publish a flatpak if the triplet prefix isn't a real website.
+
+Next, you see pianocheetah depends on the kde runtime version 6.6.
+(think kde=qt and gnome=gtk)  6.6 is currently the latest version of Qt.
+If I were to use the latest version of Qt that apt gives me,
+that'd likely not be nearly as up to date.
+
+Next, you see the finish-args - those are my app's "permissions".
+If I use filesystem=home instead of host, flatpak turns
+
+ - paths in your home dir into some pretty terrible softlinks
+   that I don't want to deal with or have my users see.
+
+You also see I use wayland, and fallback to x11 if unavailable.
+And you have to use socket=pulseaudio if you want access to alsa.
+
+From then on is just using cmake (the version Qt wants) to compile
+ each of my executables in Release mode.
+
+I have a common set of .cpp and .h files in
+ a dir called "stv" that my code uses.
+
+You'll likely want to learn qtcreator so it'll setup your dang
+CMakeList.txt files for you.
+
+Also note that the first "module" is actually my .desktop and icon files.
+ and an "appdata" file about my program with screenshots, etc.
+ The flatpak docs explain that gory stuff.
+
+That's all the explanation you get - sorry.
+
+The main docs are good, but skimpy.
+
+My script to actually run the build (please excuse my php)
+is <a pop href="b">here</a>
+
+<h3>build dirs</h3>
+Ok that build script looked a little ugly (i mean, it is php).
+Let's talk about the flatpak build and release process.
+
+ - build dir - this is where flatpak-builder
+   (which you'll need to apt install) writes your executables, etc.
+
+ - repo dir - this is a dir you can distribute/install your app from.
+   It might be an actual git repo.  Not sure :/
+
+ - .flatpak-builder - a cache dir holding previous builds -
+   I usually just wipe it.
+
+<h3>distribute manifest</h3>
+Here's my distribute manifest - much simpler :)
+<a pop href="app.pianocheetah.pianocheetah.json">here</a>.
+
+And my build script can be given an o argument to stop
+ upon making the build diretory for flathub.
+ Then I make a pull request on flathub's repo and
+ add my build dir and the release manifest.
+
+All the release manifest does is take the binaries and
+ desktop/icon/appdata and put em in a flatpak repo.
+ Then upon the flathub guys doin' their thing, it shows up on flathub :)
+
+Ok!
+
+One last problem flatpak has is
+ - how do I run flatpaks from the command line ???
+
+I got your answer...

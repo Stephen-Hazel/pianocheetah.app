@@ -1,0 +1,280 @@
+we all know the 80s were great :)
+<h3>1981 - mid high school</h3>
+my OWN first computer!  No more electronics for ME!  Timex Sinclair ZX81
+<img src="img/zx81.png">
+
+I hooked it to my TV and an old casette deck.
+Learned why it's important to have a BACKUP after plenty of retyping.
+
+More RAM
+<img src="img/zx81x.png">
+
+2K was a little cramped.
+New 32K battery backed expansion pack.
+Bump it even slightly, and FZZZ - reboot.
+At least boot time was zero back then.
+
+I learned about "screen memory" - the grid of memory that you could
+ use "poke" and "peek" to set and get the screen characters.
+ Could do 64 x 48 (black and white) block graphics.
+
+Read through TONS of books and magazines.
+Learned Z80 assembly language to control ALL.  Basic was for wimps.
+ Drew a shrinking square flipped onto the screen memory in FAST mode.
+
+
+<h3>1983 - graduating high school</h3>
+The Commodore 64 was within my price range.
+<img src="img/c64.png">
+<img src="img/c64boo.png">
+<img src="img/c64ref.png">
+But I stole it from the Bon Marche, too.
+Another BASIC dialect at which i scoffed.
+Learned it's 6510 assembly language immediately (a 6502 variant).
+Read Compute, C64 Gazette, and Dr Dobbs Journal magazines.
+Magazines of the time were REALLY GOOD!  (no internet yet.)
+
+Plenty of memory (64K of which, umm, was it 24K was usable)
+I learned the different graphics modes and the SID sound synthesizer.
+It had sprites, dual mode graphics capabilities via
+ split screens occuring on raster interrupts.
+I spent sooo much of my life learning about this machine.
+I don't regret it.
+<img src="room.png">
+
+I went from the tape drive to the disk drive.
+<img src="img/c64t.png">
+<img src="img/c64d.png">
+<img src="img/1541.png">
+I bought a mouse for it when they came out and scoffed at it.
+ (It's just a lame joystick, right?)
+
+I could finally PRINT stuff!
+<img src="img/mps801.png">
+Fanfold paper with feeder strips on the side to rip off.
+I could see my 66 lines of code on a page!
+The screen was 24 lines, 40 columns - eye MURDER.
+
+
+<h3>1984 - University of Washington - aiming for Computer Science major</h3>
+I got IN!  It was big and fancy and I felt pretty proud of myself.
+ But I was lost in a sea of people I didn't know.
+ (and would never know - too shy.)
+
+Summer job in Cordova, AK
+flipping fish onto the 1 lb can line.  All Summer :(
+16 hour days filled with smelling fish, standing up, not much else.
+ Got to see a glacier up close.
+did this for 4 summers.  Worked at burger places between.
+There were a lot of Mormons.  We discussed atheism at length.
+
+VAX computers...
+Interesting, but was not a fan.  The weird terminals were terrible.
+ At least it kept each edit of a file as a new version.
+
+Pascal, then Modula 2
+Had to do commenting and modularizing which I did not see the point of.
+ If it works, it works, right?
+OH!!  So you can understand it LATER.  Good point.
+ I learned the one true way to indent, too.
+
+THEN they brought in the Apple Macintosh.  All jaws dropped hard.
+<img src="img/mac.png">
+I refused to admit that it was better than my C-64.  But it was.
+But I'd never be able to afford one of those.  (Till 1995)
+
+The 20 minutes in computer lab were no thrill.  But I had my C-64.
+Wrote a text editor: NEd (Nifty text EDitor).  All 6502 assembly.
+load "*",8,1     booted it up off the floppy disk.
+It took about 3K of memory (at $C000)
+
+Wrote cool graphics programs with NEd.
+Had a start on music on the C-64, but kind of minimal.
+Just playing a melody.  Trying out "ring modulation", etc.
+
+Expanded NEd into Ward.  (word processor for college papers.)
+
+Mom finally divorced my Dad (his manic depression).
+ Life got a LOT less stressful for me.  Manic depression is brutal.
+
+Talked to advisor about majoring in Computer Science.
+ He saw my 3.10 GPA and asked me about majoring in Sociology or
+ some other stupid crap.
+ Good DAY to you sir.  I'm a computer programmer.  Started SPU.
+
+
+<h3>1986 - Seattle Pacific University</h3>
+Yeah, this place was costing me hard, but at least they had PCs !! (clones !)
+<img src="img/cln.png">
+I scoffed at the IBM PC.  It was nothing to my C-64!
+My courses forced me to use them.
+
+Turbo Pascal was on em!  And there were plenty!  Like 20-ish.
+Turbo Pascal had an editor built right in.  And it was FAST!
+WAY less hitting ENTER and such.
+They had a PDP8 Unix mini that I never touched.
+
+Mr. Tindal filled me in on Int 21.
+BIOS interrupts - the way to make MSDOS actually do something.
+You could read the disk, write the disk, display text on the screen,
+get into GRAPHICS mode...
+
+Learned to make printers do graphics using escape sequences.
+HUGE pixel resolution compared to screens.
+
+C
+Mr. Tindal introduced me to this new language, too.
+Almost as good as assembly language.  Turned out to be better.
+Took me several years to quit assembly due to my C-64 needing it.
+
+80x86 assembly
+Learned it for accessing hardware.  But memory was segmented - ugh.
+I used it with C to keep my source code more compact.
+I learned the graphics adapters of the time:
+ Hercules, CGA, that killer EGA, VGA.
+
+SQL
+Took a course or two about SQL.  RBase...  EeeeYUCK!
+Storing data is dumb.  Put it in a file and be done with it.
+
+Senior computer science project
+Me and 2 other guys wrote a Forth interpretter that actually worked.
+TONs of hours of writing and testing it.
+Found out testing truly sucks when you've got a deadline.
+
+Job at "Berta-Max"
+A small Mom n Pop educational software company.
+Owned by Max and his wife, Berta.  Best job I've ever had, I think.
+
+<img src="img/ap2.png">
+got my hands on the infamous Apple II, TRS Color Computer, and IBM PC.
+Got hired because I knew the C-64 and an employee.
+Apple II was kinda lame and I didn't mess with it much.
+
+Used Turbo Pascal (versions 4,5,6 and 7) on the IBM PC
+BASIC on Commodore and Apple.
+
+All hooked to Echo speech synthesizer box.
+I spent months piecing together phonemes to make it sound right.
+(And building the associated editing apps in Turbo Pascal, etc.)
+Built a cool little slinky screen that'd sound out words and such.
+
+Figured out how to make the ibm pc's speaker squeal.
+ Using 80x86 assembly.
+
+
+<h3>1988 - BS Computer Science</h3>
+and a NEW home computer: Amiga500 - The new love of my life.
+<img src="img/ami.png">
+<img src="img/ami1.png">
+<img src="img/ami2.png">
+Had wrung the C64 dry.  Was almost ready to buy a CLONE - horrors!
+$600 for the CPU, $400 for the monitor.
+Bought TV tuner to see TV on it's monitor.
+A =MEG= of RAM!  3.5" disk drive!  Mouse and a keyboard like the clones'
+Superb graphics and sampled sound better than the Mac.
+
+Amiga could multitask !!
+Several modules to the OS.  A user interface called Intuition.
+Had several sweet graphic modes - defaulting to 4 color 320x200 pixels.
+Could do a full 4096 colors 640 x 400 in "hold and modify" interlace mode.
+Could split screen and do 2 graphics modes at once
+
+Learned 68000 assembly language - very nice.
+Bought Lattice C compiler: $250.
+Ran it off floppy for 2 years.  Painful.
+Saved up BIG bucks required for a hard drive.  $600 for 15 Megs!
+Rewrite of NEd in C.
+Took a looong time to learn the Amiga OS.  A loooooong time.
+
+Lots of magazines and books (still no internet.)
+<img src="img/amimag.png">
+This one -sucked- but there were plenty that didn't.
+
+GUI programming sucked.  (called "Gadgets" on the Amiga)
+Wrote a program called CLIed meaning "CLI in the past tense".
+(CLI was the Amiga "command line interface" - dos)
+File manager operated by the mouse.
+Was jealous after seeing Norten Utilities on the clones.
+
+ARexx
+REXX language for the Amiga which i learned just after
+coming across it on IBM VM/CMS at my first "real job".
+
+
+<h3>1989 - Boeing</h3>
+Took me 2 years of searching.  Being shy is bad for the job hunt.
+My buddy Dwight from church got me in.
+Finally made enough to move out into an apartment circa 1991.
+
+Learning how businesses used computers.  A big let down...
+Mainframes.  Databases.  EeeeYUCK !!
+
+IBM VM/CMS operating system.  (Kid sister to IBM MVS)
+Virtual Machine/Conversational Monitoring System - like that means a lot.
+IBM's try at being like MS/DOS - very weird.
+
+FORTRAN and COBOL
+Learned these at school but hoped to never use them.  Nope.  Used em.
+
+Oracle 4.
+Learned SQL.  Pretty stupidly simple.  Longwinded like COBOL.
+Did not realize that THIS would keep me heartily employed forever.
+
+Network!
+After a while I learned that this crappy OS (compared to my Amiga)
+=hooked together= lots of users.
+Networking was a big deal in the business world.
+PROFS was our email system.  Everybody hated it, but we were all ON it.
+
+Really got into Oracle's new PL/SQL and this weird IBM VM/CMS.
+And REXX was a cool little "batch files on the mainframe" language.
+I tried to flee "real" MVS batch files and was mostly successful.
+
+C finally came out for VM/CMS.
+I switched our shop over to it as FAST as I could.
+ Took LOTS of convincing!
+Compiler had bugs galore.
+No square brackets in EBCDIC (IBM's version of ASCII).
+ Had to use "unbroken vertical bar" and "cents sign" chars for [ ]
+Rewrote NEd in C for MS/DOS to use it on my PC for editing code.
+ MS/DOS had this wierd "IRMA" software to upload/download text files
+ from pc to mainframe.
+
+Oracle 5 was the (new) backend.  VM/CMS "panels" were the front end.
+Oracle Forms could be used for front end, but NOT by me - EeeeYUCK.
+
+Went to a lot of Oracle training classes in the 90s.
+Oracle had Pro*C, Pro*COBOL, Pro*FORTRAN and Pro*REXX so that your app
+ could embed SQL while showing the UI.
+I really liked Pro*Rexx - interpretted code running SQL :)
+ No "pre compile" like the other languages.
+
+Oracle came out with Oracle Call Interface:  No precompile, just link!
+Wrote a C wrapper around it with built in debugging of the SQL and
+ the GUI (VM/CMS panels, remember?)
+
+I could whip up a database system on VM/CMS so fast.
+Got me a raise or 3 :)
+My baby was FSS - "factory status system" for Industrial Engineering to
+track "jobs behind schedule" across the factory.
+Shamefully, it lasted long past the OS being completely obsoleted by PCs.
+
+PC network arrived in the 90s, too.  UngermanBass!
+PCs and mainframes chattin, printing together, etc.
+Wrote some software to use IRMA to
+replace our existing mainframe based printing network.
+Including graphical charts.
+Then I learned of FTP - a PC, Unix, AND mainframe way to transfer files
+
+
+MS Windows finally arrived - Windows for workgroups (3.1)
+I was sceptical.  It was glitzy, though.  Disliked but grudgingly used it.
+
+
+While working at Boeing, I finally acquired a =LIFE= (became less shy)
+Met some friends.  Some of whom were female.
+Realized I'd better come across one of these for myself.
+All the ones at Boeing were taken.
+
+My sister had a baby girl.  I got the bug.

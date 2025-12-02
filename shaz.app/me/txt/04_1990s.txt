@@ -1,0 +1,155 @@
+time to grow the =F= up sigh
+<h3>1992 - Boeing layoffs</h3>
+Tons of friends got kicked out.  I survived fine.
+It didn't seem right to hire and fire like that.
+
+Boeing also got boooring.  Stuck on mainframe while Unix was taking over.
+
+Gramma always told me I should play piano.
+ I'd play single finger melodies I'd hear on McDonalds commercials.
+ But never get both hands working at the same time.
+ Had quit my one stab at lessons cuz my teacher was a jerk.
+ (Might have been me.)
+
+Something new for my Amiga!
+<img src="img/midi.png">
+Using MIDI (Musical Instrument Digital Interface),
+ PCs could =talk= to SYNTHESIZERS!
+Hook cables between em and BAM!
+A computer program could play the synth!
+
+Bought Bars&Pipes Professional - a midi sequencer
+This program could record/save/play/show songs on your Amiga and synth!
+ HAD to try to build a similar program.  It's called PianoCheetah now.
+ Used to call it MidiPlay.
+
+Got Kawaii Spectra KC10
+<img src="img/kc10.png">
+My first keyboard.  Nice sounds.  Quality organ style keyboard.
+ Went searching for a synth that had better sounds.
+
+Got Yamaha TG-33 sound module
+<img src="img/tg33.png">
+Connected it via MIDI to my keyboard and Amiga.  Nicer sounds.
+ Couldn't add =new= sounds like I could with my Amiga's 8 bit samples.
+ Was a costly mistake, but I was making $19,200 a year - pfff who cares.
+
+Got Peavey DPM V3 sound module
+<img src="img/v3.png">
+It could do "sample dump standard" to load in new samples!
+ But 16 bit mono samples go slow thru midi cables at 31K baud.
+ But I loved that sound module.
+
+Got Peavey SX sampler
+<img src="img/sx.png">
+A 16 bit 24/48 KHz sampler  ...that I never used.
+
+Amiga was an octopus in my living room...
+monitor, keyboard, mouse, hard drive, floppy drive, printer
+ modem (2400 baud!)
+ midi interface
+ sound sampler (24KHz 8 bit)
+ picture digitizer hooked to video camera
+ audio out to my stereo
+
+Took up an entire 6 foot long table
+Not including my stereo and Spectra keyboard...
+These sprawled across the living room of my lonely apartment.
+
+MidiPlay and MidiComp.
+these were my new laser focus in coding.
+Hooked to my new fully weighted 76 key Ensoniq KS-32
+<img src="ks32.png">
+
+Good piano sounds on it (the rest sucked.)
+But it was a good solid keyboard.  My Peavey V3 made the sounds.
+
+Met a girl, with a girl (almost a year old) and a boyfriend.
+ She hated the boyfriend, moved in with me, and WHAM!
+ No room for my Amiga!
+
+Quite a bit happens when a woman and a little girl enter your life.
+ Especially at the same time !
+
+Tearing myself away from Carissa was the hardest thing I've ever ever done
+ as Kathy gave her old boyfriend another shot about 6 months in.
+ ...But I knew Kathy's sister
+
+Realized I had to say goodbye to my Amiga.
+ Not just due to girls.  Commodore had gone out of business.
+ No more upgrades meant the OS was truly and utterly DEAD.
+
+Dark Ages of my programming past began...  Bright ages of my life, though.
+
+
+bought Mac Classic.  A fresh OS to play with.
+Couldn't find source code for doing midi on AOL.  (internet was young)
+ I finally came across some but then...
+
+
+<h3>1995 - ClairCom</h3>
+Boeing's low pay finally got me lookin elsewhere.
+My DBA called me up from a place called Claircom, about to be bought by AT&T.
+Started working downtown in the Gateway Tower => Key Tower.
+
+Now I was a contractor.  I converted to employee a couple years in.
+Later, I'd be one again for a looong time.
+
+Had a PC at my new job with 2 =gigs= of disk !!
+ AND a Sun Unix box ON my desk !!
+ Unix and Win95 hit me like a ton of bricks and I was in love.
+ My poor mac died of neglect.  As it should have.
+ Still have it's bag for storing cables.
+ <img src="img/macbag.png">
+
+While my home computer had died, my life was taking off again.
+ Two new work OSs and a job billing for telephones on an airplane network.
+My work was no longer boring ass.
+ What's a CDR ??
+ What's RF, a switch, T1, who are these marketting crazies ??
+
+Life blows up
+Closed on a 2 bedroom house.
+ Got back together with Kathy & Carissa.
+<img src="skc.png">
+Connor happened.
+Got married.
+So a 4 yr old and baby in a 2 bedroom...  Plus brand new crazy job.
+
+1995.  A very big year for us.  I was an us now.
+
+
+<h3>1996 - Claircom became "AT&T Wireless' Aviation Communication Division"</h3>
+Windows NT !   Oracle 7 and 8 !
+Forms and Reports and PowerBuilder (that I tried to stay AWAY from).
+ Informix.  Nothin compared to Oracle, but I learned it.
+ Remedy...  Bleh.  But you gotta learn some boring stuff to get paid.
+
+Figured out a little more about business...
+Sure, yeah, networks, OSs, Databases, Applications.
+ But there's also this stuff called
+ Billing, Inventory, Marketing, Accounting, Human Resources, ...
+
+When a company is sized at about 200 people,
+ you can see these pieces play out.
+
+Call Detail Records and Switches hooking to cellsites that
+ control an RF connection to an airplane phones network.
+
+I was on the billing system.
+Solaris and Oracle and Pro*C and Forms and such.
+ About 5 other folks working on it with me.
+ Contractors built it.  We maintained it.
+ We picked it all up when the contractors up'd their rates...
+
+Unfortunately, this airplane phone stuff was doomed.
+In 1995 when they installed the American Airlines MD-80 fleet,
+ we saw our usage/revenue skyrocket.
+Thing is, it didn't keep going up and
+our expenses always kept us from profit:
+ revenue share with the airlines was 33% of our take!
+ paying to keep up long distance connections from
+ 150 cellsites scattered across the US to our central switch in Texas
+ umm, very very costly...
+
+We never EVER made a profit in ANY quarter...

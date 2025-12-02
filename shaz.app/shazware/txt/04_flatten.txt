@@ -1,0 +1,22 @@
+Flattens all the subdirs
+pick a top dir to flatten.
+
+You know when you've got a lot of picture files?
+And they're in subdirs like
+
+ - Pic/2005/0928_camping/1010001.jpg
+
+And you'ld like to just send all your 2005 pics to your Mom who's stuck with
+the "windows picture and fax viewer" ?
+
+mkdir Pic2
+cp -pr Pic/2005 Pic2
+
+then flatten Pic2.  The above file would be renamed to
+
+ - Pic2/2005_0928_camping_1010001.jpg
+
+BE CAREFUL !
+
+You'll want to COPY the dir before you flatten it.
+So you've still got your dir'd files.

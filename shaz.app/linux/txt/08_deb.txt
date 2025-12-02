@@ -1,0 +1,112 @@
+.deb files are a NOT VERY GOOD alternative to flatpak.
+I used to use them, so below are my docs.
+
+.deb files are binary files to install on the distros that
+come from debian like ubuntu, chromeos linux container, mint, etc.
+
+you can install a .deb in chromeos by just doubleclicking it in the Files app.
+
+<pre>
+<d> below is top dir in name format of
+   app_version-revis_arch
+   
+ version is yyyymmdd.
+ revis always 1.
+ arch is amd64 or arm64.
+ (my preferences, of course)
+
+<app> below is the dirname for your app
+ (shazware for my example)
+
+install:   sudo dpkg -i <d>.deb
+           sudo dpkg -i shazware_20220514-1_amd64.deb
+remove:    sudo dpkg -P <dprefix>
+           sudo dpkg -P shazware
+
+
+CREATING A .deb ...
+
+sudo apt install dpkg  (probably already there)
+
+mkdir -p <d>/opt/app/<app>
+mkdir    <d>/DEBIAN
+cp <all exe .png .desktop etc> to
+   <d>/opt/app/<app>/
+cp <all .desktop> to
+   <d>/usr/share/applications
+vi <d>/DEBIAN/control with...
+Package: shazware
+Version: 20220514
+Architecture: amd64  (or armhf for raspi)
+Maintainer: Stephen Hazel<stephen.hazel@gmail.com> https://pianocheetah.app
+Description: shazware - Stephen HAZel’s softWARE
+ and an extra long description starting with space
+ ned - Nifty text EDitor
+ ftx - Find TeXt in files under a directory
+ flatten - flatten all dirs/files under a directory to dirs_files
+ undup - kill off dup files based on contents matching exactly
+Section: custom
+Priority: optional
+Essential: no
+Installed-Size: (size of exe in bytes)
+Sources:
+Depends:
+<dependencies appended here>
+
+Taking care of external dependencies:
+copy <d> to a linux drive that can handle diff case diff file (NTFS won’t)
+cd <d>
+cp -pr DEBIAN debian
+   (you may have to do this on a drive that CAN DO dirs of same name diff case)
+ln -s opt/app/<app> x
+dpkg-shlibdeps -v -O x/<exe1> x/<exe2> ...etc
+copy the last line into your DEBIAN/control file
+rm -fr debian
+rm x
+
+dpkg-deb --build --root-owner-group <d>
+NOW stick that <d>.deb on your website
+(WITH the top couple lines about how TF to install/remove/etc)
+...aaand see who whines
+
+
+
+
+Notes:
+
+test remove:
+ dpkg -l | grep <d>
+ output should be blank if uninstalled correctly.
+
+
+Run scripts before or after package installation and removal
+<d>/DEBIAN/preinst
+   postinst
+   prerm
+   postrm
+are called maintainer scripts.
+must be chmod between 0555 and 0775.
+
+
+When installing, if you see
+ Package is in a very bad inconsistent state - you should reinstall it before attempting a removal.
+Then
+ keep anything you want preserved then
+ sudo mv /var/lib/dpkg/info/<d>.* /tmp/
+ sudo dpkg --remove --force-remove-reinstreq <d>
+
+
+dpkg-gencontrol writes names of package files into "debian/files".
+Parsing it much easier than any dances with resulting files in parent directory
+(i.e. parsing ../*.changes").
+
+
+.desktop files:
+ usually in /usr/share/applications
+ or ~/.local/share/applications
+ else:
+ create an ‘applications’ directory somewhere
+ put your .desktop files
+ add path of it’s parent directory to the XDG_DATA_DIRS environment variable
+
+</pre>

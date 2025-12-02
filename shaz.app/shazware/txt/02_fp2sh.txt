@@ -1,0 +1,20 @@
+flatpak to shell
+I don't know why flatpak doesn't let you easily do CLI.
+
+So I wrote a silly php script to:
+
+ - make a bunch of short bash scripts in current dir
+
+ - of all flatpak commands on your system but without the dumb long suffix.
+
+Or you could just do this manually.  Installin php ain't no fun.
+(but i'm just not a python guy)
+
+
+for example
+
+big
+
+sh@penguin:~/.bin$ cat big
+/usr/bin/flatpak run --branch=master --arch=x86_64
+--command=big --file-forwarding app.shaz.shazware  $@

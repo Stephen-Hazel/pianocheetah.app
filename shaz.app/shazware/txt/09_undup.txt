@@ -1,0 +1,28 @@
+UnDuplicate (kill dup files)
+There are a lot of midi files to download.
+And none of em have good names.
+
+awesome.mid and mysong.mid are actually the exact same file :(
+
+UnDup will pop up your text editor with a listing of dup files within a dir tree
+
+
+It tries to pick the file with the best filename and prefixes an
+
+x next to the rest.
+
+
+If it guesses wrong,
+
+ - give the one picked an x prefix
+
+ - remove the x prefixing the <b>good</b> filenae
+
+save !
+
+then click yes in undup.  Or no to skip the whole thing.
+
+undup will pop a list of what it's going to do.
+click yes again and it'll do it.
+
+don't mess up the lines !

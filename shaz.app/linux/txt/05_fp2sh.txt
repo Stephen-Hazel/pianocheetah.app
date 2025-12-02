@@ -1,0 +1,20 @@
+flatpak on the command line
+This baby looks up the desktop files of flatpak and
+ makes some shell scripts in the current dir (be careful!).
+
+Again, excuse my php :)  I just prefer it to python (sorry).
+
+Run this thing in your home dir's bin and it'll make a shell
+ script for every installed flatpak with the <b>short</b>
+ command name.
+
+So you can just go:
+
+ - chrome
+
+ - pianocheetah
+
+ - ...you get the idea :/
+
+
+<a pop href="fp2sh">here</a><br>

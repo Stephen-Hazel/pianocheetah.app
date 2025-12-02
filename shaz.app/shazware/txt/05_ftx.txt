@@ -1,0 +1,10 @@
+find text in files of a dir tree
+pick a top dir
+
+pick a text string to search for
+
+ftx searches through all the files in that dir tree
+and shows you files / lines with that string
+
+Case is ignored as it should be.
+No dang stars or greppy stuff, though.

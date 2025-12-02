@@ -1,0 +1,35 @@
+my thoughts on coding on linux
+First off, please don't just stick with command line coding.
+If there's one thing linux needs it's GUI apps that don't suck.
+
+Before you code, you need to:
+
+ - decide between Qt and GTK.  (Qt sucks way less!)
+
+ - Now you can setup your dev environment.  
+   qtcreator is pretty good if you only need the app to run on your own pc.
+   <a href='kubuntu.html'>Here's how i install it</a>
+
+ - But if you'll distribute your app, you need to learn flatpak.
+   You may be able to get by with <a href="deb.html">.deb files</a>.
+   But I wouldn't recommend it.
+
+<h3>Why?</h3>
+This may surprise you, but on linux the usual way you install an app is...
+ - install a replacement OS on top of your distro.
+
+ - link your app to run on this os instead of the distro os.
+
+ - bundle it all up and distribute.
+
+Why?  Because you can't take an executable on one distro and run it on another.
+ Unless the linux you compiled on and the one you hope to run on are very very similar.
+
+Why?  Typically, distros pick a big network of .so files (runtime libraries - called .dll on windows).
+ Once they're picked, eeeverything the distro plans to run is compiled using those exact .so versions.
+
+WHY???  I DON'T KNOW!!!  Seems pretty duuuuuumb to me !
+ If all the distros decided on a standard set of .sos, everything would be fine.
+
+
+Ok.  Let's figure out flatpak.  It'll be ok...

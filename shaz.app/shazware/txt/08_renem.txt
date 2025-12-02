@@ -1,0 +1,29 @@
+rename a bunch of files easily.
+
+I download a lotta files.  And they always have dumb names.
+
+And I'd prefer to use a text editor's search and replace to rename them.
+
+renem makes a big ole file listing for you to just overtype.
+Then it renames the ones you overtyped.
+
+ - pick a dir tree
+
+ - renem makes a list of every file and pops your text editor
+
+ - overtype the ones you want to rename, etc, etc.
+
+ - when you're done, SAVE, then click renem to get going.
+
+ - renem pops another big old list of what it's about to do.
+
+ - give it a quick once over and then click renem again to actually do it.
+
+Now, you have a backup of that dir tree, RIGHT ??
+
+Things can go horribly wrong here :)  Be careful.
+
+ - don't delete or add any lines
+
+ - don't change the PATHS, only the filenames - changing paths MIGHT work,
+   but i haven't tested it...

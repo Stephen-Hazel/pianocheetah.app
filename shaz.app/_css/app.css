@@ -1,0 +1,299 @@
+/* pianoceetah.app stylesheet    (375 css pixels for google) */
+
+/* main font, fixed width font */
+@import url(https://fonts.googleapis.com/css?family=Inter);
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+
+:root {
+   --red: #FF8080;  /* red */
+   --ora: #FFC080;  /* orange */
+   --yel: #FFFF80;  /* yellow */
+   --ygr: #C0FF80;  /* yellow green */
+   --gre: #80FF80;  /* green */
+   --gaq: #80FFC0;  /* green aqua */
+   --aqu: #80FFFF;  /* aqua */
+   --baq: #80C0FF;  /* blue aqua */
+   --blu: #8080FF;  /* blue */
+   --bpu: #C080FF;  /* blue purple */
+   --pur: #FF80FF;  /* purple */
+   --mag: #FF80C0;  /* magenta */
+   --cText: #111;   /* text color */
+   --cMain: #fff;   /* main color */
+   --cHili: var(--yel);  /* hilite color */
+   --cHovr: var(--pur);  /* hover color */
+}
+.c0 {color: var(--red);}
+.c1 {color: var(--ora);}
+.c2 {color: var(--yel);}
+.c3 {color: var(--ygr);}
+.c4 {color: var(--gre);}
+.c5 {color: var(--gaq);}
+.c6 {color: var(--aqu);}
+.c7 {color: var(--baq);}
+.c8 {color: var(--blu);}
+.c9 {color: var(--bpu);}
+.ca {color: var(--pur);}
+.cb {color: var(--mag);}
+.bg0 {background-color: var(--red);}
+.bg1 {background-color: var(--ora);}
+.bg2 {background-color: var(--yel);}
+.bg3 {background-color: var(--ygr);}
+.bg4 {background-color: var(--gre);}
+.bg5 {background-color: var(--gaq);}
+.bg6 {background-color: var(--aqu);}
+.bg7 {background-color: var(--baq);}
+.bg8 {background-color: var(--blu);}
+.bg9 {background-color: var(--bpu);}
+.bga {background-color: var(--pur);}
+.bgb {background-color: var(--mag);}
+*{ /* clear out the junk! */
+   margin: 0;
+   padding: 0;
+/* box-sizing: border-box; */
+}
+body {
+   font: 18pt "inter";
+   color: var(--cText);
+   background-color: var(--cMain);
+   scroll-behavior: smooth; /* for nav */
+   min-height: 100dvh;
+   padding: 3px;
+}
+
+pre {font-family: "inconsolata";}
+
+img    {max-width: 100%;}
+img.hd {max-width: none;}
+
+
+/* jqueryui font,padding change */
+.ui-widget,.ui-widget select,.ui-widget button {
+   font-family: "inter", sans-serif;
+}
+.ui-button {padding: 0.2em 0.3em;}
+
+
+/* nav (menu) */
+#nav-open {
+   display: none;
+   position: sticky;
+   top: 2px;
+   transform: translate3d(0, 0, 0);
+   z-index: 9;
+   background: black;
+   margin-bottom: 0.5em;
+}
+#nav-shut {
+background: rgba(0, 0, 0, 0.5);
+position: fixed;
+inset: 0;
+z-index: 9;
+display: none;
+}
+
+nav {
+   position: fixed;
+   z-index: 9;
+}
+nav ul {
+   list-style: none;
+   display: flex;
+   flex-direction: column;
+   margin-block-start: 0;
+   margin-block-end: 0;
+   padding-inline-start: 0;
+}
+body.mobl nav ul {background-color: white;}
+
+nav li {
+   display: flex;
+}
+
+a.nav-0  {
+   color: black !important;
+   background: var(--red);
+}
+.nav-1  {
+   color: black !important;
+   background: var(--ora);
+}
+.nav-2  {
+   color: black !important;
+   background: var(--yel);
+}
+.nav-3  {
+   color: black !important;
+   background: var(--ygr);
+}
+.nav-4  {
+   color: black !important;
+   background: var(--gre);
+}
+.nav-5 {
+   color: black !important;
+   background: var(--gaq);
+}
+.nav-6 {
+   color: black !important;
+   background: var(--aqu);
+}
+.nav-7 {
+   color: black !important;
+   background: var(--baq);
+}
+.nav-8 {
+   color: black !important;
+   background: var(--blu);
+}
+.nav-9 {
+   color: black !important;
+   background: var(--bpu);
+}
+.nav-10 {
+   color: black !important;
+   background: var(--pur);
+}
+.nav-11 {
+   color: black !important;
+   background: var(--mag);
+}
+
+
+/* better tooltips */
+.tip {
+   position: relative;
+}
+.tip::after {
+   content: attr(tip);
+   position: absolute;
+   top: -3px;
+   left: 105%;
+   visibility: hidden;
+   opacity: 0;
+   transition: opacity 0.5s ease, visibility 0.5s ease;
+   z-index: 9;
+
+   background-color: #555;
+   color: #fff;
+   font-weight: bold;
+   white-space: nowrap;
+   padding: 8px 12px;
+   border-radius: 6px;
+}
+.tip:hover::after {
+   delay: 0;
+   visibility: visible;
+   opacity: 1;
+}
+
+/* SUBpage stuff */
+body.dtop main {
+   width: 700px;
+   margin: 0 auto;
+}
+body.mobl main {
+   width: 100%;
+}
+
+h1 {
+   font-size: 1.7em;
+   color: white;
+   background-color: #ff8080; /*#6fbe62;*/
+   border-radius: .4em;
+   padding: 0 .4em;
+   margin-block-start: 0;
+   margin-block-end: 0;
+}
+
+h2 {
+   font-size: 1.45em;
+   color: white;
+   background-color: #ff8080; /*#6fbe62;*/
+   border-radius: .4em;
+   padding: 0 .4em;
+   margin-block-start: 0;
+   margin-block-end: 0;
+}
+
+h3 {
+   font-size: 1.2em;
+   color: white;
+   background-color: #80bfff;
+   border-radius: .4em;
+   padding: 0 .4em;
+   margin-block-start: 0;
+   margin-block-end: 0;
+}
+
+div.bul {
+   margin-top: .5em;
+   margin-left: 1.5em;
+   padding-left: .7em;
+   background-image: url('../img/bul.png');
+   background-repeat: no-repeat;
+   background-position: left .4em;
+}
+
+
+/* homepage */
+#logo {display: block;   margin: 0 auto;}
+#logotxt {
+   font-size: 4em;
+   font-weight: bold;
+}
+body.mobl #logotxt {font-size: 2em;}
+
+img,audio {vertical-align: middle;}
+
+/* footer#1 - fancy 1st footer row w me/addr/contact */
+#foot {
+   background-color:#e7e7e7;
+   margin: 0;
+   padding-top:    45px;
+   padding-bottom: 20px;
+   border-top:1px solid #d0d0d0;
+   background-image:-moz-linear-gradient(
+      top, #fff 0px, #e6e6e6 1px, #fff 15%, #fff 85%, #e6e6e6 100%);
+   background-image:-webkit-gradient(
+      linear, left top, left bottom,
+      color-stop( 0%,#fff), color-stop(0.6%,#e6e6e6), color-stop(15%,#fff),
+      color-stop(85%,#fff), color-stop(100%,#e6e6e6));
+   background-image:-webkit-linear-gradient(
+      top, #fff 0px, #e6e6e6 1px, #fff 15%, #fff 85%, #e6e6e6 100%);
+   background-image:-o-linear-gradient(
+      top, #fff 0px, #e6e6e6 1px, #fff 15%, #fff 85%, #e6e6e6 100%);
+   -moz-box-shadow:0px 1px 1px #e0e0e0;
+   -webkit-box-shadow:0px 1px 1px #e0e0e0;
+   box-shadow:0px 1px 1px #e0e0e0;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+}
+#mid {
+   padding-bottom: 1em;
+}
+body.dtop #foot {
+   flex-direction: row;
+   align-items: flex-start;
+}
+body.dtop #lft,#mid,#rit {
+   margin: 0 auto;
+}
+
+/* responsive youtube videos */
+.yt {
+ position: relative;
+ padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+ padding-top: 25px;
+ height: 0;
+}
+.yt iframe {
+ position: absolute;
+ left: 0;
+ top:  0;
+ width:  100%;
+ height: 100%;
+}

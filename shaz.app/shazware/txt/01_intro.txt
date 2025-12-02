@@ -1,0 +1,37 @@
+some file utilities and stuff
+<img style="float: right;" src="img/go.png">
+`bg1`S`teve `bg1`Haz`el's soft`bg1`ware`
+
+<a pop href="https://github.com/Stephen-Hazel/shazware">c++ source</a>
+<a pop href="https://github.com/Stephen-Hazel/stv">stv lib</a>
+<a pop href="https://raw.githubusercontent.com/Stephen-Hazel/shazware/refs/heads/main/do.txt">TODO</a>
+
+ - `bg2`fp2sh` - flatpak commands in CLI without the long dumb suffixes
+
+ - `bg3`big` - print out text in a big font (like in the mainframe days)
+
+ - `bg4`flatten` - flatten all the subdirs in a dir renaming files
+   to dir1_dir2_file
+
+ - `bg5`ftx` - find a text string in all the files of a dir tree
+
+ - `bg6`l` - list files (i know i know but i hate ls)
+
+ - `bg7`recent` - list files most recently touched in a dir tree
+
+ - `bg8`renem` - rename all the files in a dir at once with a text editor
+
+ - `bg9`undup` - kill off exactly duplicate files in a dir tree
+   regardless of filename
+
+ - `bga`ned` - `bga`n`ifty text `bga`ed`itor.
+   I write all my code in it, but it's limited to 80 cols
+
+
+<h3>Old windows version I still use at work</h3>
+ Installing:
+<a href="SETUPSHAZWARE.exe"><img src="img/download.gif">download</a>
+ and run SETUPSHAZWARE.exe (then you can delete it)
+
+UnInstalling:
+Control Panel- Programs And Features- SHazWare- Uninstall

@@ -1,0 +1,203 @@
+beina DAD, mannn
+<h3>2000 - ClairCom starts shutting down</h3>
+A big layoff was coming my way.
+
+(Did ya notice I'm not mentioning Y2K?)
+
+I'd learned Sun's Unix by now.
+Weird things like Perl, C++, and a buttload of 2 letter commands.
+ But, eh, a pretty boring OS...
+ Sure, it'll run a network and oracle and a webserver.
+ But the user interface is basically not even THERE!
+ I like Unix.  But only for work.
+
+Back to Windows95 at home !
+Yep.  I'd officially become a CLONE.
+ It was hard to accept for a post-Amiga-ite...  HARD!
+ And my kids were getting old enough to give me a teeeny bit of peace.
+ Started back on my MIDI SEQUENCER called "Ditty".
+ (Itty bitty MIDI sequencer)
+
+The 80x86 had grown past the horrid segmented architecture.
+ And the Windows OS had a robust GUI compared to the Amiga's.
+ Open up a dialog and pop in controls via a resource editor.
+ It had threads and memory mapped files.
+
+Bought the MS C++ compiler and it came with MSDN.
+ ALL the docs you could want right there !
+ I really missed having a nice paper book, but at least I didn't have to
+ GO GET em.  MSDN - truly remarkable.
+
+Figured out that MFC (main C++ GUI library) was a pile of crap.
+ But one I could learn from.
+ I rewrote all the good parts into my own library.
+ A set of .h files of different GUI classes.
+ On the Amiga, I'd started using C++ a little, but Windows was ALL C++.
+
+The windev email list and codeproject.com are what made me
+ the windows developer I am today.
+
+By now, everyone in ClairCom knew we were going to die.
+ Hung around until they shut the billing system down.
+ It was just me and a DBA turning it off.  I have it's last CDR.
+
+
+<h3>2001 - Cubscouts</h3>
+<img src="img/cubsc.png">
+
+Oh sure, why not sign up for cub scouts?  My son will have fun.
+
+Yeah, it's an evening of entertainment you have to plan out EVERY week.
+ For years.
+ But I have some deeep friendships from that that would help me
+ survive my future divorce.
+
+Carissa becomes a teenager / Curt returns
+ My home life was beautiful up until Carissa called up her bio-Dad.
+ I'll spare you the details.
+
+
+<h3>2002 - ClairCom is done</h3>
+During these boring ass days (at work),
+ I learned Windows OS and continued with Ditty - C++ on Win32 API.
+ Used my keyboard and a Soundblaster Live/Audigy PC synth on a card:
+<img src="img/aud.png">
+
+Wifi and laptops started to become a thing.  A thing I liked.
+
+Started dinking around with a personal website, too.
+HTML - sheesh - messy.  Good thing there's perl.
+Javascript - ooo I can make blinky things.  Sheesh.
+
+When there were less than 20 ClairCom employees, I finally got booted.
+Layoff package paid for a new roof and more !
+A company died.  Kinda sad.  Kinda cool.  Weird experience.
+
+
+<h3>2003 - Western Wireless</h3>
+2002 was =not= a good year for a job search.
+Had fun with the kids tho - plenty of swimming.
+
+Finally found Western Wireless.  Had to be a contractor.
+Commute to Factoria was UTTER HELL.  I'll never work at Microsoft.
+ (Did you hear that, recruiters !!)
+Learned Oracle 9 and cell phones proper.
+BIG billing systems, QualComm BREW, and intro to what AmDocs is.
+Nice place.  But as soon as I got used to it
+ I found a gig offering me a =much= higher rate...
+ And that's what being a contractor is all about.
+
+
+<h3>2004 - Tideworks</h3>
+Contract again.  Oracle Forms and PL/SQL
+
+Company moving the big shipping containers between ship, train, and truck.
+Huge inventory system needing to add billing capabilities.
+<img src="tw.png">
+
+Never wanted to get good at forms.  But I did.  Now that it's outdated.
+ Does so much at the outset.
+ Yet is so painful when it comes to polishing the app.
+
+Got a lot more into the whole schedule driven thing.
+ That's the life of a programmer...
+ Deadlines and code versioning and standards, oh MY...
+
+Outsourcing had completed becoming a thing.
+ I thought about trying some other job, especially between contracts.
+
+But NOPE writing code will always ROCK!
+
+Contract lasted a year and I was looking again.
+ But that was no longer scary.  Just frustrating.
+ I've learned so much at home that I can't put on my resume.
+ I could fill so many c++ jobs, but, nope, no work experience.
+
+
+<h3>2005 - Cingular / AT&T</h3>
+Sweet commute.  15 minutes door to desk.
+
+Contractor again.  =4= gigs seperated by layoffs.
+Ugh.  Contrator-ness is against my religion.  But I have no choice.
+
+But layoffs in the middle of summer are wonderful.
+And, eh, it's a living :)
+
+Now I'm in front of the billing.
+ Mediation where everything gets collected from everywhere in prep
+ for billing, fraud, usage analysis, etc.
+
+gig #1) Blue To Orange Conversion
+moving subscriber data out of the old AT&T billing systems into the
+ new Cingular ones.  Just a bit of PL/SQL and Perl.
+
+gig #2) Mediation
+Learned CVS and got to try to get all the Mediation source code into one
+ repository.  Not so fun.  But, eh, useful.  Lots of diff'ing perl code.
+ Did MMS and IM code changes and reporting
+ Oracle 11 now?  Not much better than 8 if you ask me...
+ (I'm obviously not a DBA.)
+
+gig #3) Test env and production deployments
+All dev outsourced.
+ Just some perl,PL/SQL for the test envs, writing boring ass SISs, and
+ covering for the employees who always go on vacation.
+
+gig #4) Gizmo - writing front end website stuff now !
+Finally some coding again!  And a new learning curve.
+ The Javascript, JQuery, and CSS on pianocheetah.com come in handy nowww.
+ Web front ends are kinda silly.  But I'm cool with em.
+
+end of gigs - hired on fiiinally.
+ Finally I'm done with the job descriptions - whew !!
+
+
+<h3>2009 - Piano lessons and robotics and cell phones</h3>
+All this stuff happened in parallel with AT&T:
+
+Kids are getting older and I've finally got TIME for me again...
+
+Started piano lessons.
+Should have a long time ago.  Learning songs takes a LOT less time.
+
+New gear:
+Yamaha CP-33 (nice weighted piano)
+<img src="img/y_cp33.png">
+
+EdiRol PCR-800 (nice unweighted keys and sliders and pedals and knobs and)
+<img src="img/pcr800.png">
+
+Robotics
+Connor never got into robotics club at high school, but I sure did.
+ Robotic actuators and sensors.
+ Embedded OS (usually Linux based) does it's thing.
+ Building out complex actuators (arms, etc).
+ Learning how to teach a high school kid.
+ Quit after 4 years.  Other Dads wanted in, Connor graduated 2 years ago.
+ Will go back when Davin hits middle school.
+
+Android
+My son conned me into getting a smart phone.
+ I've lived voice cell phones and they're pretty boring.
+ As a Dad, I did NOT wanna be bugged by my wife n kids.
+ I =just= got some peace.  I'm not giving it up.
+
+But post iphone, I started noticing Android.
+Umm, that's an OS right there.  That's a robust OS right there.
+ That's a Linux OS with a full GUI that I can write code for...
+ Oh java?  Phhh.  No way.
+
+Then I get my son one.  And I try writing a little code for it.
+ Welp, another OS for Steve.  Android is a thing.
+ Got a Nexus10 tablet.  Seems too small for notation.
+ But I'm slowly gonna get PianoCheetah on Android.
+
+Ditty grows up
+Ditty => PianoCheater => PianoCheetah
+<img src="img/act.png">
+
+It's no longer a little thing.  It does a LOT.
+Guitar Hero gave me some ideas as far as notation.
+Took a stab at standard notation and decided against it.
+
+There are still hardly any other users, but maybe some day...

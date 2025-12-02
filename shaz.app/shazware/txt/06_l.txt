@@ -1,0 +1,13 @@
+list files - my ls
+i know i know but i hate ls
+
+This thing is still a work in progress
+<pre>
+defaults:
+   listing only cur dir;  no dot files;  sort by dirVfile,type,name
+   (don't ever list .git or .old dirs)
+.  list dot files too
+d  list subdirs too
+s  (Srt)  sort by size
+t         sort by datetime desc
+</pre>

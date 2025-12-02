@@ -1,0 +1,92 @@
+my notes for installing kubuntu
+make usb with imager https://www.balena.io/etcher/
+
+hold F2 key to pick boot order of usb 1st, turn off secure boot
+
+install - deleting all
+
+connect bluetooth mouse,kbd
+
+setup KDE:
+ - set dark theme,desktop pics
+
+ - disable kwallet
+
+ - disable 30 sec logout thing
+
+ - turn off screenlock timeout
+
+discover SimpleScreenRecorder, kdenlive, filezilla, 
+ kolourpaint, disk usage analyzer, notepadqq, vscode
+ remove kate
+
+install chrome (download .deb, open w discover)
+
+sudo apt install nfs-common  (for NAS)
+
+sudo vi /etc/fstab
+
+192.168.1.14:/volume1/bock /media/sh/bu nfs rsize=8192,wsize=8192,timeo=14,intr
+
+sudo mkdir     /opt/app
+sudo chown sh  /opt/app
+sudo chgrp sh  /opt/app
+ln -s /media/sh/bu _
+ln -s /opt/app app
+ln -s /media/pi/BOCK bock
+vi .profile - add /opt/app:.  to path
+copy .ssh files from _/z/app/ssh
+
+-- Qt  
+sudo apt install build-essential git qtcreator qtbase5-dev 
+   qt5-qmake cmake libasound2-dev
+
+menu edit/preferences - kits in list on left
+ - QtVersions tab 
+   add - /usr/lib/qt5/bin/qmake
+
+ - set c++ to gcc
+
+ - check that cmake, gdb are autodetected
+
+ - pick all those in the kit tab with name of “desktop”
+
+ - tweak Qt text editor, etc
+
+sudo apt install python3 python3-pip curl
+pip3 install bs4 requests
+
+-- php
+sudo apt install php php-cli
+
+-- rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+
+nvm install 10
+
+nvm use 10
+
+cores: 
+ - sudo vi /etc/default/apport    enable=0   (save,restart)
+
+ - cd ~/.kde   mkdir env   cd env   vi debug.sh
+
+ - export KDE_DEBUG=1
+
+ - ulimit -c unlimited
+
+sudo mkdir     /var/cores   
+sudo chmod 777 /var/cores
+sudo vi /etc/sysctl.conf
+   kernel.core_pattern=/var/cores/core.%e.%p
+(save,restart)
+
+to test:   cat /proc/sys/kernel/core_pattern
+gdb -c <corefile> 
+backtrace full
+info registers
+x/16i $pc
+thread apply all backtrace
+quit

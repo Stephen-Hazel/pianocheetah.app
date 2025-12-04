@@ -13,7 +13,7 @@ function navOpen ()  {$('#nav-open').hide ();   $('nav').show ();
 function navShut ()  {$('#nav-open').show ();   $('nav').hide ();
                       $('#nav-shut').hide ();}
 
-let pMobl = 99  ;                      // force navUpd to kick on init
+let pMobl = 99;                        // force navUpd to kick on init
 
 function mobl ()  {return pMobl;}
 
@@ -34,6 +34,7 @@ function navUpd ()
                         'display':  'block'});
          $('nav ul'   ).css ('display', 'flex');
          $('nav ul li').css ('display', 'flex');
+
          if (m)  navShut ();
          else   {navOpen ();   $('#nav-shut').hide ();}
       }

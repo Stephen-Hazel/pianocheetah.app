@@ -1,9 +1,10 @@
-mobile menu should show tooltips too
-page previews (header stuff) should really only be for pic
-
 doc, piano, practice
    shorten n redo
    split out chords,etc
+
+pic
+   header comment on mobile wraps
+   some kinda post to facebook thingo?
 
 linux
    video of simplest install
@@ -17,5 +18,4 @@ song
    keep header fixed during scroll
    pop a page by group|etc|title to search for if i got it
 
-pic
-   some kinda post to facebook thingo?
+sitemap.xml - make a dumb script for it

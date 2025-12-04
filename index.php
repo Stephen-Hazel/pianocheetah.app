@@ -25,14 +25,22 @@ require_once "_inc/app.php";
 </center></span>
 <a href="doc"><img id='logo' src="img/logo.png"></a>
 <div id='blurb'><br>
- <h1>a linux app for playing pop songs on piano n drum.</h1>
- It's made for Steve.<br><br>
+ <h1>play rock on a synth on linux</h1>
+ <br>
+ We have computers.  We don't need 88 keys anymore!
+ <br><br>
 
- It makes any song easy to play :)<br>
- Play it with your &nbsp;<b><i class='c9' id='feel'>feel</i></b> &nbsp;
- and way less notes.<br><br>
- Look at the pretty notes in my <a btn href="doc">docs</a> !<br><br>
+ Play a song with your &nbsp;<b><i class='c9' id='feel'>feel</i></b> &nbsp;
+ on 10 keys max.
+ <br><br>
+
+ And the notes are cute and easy.
+ <br><br>
+
  Oh, and it's <a href="misc/?pg=0"><img id="free" src="img/free.png"></a>
+ <br><br>
+
+ <a id='go' class='nav-4' btn href="doc">let's go</a>
 </div>
 </main>
 

@@ -12,15 +12,29 @@ function navOpen ()  {$('#nav-open').hide ();   $('nav').show ();
 function navShut ()  {$('#nav-open').show ();   $('nav').hide ();
                       $('#nav-shut').hide ();}
 
-let pMobl = 99  ;                      // force navUpd to kick on init
+let pMobl = 99;                        // force navUpd to kick on init
 
 function navUpd ()
 { let m = ($(window).width () < 700);
    if (pMobl != m) {
       $('body').removeClass (    'mobl     dtop');
       $('body'   ).addClass (m ? 'mobl' : 'dtop');
-      if (m) navShut ();
-      else  {navOpen ();   $('#nav-shut').hide ();}
+
+      if ($('nav li').length <= 1) {   // only a ^home so SUUUper simple
+         $('nav').css ({'position': 'static',
+            'display':  'inline'});
+         $('nav ul'   ).css ('display', 'inline');
+         $('nav ul li').css ('display', 'inline');
+      }
+      else {
+         $('nav').css ({'position': 'fixed',
+            'display':  'block'});
+         $('nav ul'   ).css ('display', 'flex');
+         $('nav ul li').css ('display', 'flex');
+
+         if (m)  navShut ();
+         else   {navOpen ();   $('#nav-shut').hide ();}
+      }
       pMobl = m;
    }
 }
@@ -60,9 +74,10 @@ function home ()  // home page init w crazy jRumble, diff button setup
    navInit ();
 //   $('#menubtn').button ({event: "click hoverintent"});
    jRum ('logo', 10, 10, 4);
-   jRum ('free',  2,  0, 0);
-   jRum ('me',    0,  2, 0);
    jRum ('feel',  5,  5, 3);
+   jRum ('free',  2,  0, 0);
+   jRum ('go',    0,  5, 0);
+   jRum ('me',    0,  2, 0);
 }
 
 function init ()  // for subpages

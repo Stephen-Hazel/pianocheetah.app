@@ -1,14 +1,12 @@
 mobile menu should show tooltips too
 page previews (header stuff) should really only be for pic
 
-linux
-   video of simplest install
-
-doc
-piano
-practice
+doc, piano, practice
    shorten n redo
    split out chords,etc
+
+linux
+   video of simplest install
 
 me
    latest me

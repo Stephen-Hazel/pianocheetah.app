@@ -12,7 +12,7 @@ require_once ("../_inc/app.php");
 
 ## build dir[] from song dirs minus _z,__misc
    $dir = [];
-   foreach (LstDir ("song", 'd') as $d)  $dir[] = $d;
+   foreach (LstDir ("song", 'd') as $d)  if ($d != '_z')  $dir[] = $d;
    sort ($dir);
 
 ## build pl[] given picked dirs minus did[] (if shuffle)
@@ -20,10 +20,9 @@ require_once ("../_inc/app.php");
    $did = ($shuf == 'N') ? [] : explode ("\n", Get ("did.txt"));
    foreach ($dir as $i => $d)  if (in_array ($i, $pick)) {
       $mp3 = LstDir ("song/$d", 'f');
-      foreach ($mp3 as $fn)  if (! in_array ("$d/$fn", $did))
-         $pl[] = "$d/$fn";
+      foreach ($mp3 as $fn)  if (! in_array ("$d/$fn", $did))  $pl[] = "$d/$fn";
    }
-   if ((count ($pick) > 0) && (count ($pl) == 0)) {
+   if (($shuf == 'Y') && (count ($pick) > 0) && (count ($pl) == 0)) {
       unlink ("did.txt");              ## time ta kill did.txt
       header ("Location: ?shuf=".$shuf."&pick=".arg ('pick'));
    }
@@ -171,9 +170,9 @@ $(function () {                        // boot da page
    play ('n');  // setup audio but can't aaactually play till click
 });
  </script>
-<? pg_body ([
-      [$UC['home']." home",  "..",  "...take me back hooome"],
-   ]); ?> <audio controls></audio><br class='mobl'>
+<? pg_body ([ [$UC['home']." home",  "..",  "...take me back hooome"] ]); ?>
+<span style="padding-left: 5em"></span>
+<audio controls></audio><br class='mobl'>
 <? check ('shuf', 'shuf', $shuf); ?> <a id='scoot'>skip</a>
                                      <a id='lyr'>lyric</a> --<br class='mobl'>
 <? foreach ($dir as $i => $s)

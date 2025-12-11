@@ -1,6 +1,5 @@
-doc, piano, practice
-   shorten n redo
-   split out chords,etc
+doc - install - new screenshots
+piano, practice - shorten, split out chords,etc
 
 pic
    header comment on mobile wraps

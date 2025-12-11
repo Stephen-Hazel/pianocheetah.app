@@ -1,13 +1,14 @@
 Let's get this thing installed !
-Pianocheetah uses <a pop
- href="https://flathub.org/apps/app.pianocheetah.pianocheetah">flatpak</a> so
- - go into KDE's Discover or Gnome's Software app
+Got <a pop href="https://shaz.app/linux"
+ >linux</a> installed yet?  (don't be a scaredy cat:)
+
+ - hit KDE's Discover or Gnome's Software
 
  - search: pianocheetah
 
- - hit install button
+ - click install
 
-It'll end up in your start menu's <b>multimedia</b> group.
+ - now it's in your start menu's <b>multimedia</b> menu
 
 The first time you run PianoCheetah, you'll see...
 <img src="img/oh_hi.png">
@@ -22,17 +23,21 @@ Where you pick each midi device's name and type.
 
 I suggest "rockin88" for your piano.
 I just name my drums "drum".
-If a device is only for midi input,
- give it a type of OFF in the output list.
+If a device doesn't make sound, give it a type of OFF in the output list.
 
-After you close MidiConfig,
- you'll finally see PianoCheetah !
+When you close MidiConfig, PianoCheetah will finally pop up.
 
-Time to pick a song - I'd suggest
-
- - _demo / LegendOfZeldaOcarinaOfTime / TempleOfTime
-
+Time to pick a song - I'd suggest...
 <img src="img/time1.png">
+<img src="img/time2.png">
+
+Play that baby!
+Put your right hand thumb on middle C like...
+
+
+Now, this is only a melody.
+ you could play it for real without too much trouble.  But stick with me.
+
 Let's set it up in easy mode:
 
  - pick the Lrn column of the Piano track so it's a green triangle.

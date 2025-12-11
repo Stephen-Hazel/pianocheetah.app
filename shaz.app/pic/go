@@ -16,8 +16,8 @@ function LstDir ($p, $df)
    return $lst;
 }
 
-$Top = "/home/sh/_/web/shaz.app/pic/pic";
-$Idx = "/home/sh/_/web/shaz.app/pic/idx";
+$Top = "/home/sh/_/web/pc/shaz.app/pic/pic";
+$Idx = "/home/sh/_/web/pc/shaz.app/pic/idx";
 
 $x = LstDir ("$Top", 'd');
 sort ($x);

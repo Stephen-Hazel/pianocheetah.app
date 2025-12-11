@@ -2,17 +2,17 @@ what is a pianocheetah ??
 
 Hey man.  You remember guitar hero, right?
 Playing the guitar wasn't real, but it was fun.
-For drums you were truly play drums.
-And the keyboards - the <b>WORST</b> !
+On drums it wasn't a game it was real :)
+And keyboards - <b>super DUUUMB</b> !
 
-I was working on a midi sequencer when it came out, and I changed my ways
+I was working on a vanilla midi app when it came out, and I changed my ways
  real fast to make pianocheetah.
 
- - for keyboards and drums.  (non acoustic ones:)
+ - for keyboards and drums.  (midi ones)
 
- - song notes are converted to 10 max.  all fingers no hand hops.
+ - song notes are converted to 10 max.  just fingers - no hand hopping.
 
- - notes are aligned to your fingers.  in a "normal people" notation.
+ - notes are shown aligned to your fingers in a "normal people" notation.
 
  - you set the tempo and note velocities (feel).  the rest of the tracks
    follow <b>you</b>.
@@ -22,9 +22,10 @@ I was working on a midi sequencer when it came out, and I changed my ways
 <a pop href="https://youtu.be/1Qh76D03y4Q?si=ruuBUk2K3O0F5FKU&t=155"
   >intro video</a>
 
-Here's Clair de Lune.  Think you could play that?  I do.
+Here's Clair de Lune.  Think you could play that?  Bet ya could.
+Or you could play just the right hand - to the right of that red line.
 <img src="img/screen_ez.png">
 
 
-The real song looks like this.
+The real song looks like this - No thanks!!  I'm just a human.
 <img src="img/screen.png">

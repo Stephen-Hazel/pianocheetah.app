@@ -3,7 +3,7 @@ It's all the <b>notes</b> and <b>controls</b> that a piano keyboard can send to
  a sound synthesizer over a wire.
 
 Digital pianos have both a keyboard and a built in synthesizer.
- There are also "controller keyboards" that will use a software synthesizer
+ There are also synth keyboards that will use a software synthesizer
  on your computer.
 
 Anything you can DO on the keyboard, midi can do too.

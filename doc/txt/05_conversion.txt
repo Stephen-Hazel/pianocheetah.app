@@ -1,123 +1,92 @@
-.midi .txt .song .wav .mod and stuff
-PianoCheetah only likes .song files.
+ .midi .txt .song .wav .sfz and .mod
+PianoCheetah mainly uses .song files
+.mid files are too limited and messy
 
-<h3>mid2song</h3>
-If you load a midi file, that thing will be turned into a <b>.song</b> file
- because midi files are <b>way too hard for Steve to deal with !!!</b>
+So i got these converters:
+ - midi => song
 
-You can open a .song file with a text editor.  It's just text.
+ - text => song
 
-A song is actually a <b>directory of stuff</b>.
+ - song => wav
+
+ - sfz => wav (for syn)
+
+ - mod => song & wav
+remember soundtracker mods?  cuz you're old like me? :)
+
+<h3>In the song picker</h3>
+ - you'll see those as toolbar icons.  Hover em to tell em apart :/
+   For example, song2wav will make a.wav -
+   Use ffmpeg to convert it to .mp3
+
+ - Search - use this on your big ole directory of midi files.
+   Results are put into 4_queue/found dir and converted to .song
+
+ - Midi Import - use this if you already have a directory of midi files.
+   Pianocheetah will eat this dir so make a backup.  Be sure the top dir has a
+   <i>good</i> name cuz it'll go into 4_queue.
+
+You can open a .song file in a text editor.  It's just text.
+If you dig writing scripts, you could try quilting songs together.
+
+<h3>A song is actually a directory</h3>
  - the directory is the song name
 
- - in the directory is an <b>a.mid</b> file - that's the source of your song
+ - <b>a.mid</b> file is the source of your .song
 
- - there's also an <b>a.song</b> file - that's what pianocheetah uses
+ - <b>a.song</b> is the main deal that pianocheetah uses
 
- - if you want that song in wav format, you guessed it, <b>a.wav</b>
+ - an <b>a.txt</b> file can also make a.song - look in queue/_demo/_txt for
+   examples
 
- - there can also be an <b>a.txt</b> file instead of the a.mid file
-
- - maybe you have a <b>.pdf</b> of the sheet music (to name a.pdf:)
-
-
-I like to name my songs as <i>group_rating_title</i> where
-
- - <i>group</i> is the band, artist, etc
-
- - <i>rating</i> is <b>a b</b> or <b>c</b>.
-
- - <i>title</i> is the song title
-
- - <b>no spaces cuz linux</b> (use - or _ instead)
-
-<b>a</b>=awesome (like and can listen to it over and over)
-
-<b>b</b>=basic (like but only once, please)
-
-<b>c</b>=crappy (but maybe the beat or chords are good)
-
-Currently there is <b>no known way</b> to get the song back to midi.
- <b>YET !</b>  But there will be some day.
+ - maybe you have an <b>a.pdf</b> of the sheet music to build a.txt with.
+   then turn a.txt => a.song
 
 
-<h3>txt2song</h3>
-PianoCheetah can also convert .txt => .song
+<h3>i'm picky naming songs</h3>
+That may come as no surprise.
+I like  `bg0`group`_`bg1`rating`_`bg2`title`  where
 
-I made it for when I only have sheet music - no midi.
-It's so I can do the least amount of typing to get sheet music <b>IN</b>.
+`bg1`rating` is a b or c:
+ - a=awesome (will listen to it over and over)
 
-I'll document it some day (sorry).
-There are examples in the pianocheetah/4_queue/_demo/txt dir
+ - b=basic (only once, please)
 
-
-<h1>Song List dialog's toolbar</h1>
-In here there are 4 icons that all look the same.
-<i>(sometimes computer programmers get lazy.
- Hover over them and the tooltips will tell them apart.)</i>
-
-The first one is...
-
-<h3>MidiImport</h3>
-The Search toolbar icon is for searching your big ole directory of midi files.
-The results are put into a 4_queue/Found dir and converted to .song
-
-But if you already have a directory of midi files picked out, then this is the
- toolbar icon you want.
-
- - pianocheetah will eat this dir - make sure it has a <i>good</i> dir name
-   cuz that'll be it's name in 4_queue.  (Too keep it organized).
-
- - a dir is made under 4_queue/dirname/midifilename for each
-   midi file.  And it's converted to .song format.
-
- - any non midi files are moved to a dir called _junk
-   (like .txt files or .pdf or whatever else)
-
-
-<h3>Song2Wav</h3>
-Let's say you get a song just right.  And you have a good recording.
-And you wanna put it on your phone.
-Pick a song in the list and click this guy.
-That'll make an a.wav file in that directory.
-You can put that on your phone and your music player can play it.
-
-You may want to convert it to .mp3 - ffmpeg will do that for ya.
-
-Oh!  The song must be completely played with syn - no other synths !
+ - c=crappy (but maybe the beat or chords are good)
 
 
 <h3>Sfz2Syn</h3>
 Syn comes with a pretty ok set of sounds.
-I have to distribute <i>these ones</i> because they're in the public domain.
-<i>(Microsoft's <b>Songsmith</b>  purchased an
- <b>ARIA</b> sound set from <b>Garritan</b>
- and put it into the public domain).</i>
+ from Microsoft's <b>Songsmith</b> which purchased an
+ <b>ARIA</b> sound set from <b>Garritan</b> and put it into the public domain.
 
-But there are some missing general midi "instruments" and some of the sounds
- could use a little improvement.  (The piano - eh - not super perfect).
+But there are some missing general midi sounds and some are lame - LIKE PIANO !!
 
-Pick a dir of .SFZ files with this guy.
-And those sounds will be added to syn's sounds.
+Pick a dir of .SFZ files.
+Those sounds will be added to syn's sounds.
 You can always delete a sound directory in the pianocheetah/device/syn/ dir.
 
- - there's a "soundset" directory on top of
+ - there's a <b>soundset</b> directory on top of
 
- - "individual sound" directory on top of
+ - <b>individual sound</b> directory on top of
 
- - a bunch of .WAV files for the different note ranges / velocity ranges of the
-   sound
+ - a bunch of .WAV files for the different note ranges / velocity ranges
 
 
 <h3>Mod2Song</h3>
-If you know <a pop href="https://shaz.app/me">me</a>
- you know I loved old computers.
-We used to have .mod files also known as "soundtracker" files.
-They contain samples and note info to play a techno-y song of some sort.
-So I wrote a converter so pianocheetah could play them via syn.
+On my beloved Amiga500 we had .mod files (<b>soundtracker</b> files).
+ They contain samples and notes of a techno-y song.
 
-It takes the 8 bit samples in the .mod file and adds them to a syn soundset.
-Then converts the notes to a .song file.
+This thing takes the 8 bit samples and adds them to a syn soundset.
+ Then converts the notes to a .song file.
 
-If you haaaappen to have old .mod files around you may like this thingy.
-For example...  <b>leave the brain</b>  !!!
+Check the 4_queue/_demo/_mod dir.
+For example...  `bg9`leave the brain` !!!
+
+
+<h1>that's all i got</h1>
+My plan is to make some videos goin deeper.
+
+And I doo wanna help ya !!
+
+email sh@shaz.app please (grovel grovel)

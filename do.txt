@@ -1,8 +1,8 @@
-doc - install - new screenshots
-piano, practice - shorten, split out chords,etc
+doc - explain loadin vocals
 
 pic
    header comment on mobile wraps
+   test photo preview
    some kinda post to facebook thingo?
 
 linux
@@ -12,9 +12,7 @@ me
    latest me
 
 song
-   did.php - use sep lists and kill only that list upon completion
-      fully test it
-   keep header fixed during scroll
+   hey google skip
    pop a page by group|etc|title to search for if i got it
 
 sitemap.xml - make a dumb script for it

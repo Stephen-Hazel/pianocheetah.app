@@ -1,71 +1,39 @@
 keyboard specs
-<h3>The qualities of a keyboard</h3>
-We already talked about <b>88 weighted keys</b>
- You want it to feel as close to an acoustic as possible.
- So you can adapt to an acoustic when you come across one.
- (Although acoustics have even a wider range of feel than digitals.)
- This and a hold pedal is about all you need for playing piano.
+When you look for pianos you'll be bombarded with specs.
+ Don't worry about synthesizer stuff - syn will do that.
+ Do worry about good controls:
 
-Here are some synthesizer-y things to consider for later
+<h3>control input</h3>
+<b>keyboard pressure / channel pressure / mono aftertouch</b>
+mean the same thing -
+ leaning on the keys (as a whole) after they're down can modify the sound
+ - `bg4`you want it` !
 
- - keyboard pressure  ( = channel pressure = mono aftertouch )
-   leaning on the keys after they're down can modify the sound
+<img src="img/pbend.png">
+<b>pitchbend and modulation wheels</b>
+pitchbender springs back to the center.  modulation one stays put.
+ pitchbender almost always bends the note up and down kinda like a guitar.
+ Any control can change the sound however you want, though.
+ - `bg4`you want em` !
 
-<img src="img/in_pbnd.png">
- - pitchbend wheel
-   a wheel that always springs back to the center.
-   "bends" the note's frequency down/up a halfstep or so.
-   Gives you <b>sort of</b> a guitar-ish string bending sound.
-
- - modulation wheel
-   stays where you put it (or might spring back to off)
-   usually adds vibrato or tremelo.
-   Changes the sound SOMEhow.
-
-<img src="img/in_pedl.png">
- - 1/4" jack for hold pedal
-   foot controlled note sustain switch
-   You may need to buy this seperate from the keyboard.
-   There are other sorts of pedals, too.  For volume, sound tweaking, etc.
-   Some are on/off, some have a continuous range.
+<img src="img/pedal.png">
+<b>jack for hold pedal (foot controller)</b>
+You usually buy the pedal seperately and it needs to match the
+ jack in the keyboard (annoying!).  Some are on/off,
+ some have a continuous range.
+ - `bg4`you want em` !
 
 <img src="img/in_prog.png">
- - program change buttons
-   let's you pick a number (from 0 to 127, sometimes more, sometimes less)
-   for a sound.  Just the number is sent over midi, not a string
-   that shows in the display.
-   The number picks a sound on the RECEIVING keyboard/softsynth.
+<b>program change buttons</b> - for changing the sound
+ - `bg0`no neeeed`.  (remember?)
 
-<img src="img/in_sldr.png">
- - master volume slider, master balance slider, effects amount sliders,
-   and other sound tweaking sliders, knobs, buttons, pedals, etc, etc.
-   Rather non standard and you don't really know if it'll go across midi
-   or not unless you actually try it out...  or can decipher the manual...
-
-
+<img src="img/slider.png">
+<b>sliders and knobs</b> - (derrr)
+ - `bg4`you want em` !
 
 <h3>sound output <img src="img/speaker.gif"></h3>
+ - <b>polyphony</b> - how many notes it'll play max - ignore it :)
 
-A digital piano generates sound with the built in synthesizer.
-Some keyboards ("controller keyboards") only send out midi so a software
- synthesizer on a computer can make the sound.
-
- - does it have enough GOOD sounds?  Can you tweak them?
-   You want a <b>solid</b> piano sound for when you play live.
-   You want it to have drum sounds and background track sounds, if possible.
-   Go through the sounds and see if you'll want to USE them in a song.
-   Ideally, you can edit the sounds and change them around a bit.
-
- - how many notes can it do max?  (polyphony)
-   Usually, not a big worry.  Unless you're doing band arrangements with
-   a LOT of instruments playing at once (bass, drums, strings, etc)
-   The hold pedal will keep notes going, eating polyphony.
-   Stereo may need 2 voices (units of polyphony).
-   Layered sounds (like Piano+String sounds) may need 3+ voices.
-
- - can it listen to all 16 midi channels?  more than one port?
-   A midi "port" has 16 channels.  So Extra ports mean 32 or 48 channels.
-   Channel 10 is reserved for drums.
-
-
-Ok.  Now how do we hook this thing <b>up</b> ???
+ - A cheap keyboard won't have sounds.  (but syn does).
+   A spendy one <i>`bg2`mayyy`</i> have em.  A good piano sound
+   on your spendy keyboard might be worth having.

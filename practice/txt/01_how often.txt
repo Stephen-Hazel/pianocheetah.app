@@ -1,107 +1,88 @@
-<h3>Step #1</h3>
-Find a (pretty easy) song that you <b>absolutely love</b> !!
+let's get organized
+`bg2`Step #1` - find a song that you <i>truly</i> love :)
+One you could listen to over and over and <i>over</i> again.
+ Because you certainly will.
 
-Your song list is who you are as a piano player.
- If you don't have a song list yet, stop and do that right now.
- It can be just 2 songs long to begin with - easy.
- This list is your overall grand plan.  Nothing else is more important.
+It all starts with "that song is awesome - i <i>neeed</i> to learn it!"
 
-You need songs that <i>feel</i> better to you than all other songs.
- Not just a song that you love, but one you could listen to
- over and over and <b>over</b> again.  Because you certainly will.
+Google "song title" midi  <i>(and hope for the best)</i>
+Load it in, see if there's a fun track to play, and, you know, try it.
+ Repeat.
 
-
-
-<h3>Finding Time</h3>
-Aim for every weekday after dinner or something.
-
-A minimum of 4 days/week, 30 minute sessions might keep you from losing what
- you're working on.  But you want progress.
-
-Carving half an hour out of your day can be <b>tough</b>.  Make sure you get
- exercise so your brain lasts that long into the evening.
-
-So schedule it.
-On bad days, just quit after doing <b>one</b> thing.
- Take breaks every 15 mins to eat a chocolate, walk a minute and think out loud.
-
-Your family is <b>not</b> to even talk to you lest they get <b>THE SNAP</b>...
- Oh, they'll learn what that is.
- Interrupt you and cause your beautiful song to crash to a halt...
-
-<b>AND THEY GET THE SNAP</b> !!
-
-They shall sit nearby and <b>wait</b> in silence (up to 5 minutes) until you
- complete the section of the song you're on.
+Your song list is your overall grand plan.
 
 
+<h3>finding time</h3>
+ Aim for every weekday after dinner or something.
+ Take a little walk just before.  That'll prep your brain.
 
-<h3>What playing piano actually is</h3>
-You're reading rhythms of notes from notation or memory and
- executing body/arm/wrist/finger and foot movements juuust in front of the
- rhythm.
+If it's a bad day, do 5 minutes and see. If it is, just bail -
+ emotions are emotions.  Tomorrow is another day but don't waste today.
 
-So you'll need to efficiently read the notation and plan out how those movements
- will make a smooth, expressive sound.
+Take breaks every 15 mins to eat a chocolate, walk a minute and think out loud.
+ Your family should leave you be lest they endure <b>THE SNAP</b>.
+
+
+<h3>what playing piano actually is</h3>
+ You're reading rhythms of notes and your fingers are making the hit just in
+ front of that rhythm so the sound is dead on.  Your future listeners are
+ counting on <b>no slop</b> - don't let them down.
 
 Piano players use the term "muscle memory" a lot.
- Your brain doesn't plan out individual muscle movements in isolation.
- It plans out whole concerts of muscle movements at a time.
+ But the brain is where the memory is, of course.
+ And it doesn't plan out individual muscle movements in isolation.
+ It plans out a whole concert of muscle movements at a time.
  From brain, to nerve tree, to all muscle sets at once.
 
-You play a song as a (very) long series of reflexes.
+You play a song as a very long series of reflexes.
 As you practice a song, that sequence of reflexes gets built smoother until
- - it's dead on to make the rhythm happen on time
+ - it's dead on to the rhythm - or a slight offset you planned out.
 
- - each individual note volume is perfectly hit to sound as you feel it should.
-
-You're doing exactly what a basketball player does when practicing a layup.
-Well, more.
+ - each individual note volume ("velocity") is perfectly hit to
+   make swells and fades as you feel they should.
 
 
-
-<h3>Learn While You Sleep</h3>
-So while you practice, you're only setting yourself up for getting it right.
+<h3>learn while you sleep</h3>
+ While you practice, you're only setting yourself up.
  You're not actually getting it right until you <b>sleep</b>.
 
-Sleeping is when your brain rifles through the day's long list of movements
+That's when your brain rifles through the day's long list of movements
  and decides which ones to jam together into a single reflex.
 
-Once the reflexes for a song are built (solidly enough), that's when you've
- actually got it right.  Hopefully !!
- So <b>do not</b> play a song less than perfectly.
- Because that'll be the song your brain snapshots.
- And replacing the snapshot takes at least a day of work.
+A practice session that doesn't improve from last time (just playing through)
+ is <b>NO GOOD</b> because you're cementing those imperfections into reflexes.
 
-Thinking about practice is a big part of piano practice.
- Think through where the <b>small tough</b> sections to work on next are.
- Try to <b>feel</b> yourself playing away from piano.
+Once the built reflexes are <i>goood</i>, that's when you're ready.
+ But how can you be sure?  Record yourself.  Do <b>not</b> shy away
+ from this - you can't truly hear a song while you play.
+ Your brain LIES to you :)  Prove it - be ready.
 
-You also need to plan out how aaaall the note volumes in the song should go.
- Piano playing is an art and this is a big part of how you "paint" the song.
+Sleep is the "nightly build" (that's for the programmers in the crowd)
 
 
+<h3>practicing</h3>
+ Finding the tough parts is the goal.  You can't fix em until you find em.
 
-<h3>Don't wear yourself out</h3>
- We'll be doing a <b>lot</b> of finger muscle movements during the song.
- It stands to reason that we want to do that with the <b>least</b> amount of
- force possible so they don't get tired.
+And plan out aaaall the swells and fades - that's the part of the song that's
+ "you".
+
+
+<h3>don't wear yourself out</h3>
+ Pay attention to your tendons and when you're getting tired.
+ We want to use the <b>least</b> amount of force possible.
  You'll see piano players shake out their hands, long exhales, shoulder rolling,
- and so on.
+ stuff like that.
 
 Play as if you were about to start meditating or yoga.
  Try to get all the stress out and gone.
  Play as "floppy" as possible while still grabbing the right keys.
 
 There are a lot of grand theories in this area of piano playing.
-But most of them boil down to
+ But most of them boil down to
  - stay loose and fluid
 
  - as little effort as possible
 
-One good trick:
-let's say you're playing the same chord lots of times.
+Let's say you're playing the same note lots of times.
  After each hit, let your fingers relax and slowly move from pretty open to
  fist-ier.  This relaxes your tendons a teeeny bit after each hit.
-
-Your piano teacher will have more suggestions.

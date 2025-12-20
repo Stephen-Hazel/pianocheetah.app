@@ -1,66 +1,56 @@
 show meee
+Time to pick a song - I'd suggest you doubleclick...
+<img src="img/time1.png">
+To see...
+<img src="img/time2.png">
+Play it :)
+Put your right hand thumb on middle C like this.
+Get comfy with that position - it's the <b>only</b> position.
+
+<img src="img/midc.png">
+Follow the little green dot with your fingers.  Play expressively.
+This song is only a melody.
+ You could play it for real no prob.  But stick with me.
+
+If you want to concentrate on the notes, this toolbar icon
+<img src="img/viewtrack.png">
+will flip between showing you the <i>track controls</i> and showing you
+ fullscreen notes.  A song has a track for each sound.
+<img src="img/track.png">
+ - <b>learn</b> can be clicked between
+- empty to just hear it,
+- triangle to play it,
+- X to mute it (right click)
+
+ - <b>hand</b> can be set to LH and RH.  4RH means middle C's octave.
+   3LH means the octave below.
+   A friend can play a duet with you on the other octaves.
+
+ - <b>track</b> is the part like bass or vocals.
+
+ - click <b>sound</b> to pick another.
+
+ - <b>device/channel</b> picks the device to play it on.
+
 Here's the toolbar
 <img src="img/toolbar.png">
-Hovering over the toolbar icons will pop a tooltip explaining them.
+Hover the icons to see a tooltip.
+ - click the ear/finger/brain icon until it's on finger=play.
+   ear=listen and brain=practice.
 
-<hr>
-Here's the help menu for keyboard shortcuts (regular and piano)
-Hit F1 to show it.  Hit F1 again to hide it.
+
+Here's the help menu for keyboard shortcuts
+Hit F1 to show it.  Hit Esc to hide it.
 <img src="img/help.png">
-<hr>
-When PianoCheetah starts, it'll want you to pick a song.
-<img src="img/songload.png">
-It'll list only the songs you're learning unless All is checked.
-You can sort the good songs to the top with those arrows.
-There's some stats on the song to the right.
+It shows the piano notes and keyboard keys to kick pianocheetah commands.
 
-And you can search your big huge directory of midi files from here.
+press 1 to go back to bar 1, for example.
 
-<hr>
-So let's see what the notes look like !!
-<img src="img/notes.png">
-We have columns of bars.  Not rows of bars like in standard notation.
-So your fingers align with the screen.
-We don't need to see notes we don't play.
+Oh and piano keys need a <i>shift control</i>.
+If you have a pedal or modwheel - move it to pop this:
+<img src="img/keycmd.png">
+and set one of your controls to <b>keyCmd</b>.
 
-See the 3 red dots?  I was holding down those 3 keys, but they're wrooong.
-And the green dot means "Hey!  You didn't get this guy in time."
-The green bar is where you are in time.  It moves.  Not the notes.
-Cuz tracking moving notes while trying to play piano is unnecessary work for you
-r eyes.
+THAT'S ENOUGH about that !!
 
-There are 12 colors because there are 12 notes in an octave.
-You'll see primarily 7 colors as the scale picks out 7 notes per octave.
-With 5 others for, well, for color :)
-
-The left hand note top tilt left and the right hand notes tilt right.
-
-The bar line is thick and the beat lines thinner.
-Notes change height based on density and where they land.
-So for example, bar 14 is pretty short cuz the notes are all only on beat 1.
-
-Those are the main areas.  But clicking in various spots brings up other dialogs
-.
-
-<h3>Clicking</h3>
-- when the cursor changes, that's a place you can click.
-
-Clicking on the keyboard picks whether to show chords or not and which "controls
-" to show.
-Controls are anything midi sends along besides notes.
-For example, pitch bend, modulation wheel, sliders, knobs, buttons, keytar tilt,
- stuff like that.
-
-Clicking on the bottom half of a note will change it's duration.
-
-Clicking the top half will let you change the note (sliding it left/right)
-
-Clicking in the Cues area (yellow strip to left of notes)
-will let you mark the times as verse, chorus, break, or other.
-And also you can put in little symbols or text for reminders.
-The sad face could be for a place that needs work.
-The angry face is for tough sections :)
-<img src="img/markers.png">
-<hr>
-I'm afraid that not everything is to GUI perfection yet :)
-Don't worry - it'll improve !
+My plan is to do further documentation of how this thing works with videos.

@@ -21,45 +21,21 @@ After that, MidiConfig will pop up:
 <img src="img/midicfg.png">
 Where you pick each midi device's name and type.
 
-I suggest "rockin88" for your piano.
-I just name my drums "drum".
-If a device doesn't make sound, give it a type of OFF in the output list.
+ - if your device type isn't there, just pick <b>default</b>
 
-When you close MidiConfig, PianoCheetah will finally pop up.
+ - playing an input device will show it's events on the right (so you know it's
+   ok)
 
-Time to pick a song - I'd suggest...
-<img src="img/time1.png">
-<img src="img/time2.png">
+ - click an output device in the list to hear middle c and a kick on it
 
-Play that baby!
-Put your right hand thumb on middle C like...
+ - scoot the devices so the best ones are at the top
+   (favorite feel / best sound)
 
+ - If a device is just extra or an output device makes no sound, just set the
+   type to <b>OFF</b>
 
-Now, this is only a melody.
- you could play it for real without too much trouble.  But stick with me.
+ - <b>syn</b> is a software synthesizer - pick it's audio device (top right)
 
-Let's set it up in easy mode:
+When you close MidiConfig, PianoCheetah will pop up.
 
- - pick the Lrn column of the Piano track so it's a green triangle.
-   that's the track you'll play.
-
- - pick the Hand column and set it to R for right hand.
-
- - pick the Dev.Chan column so it's syn.  The built in softsynth.
-
- - pick the Sound column so it's Elec1_aria.
-   Electric piano from the free Aria soundbank.
-
- - now click the ez button in the toolbar so it's hilighted.
-
- - now click on the toolbar ear/finger/brain button until it's on
-   finger=hear.  (The others are play and practice)
-
- - ok!  press w to wipe any notes you hit accidentally.
-
- - press 1 to go back to bar 1.
-
- - and you'll be playing that song with your right hand
-   never having to hop - easy !
-
-Ok.  Let's go over what some of these crazy parts of the screen actually are...
+Install complete !

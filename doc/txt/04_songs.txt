@@ -1,39 +1,33 @@
 keeping your songs organized
-Your songs go in that PianoCheetah directory you picked during install.
+Your songs go in that pianocheetah directory you picked during install.
 
-Don't keep every midi file in the universe here!
+Don't keep every midi file in the universe here !!
 Keep those in a different directory to be searched.
 
-PianoCheetah lists it's directory every time it runs.
+pianocheetah should have only songs you DO play (or plan to play soon)
 
-it's got...
-
-
-<h3>1_learning</h3>
-songs you're learning right now (daily)
+There are 4 main directories:
 
 
-<h3>2_repertoire</h3>
-songs you want to keep in your fingers (weekly on rotation)
+ - 1_learning
+   songs you're learning right now (daily-ish)
 
+ - 2_repertoire
+   songs to keep in your fingers (on rotation weekly-ish)
 
-<h3>3_done</h3>
-songs you're done with but want to keep because of the loops and
- fingering you've setup.
-So you can pick them back up another day.
+ - 3_done
+   song you're done with but want to keep because of the loops and
+   notes you've made.  So you can pick them back up.
 
-
-<h3>4_queue</h3>
-staging area for new songs you'll get to as you have time.
-eventually they'll be moved to 1/2/3 above...
-
+ - 4_queue
+   staging area for new songs you'll get to.
 
 <h3>clip</h3>
-parts of tracks that are weaved into songs
-drum clips, bass patterns, arpeggios, chord changes, and styles.
+ - This is a dir of spare parts that are weaved into songs.
+   Drum clips, bass patterns, arpeggios, chord changes, and styles.
 
 
 <h3>device</h3>
  - your midi hardware configuration
 
- - all of syn's samples.  and you can add samples to syn :)
+ - all of syn's samples.  You can always add samples to syn :)

@@ -1,0 +1,252 @@
+cool instrumentals
+you'll see chord symbols above each bar in old school notation.
+
+It picks a set of background notes that last roughly a bar.  Maybe a couple
+ bars, maybe only a beat.
+ These notes make a slowly moving setting for the melody to kind of
+ <i>dance</i> on top of.  So it usually includes some of the melody notes.
+
+
+<h3>ok ok what's a chord ?</h3>
+ a <b>root</b> note, then extra notes (usually 2 more)
+ are played at the same time.
+
+Those extra notes are called the chord <b>quality</b>.
+<pre>
+ Root   Quality   Intervals    Notes
+ C      Major     root +4 +7   C E  G
+ C      Minor     root +3 +7   C Eb G
+</pre>
+ Those intervals are in <i>halfsteps</i>.
+A halfstep is the very next key including the black ones
+ (Black and white are the same - just like people)
+
+D to D# is a halfstep.
+E to F is too.
+C to G is 7 halfsteps.
+Count them out on the piano.
+ Chords can start on any root note.
+ Then you skip the number of halfsteps up to find the rest of the notes.
+
+<b>root</b> - base of it.
+<b>quality</b> - pattern of extra notes.
+<b>bass</b> - lowest note of a chord.  Often but not <i>always</i> same as root.
+ Cuz octaves of these notes can be anywhere.
+
+<i>Any octave</i> is important for chords.
+
+Play em!  C E G.
+Then move the notes to other octaves.
+Sounds <i>very</i> similar if not identical :)
+Pretty cool !
+
+
+<h3>Interval names</h3>
+ There are 12 halfsteps available within an octave.
+C to B#.
+The C just after that B# starts the <i>next</i> octave.
+
+Each halfstep distance is called an <b>interval</b> and has a name.  Sigh.
+<pre>
+ Distance  Name
+ 0         oct   unison - same dang note
+ 1         m2    minor 2nd
+ 2         2     2nd  (sometimes major 2nd)
+ 3         m3    minor 3rd
+ 4         3     3rd
+ 5         4     perfect 4th
+ 6         d5    tritone / augmented 4th
+                         / diminished 5th
+ 7         5     perfect 5th
+ 8         m6    minor 6th / augmented 5th
+ 9         6     6th
+ 10        m7    minor 7th
+ 11        7     7th
+
+ 12        oct   (oops, we started over)
+                 this is the <i>same</i> as 0 !!!
+</pre>
+ I think these names are dumb but they were decided long before me.
+ Composers will use these terms to describe chord qualities.
+
+2 halfsteps is a <b>whole step</b>
+Scales are defined in half and whole steps:
+<pre>
+ Major is   c d e f g a b c
+             w w h w w w h
+
+ Minor is   a b c d e f g a
+             w h w w w h w
+</pre>
+ A melody usually sticks to these 7 most popular notes of the key signature.
+
+Why are white more popular than black?
+That's how they're NOT like people :(
+Older pianos had it right, I think.
+
+But the chords don't care - they won't be limited to those 7.
+
+Melody does care - so your ear can easily find it among the chords :)
+ unless we're dealin' with jazz sigh :/
+
+
+<h3>octaves don't matter</h3>
+ What happens when we go <b>down</b> 7 halfsteps from C?  We get F which is
+ 5 halfsteps <b>up</b> from the C an octave down.
+
+Since octaves don't matter in chords, an interval of a 5th <b>is</b>
+ a 4th with an octave swap.  A "5th up" sounds <i>verrry</i> "4th down".
+ Same note different octave.
+
+Not only that, Also a 4 halfsteps down is similar to 8 halfsteps up.
+
+There are aaactually only 7 intervals if you think about it.
+ +0/oct/unison and +6/dim5/tritone are lonely.
+ But +1..+5 are paired with +11..+7 so 2+5=7
+
+We could define chord qualities with <b>only</b> the intervals of...
+
++0 .. +6
+
+
+<h3>inversion = arrangement</h3>
+ Your ear still hears that chord quality regardless of the octaves.
+ Same chord, but in a different "inversion".
+ Let's take a C chord:
+<pre>
+ C4 E4 G4        root position.
+    E4 G4 C5     1st inversion.
+       G4 C5 E5  2nd inversion.
+ (4 note chords can have a 3rd inversion)
+ </pre>
+ Those are some terms a piano teacher will ask you to memorize.
+ But since each note can be in <b>any</b> octave,
+  there are way more <i>unnamed</i> possibilities.
+
+a true "chord arrangement" is giving the root, quality, and
+ octave layout of each note.  Spelling it out.
+
+Although you <b>can</b> use any octaves, it has to sound good !
+ - notes too close together in the bass octaves
+   sound "muddy" - overlapping each other - unclean
+
+ - keep bass notes spread out by an octave, 4th, or 5th.
+
+Picking new octaves for chords can improve (and wreck) a song dramatically.
+ It's a big part of a song's "arrangement".
+ Picking chords and good inversions for them is an art :)
+
+
+<h3>dominant 7th chord aaand...</h3>
+ some people just <b>can't</b> be satisfied.  3 Notes?  Not enough!
+ So we've got "dominant 7th" chords and other chord qualities...
+
+So a dom7 chord is where you take a major chord and add a minor 7th.
+ So root +4 +7 +10 (or root,3,5,m7 if you're old school).
+
+That +10 interval gives you a <i>yearning</i> sound.
+ You <i>gooootta</i> hear the root again so bad.
+ That's why the dom7 is so good.
+
+But really, a dominant 7th chord is just another chord quality.
+ There's tonz morez !!
+
+
+<h3>mooore chord qualities</h3>
+ jazz is big into naming <b>all</b> of the useful chords.
+
+and some un-useful ones.
+
+Here's a pretty decent list of chords and how to make them.
+But unless you're gonna do jazz (<b>STICK WITH ROCK !!</b>),
+ well, maybe you won't need em all...:)
+
+<pre>
+ Name  HalfstepList  AlternateNames
+       0,4,7         maj - so popular it's
+                     quality is just NOT THERE
+ 5     0,7           1+5 "power chord"
+                     only one with no 3rd
+ m     0,3,7         min -
+ dim   0,3,6         o
+ aug   0,4,8         +
+ sus   0,5,7         sus4
+ sus2  0,2,7         1+2+5
+ 4     0,4,7,5       add
+ 2     0,4,7,2       add2 add9 Maj(9) Madd9
+ 6     0,4,7,9       maj6 M6
+ m2    0,3,7,2       min(9) m(9)
+ m6    0,3,7,9       min6
+ 7     0,4,7,10      dom7
+ M7    0,4,7,11      Maj7
+ m7    0,3,7,10      min7
+ mM7   0,3,7,11      minMaj7
+ dim7  0,3,6, 9
+ m7b5  0,3,6,10      min7b5 hDim7 (slashes)
+ 7sus  0,5,7,10      7sus4
+ 7b5   0,4,6,10
+ 7#5   0,4,8,10      7aug
+ M7#5  0,4,8,11      Maj7aug M7aug augM7
+ 7#11  0,4,7,10,6    7(#11)
+ 7,13  0,4,7,10,9    7(13) 7(add13)
+ 7b9   0,4,7,10,1    7(b9) b9
+ 7b13  0,4,7,10,8    7(b13)
+ 7#9   0,4,7,10,3    7(#9)
+ 9     0,4,7,10,2    7(9)
+ M7#11 0,4,7,11,6    Maj7(#11) M7(#11)
+ M9    0,4,7,11,2    Maj7(9) 7(9) maj9
+ 6,9   0,4,7, 9,2    Maj6(9) 6(9)
+ m9    0,3,7,10,2    min7(9) m7(9)
+ m7,11 0,3,7,10,5    min7(11) m7(11)
+ mM7,9 0,3,7,11,2    minMaj7(9) mM7(9)
+ 9sus  0,5,7,10,2    9sus4
+ 11    0,4,7,10,2,5
+ 13    0,4,7,10,2,5,9
+</pre>
+
+<h3>Altered Chords</h3>
+ chords can also be <i>tweaked</i> by naming em
+ - <b>suspended</b> - taking away notes - "suspended 5th".
+
+ - <b>altered</b> - changing notes - "altered 3rd".
+   If you alter it up a half step, it's <b>augmented</b>.
+   If you alter it down a half step, it's <b>diminished</b>.
+
+ - <b>added</b> - adding notes - "added 6th"
+
+It's a <i>mess</i> I tell ya !!
+
+
+
+<h3>Slash Chords</h3>
+ rock guys just kinda say "who cares what it's called - it sounds GOOD, man".
+ They tack extra notes into the bass via "slash chord" notation.
+
+So C/D means play a C major and add a D note into the bass.
+ Far enough down that the whole thing doesn't sound "muddy".
+
+Is the D the actual chord root or is the C ???
+ rock guys just don't care !
+ If it's a chord that sounds good, it's a good chord !!   Play the damn thing.
+ Leave categorizing it to the jazz dudes...
+
+
+<h3>Chord Progressions</h3>
+ going from one chord to the next is called a "chord progression".
+ If you're a jazz dude you call it "the changes".  And you live for em.
+
+Remember chords are a slowly moving background for a melody
+ line to dance on toppa.
+
+Rock songs keep the chords simple.  I'm looking at you "the blues".
+ The same sequence of chords is reused from song to song.
+ This is great for the listener that doesn't want to have to think.
+ Maybe you had a long day.
+
+Also, keeping the note jumps small when going to the next chord
+ makes it sound way better.
+ This is called "voice leading" and is too big a topic for right here.
+
+<b>ENOUGH !!</b>
+
+Or maybe ya wanna learn a lil 'bout <a href='../midi'>midi?</a>

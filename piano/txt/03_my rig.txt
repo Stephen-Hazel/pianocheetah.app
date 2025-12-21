@@ -1,0 +1,32 @@
+what i ended up with
+Yes I'm single :)  My piano and computer are in my living room.
+
+<img src="img/rig1.png">
+<img src="img/rig2.png">
+
+
+<h3>Components</h3>
+
+<b>Yamaha CP33</b>
+good weighted keys and flawless piano sound.  Now adays maybe a CP5 ?
+<img src="img/y_cp33.png">
+
+
+<b>Yamaha DTX 522 drum kit</b>
+pretttty fun.
+<img src="img/dtx522.jpg">
+
+
+<b>Roland RD-64</b> - chopped (aka "<i>shorty</i>")
+The CP33 feels better but shorty is my fave :)
+<img src="img/shorty.jpg">
+
+
+<b>Roland RPU-3</b> and <b>Audiofront Midi Expression</b> box
+plus the pedal that came with my cp-33 makes 4
+<img src="img/pedal.png">
+
+
+I use the CP33's piano sample, the roland drum synth and syn for sound.
+
+Ok, We're done.  Time to go <a href="../practice">play</a> some music !!

@@ -1,0 +1,43 @@
+lyrics into to your songs
+<b>ok, I lied.</b>  Let's get some lyrics into those song files.
+
+There are tons of lyrics websites out there.
+ I started out with hilighting lyric syllables but that's a huge pain.
+ If lyrics are in the midi file, they'll come into your .song file - no worries.
+ But it's a huge pain to enter syllables in.
+
+So lyrics are entered in per line.  Easy.
+
+Just copy the text from one of those lyric websites into a text editor.
+
+Click the (top left) checkmark icon.
+ Check "bar to clipbd for lyrics".  That'll happen as the song ticks along.
+
+Start the song playing.  Get your cursor to the start of the line.
+ <i>Juuuust</i> before that lyric line starts, hit control-V to paste in the
+ bar #.  And repeat for each line.
+
+You could uncheck "copy bar to clipboard" now but it's no biggie.
+
+Now get pianocheetah to a <i>different</i> song cuz we're gonna edit this .song
+ and pianocheetah has to NOT have it.
+
+Put
+<b>Lyric:</b>
+in the first line of the file.
+ Save the file as lyric.txt in the song's directory for safekeeping.
+
+Get the whole file to the clipboard.
+ Open the .song file - it's just text.
+ Find the
+<b>DrumMap:</b>
+line.  There may already be a Lyric: line - so replace that with your file.
+
+Otherwise paste it just after the DrumMap: lines (Kick, etc, etc)
+
+<img src='img/lyric.png'>
+(pianocheetah will put those _ and / in - nevermind em)
+
+Save.
+
+Reload your song - BAM - it has lyrics now.

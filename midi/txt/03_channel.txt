@@ -9,9 +9,8 @@ Think of a "channel" as a <i>guy playing an instrument</i>.
 But only one instrument at a time.
 
 
-
 <h3>ProgramChanges</h3>
-A channel has an assigned sound.  Defaulting to drums on channel 10 and
+ A channel has an assigned sound.  Defaulting to drums on channel 10 and
  piano on the other 15.
  Assigning a sound to a channel is called a "program change".
 
@@ -24,19 +23,17 @@ Midi defines 128 standard melodic sounds and about 61 standard drum notes.
  when giving the song to somebody else.
 
 
-
 <h3>Midi Maximums</h3>
-You can have as many melodic and percussive instruments as you want.
+ You can have as many melodic and percussive instruments as you want.
  But per device, only 15 melodic instruments can be used at a given instant
  on the melodic channels.  Plus channel 10 of drums sounds.  Drum channels are
- weird with a sound per note as no pitch is needed.  For melodic sounds, one
- sound per channel.
+ weird with a sound per note as no pitch is needed.  You're limited to 128
+ kinds of drums but that's not very limiting :)
 
 If you want more simultaneous sounds, you need more sound module devices.
- Most of the time, you've got a couple of em.
- So you can have 30 (plus 2 drumsets) with 2 devices.
- Or 45 sounds (plus 3 drumsets) at once with 3 devices.
- If that's not plenty, just get more devices.
+ A PC can be tons of "sound modules".
+You can have 30 melodic and 2 drumsets with 2 devices.
+ And 45 melodic plus 3 drumsets with 3 devices.
 
 Plus, you can switch off a channel to another sound at <i>any</i> time.
  (With a "program change" control message.)
@@ -45,7 +42,6 @@ Plus, you can switch off a channel to another sound at <i>any</i> time.
 However, doing program changes can sometimes cause an audible bzzzt.
  And lots of program change events can make it hard to keep your music
  easy to understand.
-
 
 
 <h3>WHY all these wierd numbered limits?</h3>

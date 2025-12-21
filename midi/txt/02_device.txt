@@ -1,28 +1,37 @@
-midi devices - computer controlled piano and drums
-Midi "devices" can...
-
+devices - piano, drums, PC synths
+Midi devices can...
  - send out midi when keys are hit and knobs are tweaked -
-   a "midi controllers"
+   a <b>midi controller</b>
 
- - receive midi and generate a .WAV file or send sound out your speakers -
-   a "sound module"
+ - receive midi and send sound out your speakers (or generate a .WAV file) -
+   a <b>sound module</b>.  A PC is great at this.
 
- - or both
+ - or do <b>both</b> like a digital piano
 
+<h3>midi controller</h3>
+ notes and control messages are sent on a <b>channel</b>.
 
-A midi controller keyboard sends out note and control messages on a "channel".
- Every device has 16 channels max.  Channel 10 is (usually) dedicated to drums.
- Most controllers send notes out on one channel.
- You can tweak most controllers to do a "split" by messing with the
- (usually terrible) menus on the instrument.
+Every device has 16 channels max.
+ Except a PC which hooks to lots of devices (with those 16 channels).
+ Channel 10 is dedicated to drums.
+ Most controllers send notes out on only one channel.
+
+Most controllers can do a "split" by using their (terrible) menus.
  This sends lower notes out one channel and higher notes out another.
- But, typically a keyboard sends notes out on one channel.
 
-A midi sound module receives midi events and creates audio.
- Usually listening on all 16 available channels.
- Some lame older ones don't do all 16.
+But, typically a keyboard sends notes out on one channel.
+
+
+<h3>midi sound module</h3>
+ receives midi events and creates audio.
+ A PC is such a thing.
+ Usually listening on all 16 available channels.  PCs can listen to multiple
+ devices though.
+
+Some lame older sound modules don't do all 16.
  Again, channel 10 is usually a drum channel.
- The other channels (1-9,11-16) are used for melodic sounds.
- All sound modules have a list of available sounds to pick from.  Sometimes
- you can load in new sounds.  Often not.  But the majority let you change the
- sounds with "control change" messages.
+ The other channels are used for melodic sounds.
+
+All sound modules have a list of available sounds to pick from.  Sometimes
+ you can load in new sounds.  Sometimes not.
+ All let you tweak the sounds with "control change" messages.

@@ -1,8 +1,8 @@
-midi drums - a note specialized for sound, not melody
-Remember that midi channel #10 on each device is reserved for drums.
+percussive notes aren't melodic
+Remember midi channel #10 on each device is reserved for drums.
  MIDI assigns each drum a certain note number.
  For example, when you send a note of octave=2/note=C on channel 10,
- the sound module will hit an "Electric Kick Drum".
+ the sound module will hit a BassDrum1Electric (Electric Kick).
 
 Here's some of the notes mapped to Drums on channel 10
  (and the wierd little 4 char codes PianoCheetah uses for em)
@@ -69,15 +69,12 @@ Here's some of the notes mapped to Drums on channel 10
    6D   Latn\SurM  SurdoMute(GS)
    6Eb  Latn\SurO  SurdoOpen(GS)
 </pre>
-
 Some sound modules will let you send a program change on channel 10 to pick
- different "drum sets".
+ different <b>drum sets</b>.
 
 Some sound modules don't need a note off event for drums since they're
- percussive and don't have a true duration (unless muted early, etc.)
+ percussive and don't have a true duration.  (unless muted early)
  Some do need the note off.
 
-The exact drum sound used will likely be different between sound modules...
- Such is the way of midi...  It's tough to standardize sounds...  :(
-
-We'll get into that later in the sound section.
+The exact drum sound used will likely be different between sound modules.
+ It's <i>rough</i> to standardize sounds !!

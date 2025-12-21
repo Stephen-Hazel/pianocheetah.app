@@ -1,15 +1,15 @@
-doc - explain loadin vocals
-
-pic
-   header comment on mobile wraps
-   test photo preview
-   some kinda post to facebook thingo?
+piano - better pic of my piano,drum
 
 linux
    video of simplest install
 
 me
    latest me
+
+pic
+   header comment on mobile wraps
+   test photo preview
+   some kinda post to facebook thingo?
 
 song
    hey google skip

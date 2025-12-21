@@ -8,7 +8,7 @@ Each time you press or release a key on your controller, a little "event" is
  The activity on the midi cable would look something like this:
  <pre>
  Time     Chan  Note  Up/Dn  Velocity
- 0001.1.0    1  4c    Down   100
+ 0001.1.0    1  4c    Down   118
  0001.1.0    1  4e    Down    98
  0001.1.0    1  4g    Down    98
  0001.1.100  1  4c    Up      64
@@ -21,7 +21,7 @@ Each time you press or release a key on your controller, a little "event" is
 
  - channel<br>
    1 means you used channel 1 and the sound for the chord will be whatever
-   sound is assigned to channel 1.  Probably piano.
+   sound is assigned to channel 1.  Probably piano unless you changed it.
 
  - note<br>
    4c means octave 4 note C (middle C)
@@ -40,8 +40,8 @@ Each time you press or release a key on your controller, a little "event" is
 
 Note that in this example, you pressed the C note a little harder than the
  other 2 in the chord.
- Also note that you let up on the G a little earlier than the E.
- Possibly by a few microseconds.  Midi timing is <i>very</i> precise.
+ Also note that you let up on the E a little later than the G.
+ Possibly by a few microseconds.  Midi timing is <i>quite</i> precise.
 
 
 When these note down (note on) and note up (note off) events are stuffed
@@ -54,19 +54,19 @@ Really exact?
  keypresses are turned into 1..127
  Not the possibly more subtle velocities a human is capable of.
  But, well, I'll let you decide about that.
- To me, 1..127 seems pretty dang dead on.
+ To me, 1..127 seems pretty dang ok.
 
 
 <h3>Octaves</h3>
-Synth manufacturers don't agree on how to number octaves.
+ Synth manufacturers don't agree on how to number octaves.
  The <b>standard</b> is that octave 4 is middle C.
  Note that octaves start at 0.  A0 is the usual lowest note on an 88 key
- keyboard.  But there's no G0.
- Just be careful reading octaves in the docs for your synth.
+ keyboard.  So there's no G0.
+ Just be careful reading octaves in your synth reference manuals.
 
 
 <h3>How midi compares to sheet music</h3>
-Midi is an <b>exact</b> performance of a song.
+ Midi is an <b>exact</b> performance of a song.
  Sheet music doesn't get this detailed.
  It doesn't specify how hard to press and release <b>each</b> note.  All times
  are divisions of the beat - no ticks.
@@ -81,8 +81,8 @@ Going from sheet music to midi is pretty straight forward.  But if you play
 Going from midi to sheet music is even worse.
  A note time or duration in midi will likely not convert to standard notation
  well at all.  Sheet music notes have "perfect durations".
- Playing legato or stacatto may not map to standard notation durations.
- At all.
+ Playing legato or stacatto won't map to standard notation durations.
+ At all !
 
 Often, you'll have <i>one</i> midi file of "just the sheet music" to learn.
- And <i>another</i> midi file of your performance with "expressive" notes.
+ And <i>another</i> midi file of your performance with <i>expressive</i> notes.

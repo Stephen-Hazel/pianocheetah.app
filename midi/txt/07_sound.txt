@@ -12,8 +12,8 @@ Each sound module has a sound bank.
  But if you think you can live with only 128 sounds, you need help.
 
 How many sounds?
-My cp-33 has only 16.  But I also use my drumkit's sounds and PianoCheetah's
- SYN.exe (software synthesizer) sounds.
+My cp-33 has only 16.  But I also use my drumkit's sounds and
+ PianoCheetah's Syn (software SYNthesizer) sounds.
 
 But synthesizer sounds differ...
  - Some have only a handful like my cp-33.
@@ -99,7 +99,7 @@ But synthesizer sounds differ...
 
 
 <h3>presets</h3>
-in midi, sounds go by several names:
+ in midi, sounds go by several names:
  presets, patches, instruments, program changes, or just sound.
 
 But the numbered <b>slot</b> for a sound is usually called a preset.

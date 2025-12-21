@@ -43,8 +43,8 @@ Next, play it as <i>relaxed</i> as possible.
 
 
 <h3>feel</h3>
- means careful adjusting of individual note volumes and use of legato.
- (Legato = small variations in tempo)
+ means careful adjusting of individual note volumes and use of rubato.
+ (rubato = small variations in tempo)
 
 Feel is what separates man from computer.  Computers may be able to hit all the
  keys exactly on time.  And some programs can add swell and fade.

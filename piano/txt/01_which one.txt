@@ -1,8 +1,10 @@
 which piano should I get?
+
 Acoustic pianos are magic.  But you gotta hit every key.  <b>No</b> !
 
+
 <h3>your first keyboard</h3>
-I'll recommend any cheap piano with lots of `bg2`controls`:
+ I'll recommend any cheap piano with lots of `bg2`controls`:
  - pitch bender and wheels<br>
    <img src="img/pbend.png">
 
@@ -11,6 +13,11 @@ I'll recommend any cheap piano with lots of `bg2`controls`:
 
  - pedals<br>
    <img src="img/pedal.png">
+
+ - keyboard pressure / channel pressure / mono aftertouch<br>
+   mean the same thing -
+   leaning on the keys (as a whole) after they're down can modify the sound -
+   `bg4`you want it` !
 
 They make sounds bend, pan, thin and thicken.  And other <b>super</b> cool
  things.  No need for buttons.  Piano keys do what buttons do better.
@@ -22,7 +29,7 @@ But those keyboards <i>never</i> come with very many controls.
  So good job gettin' this one first.  Pianos need friends too.
 
 <h3>premo keys</h3>
-let you play softly, smoothly, evenly.
+ let you play softly, smoothly, evenly.
  Playing softly is the `bg2`MOST` important thing !!
  Welll, playing in time is.  But STILL.
  Playing loud is easy.  Playing softly takes practice and skill.

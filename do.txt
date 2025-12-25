@@ -1,3 +1,12 @@
+song
+   hey google skip
+   pop a page by group|etc|title to search for if i got it
+
+pic
+   header comment on mobile wraps
+   test photo preview
+   some kinda post to facebook thingo?
+
 piano - better pic of my piano,drum
 
 linux
@@ -5,14 +14,5 @@ linux
 
 me
    latest me
-
-pic
-   header comment on mobile wraps
-   test photo preview
-   some kinda post to facebook thingo?
-
-song
-   hey google skip
-   pop a page by group|etc|title to search for if i got it
 
 sitemap.xml - make a dumb script for it

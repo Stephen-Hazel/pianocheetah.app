@@ -1,28 +1,24 @@
 flatpak in CLI
-One last thing if you're a command line person.
- If not then whatta ya dooooin?  Go play with linux :)
+If you're not a command line person, then we're aaall done here -
+ have fun with linux :)
 
-I wrote a little script that looks up all your flatpak
- commands and makes a little script so you can rum them from the command line
- with a <b>short</b> command instead of those dumb triplets and hoo haw.
+Else here's a script to look up all your flatpak
+ commands and make lil scripts that you can just run
+ instead of using those dumb triplets and hoo haw.
 
-<a pop href="<?= 'https://raw.githubusercontent.com/Stephen-Hazel/' .
-                 'shazware/refs/heads/main/fp2sh' ?>">here</a>
+<a pop href="fp2sh.html">script here</a>
 
-Unfortunately, this script is in php.  And I'm certainly not going to explain
+This really should be built
+ into flatpak - there's nothin to it.
+ Unfortunately, it's in php and I'm certainly not going to explain
  how to install php - sorry.
 
-But you can also do this manually.  You really only need to do this for the
- commands you neeeed.
+But this is easily done manually, too - you really only need it for the commands
+ you neeed in CLI.
 
-This baby looks up the desktop files of flatpak and
- makes some shell scripts in the current dir (be careful!).
-
-Again, excuse my php :)  I just prefer it to python (sorry).
-
-Run this thing in your home dir's bin and it'll make a shell
- script for every installed flatpak with the <b>short</b>
- command name.
+It looks up the .desktop files of flatpak and
+ makes some scripts in the current dir.
+ So run this thing in your bin dir.
 
 So you can just go:
 
@@ -31,6 +27,3 @@ So you can just go:
  - pianocheetah
 
  - ...you get the idea :/
-
-
-<a pop href="fp2sh">here</a><br>

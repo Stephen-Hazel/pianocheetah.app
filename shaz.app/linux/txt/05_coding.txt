@@ -1,0 +1,93 @@
+my thoughts on coding on linux
+First off, please don't just stick with command line coding.
+ Linux needs GUI apps that don't suck.
+ Let's talk about what you're gettin into.
+ There are things you need to <i>know</i>.
+
+
+<h3>the linux kernel itself</h3>
+ is magnificent and goes from one version to the next
+ with grace and compatibility.
+
+The problem is that everything above it does <i>not</i>.
+
+
+<h3>the biggest problem</h3>
+ is that the EXT4 filesystem is case sensitive.  That's great
+ for the security of servers.  But it falls on application
+ developers to make `bg2`A`file.txt and `bg3`a`file.txt behave the
+ same for the user.  And most developers do <b>not</b>.
+ I'm still workin on that myself sigh.
+
+
+<h3>another problem</h3>
+ is that distros do things in an incompatible manner.  This is
+ called a feature.  It is one.  But it's a `c0`bug` to me.
+ Put those differences <i>above</i> common core desktops.
+ Not <i>into</i> the desktops and shared libraries!  (aka DLLs)
+
+Let's say you have a simple command line c++ app.  You compile it on kubuntu.
+ What happens when you copy the executable to fedora?  Nothing -
+ the app won't run.  The shared libs are different and your app croaks.
+
+Didn't have to be this way.  But it <b>is</b> this way.
+
+
+<h3>flatpak</h3>
+ is the big fancy overblown solution.  Standardizing the shared libs and
+ making APIs to call them properly.
+
+The side effect is that instead of using
+ the distros shared libs, you have a whole separate set of shared libs for your
+ apps - 2 (usually 4+) sets of shared libs.
+ Users whine about this, but it's the cost of using older apps needing
+ older shared libs.  It's the app that's
+ at fault.  <b>And</b> the distro failing to be an operating system.
+
+My prediction is that some day, the distros will finally realize that flatpak
+ will always be above them.  So why not USE those shared libs to build the
+ distro and quit forcing an extra set of shared libs on the user.
+
+Then the need for flatpak will go away because there now <b>WILL</b> be a common
+ set of shared libs for app developers to use.  And older apps will fail until
+ they're recompiled (as they should).
+
+
+<h3>yet another problem</h3>
+ with linux desktops and apps is
+ the `bg0`ass``bg2`u``bg4`me`ption that you're a sys admin who
+ <i>loooves</i> settings.  Tons.  Think android settings times 2,048.
+
+And terrible <i>default</i> settings - I'm lookin at you gimp.
+ Instead of using the most common setting as default, the most archaic is
+ used.  The very first setting in the history of the app
+ (usually a lame one).  Come on.
+
+
+<h3>and another problem</h3>
+ is that linux docs are usually terrible.  why?  because they're usually written
+ by developers.  aaand do you enjoy writing docs?  yeah.  thought so.
+
+
+<h3>don't run away!</h3>
+ unlike windows' problems, linux's problems are actively being fixed.
+ - we used to have xwindows - an ancient display server of unix.
+   Tons of problems.  There's finally a modern replacement - wayland.
+
+ - we have flatpak now - every app used to be compiled for eeevery distro.
+
+ - the distros <i>have</i> made progress in being more compatible.
+
+
+That's an ok summary of the bad stuff.
+ Now let's talk about your path forward - your development path.
+
+
+<h3>to code ya gotta</h3>
+ - decide between the GUI libs - Qt or GTK.
+   I think Qt sucks way less.
+   It'll also run on windows - but don't waste your time with that.
+
+ - let's setup your dev environment.<br>
+   qtcreator from flatpak via Discover - yer done.<br>
+   ok ok no you're not.  But I got you - let's talk about using flatpak :)

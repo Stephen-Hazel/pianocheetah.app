@@ -1,0 +1,44 @@
+Steve's favorite ones
+ Everybody says there are no good applications for linux.  Not true.
+ But a little bit true.
+
+
+<h3>pick applications in Discover</h3>
+ Click "all applications", enter these into search, and click install from
+ flathub
+
+ - google chrome - der
+
+ - disk usage analyzer - shows what's eatin disk
+
+ - filezilla - best ftp client
+
+ - kolourpaint - mspaint
+
+ - OBS Studio - screen recording - I'll splain it later
+
+ - kdenlive - video editor - ditto
+
+
+<h3>KDE bundled apps</h3>
+ - dolphin - <b>truly great</b> - file explorer
+
+ - system monitor - also great - shows your cpu, disk, running tasks, etc
+
+ - kate - overblown - text editor
+
+ - haruna - super great - video player
+
+ - gwenview - lame - picture viewer
+
+ - elisa - dumb - sound file player
+
+ - spectacle - very nice - screen shotter
+
+Unfortunately, KDE and it's bundled apps are very tweakable.  Steve is not a fan
+ of that dumbness.
+
+OK!  All done!  You are freeee of windows update.
+
+If you need it for work, at least now you're getting paid to run it (as you
+ should).

@@ -1,0 +1,59 @@
+kubuntu tweaks
+<b>I LIED</b> - we gotta set settings. Why?  Cuz linux.
+
+
+<h3>in System Settings app</h3>
+ - in Quick Settings tab, pick a theme (the default is good - surprise!)
+
+ - in Mouse & Touchpad / Screen Edges, click the top left little square
+   and set it to off - dumb
+
+ - in Sound, test your sound devices
+
+ - in Display & Monitor, you know the drill - fix em.
+
+ - in Wallpapaer, pick Elarun and set Wallpaper type to Image.
+
+ - in Text & Fonts / Fonts, I always bump everything up by 2 points - I'm old
+
+ - in Screen Locking, set to Never
+
+ - in KDE Wallet, disable it with top checkbox
+
+ - in Power Management, set it all <i>oooooff</i>
+
+ - in Software Update, set Automatically, Weekly, After rebooting
+
+ - in Session / Desktop Session, uncheck ask confirmation, set empty session
+
+ - in Animations, come back later and play with these
+
+
+<h3>toolbar icons <=> favorites menu</h3>
+ - right click the toolbar icons you don't want,
+   add to favorites, right click it again, unpin from task manager
+
+ - right click the favorites icons you want in toolbar icons (task manager),
+   and, you know...
+
+ - right click the toolbar, pick "show panel configuration", set all the things.
+   this thing used to be <b>much</b> worse - it still needs work
+
+ - How do you get ooout?  pick "exit edit mode".  Be careful in here - you can
+   do things that are painful to put back the way they were :/
+
+
+<h3>set FlatHub in Discover app</h3>
+ - click settings tab  (explanations later on)
+
+ - check "FlatPak"
+
+ - add FlatHub
+
+ - then you'll probably need to reboot sigh<br>
+   before you can click Make Default next to flatpak
+
+ - and uncheck Snap
+
+
+Settings maze is UNLOCKED - yay !

@@ -1,33 +1,15 @@
-I will NEEEVER install LINUX !!
-Hey I am right there with ya.  No fun!  But...
+I will NEEEVER install linux !!
+Hey I am right there with ya.  Ain't no fun!  But...
  - apple prices and exclusion are satan
 
- - windows ads and windows update - satan himself !!
+ - windows update and ads - satan himself !!
 
-It ain't expensive, ain't filled with ads.  Updating it won't make ya cry.
- The year of linux was 2024 - did ya know?
+linux ain't expensive, has no ads, and updating won't make ya cry.
+ Did ya know the year of linux was 2024?
 
-<h3>it ain't all peaches n cream n Ras Pi</h3>
- - distros don't get along.  Pickin one is harddd.
-
- - no "DLL" standard so an app compiled for one distro can't run on others.
-
- - case sensitive file system :(  Rename afile.txt to aFile.txt and
-   the app just exits.
-
- - the `bg0`ass``bg2`u``bg4`me`ption is that you're a
-   system administrator who loves settings.  Tons.
-   Think android settings and multiply by 2,048.
-
- - and terrible <i>default</i> settings - I'm lookin at you, umm,
-   every linux app sigh.
-
- - ENOUGH !!
-
-Don't be a scaredy cat.  I got you - and it's good for ya.
+Don't be a scaredy cat - I got you.
 
 <a pop href="https://youtu.be/abjoHkf-OII">video</a>
-
 
 <b><==menu over there if ya already got it.</b>
 
@@ -40,18 +22,19 @@ Don't be a scaredy cat.  I got you - and it's good for ya.
 
 then get a usb stick and - boom - you totally got this.
 
-We're doin kubuntu (the best one).  Play with others later - same drill.
+We're doin kubuntu (the best one).  Others are the exact same deal.
 
 
 <h3>ready ta go?</h3>
  <i>hooold</i> your horses, cowboy.
- Don't tear out your windows until the new ones get here.
+ Don't tear out your windows until the new ones arrive.
 
 I keep windows cuz of work (and my mice are Logitech).
 Or maybe you game.
  - if your PC has 2 disks - that's the best.<br>
-   google the model on your PC's barcode sticker and see if it'll hold
-   a 2nd disk.  Get one that'll fit - usually an M.2 (below)
+   find the model on your PC's barcode sticker, google it,
+   see if it'll hold a 2nd disk,
+   get one that'll fit.  Usually an M.2 (below)
    or a SATA (with a lil plastic connector).
    <img src='img/disk.png'>
 
@@ -60,8 +43,8 @@ Or maybe you game.
 
 
 <h3>Don't kill your files</h3>
- Now is the time to buy a 2 terabyte external disk and format it as EXFAT.
- Not EXT4 or NTFS!  Copy all <i>your</i> files onto it.
+ Now is the time to buy an external disk and format it EXFAT.
+ Not EXT4 or NTFS!  Copy all <i>your</i> files to it.
 
 Backup complete!  and both windows and linux can use it.
 
@@ -75,11 +58,13 @@ Hit <a pop href='https://kubuntu.org/download'>kubuntu.org</a>
 Put it on a usb stick with <a pop href='https://www.balena.io/etcher/'
  >balena etcher</a> and <b>remember</b> your usb stick's name
 
-Your PC may show the key to hold down during boot to get to the BIOS menu.
- Else google the model on your pc's barcode sticker.  Find that key.
+Now you need to know the key to hold down during boot to get to the BIOS menu.
+ It may show during boot.
+ Else google the model on your pc's barcode sticker.
 
-Make sure your keyboard is wired or bluetoothed to a USB stub thing.
- It may need to be in a usb port on the front of your PC.
+Your keyboard and mouse should be either wired or bluetoothed to a USB stub so
+ they're available during boot.
+ It may also need to be in a usb port on the front of your PC.
 
 
 <h3>skip me if you gotta 2nd PC</h3>
@@ -88,27 +73,24 @@ Make sure your keyboard is wired or bluetoothed to a USB stub thing.
 
  - find the 2nd disk connector and put in the new linux disk.
 
- - disconnect the windows disk for now.<br>
+ - disconnect the windows disk.<br>
    else the linux installer gives you options you do <b>NOT</b> want.
 
 Trying to make windows and linux share a disk will be a good test
- of your backup.  NO!
+ of your backup.  NOOO!
 
 
 <h3>BIOS menu</h3>
- plug in your USB stick.  It's time.
+ plug in your USB stick - it's time.
 
-hold that key during boot to get into the BIOS menu thingy
+hold that key during boot to get into the BIOS menu
  (different on each PC but not too tricky)
- - turn off fast boot
+ - turn off fast boot and secure boot
 
- - turn off secure boot
+ - pick boot order - so USB boots before your disks<br>
+   scoot your usb stick to the top of the list
 
- - pick boot order - so USB boots before your disk(s)<br>
-   scoot your usb stick to the top
-
- - pay <b>VERY CLOSE ATTENTION</b> to the names of your disks if there's more
-   than one
+ - <i>remember</i> the disk names
 
  - save and exit
 
@@ -122,28 +104,28 @@ Which reboots and runs your USB stick - here we gooo !!
 It'll ask for
  - which language and variant, your wifi and password, yada yada yada...
 
- - you want "3rd party drivers" and any extra apps - that's the whole
-   point of ubuntu.
+ - you want "3rd party drivers" and any extra apps
 
  - when you get to which disk to install on...<br>
-   <b>ALWAYS</b> pick one disk to completely replace.<br>
-   Don't make a new partition or add onto a disk !!
+   <b>always</b> pick one disk to completely replace.<br>
+   Don't make a new partition or add onto a disk.
 
- - answer <i>yessss</i> to <b>DO YOU REALLY WANNA KILL ALLA DATA ??</b>
+ - it'll ask you if you're sure about this - Duh linux..
 
- - it'll ask for a username and password:<br>
-   your 2 initials and "letstevein"
+ - it'll ask for a username and password: your 2 initials and <i>letstevein</i>
 
- - you must name your PC "penguin" !!
+ - name your PC <b>pengo</b> else the install fails (naw)
 
  - it'll ask if you wanna type your password at logon (nooo!)
 
- - ok.  wait for a bit.  then it'll ask to reboot.<br>
+ - another wait but less than that dang .iso.<br>
+   then it'll ask to reboot.<br>
    it reminds you to take out the usb stick - no worries.
 
 Ya did it !!  Told ya.
 
 Give yourself a pat on the back and let's put linux to use.
+
 
 <h3>oh and put the windows disk back in</h3>
  You know how now.
@@ -155,7 +137,7 @@ Then hold down that bios key on boot.
 
 That's the best way to pick between using linux and windows.
  There's grub - but I hate it so much I can only stand to hit enter.
+ I prefer to use the BIOS menu to pick which one aaalways comes up.
 
-I prefer to use the BIOS menu to pick which one aaalways comes up.
 
-DONE !!  Now lemme help you get through the maze of settings.
+ALL DOOONE !!

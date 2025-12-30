@@ -1,29 +1,38 @@
 flatpak in CLI
-If you're not a command line person, then we're aaall done here -
- have fun with linux :)
+If you're not a command line person, thanks for readin - have fun :)
 
-Else here's a script to look up all your flatpak
- commands and make lil scripts that you can just run
- instead of using those dumb triplets and hoo haw.
+Else this script turns your flatpaks into <b>short</b> commands.
+ Instead of typing those dumb triplets and hoo haw.
 
-<a pop href="fp2sh.html">script here</a>
+<a pop href="fp2sh.html">script</a>
 
-This really should be built
- into flatpak - there's nothin to it.
- Unfortunately, it's in php and I'm certainly not going to explain
- how to install php - sorry.
+It's in php.  <b>Not</b> gonna explain installin php - sorry.
+ But it's easily done manually.  Lemme explain...
 
-But this is easily done manually, too - you really only need it for the commands
- you neeed in CLI.
+It just goes through all your flatpak .desktop files and pulls out <b>exec=</b>
+ so run this: <pre>
+ grep -i --no-filename 'exec='
+      /var/lib/flatpak/exports/share/applications/*.desktop</pre>
+There's all your flatpak commands right there!
 
-It looks up the .desktop files of flatpak and
- makes some scripts in the current dir.
- So run this thing in your bin dir.
+All ya do is make a tiny lil bash script with a
+ <i>proper</i> name to kick it.  For example this line of grep output: <pre>
+ Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64
+    --command=/app/bin/chrome --file-forwarding com.google.Chrome @@u %U @@
+ </pre>
+ goes into a script named <b>chrome</b> with the Exec= chopped off.
 
-So you can just go:
+That should probably be built into flatpak, don't ya think ??
+ Not too hard, guyz...
+
+Now you can just go:
 
  - chrome
 
- - pianocheetah
+ - baobab
 
- - ...you get the idea :/
+ - ned file.txt
+
+ - pcheetah a.song
+
+ - etc

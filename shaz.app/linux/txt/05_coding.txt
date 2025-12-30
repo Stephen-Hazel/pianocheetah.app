@@ -1,8 +1,7 @@
 my thoughts on coding on linux
 First off, please don't just stick with command line coding.
  Linux needs GUI apps that don't suck.
- Let's talk about what you're gettin into.
- There are things you need to <i>know</i>.
+ Let's talk about what you're gettin into...
 
 
 <h3>the linux kernel itself</h3>

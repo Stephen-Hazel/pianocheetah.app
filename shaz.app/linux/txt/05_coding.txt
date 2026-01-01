@@ -15,47 +15,41 @@ The problem is that everything above it does <i>not</i>.
  is that the EXT4 filesystem is case sensitive.  That's great
  for the security of servers.  But it falls on application
  developers to make `bg2`A`file.txt and `bg3`a`file.txt behave the
- same for the user.  And most developers do <b>not</b>.
- I'm still workin on that myself sigh.
+ same for the user.  Most developers <b>don't</b>.
+ Still workin on that myself sigh.
 
 
 <h3>another problem</h3>
  is that distros do things in an incompatible manner.  This is
- called a feature.  It is one.  But it's a `c0`bug` to me.
- Put those differences <i>above</i> common core desktops.
- Not <i>into</i> the desktops and shared libraries!  (aka DLLs)
+ called a feature.  It is one.  But it's also a `bg0`bug`.
+ Put those differences <i>above</i> common core desktops and shared libs (DLLs).
+ Not <i>into</i> em.
 
-Let's say you have a simple command line c++ app.  You compile it on kubuntu.
- What happens when you copy the executable to fedora?  Nothing -
- the app won't run.  The shared libs are different and your app croaks.
-
-Didn't have to be this way.  But it <b>is</b> this way.
+Let's say ya gotta simple c++ app.  You compile it on kubuntu.
+ Then ya copy the executable to fedora.  What happens?  Nothing.
+ the app won't run.  The shared libs are different so your app croaks.
 
 
 <h3>flatpak</h3>
- is the big fancy overblown solution.  Standardizing the shared libs and
- making APIs to call them properly.
+ is the fancy overblown solution.  Standardizing the shared libs and
+ having APIs to call them properly.  No more recompile for <i>every</i> distro.
 
-The side effect is that instead of using
- the distros shared libs, you have a whole separate set of shared libs for your
- apps - 2 (usually 4+) sets of shared libs.
- Users whine about this, but it's the cost of using older apps needing
- older shared libs.  It's the app that's
- at fault.  <b>And</b> the distro failing to be an operating system.
+But instead of using the distro's shared libs,
+ you have a whole extra set of em for your app.
+ Users whine about <i>bloat</i>.
+ Older apps will require even more extra sets.
+ These extra sets are <b>actually</b> the distro's set and those of old apps.
+ Not the <b>one</b> set that can be shared by all modern flatpak apps.
+ (ok 2 - cuz GTK and Qt)
 
-My prediction is that some day, the distros will finally realize that flatpak
- will always be above them.  So why not USE those shared libs to build the
- distro and quit forcing an extra set of shared libs on the user.
-
-Then the need for flatpak will go away because there now <b>WILL</b> be a common
- set of shared libs for app developers to use.  And older apps will fail until
- they're recompiled (as they should).
+I predict that distros will realize flatpak will always be there.
+ Build the distro with it!  Old apps should fail until they're recompiled.
 
 
 <h3>yet another problem</h3>
  with linux desktops and apps is
  the `bg0`ass``bg2`u``bg4`me`ption that you're a sys admin who
- <i>loooves</i> settings.  Tons.  Think android settings times 2,048.
+ <i>loooves</i> settings.  Tons.
 
 And terrible <i>default</i> settings - I'm lookin at you gimp.
  Instead of using the most common setting as default, the most archaic is
@@ -64,7 +58,7 @@ And terrible <i>default</i> settings - I'm lookin at you gimp.
 
 
 <h3>and another problem</h3>
- is that linux docs are usually terrible.  why?  because they're usually written
+ is that linux docs are terrible.  why?  because they're written
  by developers.  aaand do you enjoy writing docs?  yeah.  thought so.
 
 

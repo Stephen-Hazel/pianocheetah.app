@@ -83,8 +83,8 @@ Trying to make windows and linux share a disk will be a good test
 <h3>BIOS menu</h3>
  plug in your USB stick - it's time.
 
-hold that key during boot to get into the BIOS menu
- (different on each PC but not too tricky)
+hold that key during boot to get into the BIOS menu.
+ The menu is different on each PC but not too tricky.
  - turn off fast boot and secure boot
 
  - pick boot order - so USB boots before your disks<br>

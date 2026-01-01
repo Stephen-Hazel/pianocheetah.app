@@ -22,38 +22,36 @@ End users actually install from
 
 
 <h3>flatpak's main deal</h3>
- is that when you build your source,
- it will link to a standard set of shared libs provided
+ is that your app links to a standard set of shared libs provided
  by a <b>flatpak runtime</b> -
  a <i>standardized, versioned</i> set of shared libs.
- Your app runs in a weird environment where paths exist that
- aren't really there :)
+ You'll pick kde/gnome (Qt/GTK) and which version.
 
 
 <h3>your app triplet</h3>
- app names need to not conflict.  Flatpak does this in an annoying reverse URL
- kinda way.  So if my website is https://shaz.app and my app is pianocheetah,
- my app must be named
+ app names must not conflict.  Via an annoying reverse URL setup.
+ If my website is https://shaz.app and my app is pianocheetah, it must be named
  - app.shaz.pianocheetah
 
 Not great.  But, eh, not terrible.
 
 
-<h3>special directories</h3>
+<h3>permissions</h3>
  Flatpak executables run in a pseudo-sandbox.
  The idea is to protect the user from malicious apps.
 
-A developer will think
- this is not necessary - you're running the app on your PC.  If you don't trust
- it, why are you running it??
+Seems unnecessary to me.  You're running it on your PC.  If you don't trust
+ it, why is it there??
 
-In practice, most of that silliness is circumvented in order for
- your app to do all the things it actually <i>does</i> need to do.
+In the end, your app must specify lots of permissions that every app needs.
+ Yes my app uses graphics.  Why?  Because it's an app.  Come on flatpak.
 
-But one nice thing is that your app has a "virtual" directory all to itself.
+
+<h3>special directories</h3>
+ One nice thing is that your app has a "virtual" directory all to itself.
  An install and config directory - all your's :)
 
-When your flatpak app runs, the binaries are at <i>virtual</i> directory
+When your app runs, the binaries are at <i>virtual</i> directory
 
  - /app/bin/<i>whatev_app</i>
 
@@ -102,47 +100,27 @@ And when you write config files,
 
 
 <h3>Let's git started</h3>
- First thing is setup a <b>manifest</b>.
+ First thing is your <b>manifest</b>.  A .json file that specs:
+ - app triplet
 
-I do mine in 2 steps since pianocheetah is closed source:
+ - which flatpak runtime (gtk/qt and which version)
 
- - build manifest
+ - your app permissions can't just be "default" sigh.
 
- - distribute manifest for flathub
+Here's <a pop href=''>mine</a>.  I use c++ and qt6.
 
-<h3>build manifest</h3>
-Ok, this is my build manifest - not your's.  I use qt6 and c++.
-<a pop href="_manif">here</a>
-
-The first part lists your app id - a "triplet" in "reverse dns format".
-Since my website here is pianocheetah.com every flatpak I make has this prefix.
-Not super thrilled about that, but that's how it has to be.
-And you can't publish a flatpak if the triplet prefix isn't a real website.
-
-Next, you see pianocheetah depends on the kde runtime version 6.6.
-(think kde=qt and gnome=gtk)  6.6 is currently the latest version of Qt.
-If I were to use the latest version of Qt that apt gives me,
-that'd likely not be nearly as up to date.
-
-Next, you see the finish-args - those are my app's "permissions".
-If I use filesystem=home instead of host, flatpak turns
-
+ My permissions include --filesystem=host.
+ If I used filesystem=home, flatpak turns
  - paths in your home dir into some pretty terrible softlinks
    that I don't want to deal with or have my users see.
 
-You also see I use wayland, and fallback to x11 if unavailable.
-And you have to use socket=pulseaudio if you want access to alsa.
-
-From then on is just using cmake (the version Qt wants) to compile
- each of my executables in Release mode.
-
-I have a common set of .cpp and .h files in
+You'll see most of those permissions just spec what <i>eeevery</i> app will
+ need.  I have a common set of .cpp and .h files in
  a dir called "stv" that my code uses.
+ Qt uses a cmake-ninja kinda make.  It uses your CMakeList.txt to build each
+ executable.
 
-You'll likely want to learn qtcreator so it'll setup your dang
-CMakeList.txt files for you.
-
-Also note that the first "module" is actually my .desktop and icon files.
+The first "module" is my .desktop and icon files.
  and an "appdata" file about my program with screenshots, etc.
  The flatpak docs explain that gory stuff.
 

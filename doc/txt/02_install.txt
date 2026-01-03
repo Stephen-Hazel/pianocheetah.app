@@ -1,6 +1,6 @@
 Let's get this thing installed !
 Got <a pop href="https://shaz.app/linux"
- >linux</a> installed yet?  (don't be a scaredy cat:)
+ >linux</a> installed yet?  Don't be a scaredy cat :)
 
  - hit KDE's Discover or Gnome's Software
 

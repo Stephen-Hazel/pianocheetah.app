@@ -52,7 +52,7 @@ Backup complete!  and both windows and linux can use it.
 
 
 <h3>Setup USB stick</h3>
-Hit <a pop href='https://kubuntu.org/download'>kubuntu.org</a>
+ Hit <a pop href='https://kubuntu.org/download'>kubuntu.org</a>
  and download it's .iso file.
 
 Put it on a usb stick with <a pop href='https://www.balena.io/etcher/'

@@ -10,24 +10,36 @@ require_once ("../_inc/app.php");
    if (($fr = arg ('sc')) != '')       ## $to needs from dir chopped off
       {$to = substr ($fr, 3);   rename ("song/$fr", "song/_z/$to");}
 
-## build dir[] from song dirs minus _z,__misc
+## build dir[] from song dirs minus _z
    $dir = [];
    foreach (LstDir ("song", 'd') as $d)  if ($d != '_z')  $dir[] = $d;
    sort ($dir);
 
 ## build pl[] given picked dirs minus did[] (if shuffle)
-   $pl = [];
+   $pld = [];
    $did = ($shuf == 'N') ? [] : explode ("\n", Get ("did.txt"));
    foreach ($dir as $i => $d)  if (in_array ($i, $pick)) {
+      $pld[$i] = [];
       $mp3 = LstDir ("song/$d", 'f');
-      foreach ($mp3 as $fn)  if (! in_array ("$d/$fn", $did))  $pl[] = "$d/$fn";
+      foreach ($mp3 as $fn)  if (! in_array ("$d/$fn", $did))
+         $pld[$i][] = "$d/$fn";
+      if (($shuf == 'Y') && (count ($pld[$i]) == 0)) {
+         unlink ("did.txt");           ## time ta kill did.txt
+         header ("Location: ?shuf=".$shuf."&pick=".arg ('pick'));
+      }
    }
-   if (($shuf == 'Y') && (count ($pick) > 0) && (count ($pl) == 0)) {
-      unlink ("did.txt");              ## time ta kill did.txt
-      header ("Location: ?shuf=".$shuf."&pick=".arg ('pick'));
+   $pl = [];
+   if ($shuf == 'Y') {
+      foreach ($dir as $i => $d)  shuffle ($pld [$i]);
+      for ($i = 0;;  $i++) {
+         $some = 0;
+         foreach ($dir as $j => $d)
+            if (aHas ($pld [$j], $i))  {$some = 1;   $pl[] = $pld [$j][$i];}
+         if (! $some)  break;
+      }
    }
-   if ($shuf == 'Y')  shuffle ($pl);
    else {                              ## ^chop rows if shuffle
+      foreach ($dir as $i => $d)  foreach ($pld as $j => $f)  $pl[] = $f;
       usort ($pl, function ($a, $b) {  ## skip dir name in sort
          $a1 = substr ($a, strpos ($a, '/')+1);
          $b1 = substr ($b, strpos ($b, '/')+1);

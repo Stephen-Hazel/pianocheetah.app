@@ -15,24 +15,24 @@ The problem is that everything above it does <i>not</i>.
  is that the EXT4 filesystem is case sensitive.  That's great
  for the security of servers.  But it falls on application
  developers to make `bg2`A`file.txt and `bg3`a`file.txt behave the
- same for the user.  Most developers <b>don't</b>.
+ same for the user.  Most of em <b>don't</b>.
  Still workin on that myself sigh.
 
 
 <h3>another problem</h3>
- is that distros do things in an incompatible manner.  This is
- called a feature.  It is one.  But it's also a `bg0`bug`.
- Put those differences <i>above</i> common core desktops and shared libs (DLLs).
+ is that distros do paths, packages, and shared libs (DLLs) differently.
+ This is called a feature.  It is one.  But it's also a `bg0`bug`.
+ Put those differences <i>above</i> common core desktops and shared libs.
  Not <i>into</i> em.
 
 Let's say ya gotta simple c++ app.  You compile it on kubuntu.
  Then ya copy the executable to fedora.  What happens?  Nothing.
- the app won't run.  The shared libs are different so your app croaks.
+ the app won't run with fedora's shared libs.  Your app croaks.
 
 
 <h3>flatpak</h3>
  is the fancy overblown solution.  Standardizing the shared libs and
- having APIs to call them properly.  No more recompile for <i>every</i> distro.
+ having APIs to call them properly.  No recompile for <i>every</i> distro.
 
 But instead of using the distro's shared libs,
  you have a whole extra set of em for your app.
@@ -64,8 +64,8 @@ And terrible <i>default</i> settings - I'm lookin at you gimp.
 
 <h3>don't run away!</h3>
  unlike windows' problems, linux's problems are actively being fixed.
- - we used to have xwindows - an ancient display server of unix.
-   Tons of problems.  There's finally a modern replacement - wayland.
+ - we used to have xwindows - a display server of the unixes of the 1970s!
+   Tons of problems.  But wayland has finally replaced it.
 
  - we have flatpak now - every app used to be compiled for eeevery distro.
 
@@ -77,10 +77,11 @@ That's an ok summary of the bad stuff.
 
 
 <h3>to code ya gotta</h3>
- - decide between the GUI libs - Qt or GTK.
+ - decide between the 2 GUI libs - Qt or GTK.
    I think Qt sucks way less.
    It'll also run on windows - but don't waste your time with that.
 
  - let's setup your dev environment.<br>
-   qtcreator from flatpak via Discover - yer done.<br>
-   ok ok no you're not.  But I got you - let's talk about using flatpak :)
+   install qtcreator - done.
+
+ok ok no you're not.

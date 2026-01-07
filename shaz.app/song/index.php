@@ -115,6 +115,7 @@ function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 function next (newtk = -1)
 { let sh = shuf ();
+dbg("next");
    Au.pause ();                        // shush
    $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
    if (newtk == Tk)  return;           // shortcut to pause
@@ -151,6 +152,35 @@ function play (go = 'y')
    if (go == 'y') {
       Au.play ();
       $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
+      if ("mediaSession" in navigator) {
+dbg("here");
+         navigator.mediaSession.metadata = new MediaMetadata({
+            title: Nm [Tk],
+            artist: "artist",
+            album: "album",
+            artwork: [
+               {
+                  src: "https://shaz.app/img/logo.png",
+                  sizes: "350x350",
+                  type: "image/png",
+               }
+            ]
+         });
+dbg("here2");
+/*       navigator.mediaSession.setActionHandler ("play",  () => { });
+         navigator.mediaSession.setActionHandler ("pause", () => { });
+         navigator.mediaSession.setActionHandler ("stop", () => { });
+         navigator.mediaSession.setActionHandler ("seekbackward", () => { });
+         navigator.mediaSession.setActionHandler ("seekforward", () => { });
+         navigator.mediaSession.setActionHandler ("seekto", () => { });
+         navigator.mediaSession.setActionHandler ("previoustrack", () => { });
+         navigator.mediaSession.setActionHandler ("skipad", () => { });
+         navigator.mediaSession.setActionHandler ("hangup", () => { });
+*/
+         navigator.mediaSession.setActionHandler ("nexttrack", () => {
+            next ();
+         });
+      }
    }
 }
 

@@ -132,22 +132,25 @@ My script to actually run the build (please excuse my php)
 <h3>distribute on flathub</h3>
  You'll need a 2nd manifest for flathub.
  (unless you wanna always push your code and have your build script pull it).
- Mine is <a pop href='fpak2.html'>here</a>
 
-Note that it pulls from your public git repo with a certain commit hash.
- To submit your app to flathub, docs are <a pop href=
+Mine is <a pop href='fpak2.html'>here</a>
+ Note that it pulls from your public git repo with a certain commit hash so
+ it stays frozen.
+
+To submit your app to flathub, docs are <a pop href=
  'https://docs.flathub.org/docs/for-app-authors/submission'>here</a>.
+ Argh it's changed a little again.  But you only "submit" once.
+ You're given a repo to make a new branch on and add <b>only</b> your
+ manifest.  Then do a pull request on that repo and you're off to the races.
 
-Argh it's changed a little again.  But generally you only "submit" once.
- You're given a repo to make a new branch on and add ONLY your self contained
- manifest.  Then I make a pull request on that repo and you're off to the races.
- Reviewers will tell you your app does not meet spec.  Work with them and be
- nice - I don't think they get paid.
- Upon the flathub guys doin' their thing, it shows up on flathub :)
- And it eventually shows up in KDE discover and Gnome software, too !!
+Reviewers will tell you your app does not meet spec.  Work with them and <b>be
+ nice</b> - I don't think they get paid.
+ Once those guys do their thing, it shows up on flathub :)
+ And eventually in KDE discover and Gnome software, too !!
 
 Ok!  That was some <i>work</i>
  but now your app is <b>on</b> linux nice and proper.
 
-Some day I'll write up a thingy on Qt.  But that day isn't today.
- Go write some code :)
+Some day I'll write up a thingy on Qt.  But not today.
+
+Go write some code :)

@@ -1,16 +1,13 @@
-song
-   hey google skip
-   pop a page by group|etc|title to search for if i got it
-
 pic
    header comment on mobile wraps
-   test photo preview
-   some kinda post to facebook thingo?
+   make a dir preview w random pics
+   make a post to facebook thingo?
+
+song
+   can i   hey google skip
+   pop a page by group|etc|title to search for if i got it
 
 piano - better pic of my piano,drum
-
-linux
-   video of simplest install
 
 me
    latest me

@@ -95,66 +95,59 @@ And when you write config files, them <i>must</i> be like
 
  - which flatpak runtime (kde/gnome and which version)
 
- - your app permissions can't just be "default" sigh.
+ - your app permissions
+
+ - how to find and build every executable
 
 Here's <a pop href='fpak.html'>mine</a>.  I use c++ and qt6.
- My app is currently named app.pianocheetah.pianocheetah :/  Till I rename it.
+ My app is still named app.pianocheetah.pianocheetah :/  I plan to rename it
+ app.shaz.pianocheetah pretty soon.
 
 
 <h3>permissions</h3>
- are in finish-args.  They'll be the same for every app.
+ are in finish-args.  They'll be nearly the same for every app.
  - except no need for --socket=pulseaudio if you're not using audio
 
  - filesystem=home is preferred by flathub admins.  But in practice this will
-   turn paths in your home dir into some pretty terrible softlinks
-   that I don't want to deal with or have my users see.  My preference is
-   filesystem=host (gimme every file).
+   turn paths in your home dir into ugly softlinks that I hate.
+   Don't confuse my users.  My preference is filesystem=host.
 
 
 <h3>building</h3>
- I have a common set of include files in a dir called "stv".
- Qt uses a cmake-ninja which uses CMakeList.txt - your make file.
+ You give this to flatpak-builder (which you sudo apt install).
+ I've put a <a pop href='b.html'>script</a> on top of it.
+ Please excuse my php.
 
-The first "module" is my .desktop and icon files.
- and an "appdata" file about my program with screenshots, etc.
- The flatpak docs explain that gory stuff.
+I have a common set of include files in a "stv" dir.
+ Qt uses cmake-ninja which names your make file CMakeList.txt
 
-That's all the explanation you get - sorry.
-
-The main docs are good, but skimpy.
+My last module is the share dir within _fpak dir.
+ With .desktop files, icon files, and a metainfo/<i>app-triplet</i>.metainfo.xml
+ file about my program with screenshots, etc.
 
 My script to actually run the build (please excuse my php)
-is <a pop href="b">here</a>
+ is <a pop href="b">here</a>
 
-<h3>build dirs</h3>
-Ok that build script looked a little ugly (i mean, it is php).
-Let's talk about the flatpak build and release process.
 
- - build dir - this is where flatpak-builder
-   (which you'll need to apt install) writes your executables, etc.
+<h3>distribute on flathub</h3>
+ You'll need a 2nd manifest for flathub.
+ (unless you wanna always push your code and have your build script pull it).
+ Mine is <a pop href='fpak2.html'>here</a>
 
- - repo dir - this is a dir you can distribute/install your app from.
-   It might be an actual git repo.  Not sure :/
+Note that it pulls from your public git repo with a certain commit hash.
+ To submit your app to flathub, docs are <a pop href=
+ 'https://docs.flathub.org/docs/for-app-authors/submission'>here</a>.
 
- - .flatpak-builder - a cache dir holding previous builds -
-   I usually just wipe it.
+Argh it's changed a little again.  But generally you only "submit" once.
+ You're given a repo to make a new branch on and add ONLY your self contained
+ manifest.  Then I make a pull request on that repo and you're off to the races.
+ Reviewers will tell you your app does not meet spec.  Work with them and be
+ nice - I don't think they get paid.
+ Upon the flathub guys doin' their thing, it shows up on flathub :)
+ And it eventually shows up in KDE discover and Gnome software, too !!
 
-<h3>distribute manifest</h3>
-Here's my distribute manifest - much simpler :)
-<a pop href="app.pianocheetah.pianocheetah.json">here</a>.
+Ok!  That was some <i>work</i>
+ but now your app is <b>on</b> linux nice and proper.
 
-And my build script can be given an o argument to stop
- upon making the build diretory for flathub.
- Then I make a pull request on flathub's repo and
- add my build dir and the release manifest.
-
-All the release manifest does is take the binaries and
- desktop/icon/appdata and put em in a flatpak repo.
- Then upon the flathub guys doin' their thing, it shows up on flathub :)
-
-Ok!
-
-One last problem flatpak has is
- - how do I run flatpaks from the command line ???
-
-I got your answer...
+Some day I'll write up a thingy on Qt.  But that day isn't today.
+ Go write some code :)

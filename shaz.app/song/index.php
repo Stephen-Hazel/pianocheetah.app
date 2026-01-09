@@ -29,7 +29,7 @@ require_once ("../_inc/app.php");
       }
    }
    $pl = [];
-   if ($shuf == 'Y') {
+   if ($shuf == 'Y') {                 ## shuffle and interleave dirs
       foreach ($dirp as $i => $d)  shuffle ($pld [$i]);
       for ($i = 0;;  $i++) {
          $got = 0;
@@ -38,7 +38,7 @@ require_once ("../_inc/app.php");
          if (! $got)  break;
       }
    }
-   else {                              ## ^chop rows if shuffle
+   else {
       foreach ($dirp as $i => $d)  foreach ($pld [$i] as $f)  $pl[] = $f;
       usort ($pl, function ($a, $b) {  ## skip dir name in sort
          $a1 = substr ($a, strpos ($a, '/')+1);
@@ -51,19 +51,15 @@ require_once ("../_inc/app.php");
    foreach ($pl as $i => $s) {         ## pretty up the name
       $d = substr ($s, 0, strpos ($s, '/'));
       $s = substr ($s, strlen ($d)+1);      ## toss leading dir/
-      if (count ($pick) == 1) $d = '';      ## no need for dir if only 1
       $s = substr ($s, 0, -4);              ## toss .mp3
       $s = str_replace ('_', ' ', $s);      ## _ => space
       $f = strpos  ($s, '-');
       $l = strrpos ($s, '-');
       if ($f !== false) {                   ## l musta been set too
          $g = substr ($s, 0, $f);           ## but they shouldn't be the same!
-         $t = substr ($s, $l+1);            ## TODO
+         $t = substr ($s, $l+1);
          $x = ($f == $l) ? '' : substr ($s, $f+1, $l-$f-1);
-#         if ($d != '')  $d = "|$d";
-#         $s = "$g|$x|$t$d\t$g\n$x\n$t\n".(($d=='')?'':substr($d,1));
-         if ($d != '')  $d .= "|";
-         $s = "$t|$d$g|$x\t$g\n$x\n$t\n".(($d=='')?'':substr($d,0,-1));
+         $s = "$g\n$x\n$t\n$d";
       }
       else {
 #dbg($s);
@@ -92,7 +88,7 @@ require_once ("../_inc/app.php");
  </style>
  <script> // ___________________________________________________________________
 let PL = <?= json_encode ($pl); ?>;    // play list array
-let Nm = <?= json_encode ($nm); ?>;    // prettier names group|title|etc
+let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
 let Tk = 0,  Au;                       // pos of track we're on, audio element
 
 function shuf ()  {return $('#shuf').is (':checked') ? 'Y':'N';}
@@ -115,7 +111,6 @@ function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 function next (newtk = -1)
 { let sh = shuf ();
-dbg("next");
    Au.pause ();                        // shush
    $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
    if (newtk == Tk)  return;           // shortcut to pause
@@ -128,7 +123,7 @@ dbg("next");
          PL.splice (Tk, 1);
          Nm.splice (Tk, 1);
          $('#info tbody tr').eq (Tk).remove ();
-         $('#info thead tr th b').html (PL.length + " songs");
+         $('#num').html (PL.length);
       }
       else
          Tk++;                         // gotta bump pos for noshuf (all)
@@ -147,49 +142,36 @@ function play (go = 'y')
 {  if ((pick ().length > 0) && (PL.length == 0))  redo (); // outa songs!
    if (Tk >= PL.length)  return;
 
-   document.title = Nm [Tk];
+  let ar = Nm [Tk].split ("\n");
+   document.title = ar [2] + ' - ' + ar [0];
    Au.src = 'song/' + PL [Tk];
    if (go == 'y') {
-      Au.play ();
       $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
       if ("mediaSession" in navigator) {
-dbg("here");
          navigator.mediaSession.metadata = new MediaMetadata({
-            title: Nm [Tk],
-            artist: "artist",
-            album: "album",
-            artwork: [
-               {
-                  src: "https://shaz.app/img/logo.png",
-                  sizes: "350x350",
-                  type: "image/png",
-               }
-            ]
+            artist: ar [0],
+            album:  ar [1] + ' ' + ar [3],
+            title:  ar [2],
+            artwork: [{
+               src: "https://shaz.app/img/logo.png",
+               sizes: "350x350",
+               type: "image/png",
+            }]
          });
-dbg("here2");
-/*       navigator.mediaSession.setActionHandler ("play",  () => { });
-         navigator.mediaSession.setActionHandler ("pause", () => { });
-         navigator.mediaSession.setActionHandler ("stop", () => { });
-         navigator.mediaSession.setActionHandler ("seekbackward", () => { });
-         navigator.mediaSession.setActionHandler ("seekforward", () => { });
-         navigator.mediaSession.setActionHandler ("seekto", () => { });
-         navigator.mediaSession.setActionHandler ("previoustrack", () => { });
-         navigator.mediaSession.setActionHandler ("skipad", () => { });
-         navigator.mediaSession.setActionHandler ("hangup", () => { });
-*/
-         navigator.mediaSession.setActionHandler ("nexttrack", () => {
-            next ();
-         });
+         navigator.mediaSession.setActionHandler ("nexttrack",
+                                                  () => { next (); });
+/* play pause stop seekbackward seekforward seekto previoustrack */
       }
+      Au.play ();
    }
 }
 
 function lyr ()                        // hit google lookin fo lyrics
 {  if (Tk >= PL.length)  return;
-   a = Nm [Tk].split ('|');
-   tt = a [0];   gr = (a [1].length > 2) ? a [1] : a [2];
-   window.open (
-      'https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"', "_blank");
+
+   a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
+   window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
+                                                                      "_blank");
 }
 
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
@@ -214,19 +196,20 @@ $(function () {                        // boot da page
  </script>
 <? pg_body ([ [$UC['home']." home",  "..",  "...take me back hooome"] ]); ?>
 <span style="padding-left: 5em"></span>
-<audio controls></audio><br class='mobl'>
 <? check ('shuf', 'shuf', $shuf); # <a id='scoot'>skip</a>
-?>
-                                     <a id='lyr'>lyric</a> --<br class='mobl'>
-<? foreach ($dir as $i => $s)
-      check ("chk$i", $s, in_array ($i, $pick) ? 'Y':''); ?><br>
+   foreach ($dir as $i => $s)
+      check ("chk$i", $s, in_array ($i, $pick) ? 'Y':''); ?>
+<span id='num'><?= count($nm) ?></span><br class='mobl'>
+<audio controls></audio>
+<a id='lyr'>lyric</a>
+
 
 <? $n2 = [];
    foreach ($nm as $n) {
-      $b = strpos ($n, '|');
-      if ($b !== false)  $n = "<b>" . substr ($n, 0, $b) .
-                             "</b>" . substr ($n, $b);
-      $n2[] = $n;
+      $a = explode ("\n", $n);
+      if (($shuf == 'N') && (count ($pick) >= 4))
+           $n2[] = "<b>".$a [0]."</b>"." ".$a [1]." <b>".$a [2]."</b> ".$a [3];
+      else $n2[] = "<b>".$a [2]."</b>"." ".$a [0]." <b>".$a [3]."</b> ".$a [1];
    }
-   table1 ('info', count ($nm)." songs", $n2); ?>
+   table1 ('info', '', $n2); ?>
 <? pg_foot ();

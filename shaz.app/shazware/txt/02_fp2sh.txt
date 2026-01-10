@@ -1,20 +1,36 @@
 flatpak to shell
-I don't know why flatpak doesn't let you easily do CLI.
+this script turns your flatpaks into <b>short</b> commands.
+ Instead of typing those dumb triplets and hoo haw.
 
-So I wrote a silly php script to:
+<a pop href="fp2sh.html">script</a>
 
- - make a bunch of short bash scripts in current dir
+It's in php.  <b>Not</b> gonna explain installin php - sorry.
+ But it's easily done manually.  Lemme explain...
 
- - of all flatpak commands on your system but without the dumb long suffix.
+It just goes through all your flatpak .desktop files and pulls out <b>exec=</b>
+ so run this: <pre>
+ grep -i --no-filename 'exec='
+      /var/lib/flatpak/exports/share/applications/*.desktop</pre>
+There's all your flatpak commands right there!
 
-Or you could just do this manually.  Installin php ain't no fun.
-(but i'm just not a python guy)
+All ya do is make a tiny lil bash script with a
+ <i>proper</i> name to kick it.  For example this line of grep output: <pre>
+ Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64
+    --command=/app/bin/chrome --file-forwarding com.google.Chrome @@u %U @@
+ </pre>
+ goes into a script named <b>chrome</b> with the Exec= chopped off.
 
+That should probably be built into flatpak, don't ya think ??
+ Not too hard, guyz...
 
-for example
+Now you can just go:
 
-big
+ - chrome
 
-sh@penguin:~/.bin$ cat big
-/usr/bin/flatpak run --branch=master --arch=x86_64
---command=big --file-forwarding app.shaz.shazware  $@
+ - renem
+
+ - ned file.txt
+
+ - pcheetah a.song
+
+ - etc

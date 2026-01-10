@@ -1,11 +1,21 @@
 some file utilities and stuff
-<img style="float: right;" src="img/go.png">
-`bg1`S`teve `bg1`Haz`el's soft`bg1`ware`
+ <img style="float: right;" src="img/go.png">
+ `bg1`S`teve `bg1`Haz`el's soft`bg1`ware`
 
-<a pop href="https://github.com/Stephen-Hazel/shazware">c++ source</a>
-<a pop href="https://github.com/Stephen-Hazel/stv">stv lib</a>
-<a pop href="https://raw.githubusercontent.com/Stephen-Hazel/shazware/refs/heads/main/do.txt">TODO</a>
+it's open <a href="?pg=11">source :)</a>
 
+
+<h3>install</h3>
+ - hit KDE's Discover or Gnome's Software
+
+ - search: shazware
+
+ - click install
+
+ - now they're in your start menu's <b>development</b> menu
+
+
+<h3>summary</h3>
  - `bg2`fp2sh` - flatpak commands in CLI without the long dumb suffixes
 
  - `bg3`big` - print out text in a big font (like in the mainframe days)
@@ -29,9 +39,7 @@ some file utilities and stuff
 
 
 <h3>Old windows version I still use at work</h3>
- Installing:
-<a href="SETUPSHAZWARE.exe"><img src="img/download.gif">download</a>
- and run SETUPSHAZWARE.exe (then you can delete it)
+ <img src="img/download.gif">download and run
+ <a href="SETUPSHAZWARE.exe">this</a> (then delete it)
 
-UnInstalling:
-Control Panel- Programs And Features- SHazWare- Uninstall
+UnInstalling: Control Panel - Programs And Features - SHazWare - Uninstall

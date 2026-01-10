@@ -9,13 +9,14 @@ require_once "_inc/app.php";
    $(function () {home ();});
  </script>
 <? pg_body ([
-      ["get it",   "doc/?pg=1", "how do i get pianocheetah ?"],
-      ["docs",     "doc",       "what does pianocheetah even do ?"],
-      ["piano",    "piano",     "what kinda piano should I get ?"],
-      ["practice", "practice",  "goin about piano practice"],
-      ["midi",     "midi",      "what the heck is MIDI ???"],
-      ["linux",    "https://shaz.app/linux", "stuff about linux"],
-      ["meee",     "https://shaz.app/me",    "bout Steve"]
+      ["get it",      "doc/?pg=1", "how do i get pianocheetah ?"],
+      ["docs",        "doc",       "what does pianocheetah even do ?"],
+      ["piano",       "piano",     "what kinda piano should I get ?"],
+      ["practice",    "practice",  "goin about piano practice"],
+      ["midi",        "midi",      "what the heck is MIDI ???"],
+      ["open source", "dev",       "ya interested?"],
+      ["linux",       "https://shaz.app/linux", "stuff about linux"],
+      ["meee",        "https://shaz.app/me",    "bout Steve"]
    ]); ?>
 <span id='logotxt'><center><span
  class='c0'>p</span><span class='c1'>i</span><span class='c2'>a</span><span
@@ -50,7 +51,7 @@ require_once "_inc/app.php";
    <img id="me" src="img/bot_me.png" title='...meee'></a>
  </div>
  <div id="mid">
-  <h3>Happy to help!</h3>
+  <h3>Happy to help !!</h3>
   email me:
   <a btn href="mailto:sh@shaz.app?subject=pianocheetah">sh@shaz.app</a><br>
   facebook:

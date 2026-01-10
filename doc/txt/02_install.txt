@@ -10,6 +10,8 @@ Got <a pop href="https://shaz.app/linux"
 
  - now it's in your start menu's <b>multimedia</b> menu
 
+ - (uninstall with a right click on that start menu item)
+
 The first time you run PianoCheetah, you'll see...
 <img src="img/oh_hi.png">
 Pick the directory to <b>-put-</b> the pianocheetah dir into.

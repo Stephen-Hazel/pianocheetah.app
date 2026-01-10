@@ -1,8 +1,9 @@
-help me out here
-If you find a bug in pianocheetah (not unheard of),
- hopefully my debug listing will tell me where it happened.
+ yeah this is open source :)
 
-Turn debugging on in the pianocheetah settings
- - there's a checkbox for <b>trace to dbg.txt</b>
+Here's the source:
+<a pop href="https://github.com/Stephen-Hazel/PianoCheetah">c++ n Qt</a>
+<a pop href="https://github.com/Stephen-Hazel/stv">stv lib</a>
 
- - you'll find it at /home/you/.var/app/app.shaz.pianocheetah/config/dbg.txt
+Here's my notes:
+<a pop href="do.html">do</a> - the ole to do list
+<a pop href="did.html">did</a> - more release notes than you wanna read

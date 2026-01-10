@@ -1,4 +1,4 @@
-help me out here
+bugs exists sigh
 If you find a bug in pianocheetah (not unheard of),
  hopefully my debug listing will tell me where it happened.
 

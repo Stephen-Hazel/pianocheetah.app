@@ -1,3 +1,4 @@
+nicer urls with last str turned into ?p=3
 pic
    header comment on mobile wraps
    make a dir preview w random pics

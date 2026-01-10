@@ -1,0 +1,76 @@
+pianocheetah's softsynth :)
+I don't have this fully doc'd yet.  Here's a few hints sigh.
+
+
+<h3>syn's main config file</h3>
+ is at pianocheetah/device/syn/env.txt
+There's docs in it, cryptic ones.
+
+
+<h3>within pianocheetah</h3>
+ tracks with a [ suffix set special voice parameters
+
+trackname [vibr.1.2
+will set vibrato (pitch oscillation) with envelope's
+ - level modulated by x1 control and
+
+ - duration modulated by x2 control
+
+
+trackname [vibr.1.2 pano.3.4
+will have 2 voices per note
+ - 1st described above
+
+ - 2nd doing pano (pan oscillation) with envelope controlled by
+   x3,x4 controls
+
+
+These specs are all in Stephenese but you might figure out some stuff from em.
+MAIN params of a syn "voice" <pre>
+   osc:  oSnd, oKey, oCnt
+         (0..nsounds-1, 21..108=0..87, -99..-99)
+
+   flt:  fCut, fRes
+         (8000..13500=0..5500, 0..960)
+
+   amp:  amp
+         ( 0..1)
+
+   pan:  pan
+         (-1..1)
+
+   fx:  ...todo (send,type,params) fx2, etc
+
+
+always:
+   note=>oKey
+   velo=>amp
+
+direct cc
+   bend(-1..0..1)
+      pitch: pBnd*                     +> oKey.oCnt    rk88 bend
+             pBnR                                      rk88 weel (cent,hstep,
+             (20 cent,hstep,2 hstep,3rd,5th,oct,2oct,ksig)
+      scale: ksig[-14..0..14] (u0..29) +> oKey
+      pan                              +> pan          mx25 bend
+
+   weel(0..1)  (sldr,pedl,knob)
+      vCut:    velo > fCut                             mx25 tggl1
+      wowpedl: pedl > fCut
+      volpedl: pedl > amp
+
+env (change over time)
+      release:  1..0>amp
+      panl:     0..-1>pan
+      panr:     0..1>pan
+      pano:     sin>pan
+      panrand:  rnd>pan
+      wow:      sin>fCut
+      phaser:   sin>oCnt  (small amount)
+      vibrato:  sin>oCnt  (larger amount)
+      tremelo:  sin>amp
+
+      glide: glRate,glFrom
+      glis?  (round and retrigger on next)
+             ?glide amp, fCut too
+</pre>

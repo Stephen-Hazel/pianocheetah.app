@@ -1,0 +1,8 @@
+help me out here
+If you find a bug in pianocheetah (not unheard of),
+ hopefully my debug listing will tell me where it happened.
+
+Turn debugging on in the pianocheetah settings
+ - there's a checkbox for <b>trace to dbg.txt</b>
+
+ - you'll find it at /home/you/.var/app/app.shaz.pianocheetah/config/dbg.txt

@@ -1,4 +1,3 @@
-nicer urls with last str turned into ?p=3
 pic
    header comment on mobile wraps
    make a dir preview w random pics
@@ -8,9 +7,8 @@ song
    can i   hey google skip
    pop a page by group|etc|title to search for if i got it
 
+nicer urls with last str turned into ?pg=3
+me - latest
 piano - better pic of my piano,drum
-
-me
-   latest me
 
 sitemap.xml - make a dumb script for it

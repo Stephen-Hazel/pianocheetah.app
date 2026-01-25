@@ -36,6 +36,6 @@ $(function () {
  </script>
 <? pg_body (); ?>
 
-<a id='tf'>test listfiles</a>
+<a id='tf'>test list local files for my music player</a>
 
 <? pg_foot ();

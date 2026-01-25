@@ -1,0 +1,12 @@
+   --red: #FF8080;  /* red */
+   --ora: #FFC080;  /* orange */
+   --yel: #FFFF80;  /* yellow */
+   --ygr: #C0FF80;  /* yellow green */
+   --gre: #80FF80;  /* green */
+   --gaq: #80FFC0;  /* green aqua */
+   --aqu: #80FFFF;  /* aqua */
+   --baq: #80C0FF;  /* blue aqua */
+   --blu: #8080FF;  /* blue */
+   --bpu: #C080FF;  /* blue purple */
+   --pur: #FF80FF;  /* purple */
+   --mag: #FF80C0;  /* magenta */

@@ -1,0 +1,190 @@
+background:
+   These are my specs but YOU are the designer and
+      I expect you to change my ways.  Please tell me of better options!
+
+   I expect you to deliver knowledge to me, too - not just icons :)
+
+   I'm on Kubuntu - KDE desktop on ubuntu
+      (ubuntu is derived from debian) sitting on the drivers of linux.
+      I use the Qt library to display my windows, dialogs, toolbars, etc.
+
+?     Any chance you could try kubuntu :)
+         instructions on https://shaz.app/linux
+
+
+overall format:
+   I like icons with no borders and a transparent background.
+      No fluff - fluff takes up valuable space.
+
+   The icons should be colored - not monochrome.
+
+   resolution:
+      I just found a way to make my app use 32x32 for toolbar icons today!
+         24x24 is the default.
+      My app window icon depends on my screen resolution so
+         it's 24x24 unless I start using 4K.
+?     What are your thoughts on resolution?
+
+      KDE linux/Qt GUI scale things down, but never up.
+
+   format:
+      Qt is fine with ico, png, jpg, most anything I think.
+      oh and .svg too.  I like the IDEA of svg cuz it's text and vectored.
+      I've generally gone toward .png
+?     Again, what are your thoughts on format?
+
+
+how to start:
+   From a coding standpoint I'd prefer one set of icons that look good in
+      both dark and light modes.
+      What do designers think of this?  Too limiting?  Fewer color choices?
+      I'm not an expert - tell me things.
+      Will 2 sets give me much more beautiful and COOL icons?
+
+?  What are your thoughts about distributing your work sigh.
+      pianocheetah is open source.
+      there's been no interest, i could close source it (again).
+      I don't want to give your work away unless you're ok with that.
+
+
+phase 1 overall:
+   skip arrow icons and play control icons - think about those for phase 2.
+
+   skip little used icons or "I'm not sure that function is done" icons.
+
+   concentrate on app icons and the ones picked with * below
+
+   start talking about my oct.png - it has many subtleties
+      must be choppable, joinable, small
+
+   when you feel we're done with phase 1, we'll go on to 2 :)
+
+
+phase 2 initial:
+   arrow and play control finesse and
+   general help with my track view and notes view.
+
+
+deeeeeeetails...
+
+
+app icons:
+   MidiCfg
+      is only a separate app from PianoCheetah due to it's complexity :/
+      It picks which midi devices you have, names them, orders them,
+         troubleshoots if they're listening, etc.
+
+      I like the idea of using an old school midi cable icon.
+      But I'm not married to it.
+?     please help :)
+
+   PianoCheetah
+      you've seen my website docs.  Generally it lets you pick tracks of a song
+      to play in a simplified manner.
+
+      I'd like to have a cheetah in the icon.  But that's asking a lot, I think.
+      I don't think I've ever seen a cheetah icon eeever.
+
+      So I've fallen back to an eighth note.  Which is pretty good, but also
+      kinda generic.  Maybe just a nicely styled COOL eighth note would do it.
+
+?     But you're the creative one :)  Find somethin to dazzle me :)
+
+
+
+assets list:
+   * means please make it  (after a little chattin about it)
+   " means a dup of one already picked
+
+   background:
+      I generally use =12= colors by splitting hue into 12 and using same
+      saturation and value across the 12.
+
+      my notes are little dig dug guys (if you remember the old video game daze)
+         I'm kind of married to em but also want a professional opinion.
+
+
+todo.txt                       top level spec
+
+Screenshots/colors.txt         my website palette
+Screenshots/color.png          you can see the hue,sat of my notes
+Screenshots/mcfg_dk.png        midicfg app dark mode
+Screenshots/mcfg_lt.png                    light
+Screenshots/pch_dk.png         pianocheetah app dark mode
+Screenshots/pch_lt.png                          light
+                                  these are the kde "breeze" theme
+
+midicfg/app.ico              * app ico MidiCfg
+midicfg/tbar/0.png           * refresh
+midicfg/tbar/1.png             up
+midicfg/tbar/2.png             down
+
+
+...notes view (primary view)
+pianocheetah/app.png         * app ico PianoCheetah
+pianocheetah/bug.png           bugs in notes view
+pianocheetah/cue.png           nevermind - just an optimization of cues below
+pianocheetah/dot.png           wrong note / need to hit note
+pianocheetah/fade.png          fade alpha for bars we're not practicing
+pianocheetah/now.png           current green faded bar for NOW
+pianocheetah/oct.png         * top bitmap of piano notes
+                                  (at least start thinking about it)
+pianocheetah/pnbg.png          to make note background showing black key areas
+pianocheetah/pnbg2.png            same but when there are only 5 notes/hand
+
+...track editing view
+pianocheetah/tico/mute.svg     X      (mute)    ...mute/practice/hearonly
+pianocheetah/tico/lrn.svg      learn  (practice)
+pianocheetah/tico/S.ico      * see/view    ...hand type of track
+
+...toolbars
+pianocheetah/tbar/0.png      * view  fullscreen,no track / windowed,track edit
+pianocheetah/tbar/1.png      " midicfg
+pianocheetah/tbar/2.ico      * settings
+pianocheetah/tbar/lrn/0.png  * ear    hear   ...these 3 toggle within one button
+pianocheetah/tbar/lrn/1.png  * finger play
+pianocheetah/tbar/lrn/2.png  * brain  practice
+pianocheetah/tbar/cue/a0.png " refresh
+pianocheetah/tbar/cue/a1.png   X
+pianocheetah/tbar/cue/b0.png   txt
+pianocheetah/tbar/cue/b1.png   ve rse
+pianocheetah/tbar/cue/b2.png   ch orus
+pianocheetah/tbar/cue/b3.png   br idge
+pianocheetah/tbar/cue/b4.png   <
+pianocheetah/tbar/cue/b5.png   >
+pianocheetah/tbar/cue/c0.png   fermata
+pianocheetah/tbar/cue/c1.png   stacatto
+pianocheetah/tbar/cue/c2.png   star
+pianocheetah/tbar/cue/c3.png   happy
+pianocheetah/tbar/cue/c4.png   sad
+pianocheetah/tbar/cue/c5.png   mad
+pianocheetah/tbar/flst/0.png   up
+pianocheetah/tbar/flst/1.png   down
+pianocheetah/tbar/flst/2.png   magnify
+pianocheetah/tbar/flst/3.png   audio
+pianocheetah/tbar/flst/4.png   "
+pianocheetah/tbar/flst/5.png   "
+pianocheetah/tbar/flst/6.png   "
+pianocheetah/tbar/flst/7.svg   folder
+pianocheetah/tbar/song/0.png   folder
+pianocheetah/tbar/song/1.png   up
+pianocheetah/tbar/song/2.png   down
+pianocheetah/tbar/time/0.png   bar1
+pianocheetah/tbar/time/1.png   <<
+pianocheetah/tbar/time/2.png   <
+pianocheetah/tbar/time/3.png   pause
+pianocheetah/tbar/time/4.png   >
+pianocheetah/tbar/time/5.png   >>
+pianocheetah/tbar/time/6.png   play (flips with pause)
+pianocheetah/tbar/tmpo/0.svg   down
+pianocheetah/tbar/tmpo/1.svg   toggle 50/80/100%
+pianocheetah/tbar/tmpo/2.svg   up
+pianocheetah/tbar/trak/0.svg   split           ...i need to think about these
+pianocheetah/tbar/trak/1.svg   make drum track                          still :/
+pianocheetah/tbar/trak/2.svg   track insert
+pianocheetah/tbar/trak/3.svg   track delete
+pianocheetah/tbar/trak/4.svg   track scoot up
+pianocheetah/tbar/trak/5.svg   track scoot down
+pianocheetah/tbar/chd/0.png    magnify
+pianocheetah/tbar/chd/1.png    lightning (general "do it" icon but kinda cool)
+pianocheetah/tbar/chd/2.png    X

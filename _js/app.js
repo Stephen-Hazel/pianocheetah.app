@@ -90,8 +90,14 @@ function init ()  // for subpages
 function jRum (id, ix, iy, irot)
 {  jQuery('#'+id).jrumble ({x: ix, y: iy, rotation: irot});
    jQuery('#'+id).hover (
-      function () { jQuery(this).trigger ('startRumble'); },
-      function () { jQuery(this).trigger ('stopRumble' ); }
+      function () {
+         $(this).trigger ('startRumble');
+         if ($(this).attr ('id') == 'logo')  $('#dontmess').show ();
+      },
+      function () {
+         $(this).trigger ('stopRumble' );
+         if ($(this).attr ('id') == 'logo')  $('#dontmess').hide ();
+      }
    );
 }
 

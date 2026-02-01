@@ -25,6 +25,10 @@ require_once "_inc/app.php";
  class='c9'>t</span><span class='ca'>a</span><span class='cb'>h</span>
 </center></span>
 <a href="doc"><img id='logo' src="img/logo.png"></a>
+<div id='dontmess' style='display:none'><center>
+ HEY !! &nbsp;Don't MESS with PianoCheetah !!
+ <img id='dontimg' src='img/dontmess.jpg'>
+</center></div>
 <div id='blurb'><br>
  <h1>play rock on a synth on linux</h1>
  <br>

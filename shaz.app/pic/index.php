@@ -20,6 +20,7 @@ require_once ("../_inc/app.php");
    $PSet = LstDir ("idx/$yStr", 'd');   sort ($PSet);
 
 ## if no s arg, use 1st ps of year (but last if no year - doin latest)
+   if ($s == 99)  $s = count ($PSet)-1;
    $sPos = ($s != '') ? $s : (($y != '') ? 0 : count ($PSet)-1);
    $sStr = $PSet [$sPos];
 #dump("yPos=$yPos yStr=$yStr  d=".($d?"Y":"N")."  Year:", $Year);
@@ -34,12 +35,12 @@ require_once ("../_inc/app.php");
 
    pg_head ("pic", "jqui app", "jqui app");
 ?>
- <meta property="og:type"  content="website">
+ <meta property="og:type"  content="website" />
  <meta property="og:url"   content="https://shaz.app/pic/<?=
-                                                         "?y=$yPos&s=$sPos" ?>">
- <meta property="og:title" content="Stevez pics <?= "$yStr $sStr $pCom" ?>">
+                                                     "?y=$yPos&s=$sPos" ?>" />
+ <meta property="og:title" content="Stevez pics <?= "$yStr $sStr $pCom" ?>" />
  <meta property="og:image" content="https://shaz.app/pic/idx/<?=
-                                   "$yStr/$sStr/".explode ('|',$Pic[0])[1] ?>">
+                                "$yStr/$sStr/".explode ('|',$Pic[0])[1] ?>" />
  <style>
 body.dtop main {
    width: 100%;
@@ -96,16 +97,23 @@ body.dtop main {
 const path = "<?= "pic/$yStr/$sStr/" ?>";   // path for full pics
 const pic  =  <?= json_encode ($Pic) ?>;    // pic[][0..2] = L/P|filenm|comment
 
-function reArg (s)
-{ let a = "?y=" + $('#year').prop ('selectedIndex');
-   if (s > -1)  a += ("&s=" + s);
-   location.href = a;
+function reArg (y, s)  {location.href = "?y=" + y + "&s=" + s;}
+
+function reYear ()  {reArg ($('#year').prop ('selectedIndex'), 0);}
+function rePSet ()  {reArg ($('#year').prop ('selectedIndex'),
+                            $('#pset').prop ('selectedIndex'));}
+
+function prevSet ()
+{ let s = $('#pset').prop ('selectedIndex'),
+      y = $('#year').prop ('selectedIndex');
+   if (s > 0)            reArg (y, s-1);   else reArg (y-1, 99);
 }
 
-function reYear ()  { reArg (-1); }
-function rePSet ()  { let s = $('#pset').prop ('selectedIndex');   reArg (s);  }
-function prevSet () { let s = $('#pset').prop ('selectedIndex');   reArg (s-1);}
-function nextSet () { let s = $('#pset').prop ('selectedIndex');   reArg (s+1);}
+function nextSet ()
+{ let s = $('#pset').prop ('selectedIndex'),
+      y = $('#year').prop ('selectedIndex');
+   if (s < pic.length-1) reArg (y, s+1);   else reArg (y+1, 0);
+}
 
 function full (fn = '')
 // toggle fullscreen on/off
@@ -156,10 +164,10 @@ $(function () {
 <span id='top'>
 <? select ('year', $Year, $yStr);
    select ('pset', $PSet, $sStr);
-   if ($sPos > 0) { ?>
+   if (($yPos > 0) || ($sPos > 0)) { ?>
  <button id='prevset' title='previous set of pics'>PrevSet</button>
 <? }
-   if ($sPos+1 < count ($PSet)) { ?>
+   if (($yPos+1 < count ($Year)) || ($sPos+1 < count ($PSet))) { ?>
  <button id='nextset' title='next set of pics'>NextSet</button>
 <? } ?>
  &nbsp; &nbsp;

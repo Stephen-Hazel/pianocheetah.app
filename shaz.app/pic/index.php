@@ -152,8 +152,8 @@ function big (p)
 
 $(function () {
    init ();
-   $('#year').selectmenu ({ change: reYear, width: 140});
-   $('#pset').selectmenu ({ change: rePSet, width: 320});
+   $('#year').selectmenu ({ change: reYear, width: 110});
+   $('#pset').selectmenu ({ change: rePSet, width: 300});
    $('#prevset').button ().click (prevSet);
    $('#nextset').button ().click (nextSet);
 });

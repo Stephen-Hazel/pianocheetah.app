@@ -54,7 +54,6 @@ body.dtop main {
    color:            #003050;
    background-color: #00F0FF;
    padding: 5px;
-   border:  solid 3px #0F7391;
 }
 .thumb {
    float:    left;

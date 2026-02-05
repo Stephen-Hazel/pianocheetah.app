@@ -132,16 +132,12 @@ function pg_head ($ttl, $css, $js, $h = '')      ## html head title css js
    $pre = ($h != '') ? "" : "../";     ## home doesn't need ../ path prefix
 ?>
 <!DOCTYPE html>
-<html lang="en" prefix="og: https://ogp.me/ns#">
+<html lang="en">
 <head>
  <meta charset="UTF-8">
  <meta name="viewport"     content="width=device-width, initial-scale=1.0">
  <meta name="robots"       content="follow, all">
  <meta name="description"  content="<?= $DESC ?>">
- <meta property="og:type"  content="website">
- <meta property="og:url"   content="https://<?= $ROOT ?>">
- <meta property="og:title" content="<?= $DESC ?>">
- <meta property="og:image" content="https://<?= $ROOT ?>/img/favicon.ico">
  <title><?= $ttl ?></title>
  <link href="https://<?= $ROOT ?>/img/favicon.ico" rel="Shortcut Icon" />
 <? require_once "google_tag_head.html";

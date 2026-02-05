@@ -35,12 +35,14 @@ require_once ("../_inc/app.php");
 
    pg_head ("pic", "jqui app", "jqui app");
 ?>
- <meta property="og:type"  content="website" />
- <meta property="og:url"   content="https://shaz.app/pic/<?=
-                                                     "?y=$yPos&s=$sPos" ?>" />
- <meta property="og:title" content="Stevez pics <?= "$yStr $sStr $pCom" ?>" />
- <meta property="og:image" content="https://shaz.app/pic/idx/<?=
-                                "$yStr/$sStr/".explode ('|',$Pic[0])[1] ?>" />
+ <meta property="og:type"       content="website" />
+ <meta property="og:site_name"  content="shaz.app" />
+ <meta property="og:url"        content="https://shaz.app/pic/<?=
+                                                       "?y=$yPos&s=$sPos" ?>" />
+ <meta property="og:title"      content="Stevez pics <?=
+                                                      "$yStr $sStr $pCom" ?>" />
+ <meta property="og:image"      content="https://shaz.app/pic/idx/<?=
+                                  "$yStr/$sStr/".explode ('|',$Pic[0])[1] ?>" />
  <style>
 body.dtop main {
    width: 100%;
@@ -50,7 +52,7 @@ body.dtop main {
 }
 .comment {
    max-width: 640px;
-   font-size: 20pt;
+   font-size: 14pt;
    color:            #003050;
    background-color: #00F0FF;
    padding: 5px;
@@ -63,7 +65,7 @@ body.dtop main {
    position:   absolute;
    top:        0;
    left:       0;
-   font-size:  20pt;
+   font-size:  14pt;
    color:      white;
    background: rgb(0,0,0);
    background: rgba(0,0,0,.5);
@@ -86,7 +88,7 @@ body.dtop main {
    top:        0;
    left:       0;
    color:      white;
-   font-size:  28pt;
+   font-size:  14pt;
    background: rgb(0,0,0);
    background: rgba(0,0,0,.5);
    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
@@ -151,8 +153,8 @@ function big (p)
 
 $(function () {
    init ();
-   $('#year').selectmenu ({ change: reYear, width: 110});
-   $('#pset').selectmenu ({ change: rePSet, width: 300});
+   $('#year').selectmenu ({ change: reYear, width: 120});
+   $('#pset').selectmenu ({ change: rePSet, width: 320});
    $('#prevset').button ().click (prevSet);
    $('#nextset').button ().click (nextSet);
 });

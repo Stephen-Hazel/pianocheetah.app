@@ -1,5 +1,6 @@
 pic
-   header comment on mobile wraps
+   previews still aren't right
+   text labels are too big
    make a dir preview w random pics
    make a post to facebook thingo?
 

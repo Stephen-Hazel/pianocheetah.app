@@ -128,6 +128,7 @@ function pg_js ($js, $p)
 #_______________________________________________________________________________
 function pg_head ($ttl, $css, $js, $h = '')      ## html head title css js
 { global $ROOT, $DESC;
+   http_response_code (200);
    header ("set Access-Control-Allow-Origin '*'");
    $pre = ($h != '') ? "" : "../";     ## home doesn't need ../ path prefix
 ?>

@@ -35,14 +35,16 @@ require_once ("../_inc/app.php");
 
    pg_head ("pic", "jqui app", "jqui app");
 ?>
- <meta property="og:type"       content="website" />
- <meta property="og:site_name"  content="Stevez pics - <?=
-                                                       substr ($sStr,0,6) ?>" />
- <meta property="og:url"        content="https://shaz.app/pic/<?=
-                                                       "?y=$yPos&s=$sPos" ?>" />
- <meta property="og:title"      content="<?= substr ($sStr,7).": $pCom" ?>" />
- <meta property="og:image"      content="https://shaz.app/pic/idx/<?=
+ <meta property="og:type"        content="website" />
+ <meta property="og:site_name"   content="Stevez pics - <?=
+                                  substr ($sStr,0,6) ?>" />
+ <meta property="og:url"         content="https://shaz.app/pic/<?=
+                                  "?y=$yPos&s=$sPos" ?>" />
+ <meta property="og:title"       content="<?= substr ($sStr,7) ?>" />
+ <meta property="og:image"       content="https://shaz.app/pic/idx/<?=
                                   "$yStr/$sStr/".explode ('|',$Pic[0])[1] ?>" />
+ <meta property="og:description" content="<?=
+                                  empty ($pCom)?"itsa pic?":$pCom ?>" />
  <style>
 body.dtop main {
    width: 100%;

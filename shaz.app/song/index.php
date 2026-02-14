@@ -238,8 +238,8 @@ $(function () {                        // boot da page
 <span id='num'><?= count($nm) ?></span><br class='mobl'>
 <audio controls></audio>
 <google-cast-launcher></google-cast-launcher>
-<button onclick="castMp3('https://shaz.app/song/song/_a/' +
-'Ariana_Grande-2018_Sweetener-no_tears_left_to_cry.mp3',
+<button onclick="castMp3(
+'https://shaz.app/song/song/_a/Yes-1983_90125-Leave_It.mp3',
 'My Song', 'Artist Name')">Play MP3 on Chromecast</button>
 
 <a id='lyr'>lyric</a>

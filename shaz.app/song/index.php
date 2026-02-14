@@ -231,7 +231,10 @@ $(function () {                        // boot da page
    play ('n');  // setup audio but can't aaactually play till click
 });
  </script>
-<script src="https://www.gstatic.com"></script>
+<script src=
+"https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"
+></script>
+
 <? pg_body ([ [$UC['home']." home",  "..",  "...take me back hooome"] ]); ?>
 <span style="padding-left: 5em"></span>
 <? check ('shuf', 'shuf', $shuf); # <a id='scoot'>skip</a>

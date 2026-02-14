@@ -86,11 +86,7 @@ require_once ("../_inc/app.php");
       overflow: hidden;
    }
  </style>
-<script type="text/javascript" src=
- "www.gstatic.com/cast/sdk/libs/sender/1.0/cast_framework.js"></script>
-<script type="text/javascript" src=
- "https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
-
+<script type="text/javascript" src="www.gstatic.com"></script>
  <script> // ___________________________________________________________________
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir

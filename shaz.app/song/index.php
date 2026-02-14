@@ -86,7 +86,15 @@ require_once ("../_inc/app.php");
       overflow: hidden;
    }
  </style>
+ <script src="https://www.gstatic.com"></script>
  <script> // ___________________________________________________________________
+window ['__onGCastApiAvailable'] = function (isAvailable) {
+   if (isAvailable) {
+      cast.framework.CastContext.getInstance ().setOptions ({
+         receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
+      });
+   }
+};
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
 let Tk = 0,  Au;                       // pos of track we're on, audio element
@@ -176,6 +184,34 @@ function lyr ()                        // hit google lookin fo lyrics
 
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
+function castMp3 (mp3Url, title, artist)
+{ const castSession = cast.framework.CastContext.getInstance()
+                                                .getCurrentSession();
+   if (castSession) {
+     const mediaInfo = new chrome.cast.media.MediaInfo (mp3Url, 'audio/mpeg');
+      mediaInfo.metadata = new chrome.cast.media.GenericMediaMetadata ();
+      mediaInfo.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
+      mediaInfo.metadata.title        = title;
+      mediaInfo.metadata.artist       = artist;
+   // Optionally add an image:
+   // mediaInfo.metadata.images = [{ 'url': 'https://yourserver.com',
+   //                                'width': 500, 'height': 500 }];
+     const request = new chrome.cast.media.LoadRequest(mediaInfo);
+      castSession.loadMedia (request).then (
+         function () {
+            console.log ('Load succeed');
+         },
+         function(errorCode) {
+            console.log ('Error code: ' + errorCode);
+         }
+      );
+   }
+   else {
+      console.log('Not connected to a Cast device');
+   }
+}
+
+
 $(function () {                        // boot da page
    init ();
 
@@ -201,6 +237,11 @@ $(function () {                        // boot da page
       check ("chk$i", $s, in_array ($i, $pick) ? 'Y':''); ?>
 <span id='num'><?= count($nm) ?></span><br class='mobl'>
 <audio controls></audio>
+<google-cast-launcher></google-cast-launcher>
+<button onclick="castMp3('https://shaz.app/song/song/_a/' +
+'Ariana_Grande-2018_Sweetener-no_tears_left_to_cry.mp3',
+'My Song', 'Artist Name')">Play MP3 on Chromecast</button>
+
 <a id='lyr'>lyric</a>
 
 

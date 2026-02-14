@@ -204,6 +204,15 @@ function castMp3 (mp3Url, title, artist)
 }
 
 
+window ['__onGCastApiAvailable'] = function (isAvailable) {
+   if (isAvailable) {
+      cast.framework.CastContext.getInstance ().setOptions ({
+         receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
+      });
+   }
+};
+
+
 $(function () {                        // boot da page
    init ();
 
@@ -220,13 +229,6 @@ $(function () {                        // boot da page
                                        });
    Au.addEventListener ('ended', () => { next (); });
    play ('n');  // setup audio but can't aaactually play till click
-window ['__onGCastApiAvailable'] = function (isAvailable) {
-   if (isAvailable) {
-      cast.framework.CastContext.getInstance ().setOptions ({
-         receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
-      });
-   }
-};
 });
  </script>
 <script src="https://www.gstatic.com"></script>

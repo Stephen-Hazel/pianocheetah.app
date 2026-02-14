@@ -71,6 +71,7 @@ require_once ("../_inc/app.php");
    pg_head ("song", "jqui app", "jqui app");
 ?>
  <style>
+   google-cast-launcher {width: 100px; height: 100px;}
    body.dtop main {
       display: inline;
       width: 100%;

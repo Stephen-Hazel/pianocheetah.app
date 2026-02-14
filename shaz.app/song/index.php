@@ -86,7 +86,11 @@ require_once ("../_inc/app.php");
       overflow: hidden;
    }
  </style>
- <script src="https://www.gstatic.com"></script>
+<script type="text/javascript" src=
+ "www.gstatic.com/cast/sdk/libs/sender/1.0/cast_framework.js"></script>
+<script type="text/javascript" src=
+ "https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+
  <script> // ___________________________________________________________________
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
@@ -221,20 +225,11 @@ $(function () {                        // boot da page
                                        });
    Au.addEventListener ('ended', () => { next (); });
    play ('n');  // setup audio but can't aaactually play till click
-/*
 window ['__onGCastApiAvailable'] = function (isAvailable) {
    if (isAvailable) {
       cast.framework.CastContext.getInstance ().setOptions ({
          receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
       });
-   }
-};
-*/
-window ['__onGCastApiAvailable'] = function (isAvailable) {
-   if (isAvailable) {
-      setTimeout (() => {
-         castPlayer.initializeCastPlayer ();
-      }, 1000)
    }
 };
 });

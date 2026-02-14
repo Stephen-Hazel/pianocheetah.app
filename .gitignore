@@ -1,7 +1,5 @@
-.htaccess
 error_log
 dbg.txt
-*/.htaccess
 */error_log
 */dbg.txt
 download/pianocheetah*

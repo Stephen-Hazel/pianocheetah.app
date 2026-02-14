@@ -71,7 +71,20 @@ require_once ("../_inc/app.php");
    pg_head ("song", "jqui app", "jqui app");
 ?>
  <style>
-   google-cast-launcher {width: 100px; height: 100px;}
+   google-cast-launcher {
+      float:   right;
+      margin:  10px 6px 14px 0px;
+      width:   40px;
+      height:  32px;
+      opacity: 0.7;
+      background-color: #000;
+      border:  none;
+      outline: none;
+   }
+   google-cast-launcher:hover {
+      --disconnected-color: white;
+      --connected-color: white;
+   }
    body.dtop main {
       display: inline;
       width: 100%;

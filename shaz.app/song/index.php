@@ -88,13 +88,6 @@ require_once ("../_inc/app.php");
  </style>
  <script src="https://www.gstatic.com"></script>
  <script> // ___________________________________________________________________
-window ['__onGCastApiAvailable'] = function (isAvailable) {
-   if (isAvailable) {
-      cast.framework.CastContext.getInstance ().setOptions ({
-         receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
-      });
-   }
-};
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
 let Tk = 0,  Au;                       // pos of track we're on, audio element
@@ -228,6 +221,13 @@ $(function () {                        // boot da page
                                        });
    Au.addEventListener ('ended', () => { next (); });
    play ('n');  // setup audio but can't aaactually play till click
+window ['__onGCastApiAvailable'] = function (isAvailable) {
+   if (isAvailable) {
+      cast.framework.CastContext.getInstance ().setOptions ({
+         receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
+      });
+   }
+};
 });
  </script>
 <? pg_body ([ [$UC['home']." home",  "..",  "...take me back hooome"] ]); ?>

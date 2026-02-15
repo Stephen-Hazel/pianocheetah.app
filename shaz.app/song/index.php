@@ -219,8 +219,14 @@ function castInit ()
    castCtx.addEventListener (          // hookup castUpdate() - so many words !!
       cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
       function (event)
-      {  if (event.sessionState === cast.framework.SessionState.SESSION_STARTED)
-            castCtx.getCurrentSession ().addUpdateListener (castUpdate);
+      {  if (event.sessionState ===
+             cast.framework.SessionState.SESSION_STARTED) {
+dbg(castCtx);
+dbg(castCtx.getCurrentSession ());
+           let sess = castCtx.getCurrentSession ();
+dbg(sess);
+            sess.addUpdateListener (castUpdate);
+         }
       }
    );
 }

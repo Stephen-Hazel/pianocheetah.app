@@ -150,10 +150,9 @@ dbg('playin!');
         const player = new cast.framework.RemotePlayer ();
         const plCtl  = new cast.framework.RemotePlayerController (player);
          plCtl.addEventListener (
-            cast.framework.RemotePlayerEventType.MEDIA_STATUS_UPDATED,
-            (event) => {
-dbg("media ch");
-dbg(event);
+            cast.framework.RemotePlayerEventType.STATUS_CHANGED,
+            () => {
+dbg("status ch");
 dbg(player);
             }
          );

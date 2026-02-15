@@ -187,8 +187,7 @@ function next (newtk = -1)
    if (! cSess)  {alert ("ya ain't castin yet i think ?");   return;}
 
 dbg("next newtk="+newtk);
-  const req = new chrome.cast.media.StopRequest ();
-   cSess.getMediaSession ().stop (req);     // shush !
+   if (cl = cSess.getRemoteMediaClient ())  cl.stop ();    // shush !
 dbg("stop req ok");
 
   let sh = shuf ();

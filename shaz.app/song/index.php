@@ -148,15 +148,6 @@ dbg("play");
       function ()     {dbg('playin!');},
       function (err)  {dbg('Error='+err);}
    );
-   chrome.cast.Media.media.addUpdateListener (function (isAlive) {
-     const cSess = cast.framework.CastContext.getInstance ()
-                                             .getCurrentSession ();
-      if (cSess && cSess.media [0].idleReason === 'FINISHED') {
-dbg("song done="+cSess.media [0].idleReason);
-         next ();
-dbg("song done next done");
-      }
-   });
 }
 
 
@@ -166,8 +157,8 @@ function next (newtk = -1)
 
 dbg("next newtk="+newtk);
   const req = new chrome.cast.media.StopRequest ();
-dbg("stop req");
-   chrome.cast.media.Media.stop (req);       // shush !
+   cSess.getMediaSession ().stop (req);     // shush !
+dbg("stop req ok");
 
   let sh = shuf ();
    $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
@@ -209,13 +200,32 @@ function lyr ()                        // hit google lookin fo lyrics
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
 
-window ['__onGCastApiAvailable'] = function (isAvailable) {
-   if (isAvailable) {
-      cast.framework.CastContext.getInstance ().setOptions ({
-         receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
-      });
+function castUpdate (alive)
+{  if (! alive)  return;
+
+  const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
+   if (cSess && cSess.media [0].idleReason === 'FINISHED') {
+dbg("song done="+cSess.media [0].idleReason);
+      next ();
+dbg("song done next done");
    }
-};
+}
+
+function castInit ()
+{ const castCtx = cast.framework.CastContext.getInstance ();
+   castCtx.setOptions ({               // actual init
+      receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
+   });
+   castCtx.addEventListener (          // hookup castUpdate() - so many words !!
+      cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
+      function (event)
+      {  if (event.sessionState === cast.framework.SessionState.SESSION_STARTED)
+            castCtx.getCurrentSession ().addUpdateListener (castUpdate);
+      }
+   );
+}
+
+window ['__onGCastApiAvailable'] = function (avail)  {if (avail) castInit ();};
 
 
 $(function () {                        // boot da page

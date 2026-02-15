@@ -153,6 +153,8 @@ dbg('playin!');
             cast.framework.RemotePlayerEventType.MEDIA_STATUS_UPDATED,
             (event) => {
 dbg("media ch");
+dbg(event);
+dbg(player);
 dbg(player.playerState);
             }
          );
@@ -161,6 +163,8 @@ dbg(player.playerState);
             (event) => {
 dbg("player ch");
 dbg(event.value);
+dbg(event);
+dbg(player);
 dbg(player.isPaused);
 dbg(player.isPlaying);
 dbg(player.isIdle);

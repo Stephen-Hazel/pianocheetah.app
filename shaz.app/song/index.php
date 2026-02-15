@@ -155,7 +155,6 @@ dbg('playin!');
 dbg("media ch");
 dbg(event);
 dbg(player);
-dbg(player.playerState);
             }
          );
          plCtl.addEventListener (
@@ -164,20 +163,14 @@ dbg(player.playerState);
 dbg("player ch");
 dbg(event);
 dbg(player);
-dbg(player.playerState);
-dbg(cast.framework.messages);
-               if (player.playerState ===
-                   cast.framework.messages.PlayerState.IDLE) {
+               if (player.playerState === "IDLE") {
                  const sess = cast.framework.CastContext.getInstance ()
                                                         .getCurrentSession ();
 dbg(sess);
                  const mSess = sess.getMediaSession ();
 dbg(mSess);
 dbg(mSess.idleReason);
-                  if (mSess && mSess.idleReason ==
-                               cast.framework.messages.IdleReason.FINISHED) {
-                     next ();
-                  }
+                  if (mSess && mSess.idleReason == "FINISHED")  next ();
                }
             }
          );

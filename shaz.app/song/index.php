@@ -103,7 +103,7 @@ require_once ("../_inc/app.php");
  <script> // ___________________________________________________________________
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
-let Tk = 0,  Au;                       // pos of track we're on, audio element
+let Tk = 0;                            // pos of track we're on
 
 function shuf ()  {return $('#shuf').is (':checked') ? 'Y':'N';}
 
@@ -152,32 +152,36 @@ function next (newtk = -1)
    play ('y');
 }
 
-function play (go = 'y')
-{  if ((pick ().length > 0) && (PL.length == 0))  redo (); // outa songs!
+function play ()
+{ const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
+   if (! cSess)  {dbg("not castin?');   return;}
+
+   if ((pick ().length > 0) && (PL.length == 0))  redo (); // outa songs!
    if (Tk >= PL.length)  return;
 
   let ar = Nm [Tk].split ("\n");
    document.title = ar [2] + ' - ' + ar [0];
-   Au.src = 'song/' + PL [Tk];
-   if (go == 'y') {
-      $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
-      if ("mediaSession" in navigator) {
-         navigator.mediaSession.metadata = new MediaMetadata({
-            artist: ar [0],
-            album:  ar [1] + ' ' + ar [3],
-            title:  ar [2],
-            artwork: [{
-               src: "https://shaz.app/img/logo.png",
-               sizes: "350x350",
-               type: "image/png",
-            }]
-         });
-         navigator.mediaSession.setActionHandler ("nexttrack",
-                                                  () => { next (); });
-/* play pause stop seekbackward seekforward seekto previoustrack */
+   $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
+
+  const mInfo = new chrome.cast.media.MediaInfo (
+      'https://shaz.app/song/song/' + PL [Tk], 'audio/mpeg');
+   mInfo.metadata = new chrome.cast.media.GenericMediaMetadata ();
+   mInfo.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
+   mInfo.metadata.title        = ar [2];
+   mInfo.metadata.artist       = ar [0];
+// mInfo.metadata.images = [{ 'url': 'https://yourserver.com',
+//                            'width': 500, 'height': 500 }];
+  const req = new chrome.cast.media.LoadRequest (mInfo);
+   cSess.loadMedia (req).then (
+      function ()     {dbg('Load succeed');},
+      function (err)  {dbg('Error='+err);}
+   );
+   cSess.addUpdateListener (function (isAlive) {
+      if (cSess.media [0].idleReason === 'FINISHED') {
+dbg("song done="+cSess.media [0].idleReason);
+         next ();
       }
-      Au.play ();
-   }
+   });
 }
 
 function lyr ()                        // hit google lookin fo lyrics
@@ -189,33 +193,6 @@ function lyr ()                        // hit google lookin fo lyrics
 }
 
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
-
-function castMp3 (mp3Url, title, artist)
-{ const castSession = cast.framework.CastContext.getInstance()
-                                                .getCurrentSession();
-   if (castSession) {
-     const mediaInfo = new chrome.cast.media.MediaInfo (mp3Url, 'audio/mpeg');
-      mediaInfo.metadata = new chrome.cast.media.GenericMediaMetadata ();
-      mediaInfo.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
-      mediaInfo.metadata.title        = title;
-      mediaInfo.metadata.artist       = artist;
-   // Optionally add an image:
-   // mediaInfo.metadata.images = [{ 'url': 'https://yourserver.com',
-   //                                'width': 500, 'height': 500 }];
-     const request = new chrome.cast.media.LoadRequest(mediaInfo);
-      castSession.loadMedia (request).then (
-         function () {
-            console.log ('Load succeed');
-         },
-         function(errorCode) {
-            console.log ('Error code: ' + errorCode);
-         }
-      );
-   }
-   else {
-      console.log('Not connected to a Cast device');
-   }
-}
 
 
 window ['__onGCastApiAvailable'] = function (isAvailable) {
@@ -230,24 +207,19 @@ window ['__onGCastApiAvailable'] = function (isAvailable) {
 $(function () {                        // boot da page
    init ();
 
-   Au = tag ('audio');
-   if (! mobl ()) {
-      Au.volume = 0.2;                 // desktop shouldn't have max volume :/
-      $('.mobl').hide ();
-   }
+   if (! mobl ())  $('.mobl').hide ();
    $('input' ).checkboxradio ().click (chk);
-   $('#scoot').button ().click (scoot);
+   $('#play' ).button ().click (play);
    $('#lyr'  ).button ().click (lyr);
+   $('#scoot').button ().click (scoot);
    $('#info tbody').on ('click', 'tr', function () {
-                                         next ($(this).index ());
+                                          next ($(this).index ());
                                        });
-   Au.addEventListener ('ended', () => { next (); });
-   play ('n');  // setup audio but can't aaactually play till click
 });
  </script>
-<script src=
+ <script src=
 "https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"
-></script>
+  ></script>
 
 <? pg_body ([ [$UC['home']." home",  "..",  "...take me back hooome"] ]); ?>
 <span style="padding-left: 5em"></span>
@@ -255,14 +227,9 @@ $(function () {                        // boot da page
    foreach ($dir as $i => $s)
       check ("chk$i", $s, in_array ($i, $pick) ? 'Y':''); ?>
 <span id='num'><?= count($nm) ?></span><br class='mobl'>
-<audio controls></audio>
-<google-cast-launcher></google-cast-launcher>
-<button onclick="castMp3(
-'https://shaz.app/song/song/_a/Yes-1983_90125-Leave_It.mp3',
-'My Song', 'Artist Name')">Play MP3 on Chromecast</button>
-
+<a id='play'>play</a>
 <a id='lyr'>lyric</a>
-
+<google-cast-launcher></google-cast-launcher>
 
 <? $n2 = [];
    foreach ($nm as $n) {

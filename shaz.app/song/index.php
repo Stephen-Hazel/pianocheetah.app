@@ -159,6 +159,11 @@ dbg(player.playerState);
          plCtl.addEventListener (
             cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
             (event) => {
+dbg("player ch");
+dbg(event.value);
+dbg(player.isPaused);
+dbg(player.isPlaying);
+dbg(player.isIdle);
                if (player.playerState ===
                    cast.framework.messages.PlayerState.IDLE) {
                  const sess = cast.framework.CastContext.getInstance ()

@@ -162,19 +162,17 @@ dbg(player.playerState);
             cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
             (event) => {
 dbg("player ch");
-dbg(event.value);
 dbg(event);
 dbg(player);
-dbg(player.isPaused);
-dbg(player.isPlaying);
-dbg(player.isIdle);
+dbg(player.playerState);
+dbg(cast.framework.messages);
                if (player.playerState ===
                    cast.framework.messages.PlayerState.IDLE) {
                  const sess = cast.framework.CastContext.getInstance ()
                                                         .getCurrentSession ();
-dbg("player ch");
-dbg(mSess);
+dbg(sess);
                  const mSess = sess.getMediaSession ();
+dbg(mSess);
 dbg(mSess.idleReason);
                   if (mSess && mSess.idleReason ==
                                cast.framework.messages.IdleReason.FINISHED) {

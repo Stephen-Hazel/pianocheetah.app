@@ -187,7 +187,9 @@ function next (newtk = -1)
    if (! cSess)  {alert ("ya ain't castin yet i think ?");   return;}
 
 dbg("next newtk="+newtk);
-   if (cl = cSess.getRemoteMediaClient ())  cl.stop ();    // shush !
+  const player = new cast.framework.RemotePlayer ();
+  const plCtl  = new cast.framework.RemotePlayerController (player);
+   if plCtl.stop ();                   // shush !
 dbg("stop req ok");
 
   let sh = shuf ();

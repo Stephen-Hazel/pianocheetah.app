@@ -222,11 +222,10 @@ function castInit ()
       function (event)
       {  if (event.sessionState ===
              cast.framework.SessionState.SESSION_STARTED) {
-dbg(castCtx);
-dbg(castCtx.getCurrentSession ());
-           let sess = event.session;
-dbg(sess);
-            sess.addUpdateListener (castUpdate);
+           const cSess = cast.framework.CastContext.getInstance ()
+                                                   .getCurrentSession ();
+dbg(cSess);
+            cSess.addUpdateListener (castUpdate);
          }
       }
    );

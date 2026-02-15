@@ -145,34 +145,37 @@ dbg("play");
 //                            'width': 500, 'height': 500 }];
   const req = new chrome.cast.media.LoadRequest (mInfo);
    cSess.loadMedia (req).then (
-      function ()     {dbg('playin!');},
-      function (err)  {dbg('Error='+err);}
-   );
-  const player = new cast.framework.RemotePlayer ();
-  const plCtl  = new cast.framework.RemotePlayerController (player);
-   plCtl.addEventListener (
-      cast.framework.RemotePlayerEventType.MEDIA_STATUS_UPDATED,
-      (event) => {
+      function () {
+dbg('playin!');
+        const player = new cast.framework.RemotePlayer ();
+        const plCtl  = new cast.framework.RemotePlayerController (player);
+         plCtl.addEventListener (
+            cast.framework.RemotePlayerEventType.MEDIA_STATUS_UPDATED,
+            (event) => {
 dbg("media ch");
 dbg(player.playerState);
-      }
-   );
-   plCtl.addEventListener (
-      cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
-      (event) => {
-         if (player.playerState === cast.framework.messages.PlayerState.IDLE) {
-           const sess = cast.framework.CastContext.getInstance ()
-                                                  .getCurrentSession ();
+            }
+         );
+         plCtl.addEventListener (
+            cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
+            (event) => {
+               if (player.playerState ===
+                   cast.framework.messages.PlayerState.IDLE) {
+                 const sess = cast.framework.CastContext.getInstance ()
+                                                        .getCurrentSession ();
 dbg("player ch");
 dbg(mSess);
-           const mSess = sess.getMediaSession ();
+                 const mSess = sess.getMediaSession ();
 dbg(mSess.idleReason);
-            if (mSess && mSess.idleReason ==
-                         cast.framework.messages.IdleReason.FINISHED) {
-               next ();
+                  if (mSess && mSess.idleReason ==
+                               cast.framework.messages.IdleReason.FINISHED) {
+                     next ();
+                  }
+               }
             }
-         }
-      }
+         );
+      },
+      function (err)  {dbg('Error='+err);}
    );
 }
 

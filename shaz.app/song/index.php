@@ -104,7 +104,6 @@ require_once ("../_inc/app.php");
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
 let Tk = 0;                            // pos of track we're on
-var MInfo;
 
 function shuf ()  {return $('#shuf').is (':checked') ? 'Y':'N';}
 
@@ -125,11 +124,10 @@ function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 
 function play ()
-{
-dbg("play");
-  const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
-   if (! cSess)  {dbg("not castin?");   return;}
+{ const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
+   if (! cSess)  {alert ("ya ain't castin yet i think ?");   return;}
 
+dbg("play");
    if ((pick ().length > 0) && (PL.length == 0))  redo (); // outa songs!
    if (Tk >= PL.length)  return;
 
@@ -137,20 +135,20 @@ dbg("play");
    document.title = ar [2] + ' - ' + ar [0];
    $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
 
-   MInfo = new chrome.cast.media.MediaInfo (
+  const mInfo = new chrome.cast.media.MediaInfo (
                   'https://shaz.app/song/song/' + PL [Tk], 'audio/mpeg');
-   MInfo.metadata = new chrome.cast.media.GenericMediaMetadata ();
-   MInfo.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
-   MInfo.metadata.artist       = ar [0];
-   MInfo.metadata.title        = ar [2];
-// MInfo.metadata.images = [{ 'url': 'https://yourserver.com',
+   mInfo.metadata = new chrome.cast.media.GenericMediaMetadata ();
+   mInfo.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
+   mInfo.metadata.artist       = ar [0];
+   mInfo.metadata.title        = ar [2];
+// mInfo.metadata.images = [{ 'url': 'https://yourserver.com',
 //                            'width': 500, 'height': 500 }];
-  const req = new chrome.cast.media.LoadRequest (MInfo);
+  const req = new chrome.cast.media.LoadRequest (mInfo);
    cSess.loadMedia (req).then (
-      function ()     {dbg('Load succeed');},
+      function ()     {dbg('playin!');},
       function (err)  {dbg('Error='+err);}
    );
-   cSess.addUpdateListener (function (isAlive) {
+   chrome.cast.Session.addUpdateListener (function (isAlive) {
      const cSess = cast.framework.CastContext.getInstance ()
                                              .getCurrentSession ();
       if (cSess && cSess.media [0].idleReason === 'FINISHED') {
@@ -163,14 +161,13 @@ dbg("song done next done");
 
 
 function next (newtk = -1)
-{
-dbg("next newtk="+newtk);
-  const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
-   if (! cSess)  {dbg("not castin?");   return;}
+{ const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
+   if (! cSess)  {alert ("ya ain't castin yet i think ?");   return;}
 
+dbg("next newtk="+newtk);
   const req = new chrome.cast.media.StopRequest ();
 dbg("stop req");
-   MInfo.stop (req);                   // shush !
+   chrome.cast.media.Media.stop (req);       // shush !
 
   let sh = shuf ();
    $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite

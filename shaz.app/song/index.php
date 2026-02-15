@@ -148,6 +148,32 @@ dbg("play");
       function ()     {dbg('playin!');},
       function (err)  {dbg('Error='+err);}
    );
+  const player = new cast.framework.RemotePlayer ();
+  const plCtl  = new cast.framework.RemotePlayerController (player);
+   plCtl.addEventListener (
+      cast.framework.RemotePlayerEventType.MEDIA_STATUS_UPDATED,
+      (event) => {
+dbg("media ch");
+dbg(player.playerState);
+      }
+   };
+   plCtl.addEventListener (
+      cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
+      (event) => {
+         if (player.playerState === cast.framework.messages.PlayerState.IDLE) {
+           const sess = cast.framework.CastContext.getInstance ()
+                                                  .getCurrentSession ();
+dbg("player ch");
+dbg(mSess);
+           const mSess = sess.getMediaSession ();
+dbg(mSess.idleReason);
+            if (mSess && mSess.idleReason ==
+                         cast.framework.messages.IdleReason.FINISHED) {
+               next ();
+            }
+         }
+      }
+   );
 }
 
 
@@ -200,39 +226,12 @@ function lyr ()                        // hit google lookin fo lyrics
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
 
-function castUpdate (alive)
-{  if (! alive)  return;
-
-  const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
-   if (cSess && cSess.media [0].idleReason === 'FINISHED') {
-dbg("song done="+cSess.media [0].idleReason);
-      next ();
-dbg("song done next done");
-   }
-}
-
-
-function castInit ()
-{ const castCtx = cast.framework.CastContext.getInstance ();
-   castCtx.setOptions ({               // actual init
-      receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
-   });
-   castCtx.addEventListener (          // hookup castUpdate() - so many words !!
-      cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
-      function (event)
-      {  if (event.sessionState ===
-             cast.framework.SessionState.SESSION_STARTED) {
-           const cSess = cast.framework.CastContext.getInstance ()
-                                                   .getCurrentSession ();
-dbg(cSess);
-            cSess.addUpdateListener (castUpdate);
-         }
-      }
-   );
-}
-
-
-window ['__onGCastApiAvailable'] = function (avail)  {if (avail) castInit ();};
+window ['__onGCastApiAvailable'] = function (avail) {
+   if (avail)
+      cast.framework.CastContext.getInstance ().setOptions ({
+         receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
+      });
+};
 
 
 $(function () {                        // boot da page
@@ -243,9 +242,7 @@ $(function () {                        // boot da page
    $('#play' ).button ().click (play);
    $('#lyr'  ).button ().click (lyr);
    $('#scoot').button ().click (scoot);
-   $('#info tbody').on ('click', 'tr', function () {
-                                          next ($(this).index ());
-                                       });
+   $('#info tbody').on ('click','tr',function ()  { next ($(this).index ()); });
 });
  </script>
  <script src=

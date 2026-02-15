@@ -164,8 +164,10 @@ dbg("player ch");
 dbg(event);
 dbg(player);
                if (player.playerState === "IDLE") {
-                 const sess = cast.framework.CastContext.getInstance ()
-                                                        .getCurrentSession ();
+                 const cSess = cast.framework.CastContext.getInstance ()
+                                                         .getCurrentSession ();
+                  if (! cSess)  return;     // user disco'd cast
+
 dbg(sess);
                  const mSess = sess.getMediaSession ();
 dbg(mSess);

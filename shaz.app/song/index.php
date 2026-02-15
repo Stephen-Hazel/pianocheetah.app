@@ -156,7 +156,7 @@ dbg("play");
 dbg("media ch");
 dbg(player.playerState);
       }
-   };
+   );
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {

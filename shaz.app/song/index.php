@@ -211,6 +211,7 @@ dbg("song done next done");
    }
 }
 
+
 function castInit ()
 { const castCtx = cast.framework.CastContext.getInstance ();
    castCtx.setOptions ({               // actual init
@@ -223,13 +224,14 @@ function castInit ()
              cast.framework.SessionState.SESSION_STARTED) {
 dbg(castCtx);
 dbg(castCtx.getCurrentSession ());
-           let sess = castCtx.getCurrentSession ();
+           let sess = event.session;
 dbg(sess);
             sess.addUpdateListener (castUpdate);
          }
       }
    );
 }
+
 
 window ['__onGCastApiAvailable'] = function (avail)  {if (avail) castInit ();};
 

@@ -104,6 +104,7 @@ require_once ("../_inc/app.php");
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
 let Tk = 0;                            // pos of track we're on
+var MInfo;
 
 function shuf ()  {return $('#shuf').is (':checked') ? 'Y':'N';}
 
@@ -123,9 +124,55 @@ function redo (x = '')                 // get which dirs are picked n refresh
 function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 
+function play ()
+{
+dbg("play");
+  const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
+   if (! cSess)  {dbg("not castin?");   return;}
+
+   if ((pick ().length > 0) && (PL.length == 0))  redo (); // outa songs!
+   if (Tk >= PL.length)  return;
+
+  let ar = Nm [Tk].split ("\n");
+   document.title = ar [2] + ' - ' + ar [0];
+   $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
+
+   MInfo = new chrome.cast.media.MediaInfo (
+                  'https://shaz.app/song/song/' + PL [Tk], 'audio/mpeg');
+   MInfo.metadata = new chrome.cast.media.GenericMediaMetadata ();
+   MInfo.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
+   MInfo.metadata.artist       = ar [0];
+   MInfo.metadata.title        = ar [2];
+// MInfo.metadata.images = [{ 'url': 'https://yourserver.com',
+//                            'width': 500, 'height': 500 }];
+  const req = new chrome.cast.media.LoadRequest (MInfo);
+   cSess.loadMedia (req).then (
+      function ()     {dbg('Load succeed');},
+      function (err)  {dbg('Error='+err);}
+   );
+   cSess.addUpdateListener (function (isAlive) {
+     const cSess = cast.framework.CastContext.getInstance ()
+                                             .getCurrentSession ();
+      if (cSess && cSess.media [0].idleReason === 'FINISHED') {
+dbg("song done="+cSess.media [0].idleReason);
+         next ();
+dbg("song done next done");
+      }
+   });
+}
+
+
 function next (newtk = -1)
-{ let sh = shuf ();
-   Au.pause ();                        // shush
+{
+dbg("next newtk="+newtk);
+  const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
+   if (! cSess)  {dbg("not castin?");   return;}
+
+  const req = new chrome.cast.media.StopRequest ();
+dbg("stop req");
+   MInfo.stop (req);                   // shush !
+
+  let sh = shuf ();
    $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
    if (newtk == Tk)  return;           // shortcut to pause
 
@@ -149,40 +196,9 @@ function next (newtk = -1)
          if ((sh == 'Y') && (PL.length == 0))  redo ();
       }                                // completely redo if shuf n empty
    }
-   play ('y');
+   play ();
 }
 
-function play ()
-{ const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
-   if (! cSess)  {dbg("not castin?");   return;}
-
-   if ((pick ().length > 0) && (PL.length == 0))  redo (); // outa songs!
-   if (Tk >= PL.length)  return;
-
-  let ar = Nm [Tk].split ("\n");
-   document.title = ar [2] + ' - ' + ar [0];
-   $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
-
-  const mInfo = new chrome.cast.media.MediaInfo (
-      'https://shaz.app/song/song/' + PL [Tk], 'audio/mpeg');
-   mInfo.metadata = new chrome.cast.media.GenericMediaMetadata ();
-   mInfo.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
-   mInfo.metadata.title        = ar [2];
-   mInfo.metadata.artist       = ar [0];
-// mInfo.metadata.images = [{ 'url': 'https://yourserver.com',
-//                            'width': 500, 'height': 500 }];
-  const req = new chrome.cast.media.LoadRequest (mInfo);
-   cSess.loadMedia (req).then (
-      function ()     {dbg('Load succeed');},
-      function (err)  {dbg('Error='+err);}
-   );
-   cSess.addUpdateListener (function (isAlive) {
-      if (cSess.media [0].idleReason === 'FINISHED') {
-dbg("song done="+cSess.media [0].idleReason);
-         next ();
-      }
-   });
-}
 
 function lyr ()                        // hit google lookin fo lyrics
 {  if (Tk >= PL.length)  return;
@@ -191,6 +207,7 @@ function lyr ()                        // hit google lookin fo lyrics
    window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
                                                                       "_blank");
 }
+
 
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
 

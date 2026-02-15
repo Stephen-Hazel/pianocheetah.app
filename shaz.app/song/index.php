@@ -148,7 +148,7 @@ dbg("play");
       function ()     {dbg('playin!');},
       function (err)  {dbg('Error='+err);}
    );
-   chrome.cast.Session.addUpdateListener (function (isAlive) {
+   chrome.cast.Media.media.addUpdateListener (function (isAlive) {
      const cSess = cast.framework.CastContext.getInstance ()
                                              .getCurrentSession ();
       if (cSess && cSess.media [0].idleReason === 'FINISHED') {

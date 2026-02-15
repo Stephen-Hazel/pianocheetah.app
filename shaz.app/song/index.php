@@ -154,7 +154,7 @@ function next (newtk = -1)
 
 function play ()
 { const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
-   if (! cSess)  {dbg("not castin?');   return;}
+   if (! cSess)  {dbg("not castin?");   return;}
 
    if ((pick ().length > 0) && (PL.length == 0))  redo (); // outa songs!
    if (Tk >= PL.length)  return;

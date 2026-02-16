@@ -238,6 +238,18 @@ window ['__onGCastApiAvailable'] = function (avail) {
   const player  = new cast.framework.RemotePlayer ();
   const playCtl = new cast.framework.RemotePlayerController (player);
    playCtl.addEventListener (
+      cast.framework.RemotePlayerEventType.MEDIA_INFO_CHANGED, function () {
+        let sess = cast.framework.CastContext.getInstance ()
+                                             .getCurrentSession ();
+         if (! sess)  return;
+        let mstat = sess.getMediaSession ();
+         if (! mstat)  return;
+dbg(mstat);
+dbg(mstat);
+dbg(mstat.media);
+      }
+   );
+   playCtl.addEventListener (
       cast.framework.RemotePlayerEventType.IS_MEDIA_CHANGED,
       function (event)
       {
@@ -295,7 +307,7 @@ $(function () {                        // boot da page
 <span id='num'><?= count($nm) ?></span><br class='mobl'>
 <a id='play'>play</a>
 <a id='lyr'>lyric</a>
-<google-cast-launcher id="castbutton"></google-cast-launcher>
+<google-cast-launcher></google-cast-launcher>
 
 <? $n2 = [];
    foreach ($nm as $n) {

@@ -140,7 +140,7 @@ dbg("play");
          $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
       }
      let mi = new chrome.cast.media.MediaInfo (
-                 'https://shaz.app/song/song/' + PL [i], 'audio/mpeg' };
+                     'https://shaz.app/song/song/' + PL [i], 'audio/mpeg');
       mi.metadata = new chrome.cast.media.GenericMediaMetadata ();
       mi.metadata.artist = ar [0];
       mi.metadata.title  = ar [2];

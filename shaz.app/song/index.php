@@ -206,11 +206,8 @@ window ['__onGCastApiAvailable'] = function (avail) {
    player = new cast.framework.RemotePlayer ();
    plCtl  = new cast.framework.RemotePlayerController (player);
    plCtl.addEventListener (
-      cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
-      () => {
-         if (player.playerState == cast.framework.messages.PlayerState.IDLE) {
+      cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED, () => {
 dbg("idle"); dbg(player);
-         }
       }
    );
 };

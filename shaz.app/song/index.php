@@ -165,40 +165,6 @@ dbg(req);
 dbg(cSess);
    cSess.getSessionObj ().queueLoad (req)
 dbg('playin!');
-
-/*
-  const player = new cast.framework.RemotePlayer ();
-  const plCtl  = new cast.framework.RemotePlayerController (player);
-   plCtl.addEventListener (
-      cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
-      (event) => {
-dbg("player ch");
-dbg(event);
-dbg(player);
-         if (player.playerState === "IDLE") {
-           const cSess = cast.framework.CastContext.getInstance ()
-                                                   .getCurrentSession ();
-            if (! cSess)  return;     // user disco'd cast
-
-dbg("did one song i think");
-         }
-      }
-   );
-*/
-   sessMgr = cast.framework.CastContext.getInstance ().getSessionManager ();
-dbg("sessmgr"); dbg(sessMgr);
-   sessMgr.addEventListener (
-      cast.framework.SessionEventType.SESSION_STARTED,
-      (event) => {
-dbg("event"); dbg(event);
-        const sess = event.session;
-dbg("sess"); dbg(sess);
-         remote = sess.getRemoteMediaClient ();
-dbg("remote"); dbg(remote);
-         remote.addUpdateListener (castUpd);
-dbg("did it?");
-      }
-   );
 }
 
 
@@ -247,6 +213,18 @@ function lyr ()                        // hit google lookin fo lyrics
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
 
+function mediaUpd ()
+{ const sess = cast.framework.CastContext.getInstance ().getCurrentSession ();
+   if (! sess)  return;
+
+  const media = sess.getMediaSession ();
+   if (media) {
+dbg(media);
+dbg(media.playerState);
+dbg(media.idleReason);
+   }
+}
+
 window ['__onGCastApiAvailable'] = function (avail) {
    if (! avail)  return;
 
@@ -254,6 +232,16 @@ window ['__onGCastApiAvailable'] = function (avail) {
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
       autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
    });
+
+  const castCtx = cast.framework.CastContext.GetInstance ();
+   castCtx.addEventListener (
+      cast.framework.CastContextEventType.CAST_STATE_CHANGED,
+      function (event)
+      {  if (castCtx.getCastState () == cast.framework.CastState.CONNECTED)
+            castCtx.getCurrentSession ().addEventListener (
+               cast.framework.CastSessionEventType.MEDIA_STATUS, mediaUpd);
+      }
+   );
 };
 
 

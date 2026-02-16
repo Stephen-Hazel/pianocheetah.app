@@ -149,10 +149,13 @@ dbg("play");
 //                            'width': 500, 'height': 500 }];
       mo [o] = mi;
    }
+dbg(mo);
   let req = new chrome.cast.media.QueueLoadRequest ([
                    mo[0],mo[1],mo[2],mo[3]
                 ]);
+dbg(req);
    req.startIndex = 0;
+dbg(cSess);
    cSess.queueLoad (req).then (
       function () {
 dbg('playin!');

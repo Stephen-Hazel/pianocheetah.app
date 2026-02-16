@@ -228,12 +228,11 @@ dbg(media.idleReason);
 window ['__onGCastApiAvailable'] = function (avail) {
    if (! avail)  return;
 
-   cast.framework.CastContext.getInstance ().setOptions ({
+  const castCtx = cast.framework.CastContext.getInstance ();
+   castCtx.setOptions ({
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
       autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
    });
-
-  const castCtx = cast.framework.CastContext.GetInstance ();
    castCtx.addEventListener (
       cast.framework.CastContextEventType.CAST_STATE_CHANGED,
       function (event)

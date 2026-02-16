@@ -100,7 +100,9 @@ require_once ("../_inc/app.php");
       overflow: hidden;
    }
  </style>
- <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+ <script src=
+"https://www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_framework.js"
+  ></script>
  <script> // ___________________________________________________________________
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
@@ -279,7 +281,7 @@ $(function () {                        // boot da page
 <span id='num'><?= count($nm) ?></span><br class='mobl'>
 <a id='play'>play</a>
 <a id='lyr'>lyric</a>
-<google-cast-launcher></google-cast-launcher>
+<google-cast-launcher id="castbutton"></google-cast-launcher>
 
 <? $n2 = [];
    foreach ($nm as $n) {

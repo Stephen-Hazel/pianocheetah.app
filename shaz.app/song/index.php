@@ -167,11 +167,10 @@ dbg(player);
                                                          .getCurrentSession ();
                   if (! cSess)  return;     // user disco'd cast
 
-dbg(cSess);
-                 const mSess = cSess.getMediaSession ();
-dbg(mSess);
-dbg(mSess.idleReason);
-                  if (mSess && mSess.idleReason == "FINISHED")  next ();
+//                 const mSess = cSess.getMediaSession ();
+//dbg(mSess);
+//dbg(mSess.idleReason);
+                  next ();
                }
             }
          );

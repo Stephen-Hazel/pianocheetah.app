@@ -133,7 +133,9 @@ dbg("player"); dbg(remote.getPlayerState ());
 
 
 function play ()
-{ const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
+{
+dbg("play1");
+  const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
    if (! cSess)  {alert ("ya ain't castin yet i think ?");   return;}
 
 dbg("play");
@@ -183,9 +185,10 @@ dbg("did one song i think");
       }
    );
 */
-
-  const sessMgr = cast.framework.CastContext.getInstance ()
-                                            .getSessionManager ();
+  var ctx = cast.framework.CastContext.getInstance ();
+dbg("ctx"); dbg(ctx);
+  var sessMgr = ctx.getSessionManager ();
+dbg("sessmgr"); dbg(sessMgr);
    sessMgr.addEventListener (
       cast.framework.SessionEventType.SESSION_STARTED,
       (event) => {
@@ -206,9 +209,10 @@ function next (newtk = -1)
 dbg("next newtk="+newtk);
    $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
    if (newtk == Tk)  return;           // shortcut to pause
-
+dbg("a");
    if (newtk != -1)  Tk = newtk;       // song got clicked on
    else {                              // this guy is dooone - mark it
+dbg("b");
       $.get ("did.php", { did: PL [Tk] });
 
       if (sh == 'Y') {                 // take outa PL and table
@@ -227,7 +231,9 @@ dbg("next newtk="+newtk);
          if ((sh == 'Y') && (PL.length == 0))  redo ();
       }                                // completely redo if shuf n empty
    }
+dbg("c");
    play ();
+dbg("d");
 }
 
 

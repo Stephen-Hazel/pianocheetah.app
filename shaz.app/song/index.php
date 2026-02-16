@@ -169,9 +169,8 @@ dbg(player);
             if (! cSess)  return;     // user disco'd cast
 
 dbg("did one song i think");
-         );
-      },
-      function (err)  {dbg('Error='+err);}
+         }
+      }
    );
 }
 

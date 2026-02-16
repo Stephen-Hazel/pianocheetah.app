@@ -269,11 +269,11 @@ $(function () {                        // boot da page
    $('#info tbody').on ('click','tr',function ()  { next ($(this).index ()); });
 });
 /*
-"https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"
+"https://www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_framework.js"
 */
  </script>
  <script src=
-"https://www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_framework.js"
+"https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"
   ></script>
 
 <? pg_body ([ [$UC['home']." home",  "..",  "...take me back hooome"] ]); ?>

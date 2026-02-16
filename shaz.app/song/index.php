@@ -228,6 +228,7 @@ dbg(media.idleReason);
 window ['__onGCastApiAvailable'] = function (avail) {
    if (! avail)  return;
 
+dbg(cast.framework.CastSessionEventType);
   const castCtx = cast.framework.CastContext.getInstance ();
    castCtx.setOptions ({
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
@@ -258,7 +259,6 @@ $(function () {                        // boot da page
    $('#info tbody').on ('click','tr',function ()  { next ($(this).index ()); });
 });
 /*
-"https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"
 "https://www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_framework.js"
 */
  </script>

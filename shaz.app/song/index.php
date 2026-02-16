@@ -152,7 +152,7 @@ dbg(mo);
   let req = new chrome.cast.media.QueueLoadRequest (mo);
 dbg(req);
 dbg(cSess);
-   cSess.getMediaSession ().queueLoad (req)
+   cSess.getSessionObj ().queueLoad (req)
 dbg('playin!');
 
   const player = new cast.framework.RemotePlayer ();

@@ -226,9 +226,11 @@ dbg("player"); dbg(remote.getPlayerState ());
 
 function castInit ()
 { const castCtx = cast.framework.CastContext.getInstance ();
+dbg(castCtx);
    castCtx.setOptions ({
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
    });
+dbg(castCtx);
   const sessMgr = cast.framework.CastContext.getInstance ()
                                             .getSessionManager ();
    sessMgr.addEventListener (

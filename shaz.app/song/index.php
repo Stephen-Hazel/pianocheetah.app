@@ -216,13 +216,35 @@ function lyr ()                        // hit google lookin fo lyrics
 
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
+var remote;
 
-window ['__onGCastApiAvailable'] = function (avail) {
-   if (avail)
-      cast.framework.CastContext.getInstance ().setOptions ({
-         receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
-      });
-};
+function castUpd ()
+{  if (! remote)  {dbg("no remote yet");   return;}
+dbg("media"); dbg(remote.getMediaStatus ());
+dbg("player"); dbg(remote.getPlayerState ());
+}
+
+function castInit ()
+{ const castCtx = cast.framework.CastContext.getInstance ();
+   castCtx.setOptions ({
+      receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
+   });
+  const sessMgr = castCtx.getSessionManager ();
+   sessMgr.addEventListener (
+      cast.framework.SessionEventType.SESSION_STARTED,
+      (event) => {
+dbg("event"); dbg(event);
+        const sess = event.session;
+dbg("sess"); dbg(sess);
+         remote = sess.getRemoteMediaClient ();
+dbg("remote"); dbg(remote);
+         remote.addUpdateListener (castUpd);
+dbg("did it?");
+      }
+   );
+}
+
+window ['__onGCastApiAvailable'] = function (avail) { if (avail) castInit (); };
 
 
 $(function () {                        // boot da page

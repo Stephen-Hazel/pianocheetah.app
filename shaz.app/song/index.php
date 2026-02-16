@@ -133,13 +133,14 @@ dbg("play");
 
   let mo = [];
    for (o = 0;  o < 4;  o++) {
-     let ar = Nm [Tk+o].split ("\n");
-      if (o = 0) {
+     let i = Tk+o;
+     let ar = Nm [i].split ("\n");
+      if (o == 0) {
          document.title = ar [2] + ' - ' + ar [0];
          $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
       }
      let mi = new chrome.cast.media.MediaInfo (
-                     'https://shaz.app/song/song/' + PL [Tk+o], 'audio/mpeg');
+                     'https://shaz.app/song/song/' + PL [i], 'audio/mpeg');
       mi.metadata = new chrome.cast.media.GenericMediaMetadata ();
       mi.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
       mi.metadata.artist       = ar [0];

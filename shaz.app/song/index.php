@@ -100,13 +100,7 @@ require_once ("../_inc/app.php");
       overflow: hidden;
    }
  </style>
- <script src=
-"https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"
-  ></script>
  <script> // ___________________________________________________________________
-/*
-"https://www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_framework.js"
-*/
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
 let Tk = 0;                            // pos of track we're on
@@ -274,7 +268,13 @@ $(function () {                        // boot da page
    $('#scoot').button ().click (scoot);
    $('#info tbody').on ('click','tr',function ()  { next ($(this).index ()); });
 });
+/*
+"https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"
+*/
  </script>
+ <script src=
+"https://www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_framework.js"
+  ></script>
 
 <? pg_body ([ [$UC['home']." home",  "..",  "...take me back hooome"] ]); ?>
 <span style="padding-left: 5em"></span>

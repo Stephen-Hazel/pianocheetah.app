@@ -139,15 +139,9 @@ dbg("play");
          document.title = ar [2] + ' - ' + ar [0];
          $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
       }
-     let mi = new chrome.cast.media.MediaInfo (
-                     'https://shaz.app/song/song/' + PL [i], 'audio/mpeg');
-      mi.metadata = new chrome.cast.media.GenericMediaMetadata ();
-      mi.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
-      mi.metadata.artist       = ar [0];
-      mi.metadata.title        = ar [2];
-      qi = new chrome.cast.media.MediaQueueItem (mi);
-// mi.metadata.images = [{ 'url': 'https://yourserver.com',
-//                         'width': 500, 'height': 500 }];
+     let mi = { contentId: 'https://shaz.app/song/song/' + PL [i],
+                contentType: 'audio/mpeg' };
+     let qi = new chrome.cast.media.MediaQueueItem (mi);
       mo [o] = qi;
    }
 dbg(mo);

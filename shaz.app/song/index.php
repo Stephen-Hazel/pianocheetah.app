@@ -141,7 +141,7 @@ dbg("play");
       }
      let mi = { contentId: 'https://shaz.app/song/song/' + PL [i],
                 contentType: 'audio/mpeg' };
-     let qi = new chrome.cast.media.MediaQueueItem (mi);
+     let qi = new chrome.cast.media.MediaQueueItem.Builder (mi);
       mo [o] = qi;
    }
 dbg(mo);
@@ -151,7 +151,7 @@ dbg(mo);
 dbg(req);
    req.startIndex = 0;
 dbg(cSess);
-   cSess.queueLoad (req).then (
+   cSess.getSessionObj ().queueLoad (req).then (
       function () {
 dbg('playin!');
         const player = new cast.framework.RemotePlayer ();

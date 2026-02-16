@@ -123,6 +123,15 @@ function redo (x = '')                 // get which dirs are picked n refresh
 function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 
+var remote;
+
+function castUpd ()
+{  if (! remote)  {dbg("no remote yet");   return;}
+dbg("media"); dbg(remote.getMediaStatus ());
+dbg("player"); dbg(remote.getPlayerState ());
+}
+
+
 function play ()
 { const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
    if (! cSess)  {alert ("ya ain't castin yet i think ?");   return;}
@@ -155,6 +164,7 @@ dbg(cSess);
    cSess.getSessionObj ().queueLoad (req)
 dbg('playin!');
 
+/*
   const player = new cast.framework.RemotePlayer ();
   const plCtl  = new cast.framework.RemotePlayerController (player);
    plCtl.addEventListener (
@@ -170,6 +180,22 @@ dbg(player);
 
 dbg("did one song i think");
          }
+      }
+   );
+*/
+
+  const sessMgr = cast.framework.CastContext.getInstance ()
+                                            .getSessionManager ();
+   sessMgr.addEventListener (
+      cast.framework.SessionEventType.SESSION_STARTED,
+      (event) => {
+dbg("event"); dbg(event);
+        const sess = event.session;
+dbg("sess"); dbg(sess);
+         remote = sess.getRemoteMediaClient ();
+dbg("remote"); dbg(remote);
+         remote.addUpdateListener (castUpd);
+dbg("did it?");
       }
    );
 }
@@ -216,35 +242,11 @@ function lyr ()                        // hit google lookin fo lyrics
 
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
-var remote;
-
-function castUpd ()
-{  if (! remote)  {dbg("no remote yet");   return;}
-dbg("media"); dbg(remote.getMediaStatus ());
-dbg("player"); dbg(remote.getPlayerState ());
-}
 
 function castInit ()
-{ const castCtx = cast.framework.CastContext.getInstance ();
-dbg(castCtx);
-   castCtx.setOptions ({
+{  cast.framework.CastContext.getInstance ().setOptions ({
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
    });
-dbg(castCtx);
-  const sessMgr = cast.framework.CastContext.getInstance ()
-                                            .getSessionManager ();
-   sessMgr.addEventListener (
-      cast.framework.SessionEventType.SESSION_STARTED,
-      (event) => {
-dbg("event"); dbg(event);
-        const sess = event.session;
-dbg("sess"); dbg(sess);
-         remote = sess.getRemoteMediaClient ();
-dbg("remote"); dbg(remote);
-         remote.addUpdateListener (castUpd);
-dbg("did it?");
-      }
-   );
 }
 
 window ['__onGCastApiAvailable'] = function (avail) { if (avail) castInit (); };

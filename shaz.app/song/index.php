@@ -145,9 +145,10 @@ dbg("play");
       mi.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
       mi.metadata.artist       = ar [0];
       mi.metadata.title        = ar [2];
-// mInfo.metadata.images = [{ 'url': 'https://yourserver.com',
-//                            'width': 500, 'height': 500 }];
-      mo [o] = mi;
+      qi = new chrome.cast.media.MediaQueueItem (mi);
+// mi.metadata.images = [{ 'url': 'https://yourserver.com',
+//                         'width': 500, 'height': 500 }];
+      mo [o] = qi;
    }
 dbg(mo);
   let req = new chrome.cast.media.QueueLoadRequest ([
@@ -172,9 +173,7 @@ dbg(player);
                                                          .getCurrentSession ();
                   if (! cSess)  return;     // user disco'd cast
 
-dbg("next!");
-                  next ();
-dbg("...did next");
+dbg("did one song i think");
                }
             }
          );
@@ -185,16 +184,8 @@ dbg("...did next");
 
 
 function next (newtk = -1)
-{ const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
-   if (! cSess)  {alert ("ya ain't castin yet i think ?");   return;}
-
+{ let sh = shuf ();
 dbg("next newtk="+newtk);
-  const player = new cast.framework.RemotePlayer ();
-  const plCtl  = new cast.framework.RemotePlayerController (player);
-   plCtl.stop ();                      // shush !
-dbg("stop req ok");
-
-  let sh = shuf ();
    $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
    if (newtk == Tk)  return;           // shortcut to pause
 

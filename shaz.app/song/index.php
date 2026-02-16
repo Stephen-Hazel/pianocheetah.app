@@ -123,15 +123,6 @@ function redo (x = '')                 // get which dirs are picked n refresh
 function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 
-var sessMgr, remote;
-
-function castUpd ()
-{  if (! remote)  {dbg("no remote yet");   return;}
-dbg("media"); dbg(remote.getMediaStatus ());
-dbg("player"); dbg(remote.getPlayerState ());
-}
-
-
 function play ()
 {
 dbg("play1");
@@ -212,6 +203,15 @@ function lyr ()                        // hit google lookin fo lyrics
 
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
+/*
+var sessMgr, remote;
+
+function castUpd ()
+{  if (! remote)  {dbg("no remote yet");   return;}
+dbg("media"); dbg(remote.getMediaStatus ());
+dbg("player"); dbg(remote.getPlayerState ());
+}
+
 
 function mediaUpd ()
 { const sess = cast.framework.CastContext.getInstance ().getCurrentSession ();
@@ -224,16 +224,36 @@ dbg(media.playerState);
 dbg(media.idleReason);
    }
 }
+*/
 
 window ['__onGCastApiAvailable'] = function (avail) {
    if (! avail)  return;
 
-dbg(cast.framework.CastSessionEventType);
   const castCtx = cast.framework.CastContext.getInstance ();
    castCtx.setOptions ({
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
       autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
    });
+
+  const player  = new cast.framework.RemotePlayer ();
+  const playCtl = new cast.framework.RemotePlayerController (player);
+   playCtl.addEventListener (
+      cast.framework.RemotePlayerEventType.IS_MEDIA_CHANGED,
+      function (event)
+      {
+dbg("event"); dbg(event);
+         if (player.isMediaLoaded)
+            playCtl.addEventListener (
+               cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
+               function (ev)
+               {
+dbg(player);
+               }
+            );
+      }
+   );
+
+/*
    castCtx.addEventListener (
       cast.framework.CastContextEventType.CAST_STATE_CHANGED,
       function (event)
@@ -245,6 +265,7 @@ dbg(cast.framework.CastSessionEventType);
          }
       }
    );
+*/
 };
 
 

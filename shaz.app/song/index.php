@@ -131,31 +131,32 @@ dbg("play");
    if ((pick ().length > 0) && (PL.length == 0))  redo (); // outa songs!
    if (Tk >= PL.length)  return;
 
-  let ar = Nm [Tk].split ("\n");
-   document.title = ar [2] + ' - ' + ar [0];
-   $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
-
-  const mInfo = new chrome.cast.media.MediaInfo (
-                  'https://shaz.app/song/song/' + PL [Tk], 'audio/mpeg');
-   mInfo.metadata = new chrome.cast.media.GenericMediaMetadata ();
-   mInfo.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
-   mInfo.metadata.artist       = ar [0];
-   mInfo.metadata.title        = ar [2];
+  let mo = [];
+   for (o = 0;  o < 4;  o++) {
+     let ar = Nm [Tk+o].split ("\n");
+      if (o = 0) {
+         document.title = ar [2] + ' - ' + ar [0];
+         $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
+      }
+     let mi = new chrome.cast.media.MediaInfo (
+                     'https://shaz.app/song/song/' + PL [Tk+o], 'audio/mpeg');
+      mi.metadata = new chrome.cast.media.GenericMediaMetadata ();
+      mi.metadata.metadataType = chrome.cast.media.MetadataType.GENERIC;
+      mi.metadata.artist       = ar [0];
+      mi.metadata.title        = ar [2];
 // mInfo.metadata.images = [{ 'url': 'https://yourserver.com',
 //                            'width': 500, 'height': 500 }];
-  const req = new chrome.cast.media.LoadRequest (mInfo);
-   cSess.loadMedia (req).then (
+      mo [o] = mi;
+   }
+  let req = new chrome.cast.media.QueueLoadRequest ([
+                   mo[0],mo[1],mo[2],mo[3]
+                ]);
+   req.startIndex = 0;
+   cSess.queueLoad (req).then (
       function () {
 dbg('playin!');
         const player = new cast.framework.RemotePlayer ();
         const plCtl  = new cast.framework.RemotePlayerController (player);
-         plCtl.addEventListener (
-            cast.framework.RemotePlayerEventType.STATUS_CHANGED,
-            () => {
-dbg("status ch");
-dbg(player);
-            }
-         );
          plCtl.addEventListener (
             cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
             (event) => {
@@ -167,10 +168,9 @@ dbg(player);
                                                          .getCurrentSession ();
                   if (! cSess)  return;     // user disco'd cast
 
-//                 const mSess = cSess.getMediaSession ();
-//dbg(mSess);
-//dbg(mSess.idleReason);
+dbg("next!");
                   next ();
+dbg("...did next");
                }
             }
          );

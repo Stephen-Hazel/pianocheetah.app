@@ -123,7 +123,7 @@ function redo (x = '')                 // get which dirs are picked n refresh
 function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 
-var remote;
+var sessMgr, remote;
 
 function castUpd ()
 {  if (! remote)  {dbg("no remote yet");   return;}
@@ -185,9 +185,6 @@ dbg("did one song i think");
       }
    );
 */
-  var ctx = cast.framework.CastContext.getInstance ();
-dbg("ctx"); dbg(ctx);
-  var sessMgr = ctx.getSessionManager ();
 dbg("sessmgr"); dbg(sessMgr);
    sessMgr.addEventListener (
       cast.framework.SessionEventType.SESSION_STARTED,
@@ -249,13 +246,16 @@ function lyr ()                        // hit google lookin fo lyrics
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
 
-function castInit ()
-{  cast.framework.CastContext.getInstance ().setOptions ({
-      receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
-   });
-}
+window ['__onGCastApiAvailable'] = function (avail) {
+   if (! avail)  return;
 
-window ['__onGCastApiAvailable'] = function (avail) { if (avail) castInit (); };
+   cast.framework.CastContext.getInstance ().setOptions ({
+      receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+      autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+   });
+   sessMgr =
+   cast.framework.CastContext.getInstance ().getSessionManager ();
+};
 
 
 $(function () {                        // boot da page
@@ -269,9 +269,7 @@ $(function () {                        // boot da page
    $('#info tbody').on ('click','tr',function ()  { next ($(this).index ()); });
 });
  </script>
- <script src=
-"https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"
-  ></script>
+ <script src="https://www.gstatic.com"></script>
 
 <? pg_body ([ [$UC['home']." home",  "..",  "...take me back hooome"] ]); ?>
 <span style="padding-left: 5em"></span>

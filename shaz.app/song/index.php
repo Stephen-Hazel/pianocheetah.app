@@ -124,9 +124,7 @@ function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 
 function play ()
-{
-dbg("play1");
-  const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
+{ const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
    if (! cSess)  {alert ("ya ain't castin yet i think ?");   return;}
 
 dbg("play");
@@ -150,10 +148,7 @@ dbg("play");
       qi.autoplay = true;
       mo [o] = qi;
    }
-dbg(mo);
   let req = new chrome.cast.media.QueueLoadRequest (mo);
-dbg(req);
-dbg(cSess);
    cSess.getSessionObj ().queueLoad (req)
 dbg('playin!');
 }
@@ -164,10 +159,8 @@ function next (newtk = -1)
 dbg("next newtk="+newtk);
    $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
    if (newtk == Tk)  return;           // shortcut to pause
-dbg("a");
    if (newtk != -1)  Tk = newtk;       // song got clicked on
    else {                              // this guy is dooone - mark it
-dbg("b");
       $.get ("did.php", { did: PL [Tk] });
 
       if (sh == 'Y') {                 // take outa PL and table
@@ -186,9 +179,7 @@ dbg("b");
          if ((sh == 'Y') && (PL.length == 0))  redo ();
       }                                // completely redo if shuf n empty
    }
-dbg("c");
    play ();
-dbg("d");
 }
 
 
@@ -203,81 +194,25 @@ function lyr ()                        // hit google lookin fo lyrics
 
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
-/*
-var sessMgr, remote;
-
-function castUpd ()
-{  if (! remote)  {dbg("no remote yet");   return;}
-dbg("media"); dbg(remote.getMediaStatus ());
-dbg("player"); dbg(remote.getPlayerState ());
-}
-
-
-function mediaUpd ()
-{ const sess = cast.framework.CastContext.getInstance ().getCurrentSession ();
-   if (! sess)  return;
-
-  const media = sess.getMediaSession ();
-   if (media) {
-dbg(media);
-dbg(media.playerState);
-dbg(media.idleReason);
-   }
-}
-*/
 
 window ['__onGCastApiAvailable'] = function (avail) {
    if (! avail)  return;
 
-  const castCtx = cast.framework.CastContext.getInstance ();
-   castCtx.setOptions ({
+   cast.framework.CastContext.getInstance ().setOptions ({
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
       autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
    });
 
-  const player  = new cast.framework.RemotePlayer ();
-  const playCtl = new cast.framework.RemotePlayerController (player);
-   playCtl.addEventListener (
-      cast.framework.RemotePlayerEventType.MEDIA_INFO_CHANGED, function () {
-        let sess = cast.framework.CastContext.getInstance ()
-                                             .getCurrentSession ();
-         if (! sess)  return;
-        let mstat = sess.getMediaSession ();
-         if (! mstat)  return;
-dbg(mstat);
-dbg(mstat);
-dbg(mstat.media);
-      }
-   );
-   playCtl.addEventListener (
-      cast.framework.RemotePlayerEventType.IS_MEDIA_CHANGED,
-      function (event)
-      {
-dbg("event"); dbg(event);
-         if (player.isMediaLoaded)
-            playCtl.addEventListener (
-               cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
-               function (ev)
-               {
-dbg(player);
-               }
-            );
-      }
-   );
-
-/*
-   castCtx.addEventListener (
-      cast.framework.CastContextEventType.CAST_STATE_CHANGED,
-      function (event)
-      {  if (castCtx.getCastState () == cast.framework.CastState.CONNECTED) {
-dbg("?");
-dbg(cast.framework.CastSessionEventType);
-            castCtx.getCurrentSession ().addEventListener (
-               cast.framework.CastSessionEventType.MEDIA_STATUS, mediaUpd);
+   play = new cast.framework.RemotePlayer ();
+   pCtl = new cast.framework.RemotePlayerController (play);
+   pCtl.addEventListener (
+      cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
+      () => {
+         if (play.playerState == cast.framework.messages.PlayerState.IDLE) {
+dbg("idle"); dbg(play);
          }
       }
    );
-*/
 };
 
 

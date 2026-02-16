@@ -236,9 +236,12 @@ window ['__onGCastApiAvailable'] = function (avail) {
    castCtx.addEventListener (
       cast.framework.CastContextEventType.CAST_STATE_CHANGED,
       function (event)
-      {  if (castCtx.getCastState () == cast.framework.CastState.CONNECTED)
+      {  if (castCtx.getCastState () == cast.framework.CastState.CONNECTED) {
+dbg("?");
+dbg(cast.framework.CastSessionEventType);
             castCtx.getCurrentSession ().addEventListener (
                cast.framework.CastSessionEventType.MEDIA_STATUS, mediaUpd);
+         }
       }
    );
 };

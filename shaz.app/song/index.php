@@ -185,6 +185,7 @@ dbg("did one song i think");
       }
    );
 */
+   sessMgr = cast.framework.CastContext.getInstance ().getSessionManager ();
 dbg("sessmgr"); dbg(sessMgr);
    sessMgr.addEventListener (
       cast.framework.SessionEventType.SESSION_STARTED,
@@ -253,8 +254,6 @@ window ['__onGCastApiAvailable'] = function (avail) {
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
       autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
    });
-   sessMgr =
-   cast.framework.CastContext.getInstance ().getSessionManager ();
 };
 
 

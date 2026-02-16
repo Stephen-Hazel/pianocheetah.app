@@ -139,37 +139,36 @@ dbg("play");
          document.title = ar [2] + ' - ' + ar [0];
          $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
       }
-     let mi = { contentId: 'https://shaz.app/song/song/' + PL [i],
-                contentType: 'audio/mpeg' };
-     let qi = new chrome.cast.media.MediaQueueItem.Builder (mi);
+     let mi = new chrome.cast.media.MediaInfo (
+                 'https://shaz.app/song/song/' + PL [i], 'audio/mpeg' };
+      mi.metadata = new chrome.cast.media.GenericMediaMetadata ();
+      mi.metadata.artist = ar [0];
+      mi.metadata.title  = ar [2];
+     let qi = new chrome.cast.media.QueueItem (mi);
+      qi.autoplay = true;
       mo [o] = qi;
    }
 dbg(mo);
-  let req = new chrome.cast.media.QueueLoadRequest ([
-                   mo[0],mo[1],mo[2],mo[3]
-                ]);
+  let req = new chrome.cast.media.QueueLoadRequest (mo);
 dbg(req);
-   req.startIndex = 0;
 dbg(cSess);
-   cSess.getSessionObj ().queueLoad (req).then (
-      function () {
+   cSess.getMediaSession ().queueLoad (req)
 dbg('playin!');
-        const player = new cast.framework.RemotePlayer ();
-        const plCtl  = new cast.framework.RemotePlayerController (player);
-         plCtl.addEventListener (
-            cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
-            (event) => {
+
+  const player = new cast.framework.RemotePlayer ();
+  const plCtl  = new cast.framework.RemotePlayerController (player);
+   plCtl.addEventListener (
+      cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
+      (event) => {
 dbg("player ch");
 dbg(event);
 dbg(player);
-               if (player.playerState === "IDLE") {
-                 const cSess = cast.framework.CastContext.getInstance ()
-                                                         .getCurrentSession ();
-                  if (! cSess)  return;     // user disco'd cast
+         if (player.playerState === "IDLE") {
+           const cSess = cast.framework.CastContext.getInstance ()
+                                                   .getCurrentSession ();
+            if (! cSess)  return;     // user disco'd cast
 
 dbg("did one song i think");
-               }
-            }
          );
       },
       function (err)  {dbg('Error='+err);}

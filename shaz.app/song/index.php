@@ -229,7 +229,8 @@ function castInit ()
    castCtx.setOptions ({
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID
    });
-  const sessMgr = castCtx.getSessionManager ();
+  const sessMgr = cast.framework.CastContext.getInstance ()
+                                            .getSessionManager ();
    sessMgr.addEventListener (
       cast.framework.SessionEventType.SESSION_STARTED,
       (event) => {

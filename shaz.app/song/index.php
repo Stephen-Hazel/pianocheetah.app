@@ -203,13 +203,13 @@ window ['__onGCastApiAvailable'] = function (avail) {
       autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
    });
 
-   play = new cast.framework.RemotePlayer ();
-   pCtl = new cast.framework.RemotePlayerController (play);
-   pCtl.addEventListener (
+   player = new cast.framework.RemotePlayer ();
+   plCtl  = new cast.framework.RemotePlayerController (player);
+   plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       () => {
-         if (play.playerState == cast.framework.messages.PlayerState.IDLE) {
-dbg("idle"); dbg(play);
+         if (player.playerState == cast.framework.messages.PlayerState.IDLE) {
+dbg("idle"); dbg(player);
          }
       }
    );

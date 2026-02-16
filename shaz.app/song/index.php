@@ -100,6 +100,7 @@ require_once ("../_inc/app.php");
       overflow: hidden;
    }
  </style>
+ <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
  <script> // ___________________________________________________________________
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
@@ -269,7 +270,6 @@ $(function () {                        // boot da page
    $('#info tbody').on ('click','tr',function ()  { next ($(this).index ()); });
 });
  </script>
- <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
 
 <? pg_body ([ [$UC['home']." home",  "..",  "...take me back hooome"] ]); ?>
 <span style="padding-left: 5em"></span>

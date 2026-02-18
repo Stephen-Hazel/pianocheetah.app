@@ -142,11 +142,10 @@ dbg("kick newtk="+newtk);
    if (Tk >= PL.length)  return;
 
   let mo = [];
-   for (o = 0;  o < 100;  o++) {
+   for (o = 0;  o < 50;  o++) {
      let i = Tk+o;
       if (i >= PL.length)  break;
 
-dbg("i=");dbg(i);dbg("Nm[i]");dbg(Nm[i]);
      let ar = Nm [i].split ("\n");
       if (o == 0) {
          document.title = ar [2] + ' - ' + ar [0];

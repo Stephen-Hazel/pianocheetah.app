@@ -194,6 +194,8 @@ window ['__onGCastApiAvailable'] = function (avail) {
       (event) => {
          if (event.value == 'IDLE') {
 dbg("player");dbg(player);
+            if ((player.mediaInfo ?? '') == '')  return;
+
            let fn = player.mediaInfo.contentId.substr (27);
 dbg("done='"+fn+"'");
             $.get ("did.php", { did: fn });

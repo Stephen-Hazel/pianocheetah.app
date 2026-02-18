@@ -193,6 +193,7 @@ window ['__onGCastApiAvailable'] = function (avail) {
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
          if (event.value == 'IDLE') {
+dbg("player");dbg(player);
            let fn = player.mediaInfo.contentId.substr (27);
 dbg("done='"+fn+"'");
             $.get ("did.php", { did: fn });

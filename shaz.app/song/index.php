@@ -193,7 +193,7 @@ window ['__onGCastApiAvailable'] = function (avail) {
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
          if (event.value == 'IDLE') {
-dbg("player");dbg(player);
+//dbg("player");dbg(player);
             if ((player.mediaInfo ?? '') == '')  return;
 
            let fn = player.mediaInfo.contentId.substr (27);
@@ -220,7 +220,6 @@ dbg("   WAS SKIPPED!");
             window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
                          "_blank");
          }
-//dbg(event); dbg(player);
       }
    );
 };

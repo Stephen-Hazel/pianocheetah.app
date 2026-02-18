@@ -102,7 +102,9 @@ require_once ("../_inc/app.php");
  </style>
  <script> // ___________________________________________________________________
 let PL = <?= json_encode ($pl); ?>;    // play list array
+
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
+
 let Tk = 0;                            // pos of track we're on
 
 function shuf ()  {return $('#shuf').is (':checked') ? 'Y':'N';}
@@ -132,7 +134,6 @@ function kick (newtk)
   let plCtl  = new cast.framework.RemotePlayerController (player);
    plCtl.stop ();                      // SHUSH !
 
-  let sh = shuf ();
 dbg("kick newtk="+newtk);
    $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
    Tk = newtk;
@@ -145,6 +146,7 @@ dbg("kick newtk="+newtk);
      let i = Tk+o;
       if (i >= PL.length)  break;
 
+dbg("i=");dbg(i);dbg("Nm[i]");dbg(Nm[i]);
      let ar = Nm [i].split ("\n");
       if (o == 0) {
          document.title = ar [2] + ' - ' + ar [0];
@@ -165,7 +167,7 @@ dbg("queuein' "+mo.length);
 dbg('playin!');
 }
 
-
+/*
 function lyr ()                        // hit google lookin fo lyrics
 {  if (Tk >= PL.length)  return;
 
@@ -173,7 +175,7 @@ function lyr ()                        // hit google lookin fo lyrics
    window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
                                                                       "_blank");
 }
-
+*/
 
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
@@ -227,9 +229,9 @@ $(function () {                        // boot da page
 
    if (! mobl ())  $('.mobl').hide ();
    $('input' ).checkboxradio ().click (chk);
-   $('#play' ).button ().click (play);
+/* $('#play' ).button ().click (play);
    $('#lyr'  ).button ().click (lyr);
-   $('#scoot').button ().click (scoot);
+   $('#scoot').button ().click (scoot); */
    $('#info tbody').on ('click','tr',function ()  { kick ($(this).index); });
 });
 /*
@@ -246,8 +248,10 @@ $(function () {                        // boot da page
    foreach ($dir as $i => $s)
       check ("chk$i", $s, in_array ($i, $pick) ? 'Y':''); ?>
 <span id='num'><?= count($nm) ?></span><br class='mobl'>
+<?/*
 <a id='play'>play</a>
 <a id='lyr'>lyric</a>
+*/?>
 <google-cast-launcher></google-cast-launcher>
 
 <? $n2 = [];

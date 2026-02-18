@@ -123,17 +123,28 @@ function redo (x = '')                 // get which dirs are picked n refresh
 function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 
-function play ()
+function kick (newtk)
+// song got clicked on - make remake queue from there
 { const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
    if (! cSess)  {alert ("ya ain't castin yet i think ?");   return;}
 
-dbg("play");
+  let player = new cast.framework.RemotePlayer ();
+  let plCtl  = new cast.framework.RemotePlayerController (player);
+   plCtl.stop ();                      // SHUSH !
+
+  let sh = shuf ();
+dbg("kick newtk="+newtk);
+   $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
+   Tk = newtk;
+
    if ((pick ().length > 0) && (PL.length == 0))  redo (); // outa songs!
    if (Tk >= PL.length)  return;
 
   let mo = [];
-   for (o = 0;  o < 4;  o++) {
+   for (o = 0;  o < 100;  o++) {
      let i = Tk+o;
+      if (i >= PL.length)  break;
+
      let ar = Nm [i].split ("\n");
       if (o == 0) {
          document.title = ar [2] + ' - ' + ar [0];
@@ -148,38 +159,10 @@ dbg("play");
       qi.autoplay = true;
       mo [o] = qi;
    }
+dbg("queuein' "+mo.length);
   let req = new chrome.cast.media.QueueLoadRequest (mo);
    cSess.getSessionObj ().queueLoad (req)
 dbg('playin!');
-}
-
-
-function next (newtk = -1)
-{ let sh = shuf ();
-dbg("next newtk="+newtk);
-   $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
-   if (newtk == Tk)  return;           // shortcut to pause
-   if (newtk != -1)  Tk = newtk;       // song got clicked on
-   else {                              // this guy is dooone - mark it
-      $.get ("did.php", { did: PL [Tk] });
-
-      if (sh == 'Y') {                 // take outa PL and table
-         PL.splice (Tk, 1);
-         Nm.splice (Tk, 1);
-         $('#info tbody tr').eq (Tk).remove ();
-         $('#num').html (PL.length);
-      }
-      else
-         Tk++;                         // gotta bump pos for noshuf (all)
-
-      if (Tk >= PL.length) {           // end of list?  restart
-         Tk = 0;
-         $('#info tbody tr').eq (Tk).get (0)
-                                    .scrollIntoView ({ behavior: 'smooth' });
-         if ((sh == 'Y') && (PL.length == 0))  redo ();
-      }                                // completely redo if shuf n empty
-   }
-   play ();
 }
 
 
@@ -203,16 +186,37 @@ window ['__onGCastApiAvailable'] = function (avail) {
       autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
    });
 
-   player = new cast.framework.RemotePlayer ();
-   plCtl  = new cast.framework.RemotePlayerController (player);
+  let player = new cast.framework.RemotePlayer ();
+  let plCtl  = new cast.framework.RemotePlayerController (player);
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
          if (event.value == 'IDLE') {
-            if (player.currentTime > 5)  dbg("SKIP!");
-            else                         dbg("NEXT!");
+           let fn = player.mediaInfo.contentId.substr (27);
+dbg("done='"+fn+"'");
+            $.get ("did.php", { did: fn });
+            if (player.currentTime > 5) {
+               $.get ("skip.php", { it: fn });
+dbg("   WAS SKIPPED!");
+            }
+
+         // unhilite old
+            $('#info tbody tr').eq (Tk).css ("background-color", "");
+
+            Tk += 1;
+            if (Tk >= PL.length)  return;
+
+         // title and hilite
+           let ar = Nm [Tk].split ("\n");
+           a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
+            document.title = tt + ' - ' + gr;
+
+            $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
+
+            window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
+                         "_blank");
          }
-dbg(event); dbg(player);
+//dbg(event); dbg(player);
       }
    );
 };
@@ -226,7 +230,7 @@ $(function () {                        // boot da page
    $('#play' ).button ().click (play);
    $('#lyr'  ).button ().click (lyr);
    $('#scoot').button ().click (scoot);
-   $('#info tbody').on ('click','tr',function ()  { next ($(this).index ()); });
+   $('#info tbody').on ('click','tr',function ()  { kick ($(this).index); });
 });
 /*
 "https://www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_framework.js"

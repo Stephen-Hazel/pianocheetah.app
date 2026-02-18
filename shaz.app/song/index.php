@@ -208,8 +208,10 @@ window ['__onGCastApiAvailable'] = function (avail) {
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
-dbg("idle"); dbg(player);
-dbg(event); dbg(player.idleReason);
+         if (event.value == 'IDLE') {
+            if (player.currentTime > 5)  dbg("SKIP!");
+            else                         dbg("NEXT!");
+dbg(event); dbg(player);
       }
    );
 };

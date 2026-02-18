@@ -1,3 +1,39 @@
+phase1:
+
+I like the overall style and shapes !
+
+But I was specific about "icons should be colored - not monochrome".
+
+Please make everything 32x32 but the 2 app icons should have an extra 24x24 resolution.  Enlarged pics - no need heheh.
+
+Flipping to another icon for dark mode is no problem for me.  And I can
+just duplicate the ones that look good both ways.
+
+Specifics...
+
+view/hand type:
+My apologies - I wasn't very specific in my specs.
+This is actually 3 icons :/  An eye to show you want to just SEE the
+notes of the track or RH/LH for actually playing the notes of the track
+I really like the RH,LH.  But one more eye please - you're good at eyes
+from your examples.
+
+octave:
+See this (existing) octave bitmap - black notes and white notes must line up underneath it.  If you could take this and clean up the colors/shading that's kind of what I need.  Restyling it would be great, too - but it must fit pixel perfect because my notes are an exact pixel width.
+I draw the colored squares (notes of the scale) and octave #s on top so none of that junk in the bitmap.  Most pianos have a red felt strip at the top of the keys.  Ideally black key width within the octave matches
+my black notes below it.
+
+hear/play/practice:
+Can these please go back to my original picks of ear/finger/brain?
+But stylized better - I just drew those minus the brain i found.
+(problem being headphones aren't used in piano practice, keys are too generic, metronomes are way too old school).  I know this is me limiting your creativity but, mmm, i gotta here...
+
+The rest are very good !
+I like the settings, the view and hands are pretty solid - nice.
+And the app icons are a great start - if the cool note looks good colored
+at 32x32 I'm on board :)  Maybe zoom in on the end of the usb or something for midicfg?
+
+
 background:
    These are my specs but YOU are the designer and
       I expect you to change my ways.  Please tell me of better options!

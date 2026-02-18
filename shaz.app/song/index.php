@@ -211,6 +211,7 @@ window ['__onGCastApiAvailable'] = function (avail) {
          if (event.value == 'IDLE') {
             if (player.currentTime > 5)  dbg("SKIP!");
             else                         dbg("NEXT!");
+         }
 dbg(event); dbg(player);
       }
    );

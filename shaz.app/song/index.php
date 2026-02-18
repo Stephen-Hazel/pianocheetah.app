@@ -232,7 +232,9 @@ $(function () {                        // boot da page
 /* $('#play' ).button ().click (play);
    $('#lyr'  ).button ().click (lyr);
    $('#scoot').button ().click (scoot); */
-   $('#info tbody').on ('click','tr',function ()  { kick ($(this).index); });
+   $('#info tbody').on ('click','tr',function ()  {
+      kick ($(this).index ());
+   });
 });
 /*
 "https://www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_framework.js"

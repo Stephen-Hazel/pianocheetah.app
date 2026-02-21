@@ -123,16 +123,19 @@ function redo (x = '')                 // get which dirs are picked n refresh
 function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 
-function show ()
-// title and hilite and lyr for Tk
-{ let ar = Nm [Tk].split ("\n");
-   a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
-   document.title = tt + ' - ' + gr;
+function lyr ()
+{ let a = a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
+   window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
+                "_blank");
+}
 
+
+function show ()
+// title and hilite for Tk
+{ let a = a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
+   document.title = tt + ' - ' + gr;
    $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
 
-   window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
-                                                                      "_blank");
 }
 
 
@@ -216,6 +219,7 @@ $(function () {                        // boot da page
    if (! mobl ())  $('.mobl').hide ();
    $('input').checkboxradio ().click (chk);
    $('#info tbody').on ('click','tr',function ()  { kick ($(this).index ()); });
+   $('#lyr').click (lyr);
 });
 /* "https://www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_framework.js"
 */
@@ -230,7 +234,7 @@ $(function () {                        // boot da page
    foreach ($dir as $i => $s)
       check ("chk$i", $s, in_array ($i, $pick) ? 'Y':''); ?>
 <span id='num'><?= count($nm) ?></span><br class='mobl'>
-<google-cast-launcher></google-cast-launcher>
+<google-cast-launcher></google-cast-launcher> <a id='lyr'>lyr</a>
 
 <? $n2 = [];
    foreach ($nm as $n) {

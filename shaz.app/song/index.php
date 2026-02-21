@@ -113,7 +113,7 @@ function lyr ()                        // hit google lookin fo lyrics
 
    a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
    window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
-                "_blank");
+                "lyrics");
 }
 
 

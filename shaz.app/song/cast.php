@@ -187,6 +187,7 @@ window ['__onGCastApiAvailable'] = function (avail) {
 
   let player = new cast.framework.RemotePlayer ();
   let plCtl  = new cast.framework.RemotePlayerController (player);
+dbg("plCtl");dbg(plCtl);
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
@@ -209,6 +210,7 @@ dbg("   WAS SKIPPED!");
          }
       }
    );
+dbg("addEv came back");
 };
 
 

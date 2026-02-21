@@ -124,7 +124,7 @@ function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 
 function lyr ()
-{ let a = a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
+{ let a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
    window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
                 "_blank");
 }
@@ -132,10 +132,9 @@ function lyr ()
 
 function show ()
 // title and hilite for Tk
-{ let a = a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
+{ let a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
    document.title = tt + ' - ' + gr;
    $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
-
 }
 
 

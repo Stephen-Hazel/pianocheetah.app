@@ -163,6 +163,7 @@ function play (go = 'y')
       lyr ();
 
       if ("mediaSession" in navigator) {
+/*
         let isrc = '';
          window.jsmediatags.Config.setDisallowedXhrHeaders (["Accept-Encoding"])
         let url = "https://shaz.app/song/song/" + PL [Tk];
@@ -189,13 +190,16 @@ dbg("no img");
 dbg("no img error=", error);
             }
          });
-
+*/
          navigator.mediaSession.metadata = new MediaMetadata ({
             artist: ar [0],
             album:  ar [1] + ' ' + ar [3],
             title:  ar [2],
-            artwork: [{ src: (isrc == '') ? "https://shaz.app/img/logo.png"
-                                          : isrc }]
+            artwork: [{
+               src: "https://shaz.app/img/logo.png",
+               sizes: "350x350",
+               type: "image/png"
+            }]
          });
          navigator.mediaSession.setActionHandler (
             "nexttrack", () => { next (); });

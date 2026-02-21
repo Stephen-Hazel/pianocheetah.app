@@ -164,6 +164,7 @@ function play (go = 'y')
 
       if ("mediaSession" in navigator) {
         let isrc = '';
+         window.jsmediatags.Config.setDisallowedXhrHeaders (["Accept-Encoding"])
         let url = "https://shaz.app/song/song/" + PL [Tk];
          window.jsmediatags.read (url, {
             onSuccess: function (tag) {

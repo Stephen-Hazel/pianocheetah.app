@@ -191,7 +191,7 @@ window ['__onGCastApiAvailable'] = function (avail) {
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
          if (event.value == 'IDLE') {
-//dbg("player");dbg(player);
+dbg("player");dbg(player);
             if ((player.mediaInfo ?? '') == '')  return;
 
            let fn = player.mediaInfo.contentId.substr (27);

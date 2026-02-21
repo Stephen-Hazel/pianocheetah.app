@@ -164,7 +164,8 @@ function play (go = 'y')
 
       if ("mediaSession" in navigator) {
         let isrc = '';
-         window.jsmediatags.read ('https://shaz.app/song/song/' + PL [Tk], {
+        let url = "https://shaz.app/song/song/" + PL [Tk];
+         window.jsmediatags.read (url, {
             onSuccess: function (tag) {
               const image = tag.tags.picture;
                if (image) {

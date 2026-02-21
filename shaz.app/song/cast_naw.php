@@ -1,4 +1,4 @@
-<? # song/cast.php - play ma songs
+<? # song/index.php - play ma songs
 
 require_once ("../_inc/app.php");
 
@@ -34,7 +34,7 @@ require_once ("../_inc/app.php");
       for ($i = 0;;  $i++) {
          $got = 0;
          foreach ($dirp as $j => $d)
-         if (aHas ($pld [$j], $i))  {$got = 1;   $pl[] = $pld [$j][$i];}
+            if (aHas ($pld [$j], $i))  {$got = 1;   $pl[] = $pld [$j][$i];}
          if (! $got)  break;
       }
    }
@@ -68,39 +68,39 @@ require_once ("../_inc/app.php");
       $nm[] = $s;
    }
 
-pg_head ("song", "jqui app", "jqui app");
+   pg_head ("song", "jqui app", "jqui app");
 ?>
-<style>
-google-cast-launcher {
-   float:   right;
-   margin:  10px 6px 14px 0px;
-   width:   40px;
-   height:  32px;
-   opacity: 0.7;
-   background-color: #000;
-   border:  none;
-   outline: none;
-}
-google-cast-launcher:hover {
-   --disconnected-color: white;
-   --connected-color: white;
-}
-body.dtop main {
-   display: inline;
-   width: 100%;
-   margin: 0;
-}
-body.mobl main table {
-   width: 100%;
-   border-collapse: collapse;
-   table-layout: fixed;
-}
-th,td {
-   white-space: nowrap;
-   overflow: hidden;
-}
-</style>
-<script> // ___________________________________________________________________
+ <style>
+   google-cast-launcher {
+      float:   right;
+      margin:  10px 6px 14px 0px;
+      width:   40px;
+      height:  32px;
+      opacity: 0.7;
+      background-color: #000;
+      border:  none;
+      outline: none;
+   }
+   google-cast-launcher:hover {
+      --disconnected-color: white;
+      --connected-color: white;
+   }
+   body.dtop main {
+      display: inline;
+      width: 100%;
+      margin: 0;
+   }
+   body.mobl main table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+   }
+   th,td {
+      white-space: nowrap;
+      overflow: hidden;
+   }
+ </style>
+ <script> // ___________________________________________________________________
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
 let Tk = 0;                            // pos of track we're on
@@ -116,10 +116,26 @@ function pick ()                       // get checkboxed dirs into an array
 }
 
 function redo (x = '')                 // get which dirs are picked n refresh
-{  window.location = "?shuf=" + shuf () + "&pick=" + pick ().join (',')  +  x;
+{  window.location = "?shuf=" + shuf () +
+                     "&pick=" + pick ().join (',')  +  x;
 }
 
 function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
+
+
+function lyr ()
+{ let a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
+   window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
+                "_blank");
+}
+
+
+function show ()
+// title and hilite for Tk
+{ let a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
+   document.title = tt + ' - ' + gr;
+   $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
+}
 
 
 function kick (newtk)
@@ -143,13 +159,10 @@ dbg("kick newtk="+newtk);
      let i = Tk+o;
       if (i >= PL.length)  break;
 
+      if (o == 0)  show ();
      let ar = Nm [i].split ("\n");
-      if (o == 0) {
-         document.title = ar [2] + ' - ' + ar [0];
-         $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
-      }
      let mi = new chrome.cast.media.MediaInfo (
-        'https://shaz.app/song/song/' + PL [i], 'audio/mpeg');
+                     'https://shaz.app/song/song/' + PL [i], 'audio/mpeg');
       mi.metadata = new chrome.cast.media.GenericMediaMetadata ();
       mi.metadata.artist = ar [0];
       mi.metadata.title  = ar [2];
@@ -164,18 +177,6 @@ dbg('playin!');
 }
 
 
-function lyr ()                        // hit google lookin fo lyrics
-{  if (Tk >= PL.length)  return;
-
-  let a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
-   window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
-                "lyrics");
-}
-
-
-function scoot ()  { redo ('&sc=' + PL [Tk]); }
-
-
 window ['__onGCastApiAvailable'] = function (avail) {
    if (! avail)  return;
 
@@ -186,6 +187,7 @@ window ['__onGCastApiAvailable'] = function (avail) {
 
   let player = new cast.framework.RemotePlayer ();
   let plCtl  = new cast.framework.RemotePlayerController (player);
+dbg("plCtl");dbg(plCtl);
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
@@ -201,20 +203,14 @@ dbg("done='"+fn+"'");
 dbg("   WAS SKIPPED!");
             }
 
-         // unhilite old
+         // unhilite old n bump n show
             $('#info tbody tr').eq (Tk).css ("background-color", "");
-
-            Tk += 1;
-            if (Tk >= PL.length)  return;
-
-         // title and hilite
-           let a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
-            document.title = tt + ' - ' + gr;
-
-            $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
+            Tk += 1;   if (Tk >= PL.length)  return;
+            show ();
          }
       }
    );
+dbg("addEv came back");
 };
 
 
@@ -222,27 +218,24 @@ $(function () {                        // boot da page
    init ();
 
    if (! mobl ())  $('.mobl').hide ();
-   $('input' ).checkboxradio ().click (chk);
-   $('#lyr'  ).button ().click (lyr);
-   $('#info tbody').on ('click','tr',function () {
-      kick ($(this).index ());
-   });
+   $('input').checkboxradio ().click (chk);
+   $('#info tbody').on ('click','tr',function ()  { kick ($(this).index ()); });
+   $('#lyr').click (lyr);
 });
 /* "https://www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_framework.js"
 */
-</script>
-<script src=
+ </script>
+ <script src=
 "https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"
-></script>
+  ></script>
 
 <? pg_body ([ [$UC['home']." home",  "..",  "...take me back hooome"] ]); ?>
 <span style="padding-left: 5em"></span>
-<? check ('shuf', 'shuf', $shuf);
+<? check ('shuf', 'shuf', $shuf); # <a id='scoot'>skip</a>
    foreach ($dir as $i => $s)
       check ("chk$i", $s, in_array ($i, $pick) ? 'Y':''); ?>
 <span id='num'><?= count($nm) ?></span><br class='mobl'>
-<a id='lyr'>lyric</a>
-<google-cast-launcher></google-cast-launcher>
+<google-cast-launcher></google-cast-launcher> <a id='lyr'>lyr</a>
 
 <? $n2 = [];
    foreach ($nm as $n) {

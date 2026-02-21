@@ -86,6 +86,9 @@ th,td {
    overflow: hidden;
 }
  </style>
+ <script src=
+      "https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.js">
+ </script>
  <script> // ___________________________________________________________________
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
@@ -160,15 +163,37 @@ function play (go = 'y')
       lyr ();
 
       if ("mediaSession" in navigator) {
+        let isrc = '';
+         window.jsmediatags.read ('song/' + PL [Tk], {
+            onSuccess: function (tag) {
+              const image = tag.tags.picture;
+               if (image) {
+dbg("got img!");
+dbg(image);
+               // Create a Blob from the image data
+                 const blob = new Blob ([new Uint8Array (image.data)], {
+                     type: image.format
+                  });
+dbg(blob);
+                  isrc = URL.createObjectURL (blob);
+dbg(isrc);
+               }
+               else {
+dbg("no img");
+                  isrc = '';
+               }
+            },
+            onError: function (error) {
+dbg("no img error=", error);
+            }
+         });
+
          navigator.mediaSession.metadata = new MediaMetadata ({
             artist: ar [0],
             album:  ar [1] + ' ' + ar [3],
             title:  ar [2],
-            artwork: [{
-               src: "https://shaz.app/img/logo.png",
-               sizes: "350x350",
-               type: "image/png",
-            }]
+            artwork: [{ src: (isrc == '') ? "https://shaz.app/img/logo.png"
+                                          : isrc }]
          });
          navigator.mediaSession.setActionHandler (
             "nexttrack", () => { next (); });

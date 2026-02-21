@@ -102,9 +102,7 @@ require_once ("../_inc/app.php");
  </style>
  <script> // ___________________________________________________________________
 let PL = <?= json_encode ($pl); ?>;    // play list array
-
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
-
 let Tk = 0;                            // pos of track we're on
 
 function shuf ()  {return $('#shuf').is (':checked') ? 'Y':'N';}
@@ -123,6 +121,19 @@ function redo (x = '')                 // get which dirs are picked n refresh
 }
 
 function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
+
+
+function show ()
+// title and hilite and lyr for Tk
+{ let ar = Nm [Tk].split ("\n");
+   a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
+   document.title = tt + ' - ' + gr;
+
+   $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
+
+   window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
+                                                                      "_blank");
+}
 
 
 function kick (newtk)
@@ -146,11 +157,8 @@ dbg("kick newtk="+newtk);
      let i = Tk+o;
       if (i >= PL.length)  break;
 
+      if (o == 0)  show ();
      let ar = Nm [i].split ("\n");
-      if (o == 0) {
-         document.title = ar [2] + ' - ' + ar [0];
-         $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
-      }
      let mi = new chrome.cast.media.MediaInfo (
                      'https://shaz.app/song/song/' + PL [i], 'audio/mpeg');
       mi.metadata = new chrome.cast.media.GenericMediaMetadata ();
@@ -165,18 +173,6 @@ dbg("queuein' "+mo.length);
    cSess.getSessionObj ().queueLoad (req)
 dbg('playin!');
 }
-
-/*
-function lyr ()                        // hit google lookin fo lyrics
-{  if (Tk >= PL.length)  return;
-
-   a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
-   window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
-                                                                      "_blank");
-}
-*/
-
-function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
 
 window ['__onGCastApiAvailable'] = function (avail) {
@@ -204,21 +200,10 @@ dbg("done='"+fn+"'");
 dbg("   WAS SKIPPED!");
             }
 
-         // unhilite old
+         // unhilite old n bump n show
             $('#info tbody tr').eq (Tk).css ("background-color", "");
-
-            Tk += 1;
-            if (Tk >= PL.length)  return;
-
-         // title and hilite
-           let ar = Nm [Tk].split ("\n");
-           a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
-            document.title = tt + ' - ' + gr;
-
-            $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
-
-            window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
-                         "_blank");
+            Tk += 1;   if (Tk >= PL.length)  return;
+            show ();
          }
       }
    );
@@ -229,16 +214,10 @@ $(function () {                        // boot da page
    init ();
 
    if (! mobl ())  $('.mobl').hide ();
-   $('input' ).checkboxradio ().click (chk);
-/* $('#play' ).button ().click (play);
-   $('#lyr'  ).button ().click (lyr);
-   $('#scoot').button ().click (scoot); */
-   $('#info tbody').on ('click','tr',function ()  {
-      kick ($(this).index ());
-   });
+   $('input').checkboxradio ().click (chk);
+   $('#info tbody').on ('click','tr',function ()  { kick ($(this).index ()); });
 });
-/*
-"https://www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_framework.js"
+/* "https://www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_framework.js"
 */
  </script>
  <script src=
@@ -251,10 +230,6 @@ $(function () {                        // boot da page
    foreach ($dir as $i => $s)
       check ("chk$i", $s, in_array ($i, $pick) ? 'Y':''); ?>
 <span id='num'><?= count($nm) ?></span><br class='mobl'>
-<?/*
-<a id='play'>play</a>
-<a id='lyr'>lyric</a>
-*/?>
 <google-cast-launcher></google-cast-launcher>
 
 <? $n2 = [];

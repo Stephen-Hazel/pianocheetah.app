@@ -1,0 +1,15 @@
+song
+   cast - what discos "next" func?  set did.  can it pop lyrics?
+
+pic
+   make a post to facebook thingo?  (like youtube's share to fb)
+   make a year preview w random pics per dir
+
+me
+   latest
+
+piano
+   better pic of my piano,drum
+
+sitemap.xml
+   make a dumb script for it

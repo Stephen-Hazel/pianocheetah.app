@@ -34,7 +34,7 @@ require_once ("../_inc/app.php");
       for ($i = 0;;  $i++) {
          $got = 0;
          foreach ($dirp as $j => $d)
-         if (aHas ($pld [$j], $i))  {$got = 1;   $pl[] = $pld [$j][$i];}
+            if (aHas ($pld [$j], $i))  {$got = 1;   $pl[] = $pld [$j][$i];}
          if (! $got)  break;
       }
    }

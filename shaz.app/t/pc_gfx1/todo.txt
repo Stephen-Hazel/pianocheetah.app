@@ -1,0 +1,84 @@
+I tried screen recording pianocheetah to get a video but my dang app won't
+   open unless it has exclusive access to the computer audio.
+   And a screen recorder uses the audio too.
+   I'll have to fix that.  But not today sigh.
+
+nosoundsigh.mp4 is a silent video of my app in action.
+   - showing track edit and full screen
+   - showing hear (showing every note of the song)
+             play (showing a small subset of 5 of those notes to play -
+                   what I call "easy mode")
+             practice (splitting the song into 4 bar subsections to practice)
+   - and light then dark mode
+
+   you can see that your icons looked smushed because of so much border in the
+   .png files.  The subject should go all the way to the edge for max resolution
+
+
+4 screenshots
+   darkmode and lightmode  trackedit and fullscreen
+   so you can zoom in and look at pixels
+
+
+Ok, icons list...
+
+
+app icons - 32x32 png, 24x24 png, and svg for these
+
+   pianocheetah
+      that was lookin good :)
+
+   midicfg
+      oh much better - maybe make the head of the plug a little shorter
+      and the metal of the plug only a teeeeny tiny bit shorter so it'll look
+      more square with good resolution  (oooor somethin)
+
+toolbar icons - 32x32 png and svg
+
+   "repeat icon" (refresh)
+      good, but the arrows are hard to make out at 32px
+
+   "hear icon"
+      very good!  flip the ear so it's a left ear, please :)
+      (not sure why but I like a left ear better)
+
+   "play icon"
+      pretttty good i think
+
+   "practic icon"
+      can you make it look a little brain-ier?  but def good
+
+   "view icon"
+      it's ok, could maybe be a little more descriptive,
+      but pretty good
+
+   "settings icon"
+      I like it - hopefully when enlarged it's perfect
+
+   "see icon"
+      maybe a little more white?  but def on the right track
+      note that this isn't in the toolbar
+      it's part of the track editor and if clicked on,
+         that track's notes are displayed
+
+   "inactive hand icon", "active hand icon"
+      These shouldn't look red and green as they're really not active/inactive.
+      And I think I liked your earlier hands like in the file
+         "so far/IMG_7912.JPG"
+      These are also not toolbar icons but part of the track editor.
+      Ideally you could give me 3 left hand icons with
+         1 2 and 3 within the left hand icon
+      and 4 5 6 7 within the right hand icon
+      (there are 7 full octaves on a piano)
+
+      You can just barely make out me doing a terrible rendition of this in
+      the video - but those icons are squashed and also my numbers
+      are impossible to read heheh.
+
+   octave bitmap - let's skip this one and you can give me another
+
+   an "open" icon (folder icon for opening a new song)
+      doesn't have to be a folder, but that's pretty universal for open
+
+      maybe an up and down icon to go with it
+         (pick prev,next song in list without a file open dialog picker)

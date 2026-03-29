@@ -1,5 +1,8 @@
 song
-   cast - what discos "next" func?  set did.  can it pop lyrics?
+   cast - what discos "next" func?  (to set did, pop lyrics)
+
+pcheetah
+   docs should have small videos when possible
 
 pic
    make a post to facebook thingo?  (like youtube's share to fb)

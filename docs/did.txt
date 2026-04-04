@@ -1,1 +1,4 @@
 26/01/07 song - shuffle interleaves dir songs for balance between dirs
+
+26/04/04 song - no need for regular song page just cast now
+   claude fixes next func and version probs and it works properly now

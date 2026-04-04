@@ -127,6 +127,7 @@ function kick (newtk)
 // song got clicked on - make remake queue from there
 {  if (! CF)  {alert ("ya ain't castin yet i think ?");   return;}
 
+   CF = cast.framework;
   let player = new CF.RemotePlayer ();
   let plCtl  = new CF.RemotePlayerController (player);
    plCtl.stop ();                      // SHUSH !
@@ -188,9 +189,6 @@ window ['__onGCastApiAvailable'] = function (avail) {
       autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
    });
    CF = cast.framework;                // don't make me type thattt
-dbg(cast.framework.messages);
-dbg("and");
-dbg(CF.messages);
   let player = new CF.RemotePlayer ();
   let plCtl  = new CF.RemotePlayerController (player);
    plCtl.addEventListener (

@@ -1,0 +1,56 @@
+- i don't need svg or 24x24 png until we're all done.
+
+  I'll only be talking about the 32x32 png files below
+
+- please label dark mode icons as filename_d.png
+     (your hand icons were flipped)
+     so _d is dark background light foreground
+     without _d is light background (regular light mode)
+
+- if you can, I'd like you to use my directory structure.
+  not completely necessary, but I'd like it.
+
+- app icons
+  color seems messed up a bit - only a little of them is green
+  all seem to be made for dark mode but it's kinda messed up
+  Hmmm, interesting, pianocheetah app icon in light mode looks dark in titlebar
+     but not when I just view the png - how does that work i wonder.
+
+  On linux, there are actually 2 app icons, one the app sets when it runs and
+     one for the system menu pick
+     I need to find out how to make an .svg file automatically work
+     for BOTH dark and light mode.
+     I'll ask google and stuff, but if you know, please fill me in
+
+- midicfg/toolbar/app icons
+   refresh icon is a little pixelated
+
+- pianocheetah/table_tracks
+     hands/numbers
+        i liked the skin color
+        could be taller - border left at top
+        LH,RH don't seem to be exact mirrors of each other
+        RH seems clipped on it's left side
+        but I do like that the hand is on the left of the number!
+           that way things will line up properly
+        numbers are a little big, could be colored?
+
+     eye
+        looks a little washed out in light mode
+        looks FANTASTIC in dark mode
+
+- pianocheetah/toolbar/app
+  0.png  (fullscreen/show track edit table) can be just one
+  with the arrow pointing left
+
+  already told you abot midicfg icon
+
+  2.png (settings nut) in dark mode looks a little too muted
+
+  ear in light mode looks a little washed out
+
+  finger in light mode could maybe use a non transparent fingernail outline?
+  brain in dark mode is a little too muted
+
+
+- fyi I'm making progress on my app's dark mode overall :)  plenty to go tho.

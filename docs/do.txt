@@ -1,5 +1,6 @@
 song
    cast - what discos "next" func?  (to set did, pop lyrics)
+      replace that depr api and debug
 
 pcheetah
    docs should have small videos when possible

@@ -1,4 +1,4 @@
-<? # song/index.php - play ma songs
+<? # song/cast.php - play ma songs
 
 require_once ("../_inc/app.php");
 
@@ -61,16 +61,30 @@ require_once ("../_inc/app.php");
          $x = ($f == $l) ? '' : substr ($s, $f+1, $l-$f-1);
          $s = "$g\n$x\n$t\n$d";
       }
-   else {
+      else {
 #dbg($s);
-      $s = "?? $s $d";
+         $s = "?? $s $d";
+      }
+      $nm[] = $s;
    }
-   $nm[] = $s;
-}
 
 pg_head ("song", "jqui app", "jqui app");
 ?>
- <style>
+<style>
+google-cast-launcher {
+   float:   right;
+   margin:  10px 6px 14px 0px;
+   width:   40px;
+   height:  32px;
+   opacity: 0.7;
+   background-color: #000;
+   border:  none;
+   outline: none;
+}
+google-cast-launcher:hover {
+   --disconnected-color: white;
+   --connected-color: white;
+}
 body.dtop main {
    display: inline;
    width: 100%;
@@ -85,14 +99,11 @@ th,td {
    white-space: nowrap;
    overflow: hidden;
 }
- </style>
- <script src=
-      "https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.js">
- </script>
- <script> // ___________________________________________________________________
+</style>
+<script> // ___________________________________________________________________
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
-let Tk = 0,  Au;                       // pos of track we're on, audio element
+let Tk = 0;                            // pos of track we're on
 
 function shuf ()  {return $('#shuf').is (':checked') ? 'Y':'N';}
 
@@ -111,135 +122,131 @@ function redo (x = '')                 // get which dirs are picked n refresh
 function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 
+function kick (newtk)
+// song got clicked on - make remake queue from there
+{ const cSess = cast.framework.CastContext.getInstance ().getCurrentSession ();
+   if (! cSess)  {alert ("ya ain't castin yet i think ?");   return;}
+
+  let player = new cast.framework.RemotePlayer ();
+  let plCtl  = new cast.framework.RemotePlayerController (player);
+   plCtl.stop ();                      // SHUSH !
+
+dbg("kick newtk="+newtk);
+   $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
+   Tk = newtk;
+
+   if ((pick ().length > 0) && (PL.length == 0))  redo (); // outa songs!
+   if (Tk >= PL.length)  return;
+
+  let mo = [];
+   for (o = 0;  o < 50;  o++) {
+     let i = Tk+o;
+      if (i >= PL.length)  break;
+
+     let ar = Nm [i].split ("\n");
+      if (o == 0) {
+         document.title = ar [2] + ' - ' + ar [0];
+         $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
+      }
+     let mi = new cast.framework.messages.MediaInformation ();
+      mi.contentId   = 'https://shaz.app/song/song/' + PL [i];
+      mi.contentType = 'audio/mpeg';
+      mi.metadata    = new cast.framework.messages.GenericMediaMetadata ();
+      mi.metadata.artist = ar [0];
+      mi.metadata.title  = ar [2];
+     let qi = new cast.framework.messages.QueueItem ();
+      qi.media    = mi;
+      qi.autoplay = true;
+      mo [o] = qi;
+   }
+dbg("queuein' "+mo.length);
+  let loadReq = new cast.framework.messages.LoadRequestData ();
+   loadReq.queueData       = new cast.framework.messages.QueueData ();
+   loadReq.queueData.items = mo;
+   cSess.loadMedia (loadReq)
+dbg('playin!');
+}
+
+
 function lyr ()                        // hit google lookin fo lyrics
 {  if (Tk >= PL.length)  return;
 
-   a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
+  let a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
    window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
                 "lyrics");
-}
-
-
-function next (newtk = -1)
-{ let sh = shuf ();
-   Au.pause ();                        // shush
-   $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
-   if (newtk == Tk)  return;           // shortcut to pause
-
-   if (newtk != -1)  Tk = newtk;       // song got clicked on
-   else {                              // this guy is dooone - mark it
-      $.get ("did.php", { did: PL [Tk] });
-
-      if (sh == 'Y') {                 // take outa PL and table
-         PL.splice (Tk, 1);
-         Nm.splice (Tk, 1);
-         $('#info tbody tr').eq (Tk).remove ();
-         $('#num').html (PL.length);
-      }
-      else
-         Tk++;                         // gotta bump pos for noshuf (all)
-
-      if (Tk >= PL.length) {           // end of list?  restart
-         Tk = 0;
-         $('#info tbody tr').eq (Tk).get (0)
-                                    .scrollIntoView ({ behavior: 'smooth' });
-         if ((sh == 'Y') && (PL.length == 0))  redo ();
-      }                                // completely redo if shuf n empty
-   }
-   play ('y');
-}
-
-
-function play (go = 'y')
-{  if ((pick ().length > 0) && (PL.length == 0))  redo (); // outa songs!
-   if (Tk >= PL.length)  return;
-
-  let ar = Nm [Tk].split ("\n");
-   document.title = ar [2] + ' - ' + ar [0];
-   Au.src = 'song/' + PL [Tk];
-   if (go == 'y') {
-      $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
-
-      lyr ();
-
-      if ("mediaSession" in navigator) {
-/*
-        let isrc = '';
-         window.jsmediatags.Config.setDisallowedXhrHeaders (["Accept-Encoding"])
-        let url = "https://shaz.app/song/song/" + PL [Tk];
-         window.jsmediatags.read (url, {
-            onSuccess: function (tag) {
-              const image = tag.tags.picture;
-               if (image) {
-dbg("got img!");
-dbg(image);
-               // Create a Blob from the image data
-                 const blob = new Blob ([new Uint8Array (image.data)], {
-                     type: image.format
-                  });
-dbg(blob);
-                  isrc = URL.createObjectURL (blob);
-dbg(isrc);
-               }
-               else {
-dbg("no img");
-                  isrc = '';
-               }
-            },
-            onError: function (error) {
-dbg("no img error=", error);
-            }
-         });
-*/
-         navigator.mediaSession.metadata = new MediaMetadata ({
-            artist: ar [0],
-            album:  ar [1] + ' ' + ar [3],
-            title:  ar [2],
-            artwork: [{
-               src: "https://shaz.app/img/logo.png",
-               sizes: "350x350",
-               type: "image/png"
-            }]
-         });
-         navigator.mediaSession.setActionHandler (
-            "nexttrack", () => { next (); });
-          /* play pause stop previoustrack */
-      }
-
-      Au.play ();
-   }
 }
 
 
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
 
+window ['__onGCastApiAvailable'] = function (avail) {
+   if (! avail)  return;
+
+   cast.framework.CastContext.getInstance ().setOptions ({
+      receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+      autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+   });
+
+  let player = new cast.framework.RemotePlayer ();
+  let plCtl  = new cast.framework.RemotePlayerController (player);
+   plCtl.addEventListener (
+      cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
+      (event) => {
+         if (event.value == 'IDLE') {
+dbg("player");dbg(player);
+            if ((player.mediaInfo ?? '') == '')  return;
+
+           let fn = player.mediaInfo.contentId.substr (27);
+dbg("done='"+fn+"'");
+            $.get ("did.php", { did: fn });
+            if (player.currentTime > 5) {
+               $.get ("skip.php", { it: fn });
+dbg("   WAS SKIPPED!");
+            }
+
+         // unhilite old
+            $('#info tbody tr').eq (Tk).css ("background-color", "");
+
+            Tk += 1;
+            if (Tk >= PL.length)  return;
+
+         // title and hilite
+           let a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
+            document.title = tt + ' - ' + gr;
+
+            $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
+         }
+      }
+   );
+};
+
+
 $(function () {                        // boot da page
    init ();
 
-   Au = tag ('audio');
-   if (! mobl ()) {
-      Au.volume = 0.2;                 // desktop shouldn't have max volume :/
-      $('.mobl').hide ();
-   }
+   if (! mobl ())  $('.mobl').hide ();
    $('input' ).checkboxradio ().click (chk);
-   $('#scoot').button ().click (scoot);
-   $('#info tbody').on ('click', 'tr', function () {
-      next ($(this).index ());
+   $('#lyr'  ).button ().click (lyr);
+   $('#info tbody').on ('click','tr',function () {
+      kick ($(this).index ());
    });
-   Au.addEventListener ('ended', () => { next (); });
-   play ('n');  // setup audio but can't aaactually play till click
 });
- </script>
+/* "https://www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_framework.js"
+*/
+</script>
+<script src=
+"https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"
+></script>
+
 <? pg_body ([ [$UC['home']." home",  "..",  "...take me back hooome"] ]); ?>
 <span style="padding-left: 5em"></span>
-<? check ('shuf', 'shuf', $shuf); # <a id='scoot'>skip</a>
+<? check ('shuf', 'shuf', $shuf);
    foreach ($dir as $i => $s)
       check ("chk$i", $s, in_array ($i, $pick) ? 'Y':''); ?>
 <span id='num'><?= count($nm) ?></span><br class='mobl'>
-<audio controls></audio>
-<a href='cast.php'>cast</a>
-
+<a id='lyr'>lyric</a>
+<google-cast-launcher></google-cast-launcher>
 
 <? $n2 = [];
    foreach ($nm as $n) {
@@ -247,6 +254,6 @@ $(function () {                        // boot da page
       if (($shuf == 'N') && (count ($pick) >= 4))
            $n2[] = "<b>".$a [0]."</b>"." ".$a [1]." <b>".$a [2]."</b> ".$a [3];
       else $n2[] = "<b>".$a [2]."</b>"." ".$a [0]." <b>".$a [3]."</b> ".$a [1];
-}
+   }
    table1 ('info', '', $n2); ?>
 <? pg_foot ();

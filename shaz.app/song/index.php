@@ -125,7 +125,9 @@ function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 function kick (newtk)
 // song got clicked on - make remake queue from there
-{  if (! CastOK)  {alert ("ya ain't castin yet i think ?");   return;}
+{  sess = cast.framework.CastContext.getInstance ().getCurrentSession ();
+   if ((! sess) || (! CastOK))
+      {alert ("ya ain't castin yet i think ?");   return;}
 
   let player = new cast.framework.RemotePlayer ();
   let plCtl  = new cast.framework.RemotePlayerController (player);
@@ -148,22 +150,15 @@ dbg("kick newtk="+newtk);
          document.title = ar [2] + ' - ' + ar [0];
          $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
       }
-     let mi = new cast.framework.messages.MediaInformation ();
-      mi.contentId   = 'https://shaz.app/song/song/' + PL [i];
-      mi.contentType = 'audio/mpeg';
-      mi.metadata    = new cast.framework.messages.GenericMediaMetadata ();
-      mi.metadata.artist = ar [0];
-      mi.metadata.title  = ar [2];
-     let qi = new cast.framework.messages.QueueItem ();
-      qi.media    = mi;
-      qi.autoplay = true;
-      mo [o] = qi;
+     let mi = {
+         contentId:   'https://shaz.app/song/song/' + PL [i],
+         contentType: 'audio/mpeg',
+         metadata:    { metadataType: 0, artist: ar [0], title: ar [2] }
+      };
+      mo [o] = { media: mi, autoplay: true };
    }
 dbg("queuein' "+mo.length);
-  let loadReq = new cast.framework.messages.LoadRequestData ();
-   loadReq.queueData       = new cast.framework.messages.QueueData ();
-   loadReq.queueData.items = mo;
-   cSess.loadMedia (loadReq)
+   sess.loadMedia ({ queueData: { items: mo } });
 dbg('playin!');
 }
 

@@ -104,7 +104,6 @@ th,td {
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
 let Tk = 0;                            // pos of track we're on
-let CF;
 
 function shuf ()  {return $('#shuf').is (':checked') ? 'Y':'N';}
 
@@ -125,11 +124,11 @@ function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 function kick (newtk)
 // song got clicked on - make remake queue from there
-{  if (! CF)  {alert ("ya ain't castin yet i think ?");   return;}
+{  if (! cast.framework.CastContext.getInstance ().getCurrentSession ())
+      {alert ("ya ain't castin yet i think ?");   return;}
 
-   CF = cast.framework;
-  let player = new CF.RemotePlayer ();
-  let plCtl  = new CF.RemotePlayerController (player);
+  let player = new cast.framework.RemotePlayer ();
+  let plCtl  = new cast.framework.RemotePlayerController (player);
    plCtl.stop ();                      // SHUSH !
 
 dbg("kick newtk="+newtk);
@@ -149,20 +148,20 @@ dbg("kick newtk="+newtk);
          document.title = ar [2] + ' - ' + ar [0];
          $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
       }
-     let mi = new CF.messages.MediaInformation ();
+     let mi = new cast.framework.messages.MediaInformation ();
       mi.contentId   = 'https://shaz.app/song/song/' + PL [i];
       mi.contentType = 'audio/mpeg';
-      mi.metadata    = new CF.messages.GenericMediaMetadata ();
+      mi.metadata    = new cast.framework.messages.GenericMediaMetadata ();
       mi.metadata.artist = ar [0];
       mi.metadata.title  = ar [2];
-     let qi = new CF.messages.QueueItem ();
+     let qi = new cast.framework.messages.QueueItem ();
       qi.media    = mi;
       qi.autoplay = true;
       mo [o] = qi;
    }
 dbg("queuein' "+mo.length);
-  let loadReq = new CF.messages.LoadRequestData ();
-   loadReq.queueData       = new CF.messages.QueueData ();
+  let loadReq = new cast.framework.messages.LoadRequestData ();
+   loadReq.queueData       = new cast.framework.messages.QueueData ();
    loadReq.queueData.items = mo;
    cSess.loadMedia (loadReq)
 dbg('playin!');
@@ -188,11 +187,10 @@ window ['__onGCastApiAvailable'] = function (avail) {
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
       autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
    });
-   CF = cast.framework;                // don't make me type thattt
-  let player = new CF.RemotePlayer ();
-  let plCtl  = new CF.RemotePlayerController (player);
+  let player = new cast.framework.RemotePlayer ();
+  let plCtl  = new cast.framework.RemotePlayerController (player);
    plCtl.addEventListener (
-      CF.RemotePlayerEventType.PLAYER_STATE_CHANGED,
+      cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
          if (event.value == 'IDLE') {
 dbg("player");dbg(player);

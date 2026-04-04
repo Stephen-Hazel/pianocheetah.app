@@ -104,6 +104,7 @@ th,td {
 let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
 let Tk = 0;                            // pos of track we're on
+let CastOK = false;
 
 function shuf ()  {return $('#shuf').is (':checked') ? 'Y':'N';}
 
@@ -124,8 +125,7 @@ function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 function kick (newtk)
 // song got clicked on - make remake queue from there
-{  if (! cast.framework.CastContext.getInstance ().getCurrentSession ())
-      {alert ("ya ain't castin yet i think ?");   return;}
+{  if (! CastOK)  {alert ("ya ain't castin yet i think ?");   return;}
 
   let player = new cast.framework.RemotePlayer ();
   let plCtl  = new cast.framework.RemotePlayerController (player);
@@ -218,6 +218,7 @@ dbg("   WAS SKIPPED!");
          }
       }
    );
+   CastOK = true;
 };
 
 

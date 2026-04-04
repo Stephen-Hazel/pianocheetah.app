@@ -125,8 +125,7 @@ function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 function kick (newtk)
 // song got clicked on - make remake queue from there
-{ const cSess = CF.CastContext.getInstance ().getCurrentSession ();
-   if (! cSess)  {alert ("ya ain't castin yet i think ?");   return;}
+{  if (! CF)  {alert ("ya ain't castin yet i think ?");   return;}
 
   let player = new CF.RemotePlayer ();
   let plCtl  = new CF.RemotePlayerController (player);

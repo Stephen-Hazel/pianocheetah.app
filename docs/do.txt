@@ -1,3 +1,7 @@
+song
+   when page has closed, new sync button to reload current songs playing
+   but how to keep that sep from all the songs, etc
+
 pcheetah
    a bunch of screencast videos just of songs
    all docs in videos

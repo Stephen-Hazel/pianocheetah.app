@@ -140,7 +140,7 @@ function pg_head ($ttl, $css, $js, $h = '')      ## html head title css js
  <meta name="robots"       content="follow, all">
  <meta name="description"  content="<?= $DESC ?>">
  <title><?= $ttl ?></title>
- <link href="https://<?= $ROOT ?>/img/favicon.ico" rel="Shortcut Icon" />
+ <link href="https://<?= $ROOT ?>/img/favicon.png" rel="Shortcut Icon" />
 <? require_once "google_tag_head.html";
 
    if (substr ($css, 0, 5) == 'jqui ') {

@@ -231,6 +231,7 @@ dbg("   WAS SKIPPED!");
    plCtl.addEventListener (               // desktop: full handler; mobile: fallback
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
+dbg("state="+event.value);
          if (event.value == 'IDLE') {
 dbg("player");dbg(player);
             if ((player.mediaInfo ?? '') == '')  return;

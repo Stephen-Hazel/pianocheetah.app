@@ -178,6 +178,7 @@ function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
 
 window ['__onGCastApiAvailable'] = function (avail) {
+dbg("__onGCastApiAvailable avail="+avail);
    if (! avail)  return;
 
    cast.framework.CastContext.getInstance ().setOptions ({

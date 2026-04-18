@@ -227,7 +227,7 @@ dbg("   WAS SKIPPED!");
       }
    );
 
-   plCtl.addEventListener (               // fallback: last song + skip detect
+   plCtl.addEventListener (               // desktop: full handler; mobile: fallback
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
          if (event.value == 'IDLE') {
@@ -244,6 +244,14 @@ dbg("idle done='"+fn+"'");
 dbg("   WAS SKIPPED!");
                }
             }
+
+            $('#info tbody tr').eq (Tk).css ("background-color", "");
+            Tk += 1;
+            if (Tk >= PL.length)  return;
+           let a = Nm [Tk].split ("\n");
+            document.title = a [2] + ' - ' + a [0];
+            $('#info tbody tr').eq (Tk)
+               .css ("background-color", "#FFFF80;");
          }
       }
    );

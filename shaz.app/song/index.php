@@ -105,6 +105,7 @@ let PL = <?= json_encode ($pl); ?>;    // play list array
 let Nm = <?= json_encode ($nm); ?>;    // prettier names w group,title,etc,dir
 let Tk = 0;                            // pos of track we're on
 let CastOK = false;
+let lastContentId = '';
 
 function shuf ()  {return $('#shuf').is (':checked') ? 'Y':'N';}
 
@@ -136,6 +137,7 @@ function kick (newtk)
 dbg("kick newtk="+newtk);
    $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
    Tk = newtk;
+   lastContentId = '';
 
    if ((pick ().length > 0) && (PL.length == 0))  redo (); // outa songs!
    if (Tk >= PL.length)  return;
@@ -184,7 +186,48 @@ window ['__onGCastApiAvailable'] = function (avail) {
    });
   let player = new cast.framework.RemotePlayer ();
   let plCtl  = new cast.framework.RemotePlayerController (player);
+  let didSet = new Set ();
+  let lastTime = 0;
+
    plCtl.addEventListener (
+      cast.framework.RemotePlayerEventType.CURRENT_TIME_CHANGED,
+      () => { lastTime = player.currentTime; }
+   );
+
+   plCtl.addEventListener (               // fires on every track change
+      cast.framework.RemotePlayerEventType.MEDIA_INFO_CHANGED,
+      (event) => {
+        let ci = ((player.mediaInfo ?? '') == '') ? ''
+                  : player.mediaInfo.contentId;
+         if (ci == '' || ci == lastContentId)  return;
+
+         if (lastContentId != '') {        // not the first load
+           let fn = lastContentId.substr (27);
+dbg("nextsong done='"+fn+"' t="+lastTime);
+            if (! didSet.has (fn)) {
+               didSet.add (fn);
+               $.get ("did.php", { did: fn });
+               if (lastTime > 5) {
+                  $.get ("skip.php", { it: fn });
+dbg("   WAS SKIPPED!");
+               }
+            }
+            $('#info tbody tr').eq (Tk).css ("background-color", "");
+           let newIdx = PL.indexOf (ci.substr (27));
+            Tk = (newIdx >= 0) ? newIdx : Tk + 1;
+            if (Tk < PL.length) {
+              let a = Nm [Tk].split ("\n");
+               document.title = a [2] + ' - ' + a [0];
+               $('#info tbody tr').eq (Tk)
+                  .css ("background-color", "#FFFF80;");
+            }
+         }
+         lastContentId = ci;
+         lastTime = 0;
+      }
+   );
+
+   plCtl.addEventListener (               // fallback: last song + skip detect
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
          if (event.value == 'IDLE') {
@@ -192,24 +235,15 @@ dbg("player");dbg(player);
             if ((player.mediaInfo ?? '') == '')  return;
 
            let fn = player.mediaInfo.contentId.substr (27);
-dbg("done='"+fn+"'");
-            $.get ("did.php", { did: fn });
-            if (player.currentTime > 5) {
-               $.get ("skip.php", { it: fn });
+dbg("idle done='"+fn+"'");
+            if (! didSet.has (fn)) {
+               didSet.add (fn);
+               $.get ("did.php", { did: fn });
+               if (player.currentTime > 5) {
+                  $.get ("skip.php", { it: fn });
 dbg("   WAS SKIPPED!");
+               }
             }
-
-         // unhilite old
-            $('#info tbody tr').eq (Tk).css ("background-color", "");
-
-            Tk += 1;
-            if (Tk >= PL.length)  return;
-
-         // title and hilite
-           let a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
-            document.title = tt + ' - ' + gr;
-
-            $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
          }
       }
    );

@@ -188,24 +188,22 @@ dbg("__onGCastApiAvailable avail="+avail);
   let player = new cast.framework.RemotePlayer ();
   let plCtl  = new cast.framework.RemotePlayerController (player);
   let didSet = new Set ();
-  let lastTime = 0;
+
 
    plCtl.addEventListener (
-      cast.framework.RemotePlayerEventType.CURRENT_TIME_CHANGED,
-      () => {
+      cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
+      (event) => {
+dbg("state="+event.value);
         let ci = ((player.mediaInfo ?? '') == '') ? ''
                   : player.mediaInfo.contentId;
-         if (ci != '' && ci != lastContentId) {
-            if (lastContentId != '') {     // not the first load
+
+         if (event.value == 'PLAYING' && ci != '' && ci != lastContentId) {
+            if (lastContentId != '') {
               let fn = lastContentId.substr (27);
-dbg("nextsong done='"+fn+"' t="+lastTime);
+dbg("nextsong done='"+fn+"'");
                if (! didSet.has (fn)) {
                   didSet.add (fn);
                   $.get ("did.php", { did: fn });
-                  if (lastTime > 5) {
-                     $.get ("skip.php", { it: fn });
-dbg("   WAS SKIPPED!");
-                  }
                }
                $('#info tbody tr').eq (Tk).css ("background-color", "");
               let newIdx = PL.indexOf (ci.substr (27));
@@ -218,22 +216,11 @@ dbg("   WAS SKIPPED!");
                }
             }
             lastContentId = ci;
-            lastTime = 0;
-         } else {
-            lastTime = player.currentTime;
          }
-      }
-   );
 
-   plCtl.addEventListener (               // desktop: full handler; mobile: fallback
-      cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
-      (event) => {
-dbg("state="+event.value);
          if (event.value == 'IDLE') {
-dbg("player");dbg(player);
-            if ((player.mediaInfo ?? '') == '')  return;
-
-           let fn = player.mediaInfo.contentId.substr (27);
+            if (ci == '')  return;
+           let fn = ci.substr (27);
 dbg("idle done='"+fn+"'");
             if (! didSet.has (fn)) {
                didSet.add (fn);
@@ -243,14 +230,6 @@ dbg("idle done='"+fn+"'");
 dbg("   WAS SKIPPED!");
                }
             }
-
-            $('#info tbody tr').eq (Tk).css ("background-color", "");
-            Tk += 1;
-            if (Tk >= PL.length)  return;
-           let a = Nm [Tk].split ("\n");
-            document.title = a [2] + ' - ' + a [0];
-            $('#info tbody tr').eq (Tk)
-               .css ("background-color", "#FFFF80;");
          }
       }
    );

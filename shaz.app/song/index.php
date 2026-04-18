@@ -193,49 +193,46 @@ dbg("__onGCastApiAvailable avail="+avail);
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
+         if (event.value != 'IDLE')  return;
         let ci = ((player.mediaInfo ?? '') == '') ? ''
                   : player.mediaInfo.contentId;
-dbg("state="+event.value
-   +" ci="  +ci.substr(27)
-   +" last="+lastContentId.substr(27)
-   +" t="   +player.currentTime
-   +" tk="  +Tk);
-         if (event.value == 'PLAYING' && ci != '' && ci != lastContentId) {
-            if (lastContentId != '') {
-              let fn = lastContentId.substr (27);
-dbg("nextsong done='"+fn+"'");
-               if (! didSet.has (fn)) {
-                  didSet.add (fn);
-                  $.get ("did.php", { did: fn });
-               }
-               $('#info tbody tr').eq (Tk).css ("background-color", "");
-              let newIdx = PL.indexOf (ci.substr (27));
-               Tk = (newIdx >= 0) ? newIdx : Tk + 1;
-               if (Tk < PL.length) {
-                 let a = Nm [Tk].split ("\n");
-                  document.title = a [2] + ' - ' + a [0];
-                  $('#info tbody tr').eq (Tk)
-                     .css ("background-color", "#FFFF80;");
-               }
-            }
-            lastContentId = ci;
-         }
-
-         if (event.value == 'IDLE') {
-            if (ci == '')  return;
-           let fn = ci.substr (27);
+         if (ci == '')  return;
+        let fn = ci.substr (27);
 dbg("idle done='"+fn+"'");
-            if (! didSet.has (fn)) {
-               didSet.add (fn);
-               $.get ("did.php", { did: fn });
-               if (player.currentTime > 5) {
-                  $.get ("skip.php", { it: fn });
+         if (! didSet.has (fn)) {
+            didSet.add (fn);
+            $.get ("did.php", { did: fn });
+            if (player.currentTime > 5) {
+               $.get ("skip.php", { it: fn });
 dbg("   WAS SKIPPED!");
-               }
             }
          }
       }
    );
+
+   setInterval (() => {
+     let ci = ((player.mediaInfo ?? '') == '') ? ''
+               : player.mediaInfo.contentId;
+      if (ci == '' || ci == lastContentId)  return;
+dbg("poll nextsong ci="+ci.substr(27));
+      if (lastContentId != '') {
+        let fn = lastContentId.substr (27);
+         if (! didSet.has (fn)) {
+            didSet.add (fn);
+            $.get ("did.php", { did: fn });
+         }
+         $('#info tbody tr').eq (Tk).css ("background-color", "");
+        let newIdx = PL.indexOf (ci.substr (27));
+         Tk = (newIdx >= 0) ? newIdx : Tk + 1;
+         if (Tk < PL.length) {
+           let a = Nm [Tk].split ("\n");
+            document.title = a [2] + ' - ' + a [0];
+            $('#info tbody tr').eq (Tk)
+               .css ("background-color", "#FFFF80;");
+         }
+      }
+      lastContentId = ci;
+   }, 2000);
    CastOK = true;
 };
 

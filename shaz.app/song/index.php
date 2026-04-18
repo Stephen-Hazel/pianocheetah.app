@@ -193,10 +193,13 @@ dbg("__onGCastApiAvailable avail="+avail);
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
-dbg("state="+event.value);
         let ci = ((player.mediaInfo ?? '') == '') ? ''
                   : player.mediaInfo.contentId;
-
+dbg("state="+event.value
+   +" ci="  +ci.substr(27)
+   +" last="+lastContentId.substr(27)
+   +" t="   +player.currentTime
+   +" tk="  +Tk);
          if (event.value == 'PLAYING' && ci != '' && ci != lastContentId) {
             if (lastContentId != '') {
               let fn = lastContentId.substr (27);

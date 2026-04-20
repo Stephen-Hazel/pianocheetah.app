@@ -36,6 +36,8 @@ require_once ("_inc/app.php");
                                 >videos</a>i took<br>
 <a pop class='nav-8' href="https://www.facebook.com/stephen.hazel"
                                 >facebook</a>is dumb !!<br>
-<br>
+<a     class='nav-9' href="shazbook"
+                                >shazbook</a>is also dumb :)<br>
+                                <br>
 <img src="img/wilee.jpg">
 <? pg_foot ();

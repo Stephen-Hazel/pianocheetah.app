@@ -148,7 +148,7 @@ dbg("kick newtk="+newtk);
       let ar = Nm [i].split ("\n");
       if (o == 0) {
          document.title = ar [2] + ' - ' + ar [0];
-         $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
+         $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80");
       }
       let mi = {
          contentId:   'https://shaz.app/song/song/' + PL [i],
@@ -184,6 +184,7 @@ window ['__onGCastApiAvailable'] = function (avail) {
    });
    let player = new cast.framework.RemotePlayer ();
    let plCtl  = new cast.framework.RemotePlayerController (player);
+/*
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
@@ -199,18 +200,29 @@ dbg("done='"+fn+"'");
 dbg("   WAS SKIPPED!");
             }
 
-            // unhilite old
-            $('#info tbody tr').eq (Tk).css ("background-color", "");
-
             Tk += 1;
-            if (Tk >= PL.length)  return;
-
-            // title and hilite
-            let a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
-            document.title = tt + ' - ' + gr;
-
-            $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80;");
          }
+      }
+   );
+*/
+   plCtl.addEventListener (
+      cast.framework.RemotePlayerEventType.MEDIA_INFO_CHANGED,
+      (event) => {
+         if (! player.mediaInfo)  return;
+
+        let fn = player.mediaInfo.contentId.substr (27);
+dbg("media change fn="+fn);
+dbg("old tk="+Tk);
+#        $.get ("did.php", { did: fn });
+
+        let newTk = PL.indexOf (fn);
+         if (newTk < 0 || newTk === Tk)  return;
+
+         $('#info tbody tr').eq (Tk).css ("background-color", "");
+         Tk = newTk;
+         let a = Nm [Tk].split ("\n");
+         document.title = a [2] + ' - ' + a [0];
+         $('#info tbody tr').eq (Tk).css ("background-color", "#FFFF80");
       }
    );
    CastOK = true;

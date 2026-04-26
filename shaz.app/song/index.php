@@ -210,12 +210,12 @@ dbg("   WAS SKIPPED!");
       (event) => {
          if (! player.mediaInfo)  return;
 
-        let fn = player.mediaInfo.contentId.substr (27);
-dbg("media change fn="+fn);
-dbg("old tk="+Tk);
-//       $.get ("did.php", { did: fn });
+        let oldFn = PL [Tk];
+         if ((Tk >= 0) && (Tk < PL.length))
+            $.get ("did.php", { did: oldFn });
 
-        let newTk = PL.indexOf (fn);
+        let newFn = player.mediaInfo.contentId.substr (27);
+        let newTk = PL.indexOf (newFn);
          if (newTk < 0 || newTk === Tk)  return;
 
          $('#info tbody tr').eq (Tk).css ("background-color", "");

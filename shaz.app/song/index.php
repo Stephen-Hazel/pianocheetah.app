@@ -213,7 +213,7 @@ dbg("   WAS SKIPPED!");
         let fn = player.mediaInfo.contentId.substr (27);
 dbg("media change fn="+fn);
 dbg("old tk="+Tk);
-#        $.get ("did.php", { did: fn });
+//       $.get ("did.php", { did: fn });
 
         let newTk = PL.indexOf (fn);
          if (newTk < 0 || newTk === Tk)  return;

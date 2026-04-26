@@ -62,7 +62,7 @@ foreach ($pl as $i => $s) {         ## pretty up the name
       $s = "$g\n$x\n$t\n$d";
    }
    else {
-      #dbg($s);
+#dbg($s);
       $s = "?? $s $d";
    }
    $nm[] = $s;
@@ -133,7 +133,7 @@ function kick (newtk)
    let plCtl  = new cast.framework.RemotePlayerController (player);
    plCtl.stop ();                      // SHUSH !
 
-   dbg("kick newtk="+newtk);
+dbg("kick newtk="+newtk);
    $('#info tbody tr').eq (Tk).css ("background-color", "");    // unhilite
    Tk = newtk;
 
@@ -141,7 +141,7 @@ function kick (newtk)
    if (Tk >= PL.length)  return;
 
    let mo = [];
-   for (o = 0;  o < 50;  o++) {
+   for (o = 0;  o < 100;  o++) {
       let i = Tk+o;
       if (i >= PL.length)  break;
 
@@ -156,17 +156,10 @@ function kick (newtk)
          metadata:    { metadataType: 0, artist: ar [0], title: ar [2] }
       };
       mo [o] = { media: mi, autoplay: true };
-
-
-
-
    }
-   dbg("queuein' "+mo.length);
+dbg("queuein' "+mo.length);
    sess.loadMedia ({ queueData: { items: mo } });
-
-
-
-   dbg('playin!');
+dbg('playin!');
 }
 
 
@@ -195,15 +188,15 @@ window ['__onGCastApiAvailable'] = function (avail) {
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       (event) => {
          if (event.value == 'IDLE') {
-            dbg("player");dbg(player);
+dbg("player");dbg(player);
             if ((player.mediaInfo ?? '') == '')  return;
 
             let fn = player.mediaInfo.contentId.substr (27);
-            dbg("done='"+fn+"'");
+dbg("done='"+fn+"'");
             $.get ("did.php", { did: fn });
             if (player.currentTime > 5) {
                $.get ("skip.php", { it: fn });
-               dbg("   WAS SKIPPED!");
+dbg("   WAS SKIPPED!");
             }
 
             // unhilite old
@@ -252,7 +245,7 @@ foreach ($dir as $i => $s)
 foreach ($nm as $n) {
    $a = explode ("\n", $n);
    if (($shuf == 'N') && (count ($pick) >= 4))
-      $n2[] = "<b>".$a [0]."</b>"." ".$a [1]." <b>".$a [2]."</b> ".$a [3];
+        $n2[] = "<b>".$a [0]."</b>"." ".$a [1]." <b>".$a [2]."</b> ".$a [3];
    else $n2[] = "<b>".$a [2]."</b>"." ".$a [0]." <b>".$a [3]."</b> ".$a [1];
 }
 table1 ('info', '', $n2); ?>

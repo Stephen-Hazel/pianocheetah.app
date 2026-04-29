@@ -1,0 +1,31 @@
+# shazbook — GoDaddy shared hosting
+# RewriteBase must match the subfolder path on the server.
+# For local dev change to: RewriteBase /
+
+<IfModule mod_rewrite.c>
+    Options -Indexes
+    RewriteEngine On
+    RewriteBase /shazbook/
+
+    # Block access to hidden files
+    RewriteRule ^\.                - [F,L]
+
+    # Pass real files/dirs through unchanged
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Route everything else to index.php
+    RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    # Fallback: add index.php to URL
+    ErrorDocument 404 /shazbook/index.php
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

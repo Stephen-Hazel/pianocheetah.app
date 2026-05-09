@@ -101,44 +101,24 @@ function loadQueue (items, curItemId) {
    renderTable ();
 }
 
-function doGetStatus (ms) {
-   ms.getStatus (new chrome.cast.media.GetStatusRequest (),
-      function () {
-         console.log ('getStatus ok playerState=' + ms.playerState +
-            ' items=' + (ms.items ? ms.items.length : 'null') +
-            ' media=' + (ms.media ? ms.media.contentId : 'null') +
-            ' currentItemId=' + ms.currentItemId);
-         if (ms.items && ms.items.length)
-            loadQueue (ms.items, ms.currentItemId);
-         else if (ms.media) {
-            let fn = parseFn (ms.media.contentId);
-            PL = [fn];
-            Nm = [parseName (fn)];
-            renderTable ();
-            $('#status').text ('1 song (no queue)');
-         }
-         else
-            $('#status').text ('nothing playing');
-      },
-      function (e) {
-         console.log ('getStatus error', e);
-         $('#status').text ('error: ' + (e.description || '?'));
-      }
-   );
-}
-
 function refreshStatus () {
    let ctx  = cast.framework.CastContext.getInstance ();
    let sess = ctx.getCurrentSession ();
    let ms   = sess && sess.getMediaSession ();
-   console.log ('refreshStatus sess=' + (sess?'yes':'no') +
-                ' ms=' + (ms?'yes':'no') +
-                ' items=' + (ms&&ms.items ? ms.items.length : 'null') +
-                ' media=' + (ms&&ms.media ? ms.media.contentId : 'null') +
-                ' currentItemId=' + (ms&&ms.currentItemId));
    if (!sess)  { $('#status').text ('not connected'); return; }
    if (!ms)    { $('#status').text ('nothing playing'); return; }
-   doGetStatus (ms);
+
+   if (ms.items && ms.items.length)
+      loadQueue (ms.items, ms.currentItemId);
+   else if (ms.media) {
+      let fn = parseFn (ms.media.contentId);
+      PL = [fn];
+      Nm = [parseName (fn)];
+      renderTable ();
+      $('#status').text ('1 song (no queue)');
+   }
+   else
+      $('#status').text ('nothing playing');
 }
 
 function lyr () {
@@ -162,14 +142,11 @@ window ['__onGCastApiAvailable'] = function (avail) {
    });
 
    let player = new cast.framework.RemotePlayer ();
-   window._pl = player;
    let plCtl  = new cast.framework.RemotePlayerController (player);
 
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.MEDIA_INFO_CHANGED,
       function (event) {
-         console.log ('MEDIA_INFO_CHANGED mediaInfo=' +
-                      (player.mediaInfo ? player.mediaInfo.contentId : 'null'));
          if (!player.mediaInfo)  return;
 
          let newFn = parseFn (player.mediaInfo.contentId);
@@ -192,7 +169,6 @@ window ['__onGCastApiAvailable'] = function (avail) {
       function (event) {
          let SS = cast.framework.SessionState;
          let s  = event.sessionState;
-         console.log ('SESSION_STATE_CHANGED state=' + s);
          if (s === SS.SESSION_RESUMED || s === SS.SESSION_STARTED)
             refreshStatus ();
          else if (s === SS.SESSION_ENDED)

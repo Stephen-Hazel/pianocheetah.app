@@ -113,6 +113,8 @@ function doGetStatus (ms) {
             renderTable ();
             $('#status').text ('1 song (no queue)');
          }
+         else
+            $('#status').text ('nothing playing');
       },
       function (e) {
          $('#status').text ('error: ' + (e.description || '?'));
@@ -123,19 +125,13 @@ function doGetStatus (ms) {
 function refreshStatus () {
    let ctx  = cast.framework.CastContext.getInstance ();
    let sess = ctx.getCurrentSession ();
+   let ms   = sess && sess.getMediaSession ();
+   console.log ('refreshStatus sess=' + (sess?'yes':'no') +
+                ' ms=' + (ms?'yes':'no') +
+                ' player.isMediaLoaded=' + (window._pl && window._pl.isMediaLoaded));
    if (!sess)  { $('#status').text ('not connected'); return; }
-   let ms = sess.getMediaSession ();
-   if (ms)     { doGetStatus (ms); return; }
-
-   // session exists but media not yet loaded into client - fetch from receiver
-   sess.getSessionObj ().getStatus (
-      function () {
-         let ms2 = sess.getMediaSession ();
-         if (ms2) doGetStatus (ms2);
-         else     $('#status').text ('nothing playing');
-      },
-      function () { $('#status').text ('nothing playing'); }
-   );
+   if (!ms)    { $('#status').text ('nothing playing'); return; }
+   doGetStatus (ms);
 }
 
 function lyr () {
@@ -159,11 +155,14 @@ window ['__onGCastApiAvailable'] = function (avail) {
    });
 
    let player = new cast.framework.RemotePlayer ();
+   window._pl = player;
    let plCtl  = new cast.framework.RemotePlayerController (player);
 
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.MEDIA_INFO_CHANGED,
       function (event) {
+         console.log ('MEDIA_INFO_CHANGED mediaInfo=' +
+                      (player.mediaInfo ? player.mediaInfo.contentId : 'null'));
          if (!player.mediaInfo)  return;
 
          let newFn = parseFn (player.mediaInfo.contentId);
@@ -186,6 +185,7 @@ window ['__onGCastApiAvailable'] = function (avail) {
       function (event) {
          let SS = cast.framework.SessionState;
          let s  = event.sessionState;
+         console.log ('SESSION_STATE_CHANGED state=' + s);
          if (s === SS.SESSION_RESUMED || s === SS.SESSION_STARTED)
             refreshStatus ();
          else if (s === SS.SESSION_ENDED)

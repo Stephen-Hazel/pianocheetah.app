@@ -1,10 +1,10 @@
-song
-   when page has closed, new sync button to reload current songs playing
-   but how to keep that sep from all the songs, etc
+song/tunz
+   index.php will put the same song into did a couple times
+   maybe did.txt should be by folder?
 
 pcheetah
    a bunch of screencast videos just of songs
-   all docs in videos
+   all docs in videos and way less text
 
 pic
    make a post to facebook thingo?  (like youtube's share to fb)
@@ -17,4 +17,4 @@ piano
    better pic of my piano,drum
 
 sitemap.xml
-   make a dumb script for it
+   make ai make a dumb script for it

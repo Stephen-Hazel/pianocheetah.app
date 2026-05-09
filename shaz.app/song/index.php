@@ -158,8 +158,9 @@ dbg("kick newtk="+newtk);
       mo [o] = { media: mi, autoplay: true };
    }
 dbg("queuein' "+mo.length);
-   sess.loadMedia ({ queueData: { items: mo } });
-dbg('playin!');
+   sess.loadMedia ({ queueData: { items: mo } }).then (() => {
+      window.location = 'cast.php';
+   });
 }
 
 

@@ -2,6 +2,8 @@
 # RewriteBase must match the subfolder path on the server.
 # For local dev change to: RewriteBase /
 
+SetEnv SHAZBOOK_APP_ROOT /home/z8wo4irg6pxb/shazbook
+
 <IfModule mod_rewrite.c>
     Options -Indexes
     RewriteEngine On
@@ -28,4 +30,8 @@
     Header set X-Content-Type-Options "nosniff"
     Header set X-Frame-Options "SAMEORIGIN"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+<IfModule mod_php.c>
+    php_value extension /opt/alt/php84/usr/lib64/php/modules/intl.so
 </IfModule>

@@ -1,4 +1,0 @@
-# Prevent execution of any scripts in uploads directory
-Options -ExecCGI -Indexes
-php_flag engine off
-AddHandler cgi-script .php .php3 .php4 .php5 .phtml .pl .py .jsp .asp .sh

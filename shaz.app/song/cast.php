@@ -110,6 +110,32 @@ function loadQueue (items, curItemId) {
    renderTable ();
 }
 
+function syncPos (ms) {
+   let curFn = ms.media && parseFn (ms.media.contentId);
+   if (curFn) {
+      let at = PL.indexOf (curFn);
+      if (at > 0) {
+         for (let i = 0; i < at; i++)  $.get ('did.php', { did: PL [i] });
+         PL = PL.slice (at);
+         Nm = Nm.slice (at);
+      }
+   }
+   renderTable ();
+}
+
+function fallbackLoad (ms) {
+   if (ms.items && ms.items.length)
+      loadQueue (ms.items, ms.currentItemId);
+   else if (ms.media) {
+      let fn = parseFn (ms.media.contentId);
+      PL = [fn];   Nm = [parseName (fn)];
+      renderTable ();
+      $('#status').text ('1 song (no queue)');
+   }
+   else
+      $('#status').text ('nothing playing');
+}
+
 function refreshStatus () {
    let ctx  = cast.framework.CastContext.getInstance ();
    let sess = ctx.getCurrentSession ();
@@ -117,34 +143,28 @@ function refreshStatus () {
    if (!sess)  { $('#status').text ('not connected'); return; }
    if (!ms)    { $('#status').text ('nothing playing'); return; }
 
-   if (PL.length) {
-      // PL already loaded from sessionStorage - sync current position only
-      let curFn = ms.media && parseFn (ms.media.contentId);
-      if (curFn) {
-         let at = PL.indexOf (curFn);
-         if (at > 0) {
-            for (let i = 0; i < at; i++)
-               $.get ('did.php', { did: PL [i] });
-            PL = PL.slice (at);
-            Nm = Nm.slice (at);
-         }
-      }
-      renderTable ();
-      return;
-   }
+   if (PL.length)  { syncPos (ms);  return; }
 
-   // No stored PL - fall back to receiver's window
-   if (ms.items && ms.items.length)
-      loadQueue (ms.items, ms.currentItemId);
-   else if (ms.media) {
-      let fn = parseFn (ms.media.contentId);
-      PL = [fn];
-      Nm = [parseName (fn)];
-      renderTable ();
-      $('#status').text ('1 song (no queue)');
-   }
-   else
-      $('#status').text ('nothing playing');
+   ms.queueGetItemIDs (
+      function (ids) {
+         if (!ids || !ids.length)  { fallbackLoad (ms);  return; }
+         ms.queueGetItemsInfo (
+            new chrome.cast.media.GetItemsInfoRequest (ids),
+            function (qItems) {
+               let ci = 0;
+               for (let i = 0; i < qItems.length; i++)
+                  if (qItems [i].itemId === ms.currentItemId) { ci = i;  break; }
+               PL = [];
+               for (let i = ci; i < qItems.length; i++)
+                  PL.push (parseFn (qItems [i].media.contentId));
+               Nm = PL.map (parseName);
+               renderTable ();
+            },
+            function () { fallbackLoad (ms); }
+         );
+      },
+      function () { fallbackLoad (ms); }
+   );
 }
 
 function lyr () {

@@ -159,7 +159,6 @@ dbg("kick newtk="+newtk);
    }
 dbg("queuein' "+mo.length);
    sess.loadMedia ({ queueData: { items: mo } }).then (() => {
-      sessionStorage.setItem ('castPL', JSON.stringify (PL.slice (Tk, Tk + mo.length)));
       window.location = 'cast.php';
    });
 }

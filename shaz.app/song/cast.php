@@ -43,6 +43,15 @@ th,td {
 let PL = [];   // filenames "dir/song.mp3", from current song onwards
 let Nm = [];   // "group\nextra\ntitle\ndir" for each PL entry
 
+{  // restore playlist passed from index.php via sessionStorage
+   let sp = sessionStorage.getItem ('castPL');
+   if (sp) {
+      sessionStorage.removeItem ('castPL');
+      PL = JSON.parse (sp);
+      Nm = PL.map (parseName);
+   }
+}
+
 function parseFn (url) {          // https://shaz.app/song/song/d/f.mp3
    return url.substr (27);        // -> "d/f.mp3"
 }
@@ -108,6 +117,23 @@ function refreshStatus () {
    if (!sess)  { $('#status').text ('not connected'); return; }
    if (!ms)    { $('#status').text ('nothing playing'); return; }
 
+   if (PL.length) {
+      // PL already loaded from sessionStorage - sync current position only
+      let curFn = ms.media && parseFn (ms.media.contentId);
+      if (curFn) {
+         let at = PL.indexOf (curFn);
+         if (at > 0) {
+            for (let i = 0; i < at; i++)
+               $.get ('did.php', { did: PL [i] });
+            PL = PL.slice (at);
+            Nm = Nm.slice (at);
+         }
+      }
+      renderTable ();
+      return;
+   }
+
+   // No stored PL - fall back to receiver's window
    if (ms.items && ms.items.length)
       loadQueue (ms.items, ms.currentItemId);
    else if (ms.media) {
@@ -181,6 +207,7 @@ window ['__onGCastApiAvailable'] = function (avail) {
 
 $(function () {
    init ();
+   if (PL.length)  renderTable ();
    $('#lyr').button ().click (lyr);
    setInterval (refreshStatus, 60000);
 });

@@ -144,27 +144,7 @@ function refreshStatus () {
    if (!ms)    { $('#status').text ('nothing playing'); return; }
 
    if (PL.length)  { syncPos (ms);  return; }
-
-   ms.queueGetItemIDs (
-      function (ids) {
-         if (!ids || !ids.length)  { fallbackLoad (ms);  return; }
-         ms.queueGetItemsInfo (
-            new chrome.cast.media.GetItemsInfoRequest (ids),
-            function (qItems) {
-               let ci = 0;
-               for (let i = 0; i < qItems.length; i++)
-                  if (qItems [i].itemId === ms.currentItemId) { ci = i;  break; }
-               PL = [];
-               for (let i = ci; i < qItems.length; i++)
-                  PL.push (parseFn (qItems [i].media.contentId));
-               Nm = PL.map (parseName);
-               renderTable ();
-            },
-            function () { fallbackLoad (ms); }
-         );
-      },
-      function () { fallbackLoad (ms); }
-   );
+   fallbackLoad (ms);
 }
 
 function lyr () {

@@ -101,18 +101,7 @@ function loadQueue (items, curItemId) {
    renderTable ();
 }
 
-function refreshStatus () {
-   let ctx  = cast.framework.CastContext.getInstance ();
-   let sess = ctx.getCurrentSession ();
-   if (!sess)  { $('#status').text ('not connected');   return; }
-   let ms = sess.getMediaSession ();
-   if (!ms) {
-      let so = sess.getSessionObj ();
-      if (so && so.media && so.media.length)
-         ms = so.media [0];
-   }
-   if (!ms)    { $('#status').text ('nothing playing'); return; }
-
+function doGetStatus (ms) {
    ms.getStatus (new chrome.cast.media.GetStatusRequest (),
       function () {
          if (ms.items && ms.items.length)
@@ -128,6 +117,24 @@ function refreshStatus () {
       function (e) {
          $('#status').text ('error: ' + (e.description || '?'));
       }
+   );
+}
+
+function refreshStatus () {
+   let ctx  = cast.framework.CastContext.getInstance ();
+   let sess = ctx.getCurrentSession ();
+   if (!sess)  { $('#status').text ('not connected'); return; }
+   let ms = sess.getMediaSession ();
+   if (ms)     { doGetStatus (ms); return; }
+
+   // session exists but media not yet loaded into client - fetch from receiver
+   sess.getSessionObj ().getStatus (
+      function () {
+         let ms2 = sess.getMediaSession ();
+         if (ms2) doGetStatus (ms2);
+         else     $('#status').text ('nothing playing');
+      },
+      function () { $('#status').text ('nothing playing'); }
    );
 }
 

@@ -42,7 +42,6 @@ th,td {
 <script> // ___________________________________________________________________
 let PL = [];   // filenames "dir/song.mp3", from current song onwards
 let Nm = [];   // "group\nextra\ntitle\ndir" for each PL entry
-let _retries = 0;
 
 function parseFn (url) {          // https://shaz.app/song/song/d/f.mp3
    return url.substr (27);        // -> "d/f.mp3"
@@ -105,19 +104,14 @@ function loadQueue (items, curItemId) {
 function refreshStatus () {
    let ctx  = cast.framework.CastContext.getInstance ();
    let sess = ctx.getCurrentSession ();
-   if (!sess)  { _retries = 0; $('#status').text ('not connected');   return; }
-   let ms   = sess.getMediaSession ();
-   if (!ms)    {
-      if (_retries < 5) {
-         _retries++;
-         setTimeout (refreshStatus, 1000);
-         return;
-      }
-      _retries = 0;
-      $('#status').text ('nothing playing');
-      return;
+   if (!sess)  { $('#status').text ('not connected');   return; }
+   let ms = sess.getMediaSession ();
+   if (!ms) {
+      let so = sess.getSessionObj ();
+      if (so && so.media && so.media.length)
+         ms = so.media [0];
    }
-   _retries = 0;
+   if (!ms)    { $('#status').text ('nothing playing'); return; }
 
    ms.getStatus (new chrome.cast.media.GetStatusRequest (),
       function () {

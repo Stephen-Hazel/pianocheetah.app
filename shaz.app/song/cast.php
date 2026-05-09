@@ -133,7 +133,9 @@ function refreshStatus () {
    let ms   = sess && sess.getMediaSession ();
    console.log ('refreshStatus sess=' + (sess?'yes':'no') +
                 ' ms=' + (ms?'yes':'no') +
-                ' player.isMediaLoaded=' + (window._pl && window._pl.isMediaLoaded));
+                ' items=' + (ms&&ms.items ? ms.items.length : 'null') +
+                ' media=' + (ms&&ms.media ? ms.media.contentId : 'null') +
+                ' currentItemId=' + (ms&&ms.currentItemId));
    if (!sess)  { $('#status').text ('not connected'); return; }
    if (!ms)    { $('#status').text ('nothing playing'); return; }
    doGetStatus (ms);

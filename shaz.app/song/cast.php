@@ -104,6 +104,10 @@ function loadQueue (items, curItemId) {
 function doGetStatus (ms) {
    ms.getStatus (new chrome.cast.media.GetStatusRequest (),
       function () {
+         console.log ('getStatus ok playerState=' + ms.playerState +
+            ' items=' + (ms.items ? ms.items.length : 'null') +
+            ' media=' + (ms.media ? ms.media.contentId : 'null') +
+            ' currentItemId=' + ms.currentItemId);
          if (ms.items && ms.items.length)
             loadQueue (ms.items, ms.currentItemId);
          else if (ms.media) {
@@ -117,6 +121,7 @@ function doGetStatus (ms) {
             $('#status').text ('nothing playing');
       },
       function (e) {
+         console.log ('getStatus error', e);
          $('#status').text ('error: ' + (e.description || '?'));
       }
    );

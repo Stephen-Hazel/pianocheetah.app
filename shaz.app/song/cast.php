@@ -37,6 +37,7 @@ th,td {
 <script> // ___________________________________________________________________
 let PL = [];   // filenames "dir/song.mp3", from current song onwards
 let Nm = [];   // "group\nextra\ntitle\ndir" for each PL entry
+let _refreshTries = 0;
 
 function parseFn (url) {          // https://shaz.app/song/song/d/f.mp3
    return url.substr (27);        // -> "d/f.mp3"
@@ -80,18 +81,22 @@ function loadQueue (items, curItemId) {
    for (let i = 0; i < items.length; i++)
       if (items [i].itemId === curItemId)  { ci = i;  break; }
 
-   let newPL = [];
-   for (let i = ci; i < items.length; i++)
-      newPL.push (parseFn (items [i].media.contentId));
+   let curFn = parseFn (items [ci].media.contentId);
+   let at    = PL.indexOf (curFn);
 
-   if (newPL.length && PL.length) {    // mark skipped songs as did
-      let at = PL.indexOf (newPL [0]);
+   if (at >= 0) {                      // found in localStorage list - slice to it
       for (let i = 0; i < at; i++)
          $.get ('did.php', { did: PL [i] });
+      PL = PL.slice (at);
+      Nm = Nm.slice (at);
    }
-
-   PL = newPL;
-   Nm = PL.map (parseName);
+   else {                              // not in our list - build from Cast queue
+      let newPL = [];
+      for (let i = ci; i < items.length; i++)
+         newPL.push (parseFn (items [i].media.contentId));
+      PL = newPL;
+      Nm = PL.map (parseName);
+   }
    renderTable ();
 }
 
@@ -99,14 +104,27 @@ function refreshStatus () {
    let ctx  = cast.framework.CastContext.getInstance ();
    let sess = ctx.getCurrentSession ();
    let ms   = sess && sess.getMediaSession ();
-   if (!sess)  { $('#status').text ('not connected'); return; }
-   if (!ms)    { $('#status').text ('nothing playing'); return; }
+   if (!sess)  { _refreshTries = 0; $('#status').text ('not connected'); return; }
+   if (!ms)    {
+      if (_refreshTries++ < 3)  { setTimeout (refreshStatus, 2000); return; }
+      _refreshTries = 0;
+      $('#status').text ('nothing playing');
+      return;
+   }
+   _refreshTries = 0;
 
    if (ms.items && ms.items.length)
       loadQueue (ms.items, ms.currentItemId);
    else if (ms.media) {
       let fn = parseFn (ms.media.contentId);
-      PL = [fn];   Nm = [parseName (fn)];
+      let at = PL.indexOf (fn);
+      if (at >= 0) {
+         PL = PL.slice (at);
+         Nm = Nm.slice (at);
+      }
+      else {
+         PL = [fn];   Nm = [parseName (fn)];
+      }
       renderTable ();
       $('#status').text ('1 song (no queue)');
    }
@@ -163,7 +181,7 @@ window ['__onGCastApiAvailable'] = function (avail) {
          let SS = cast.framework.SessionState;
          let s  = event.sessionState;
          if (s === SS.SESSION_RESUMED || s === SS.SESSION_STARTED)
-            refreshStatus ();
+            { _refreshTries = 0;  refreshStatus (); }
          else if (s === SS.SESSION_ENDED)
             $('#status').text ('cast session ended');
       }

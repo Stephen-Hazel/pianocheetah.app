@@ -168,14 +168,6 @@ dbg("queuein' "+mo.length);
 }
 
 
-function lyr ()                        // hit google lookin fo lyrics
-{  if (Tk >= PL.length)  return;
-
-   let a = Nm [Tk].split ("\n");   tt = a [2];   gr = a [0];
-   window.open ('https://google.com/search?q=lyrics "'+tt+'" "'+gr+'"',
-                "lyrics");
-}
-
 
 function scoot ()  { redo ('&sc=' + PL [Tk]); }
 
@@ -239,7 +231,7 @@ $(function () {                        // boot da page
 
    if (! mobl ())  $('.mobl').hide ();
    $('input' ).checkboxradio ().click (chk);
-   $('#lyr'  ).button ().click (lyr);
+
    $('#castq').button ().click (function () {window.location = 'cast.php';});
    $('#info tbody').on ('click','tr',function () {
       kick ($(this).index ());
@@ -256,7 +248,6 @@ $(function () {                        // boot da page
 foreach ($dir as $i => $s)
    check ("chk$i", $s, in_array ($i, $pick) ? 'Y':''); ?>
    <span id='num'><?= count($nm) ?></span><br class='mobl'>
-   <a id='lyr'>lyric</a>
    <a id='castq'>castq</a>
    <google-cast-launcher></google-cast-launcher>
 

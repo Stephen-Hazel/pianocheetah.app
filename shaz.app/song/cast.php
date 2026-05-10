@@ -33,11 +33,6 @@ th,td {
    white-space: nowrap;
    overflow: hidden;
 }
-#now {
-   font-size: 1.1em;
-   font-weight: bold;
-   padding: 4px 0;
-}
 </style>
 <script> // ___________________________________________________________________
 let PL = [];   // filenames "dir/song.mp3", from current song onwards
@@ -76,7 +71,6 @@ function renderTable () {
    if (Nm.length > 0) {
       let a = Nm [0].split ('\n');
       document.title = a [2] + ' - ' + a [0];
-      $('#now').text  (a [2] + ' • ' + a [0]);
    }
    $('#status').text (PL.length + ' songs remaining');
 }
@@ -191,7 +185,6 @@ $(function () {
 <? pg_body ([[$UC['home']." home", "..", "...take me back hooome"]]); ?>
 <google-cast-launcher></google-cast-launcher>
 <div id="status">connecting...</div>
-<div id="now"></div>
 <a id="lyr">lyric</a>
 
 <table id="info" name="info">

@@ -73,7 +73,6 @@ function renderTable () {
       let a = Nm [0].split ('\n');
       document.title = a [2] + ' - ' + a [0];
    }
-   $('#status').text (PL.length + ' songs remaining');
 }
 
 function loadQueue (items, curItemId) {
@@ -89,26 +88,26 @@ function loadQueue (items, curItemId) {
          $.get ('did.php', { did: PL [i] });
       PL = PL.slice (at);
       Nm = Nm.slice (at);
+      renderTable ();
    }
-   else {                              // not in our list - build from Cast queue
+   else if (!PL.length) {             // no localStorage - build from Cast queue
       let newPL = [];
       for (let i = ci; i < items.length; i++)
          newPL.push (parseFn (items [i].media.contentId));
       PL = newPL;
       Nm = PL.map (parseName);
+      renderTable ();
    }
-   renderTable ();
 }
 
 function refreshStatus () {
    let ctx  = cast.framework.CastContext.getInstance ();
    let sess = ctx.getCurrentSession ();
    let ms   = sess && sess.getMediaSession ();
-   if (!sess)  { _refreshTries = 0; $('#status').text ('not connected'); return; }
+   if (!sess)  { _refreshTries = 0; return; }
    if (!ms)    {
-      if (_refreshTries++ < 3)  { setTimeout (refreshStatus, 2000); return; }
-      _refreshTries = 0;
-      $('#status').text ('nothing playing');
+      if (_refreshTries++ < 3)  setTimeout (refreshStatus, 2000);
+      else  _refreshTries = 0;
       return;
    }
    _refreshTries = 0;
@@ -122,14 +121,11 @@ function refreshStatus () {
          PL = PL.slice (at);
          Nm = Nm.slice (at);
       }
-      else {
+      else if (!PL.length) {
          PL = [fn];   Nm = [parseName (fn)];
       }
       renderTable ();
-      $('#status').text ('1 song (no queue)');
    }
-   else
-      $('#status').text ('nothing playing');
 }
 
 function lyr () {
@@ -183,7 +179,7 @@ window ['__onGCastApiAvailable'] = function (avail) {
          if (s === SS.SESSION_RESUMED || s === SS.SESSION_STARTED)
             { _refreshTries = 0;  refreshStatus (); }
          else if (s === SS.SESSION_ENDED)
-            $('#status').text ('cast session ended');
+            { _refreshTries = 0; }
       }
    );
 
@@ -211,8 +207,7 @@ $(function () {
 
 <? pg_body ([[$UC['home']." home", "..", "...take me back hooome"]]); ?>
 <google-cast-launcher></google-cast-launcher>
-<div id="status">connecting...</div>
-<a id="lyr">lyric</a>
+<a id="lyr" style="margin-left: 6em">lyric</a>
 
 <table id="info" name="info">
  <thead><tr><th></th></tr></thead>

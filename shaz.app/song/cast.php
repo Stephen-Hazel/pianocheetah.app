@@ -175,6 +175,15 @@ window ['__onGCastApiAvailable'] = function (avail) {
 $(function () {
    init ();
    $('#lyr').button ().click (lyr);
+
+   let stored = localStorage.getItem ('castPL');
+   if (stored) {
+      let d = JSON.parse (stored);
+      PL = d.pl;
+      Nm = d.nm;
+      renderTable ();
+   }
+
    setInterval (refreshStatus, 60000);
 });
 </script>

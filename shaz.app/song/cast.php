@@ -195,6 +195,8 @@ window ['__onGCastApiAvailable'] = function (avail) {
    );
 
    if (ctx.getCurrentSession ())  refreshStatus ();
+   setTimeout (refreshStatus,  4000);
+   setTimeout (refreshStatus, 10000);
 };
 
 $(function () {

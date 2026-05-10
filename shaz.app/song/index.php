@@ -160,8 +160,8 @@ dbg("kick newtk="+newtk);
 dbg("queuein' "+mo.length);
    sess.loadMedia ({ queueData: { items: mo } }).then (() => {
       localStorage.setItem ('castPL', JSON.stringify ({
-         pl: PL.slice (Tk),
-         nm: Nm.slice (Tk)
+         pl: PL.slice (Tk, Tk + 100),
+         nm: Nm.slice (Tk, Tk + 100)
       }));
       window.location = 'cast.php';
    });

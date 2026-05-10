@@ -73,6 +73,7 @@ function renderTable () {
       let a = Nm [0].split ('\n');
       document.title = a [2] + ' - ' + a [0];
    }
+   $('#status').text (PL.length + ' songs remaining');
 }
 
 function loadQueue (items, curItemId) {
@@ -207,6 +208,7 @@ $(function () {
 
 <? pg_body ([[$UC['home']." home", "..", "...take me back hooome"]]); ?>
 <google-cast-launcher></google-cast-launcher>
+<div id="status"></div>
 <a id="lyr" style="margin-left: 6em">lyric</a>
 
 <table id="info" name="info">

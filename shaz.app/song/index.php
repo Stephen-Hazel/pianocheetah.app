@@ -159,6 +159,10 @@ dbg("kick newtk="+newtk);
    }
 dbg("queuein' "+mo.length);
    sess.loadMedia ({ queueData: { items: mo } }).then (() => {
+      localStorage.setItem ('castPL', JSON.stringify ({
+         pl: PL.slice (Tk),
+         nm: Nm.slice (Tk)
+      }));
       window.location = 'cast.php';
    });
 }
@@ -236,6 +240,7 @@ $(function () {                        // boot da page
    if (! mobl ())  $('.mobl').hide ();
    $('input' ).checkboxradio ().click (chk);
    $('#lyr'  ).button ().click (lyr);
+   $('#castq').button ().click (function () {window.location = 'cast.php';});
    $('#info tbody').on ('click','tr',function () {
       kick ($(this).index ());
    });
@@ -252,6 +257,7 @@ foreach ($dir as $i => $s)
    check ("chk$i", $s, in_array ($i, $pick) ? 'Y':''); ?>
    <span id='num'><?= count($nm) ?></span><br class='mobl'>
    <a id='lyr'>lyric</a>
+   <a id='castq'>castq</a>
    <google-cast-launcher></google-cast-launcher>
 
    <? $n2 = [];

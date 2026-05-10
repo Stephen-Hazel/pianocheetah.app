@@ -218,8 +218,8 @@ $(function () {
 
 <? pg_body ([[$UC['home']." home", "..", "...take me back hooome"]]); ?>
 <google-cast-launcher></google-cast-launcher>
-<div id="status"></div>
 <a id="lyr" style="margin-left: 6em">lyric</a>
+<div id="status"></div>
 
 <table id="info" name="info">
  <thead><tr><th></th></tr></thead>

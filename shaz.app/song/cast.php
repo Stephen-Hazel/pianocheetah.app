@@ -153,6 +153,16 @@ window ['__onGCastApiAvailable'] = function (avail) {
    let plCtl  = new cast.framework.RemotePlayerController (player);
 
    plCtl.addEventListener (
+      cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
+      function (event) {
+         if (event.value !== 'IDLE')  return;
+         if (!player.mediaInfo)  return;
+         if (player.currentTime > 5)
+            $.get ('skip.php', { it: parseFn (player.mediaInfo.contentId) });
+      }
+   );
+
+   plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.MEDIA_INFO_CHANGED,
       function (event) {
          if (!player.mediaInfo)  return;

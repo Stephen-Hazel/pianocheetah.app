@@ -586,6 +586,7 @@ textarea, input { font-family: inherit; font-size: inherit; }
 .person-name { font-weight: 600; font-size: .9rem;
    color: var(--text); }
 .person-name:hover { text-decoration: underline; }
+.person-meta { font-size: .8rem; color: var(--text-light); }
 .person-actions { display: flex; gap: .4rem; flex-wrap: wrap; }
 
 /* ---- Form elements ---- */

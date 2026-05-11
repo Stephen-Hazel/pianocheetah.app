@@ -11,12 +11,17 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
 
 /*
  * Resolve Paths.php location:
- *  - Local dev: app/ is a sibling of public/
+ *  - Old local dev: app/ is a sibling of public/
+ *  - New local dev: public/ is at ../pc/shaz.app/shazbook/,
+ *    app/ is 3 levels up at ../../../shazbook/
  *  - Production: app/ lives at SHAZBOOK_APP_ROOT
  *    or at /home/z8wo4irg6pxb/shazbook/
  */
 if (is_file(FCPATH . '../app/Config/Paths.php')) {
    require FCPATH . '../app/Config/Paths.php';
+}
+elseif (is_file(FCPATH . '../../../shazbook/app/Config/Paths.php')) {
+   require FCPATH . '../../../shazbook/app/Config/Paths.php';
 }
 elseif (getenv('SHAZBOOK_APP_ROOT')) {
    require rtrim(getenv('SHAZBOOK_APP_ROOT'), '/\\')

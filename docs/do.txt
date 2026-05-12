@@ -1,20 +1,23 @@
-song/tunz
-   index.php will put the same song into did a couple times
-   maybe did.txt should be by folder?
+shaz
+   song/tunz
+      index.php will put the same song into did a couple times
+      did.txt should be by _a,_b,St,An
+         when did.php does last one, clear just that dir's did.txt lines
+      cast.php doesn't monitor current song good enough for did,skip
+
+   pic
+      start a year preview w random pics per dir
+      make a post to facebook thingo?  (like youtube's share to fb)
+
+   shazbook :)
+
+   me
+      latest
 
 pcheetah
-   a bunch of screencast videos just of songs
-   all docs in videos and way less text
+   doc
+      screencast videos just of songs
+      WAY LESS text n all docs into videos
 
-pic
-   make a post to facebook thingo?  (like youtube's share to fb)
-   make a year preview w random pics per dir
-
-me
-   latest
-
-piano
-   better pic of my piano,drum
-
-sitemap.xml
-   make ai make a dumb script for it
+   piano
+      better pic of my piano,drum

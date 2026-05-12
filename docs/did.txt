@@ -1,4 +1,12 @@
-26/01/07 song - shuffle interleaves dir songs for balance between dirs
+202605
+   shazbook starts!
+   smap.php for makin sitemap.xml
+   cast in song/index.php works good but still workin on a
+      new cast.php to monitor the list playing
 
-26/04/04 song - no need for regular song page just cast now
+202604 song - no need for regular song page just cast now
    claude fixes next func and version probs and it works properly now
+   (well, not really - sigh)
+
+202601
+   song - shuffle interleaves dir songs for balance between dirs

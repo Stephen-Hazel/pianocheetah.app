@@ -173,6 +173,7 @@ $(function () {
    if (($yPos+1 < count ($Year)) || ($sPos+1 < count ($PSet))) { ?>
  <button id='nextset' title='next set of pics'>NextSet</button>
 <? } ?>
+ <a href="sum.php?y=<?= $yStr ?>"><button>YearSum</button></a>
  &nbsp; &nbsp;
 <? if ($pCom != '')  echo "<span class='comment'>$pCom</span>\n"; ?>
 </span>

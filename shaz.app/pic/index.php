@@ -160,7 +160,7 @@ $(function () {
    $('#prevset').button ().click (prevSet);
    $('#nextset').button ().click (nextSet);
    $('#yearsum').button ().click ({
-      window.location="sum.php?y="+$("#year").prop ('selectedIndex');
+      location = "sum.php?y=" + $("#year").prop ('selectedIndex');
    });
 });
  </script>

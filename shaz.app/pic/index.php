@@ -159,6 +159,9 @@ $(function () {
    $('#pset').selectmenu ({ change: rePSet, width: 320});
    $('#prevset').button ().click (prevSet);
    $('#nextset').button ().click (nextSet);
+   $('#yearsum').button ().click ({
+      window.location="sum.php?y="+$("#year").prop ('selectedIndex');
+   });
 });
  </script>
 <? pg_body ([
@@ -173,8 +176,7 @@ $(function () {
    if (($yPos+1 < count ($Year)) || ($sPos+1 < count ($PSet))) { ?>
  <button id='nextset' title='next set of pics'>NextSet</button>
 <? } ?>
- <a href="sum.php?y=<?= $yStr ?>"><button>YearSum</button></a>
- &nbsp; &nbsp;
+ <button id="yearsum">YearSum</button></a><br>
 <? if ($pCom != '')  echo "<span class='comment'>$pCom</span>\n"; ?>
 </span>
 <center>

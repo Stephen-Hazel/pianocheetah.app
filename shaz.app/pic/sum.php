@@ -2,13 +2,10 @@
 
 require_once ("../_inc/app.php");
 
-   $Year = LstDir ("idx", 'd');   sort ($Year);
-   $y    = arg ('y', end ($Year));
-   reset ($Year);
+   $y = arg ('y', '');
+   $Year = LstDir ("idx",       'd');   sort ($Year);
 
-   if (! in_array ($y, $Year))  $y = end ($Year);
-
-   $PSet = LstDir ("idx/$y", 'd');   sort ($PSet);
+   $PSet = LstDir ("idx/$Year", 'd');   sort ($PSet);
 
    pg_head ("pic sum", "jqui app", "jqui app");
 ?>
@@ -38,55 +35,46 @@ require_once ("../_inc/app.php");
  </style>
  <script>
 function reYear ()
-{  location.href = '?y=' + document.getElementById ('year').value; }
+{  location.href = '?y=' + $("#year').prop ('selectedIndex');  }
 
 function refresh ()
 {  location.href = location.href; }
  </script>
+
 <? pg_body ([
-      [$UC['home']." home", "..",  "home"],
-      ["pics",               ".",  "pics"],
+      [$UC['home']." home", "..",  "...take me back hooome"]
    ]); ?>
-<div id='top'>
- <select id='year' onchange='reYear()'>
-<? foreach ($Year as $yr) {
-      $sel = ($yr == $y) ? ' selected' : '';
-      echo "  <option value='$yr'$sel>$yr</option>\n";
-   } ?>
- </select>
- <button onclick='refresh()'>Refresh</button>
-</div>
+<span id='top'>
+<? select ('year', $Year, $yStr); ?>
+ <button id="redo" title="redo">>ReDo</button>
+</span>
 
-<?
-foreach ($PSet as $sStr) {
-   $txtFile = "idx/$y/$sStr.txt";
-   if (! Got ($txtFile))  continue;
+<? foreach ($PSet as $sStr) {
+      $txtFile = "idx/$y/$sStr.txt";
+      if (! Got ($txtFile))  continue;
 
-   $lines = explode ("\n", Get ($txtFile));
-   array_pop ($lines);   // remove trailing empty from last \n
-   $lines = array_filter ($lines, fn($l) => trim ($l) !== '');
-   $lines = array_values ($lines);
+      $lines = explode ("\n", Get ($txtFile));
+      array_pop ($lines);   // remove trailing empty from last \n
+      $lines = array_filter ($lines, fn($l) => trim ($l) !== '');
+      $lines = array_values ($lines);
 
-   if (count ($lines) == 0)  continue;
+      if (count ($lines) == 0)  continue;
 
-   $cnt  = min (4, count ($lines));
-   $keys = array_rand ($lines, $cnt);
-   if (! is_array ($keys))  $keys = [$keys];
+      $cnt  = min (4, count ($lines));
+      $keys = array_rand ($lines, $cnt);
+      if (! is_array ($keys))  $keys = [$keys];
 ?>
 <div class='pset-block'>
  <div class='pset-label'><?= htmlspecialchars ($sStr) ?></div>
  <div class='pset-pics'>
-<?
-   foreach ($keys as $k) {
-      $a  = explode ('|', $lines [$k]);
-      $fn = $a [1];
-      echo "  <img src='pic/$y/$sStr/$fn'>\n";
-   }
+<?    foreach ($keys as $k) {
+         $a  = explode ('|', $lines [$k]);
+         $fn = $a [1];
+         echo "  <img src='pic/$y/$sStr/$fn'>\n";
+      }
 ?>
  </div>
 </div>
-<?
-}
-?>
+<? }
 
-<? pg_foot ();
+pg_foot ();

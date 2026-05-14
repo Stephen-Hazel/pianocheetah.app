@@ -159,7 +159,7 @@ $(function () {
    $('#pset').selectmenu ({ change: rePSet, width: 320});
    $('#prevset').button ().click (prevSet);
    $('#nextset').button ().click (nextSet);
-   $('#yearsum').button ().click ({
+   $('#yearsum').button ().click (function (){
       location = "sum.php?y=" + $("#year").prop ('selectedIndex');
    });
 });

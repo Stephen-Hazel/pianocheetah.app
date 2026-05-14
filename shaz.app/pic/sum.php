@@ -84,6 +84,9 @@ function full ()
 
 function un ()  {$("#full").html ('');}
 
+function openBig (el)
+{  big2 (el.dataset.path, el.dataset.fn, el.dataset.cm);  }
+
 function big2 (path, fn, cm)
 { let or = screen.orientation.type.substr (0, 4);
   let h  = "<center>\n" +
@@ -133,9 +136,11 @@ $(function ()
          $a   = explode ('|', $line);
          $fn  = $a [1];
          $cm  = isset ($a [2]) ? $a [2] : '';
-         $esc = htmlspecialchars ($cm, ENT_QUOTES);
-         $cls = ($a [0] == 'L') ? 'pic-l' : 'pic-p';
-         echo "  <div class='$cls' onclick=\"big2('pic/$yStr/$sStr/','$fn','$esc')\">\n" .
+         $cls  = ($a [0] == 'L') ? 'pic-l' : 'pic-p';
+         $dCm  = htmlspecialchars ($cm, ENT_QUOTES);
+         $dFn  = htmlspecialchars ($fn, ENT_QUOTES);
+         echo "  <div class='$cls' onclick='openBig(this)'" .
+              " data-path='pic/$yStr/$sStr/' data-fn='$dFn' data-cm='$dCm'>\n" .
               "   <img src='idx/$yStr/$sStr/$fn'>\n" .
               ($cm ? "   <div class='piccomment'>$cm</div>\n" : "") .
               "  </div>\n";

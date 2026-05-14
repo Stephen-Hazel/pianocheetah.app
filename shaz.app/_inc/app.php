@@ -42,7 +42,7 @@ function LstDir ($p, $df, $ext = '')
 #_______________________________________________________________________________
 set_error_handler (function ($no, $str, $file, $line) {
    $ts = date ('m/d H:i:s');
-   error_log ("$ts $no $err in $file:$line");   return false;
+   error_log ("$ts $no $str in $file:$line");   return false;
 });
 
 function now ()  {return date ('Y-m-d H:i:s');}

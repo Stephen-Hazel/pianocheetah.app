@@ -31,8 +31,10 @@ body.dtop main {
    font-weight: normal;
 }
 .piccomment {
-   font-size: 10pt;
-   color:     #003050;
+   font-size:  10pt;
+   color:      #003050;
+   width:      100%;
+   word-wrap:  break-word;
 }
 .pset-pics {
    display: flex;
@@ -43,14 +45,10 @@ body.dtop main {
    flex:   0 0 auto;
    cursor: pointer;
 }
-.pset-pics .pic-l img {
-   width:  120px;
-   height: auto;
-}
-.pset-pics .pic-p img {
-   width:  80px;
-   height: auto;
-}
+.pset-pics .pic-l      { width: 120px; }
+.pset-pics .pic-p      { width:  80px; }
+.pset-pics .pic-l img,
+.pset-pics .pic-p img  { width: 100%; height: auto; }
 #big {
    display:             flex;
    justify-content:     center;

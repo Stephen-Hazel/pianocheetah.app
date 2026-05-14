@@ -40,6 +40,11 @@ function LstDir ($p, $df, $ext = '')
    return $lst;
 }
 #_______________________________________________________________________________
+set_error_handler (function ($no, $str, $file, $line) {
+   $ts = date ('m/d H:i:s');
+   error_log ("$ts $no $err in $file:$line");   return false;
+});
+
 function now ()  {return date ('Y-m-d H:i:s');}
 
 function nows ()

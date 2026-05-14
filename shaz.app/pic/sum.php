@@ -36,7 +36,7 @@ require_once ("../_inc/app.php");
  </style>
  <script>
 function reYear ()
-{  location.href = '?y=' + $("#year").prop ('selectedIndex');  }
+{  location.href = '?y=' + $("#year').prop ('selectedIndex');  }
 
 function refresh ()
 {  location.href = location.href; }
@@ -51,7 +51,7 @@ function refresh ()
 </span>
 
 <? foreach ($PSet as $sStr) {
-      $txtFile = "idx/$y/$sStr.txt";
+      $txtFile = "idx/$yStr/$sStr.txt";
       if (! Got ($txtFile))  continue;
 
       $lines = explode ("\n", Get ($txtFile));
@@ -71,7 +71,7 @@ function refresh ()
 <?    foreach ($keys as $k) {
          $a  = explode ('|', $lines [$k]);
          $fn = $a [1];
-         echo "  <img src='pic/$y/$sStr/$fn'>\n";
+         echo "  <img src='pic/$yStr/$sStr/$fn'>\n";
       }
 ?>
  </div>

@@ -1,4 +1,4 @@
-<? # pic/sum.php - year summary: 4 random pics per picset
+<? # pic/sum.php - year summary: all pics per picset
 
 require_once ("../_inc/app.php");
 
@@ -49,11 +49,8 @@ require_once ("../_inc/app.php");
 function reYear ()
 {  location.href = '?y=' + $("#year").prop ('selectedIndex');  }
 
-function refresh ()  {location.href = location.href;}
-
 $(function ()
 {  init ();
-   $('#redo').button ().click (refresh);
    $('#year').selectmenu ({ change: reYear, width: 120 });
 });
  </script>
@@ -63,7 +60,6 @@ $(function ()
    ]); ?>
 <span id='top'>
 <? select ('year', $Year, $yStr); ?>
- <button id="redo" title="redo">>ReDo</button>
 </span>
 
 <? foreach ($PSet as $sStr) {
@@ -79,17 +75,14 @@ $(function ()
       $r0   = explode ('|', $lines [0]);
       $pCom = isset ($r0 [3]) ? $r0 [3] : '';
 
-      $cnt  = min (4, count ($lines));
-      $keys = array_rand ($lines, $cnt);
-      if (! is_array ($keys))  $keys = [$keys];
 ?>
 <div class='pset-block'>
  <div class='pset-label'><?= htmlspecialchars ($sStr) ?>
 <?    if ($pCom != '')  echo " <span class='pset-com'>&mdash; $pCom</span>"; ?>
  </div>
  <div class='pset-pics'>
-<?    foreach ($keys as $k) {
-         $a  = explode ('|', $lines [$k]);
+<?    foreach ($lines as $line) {
+         $a  = explode ('|', $line);
          $fn = $a [1];
          $cm = isset ($a [2]) ? $a [2] : '';
          echo "  <div>\n" .

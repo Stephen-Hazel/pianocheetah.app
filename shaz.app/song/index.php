@@ -18,8 +18,11 @@ $did = ($shuf == 'N') ? [] : explode ("\n", Get ("did.txt"));
 $pld = [];                             ## dirp's mp3s  (minus did[] if shuffle)
 foreach ($dirp as $i => $d) {
    $pld [$i] = [];
-   foreach (LstDir ("song/$d", 'f') as $fn)
+   $ls = LstDir ("song/$d", 'f');
+dbg("$d total=".count($ls));
+   foreach ($ls as $fn)
       if (! in_array ("$d/$fn", $did))  $pld [$i][] = "$d/$fn";
+dbg("$d post did=".count($pld [$i]));
 
    if (($shuf == 'Y') && (count ($pld [$i]) == 0)) {
       unlink ("did.txt");              ## time ta kill did.txt

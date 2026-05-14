@@ -52,7 +52,8 @@ function reYear ()
 function refresh ()  {location.href = location.href;}
 
 $(function ()
-{  $('#redo').button ().click (refresh);
+{  init ();
+   $('#redo').button ().click (refresh);
    $('#year').selectmenu ({ change: reYear, width: 120 });
 });
  </script>

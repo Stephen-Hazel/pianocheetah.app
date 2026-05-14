@@ -11,6 +11,9 @@ require_once ("../_inc/app.php");
    pg_head ("pic sum", "jqui app", "jqui app");
 ?>
  <style>
+body.dtop main {
+   width: 100%;
+}
 #top {
    margin-left: 5em;
 }

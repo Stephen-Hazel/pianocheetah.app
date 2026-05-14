@@ -45,7 +45,7 @@ body.dtop main {
    flex:   0 0 auto;
    cursor: pointer;
 }
-.pset-pics .pic-l      { width: 140px; }
+.pset-pics .pic-l      { width: 180px; }
 .pset-pics .pic-p      { width:  80px; }
 .pset-pics .pic-l img,
 .pset-pics .pic-p img  { width: 100%; height: auto; }

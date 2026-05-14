@@ -81,6 +81,7 @@ function loadQueue (items, curItemId) {
    for (let i = 0; i < items.length; i++)
       if (items [i].itemId === curItemId)  { ci = i;  break; }
 
+   if (!items [ci].media)  return;
    let curFn = parseFn (items [ci].media.contentId);
    let at    = PL.indexOf (curFn);
 
@@ -94,7 +95,8 @@ function loadQueue (items, curItemId) {
    else if (!PL.length) {             // no localStorage - build from Cast queue
       let newPL = [];
       for (let i = ci; i < items.length; i++)
-         newPL.push (parseFn (items [i].media.contentId));
+         if (items [i].media)
+            newPL.push (parseFn (items [i].media.contentId));
       PL = newPL;
       Nm = PL.map (parseName);
       renderTable ();
@@ -119,6 +121,8 @@ function refreshStatus () {
       let fn = parseFn (ms.media.contentId);
       let at = PL.indexOf (fn);
       if (at >= 0) {
+         for (let i = 0; i < at; i++)
+            $.get ('did.php', { did: PL [i] });
          PL = PL.slice (at);
          Nm = Nm.slice (at);
       }

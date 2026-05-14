@@ -108,8 +108,9 @@ function shuf ()  {return $('#shuf').is (':checked') ? 'Y':'N';}
 
 function pick ()                       // get checkboxed dirs into an array
 { let p = [];
-   $("[id^='chk']:checked").each (function ()
+   $("[id^='chk']:checked").each (function () {
       p.push ($(this).attr ('id').substr (3));
+   });
    return p;
 }
 

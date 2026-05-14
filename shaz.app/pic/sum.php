@@ -44,7 +44,7 @@ body.dtop main {
    cursor: pointer;
 }
 .pset-pics img {
-   max-height: 200px;
+   max-height: 120px;
    width:      auto;
    object-fit: contain;
 }

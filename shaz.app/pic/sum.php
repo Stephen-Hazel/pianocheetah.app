@@ -12,7 +12,19 @@ require_once ("../_inc/app.php");
 ?>
  <style>
 #top {
-   margin: 0.5em 1em;
+   margin-left: 5em;
+}
+.comment {
+   max-width:        640px;
+   font-size:        14pt;
+   color:            #003050;
+   background-color: #00F0FF;
+   padding:          5px;
+}
+.piccomment {
+   font-size: 10pt;
+   color:     #003050;
+   max-width: 150px;
 }
 .pset-block {
    margin: 1.5em 1em 0.5em;
@@ -64,17 +76,25 @@ $(function ()
       $lines = array_values ($lines);
       if (count ($lines) == 0)  continue;
 
+      $r0   = explode ('|', $lines [0]);
+      $pCom = isset ($r0 [3]) ? $r0 [3] : '';
+
       $cnt  = min (4, count ($lines));
       $keys = array_rand ($lines, $cnt);
       if (! is_array ($keys))  $keys = [$keys];
 ?>
 <div class='pset-block'>
  <div class='pset-label'><?= htmlspecialchars ($sStr) ?></div>
+<? if ($pCom != '')  echo "<div class='comment'>$pCom</div>\n"; ?>
  <div class='pset-pics'>
 <?    foreach ($keys as $k) {
          $a  = explode ('|', $lines [$k]);
          $fn = $a [1];
-         echo "  <img src='idx/$yStr/$sStr/$fn'>\n";
+         $cm = isset ($a [2]) ? $a [2] : '';
+         echo "  <div>\n" .
+              "   <img src='idx/$yStr/$sStr/$fn'>\n" .
+              ($cm ? "   <div class='piccomment'>$cm</div>\n" : "") .
+              "  </div>\n";
       }
 ?>
  </div>

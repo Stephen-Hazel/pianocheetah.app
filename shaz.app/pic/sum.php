@@ -49,6 +49,12 @@ body.dtop main {
 .pset-pics .pic-p      { width:  80px; }
 .pset-pics .pic-l img,
 .pset-pics .pic-p img  { width: 100%; height: auto; }
+@media (max-width: 600px) {
+   .pset-pics             { flex-direction: column; }
+   .pset-pics .pic-l,
+   .pset-pics .pic-p      { width: 100%; }
+   .pset-pics img         { width: 100%; height: auto; }
+}
 #big {
    display:             flex;
    justify-content:     center;

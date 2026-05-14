@@ -36,7 +36,7 @@ require_once ("../_inc/app.php");
  </style>
  <script>
 function reYear ()
-{  location.href = '?y=' + $("#year').prop ('selectedIndex');  }
+{  location.href = '?y=' + $("#year").prop ('selectedIndex');  }
 
 function refresh ()
 {  location.href = location.href; }

@@ -43,10 +43,13 @@ body.dtop main {
    flex:   0 0 auto;
    cursor: pointer;
 }
-.pset-pics img {
-   width:      100px;
-   height:     auto;
-   object-fit: contain;
+.pset-pics .pic-l img {
+   width:  120px;
+   height: auto;
+}
+.pset-pics .pic-p img {
+   width:  80px;
+   height: auto;
 }
 #big {
    display:             flex;
@@ -133,7 +136,8 @@ $(function ()
          $fn  = $a [1];
          $cm  = isset ($a [2]) ? $a [2] : '';
          $esc = htmlspecialchars ($cm, ENT_QUOTES);
-         echo "  <div onclick=\"big2('pic/$yStr/$sStr/','$fn','$esc')\">\n" .
+         $cls = ($a [0] == 'L') ? 'pic-l' : 'pic-p';
+         echo "  <div class='$cls' onclick=\"big2('pic/$yStr/$sStr/','$fn','$esc')\">\n" .
               "   <img src='idx/$yStr/$sStr/$fn'>\n" .
               ($cm ? "   <div class='piccomment'>$cm</div>\n" : "") .
               "  </div>\n";

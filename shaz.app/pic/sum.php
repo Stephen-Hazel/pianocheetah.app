@@ -4,8 +4,9 @@ require_once ("../_inc/app.php");
 
    $y = arg ('y', '');
    $Year = LstDir ("idx",       'd');   sort ($Year);
+   $yStr = $Year [$y];
 
-   $PSet = LstDir ("idx/$Year", 'd');   sort ($PSet);
+   $PSet = LstDir ("idx/$yStr", 'd');   sort ($PSet);
 
    pg_head ("pic sum", "jqui app", "jqui app");
 ?>

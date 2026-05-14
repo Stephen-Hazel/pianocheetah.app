@@ -14,18 +14,6 @@ require_once ("../_inc/app.php");
 #top {
    margin-left: 5em;
 }
-.comment {
-   max-width:        640px;
-   font-size:        14pt;
-   color:            #003050;
-   background-color: #00F0FF;
-   padding:          5px;
-}
-.piccomment {
-   font-size: 10pt;
-   color:     #003050;
-   max-width: 150px;
-}
 .pset-block {
    margin: 1.5em 1em 0.5em;
 }
@@ -35,14 +23,25 @@ require_once ("../_inc/app.php");
    color:       #003050;
    margin-bottom: 0.3em;
 }
+.pset-com {
+   font-size:   12pt;
+   font-weight: normal;
+}
+.piccomment {
+   font-size: 10pt;
+   color:     #003050;
+}
 .pset-pics {
    display: flex;
    flex-wrap: wrap;
    gap: 8px;
 }
+.pset-pics > div {
+   flex: 0 0 calc(25% - 6px);
+}
 .pset-pics img {
-   max-height: 300px;
-   max-width:  100%;
+   width:      100%;
+   height:     auto;
    object-fit: contain;
 }
  </style>
@@ -84,8 +83,9 @@ $(function ()
       if (! is_array ($keys))  $keys = [$keys];
 ?>
 <div class='pset-block'>
- <div class='pset-label'><?= htmlspecialchars ($sStr) ?></div>
-<? if ($pCom != '')  echo "<div class='comment'>$pCom</div>\n"; ?>
+ <div class='pset-label'><?= htmlspecialchars ($sStr) ?>
+<?    if ($pCom != '')  echo " <span class='pset-com'>&mdash; $pCom</span>"; ?>
+ </div>
  <div class='pset-pics'>
 <?    foreach ($keys as $k) {
          $a  = explode ('|', $lines [$k]);

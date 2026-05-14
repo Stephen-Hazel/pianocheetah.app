@@ -36,10 +36,14 @@ require_once ("../_inc/app.php");
  </style>
  <script>
 function reYear ()
-{  location.href = '?y=' + $("#year').prop ('selectedIndex');  }
+{  location.href = '?y=' + $("#year").prop ('selectedIndex');  }
 
-function refresh ()
-{  location.href = location.href; }
+function refresh ()  {location.href = location.href;}
+
+$(function ()
+{  $('#redo').button ().click (refresh);
+   $('#year').selectmenu ({ change: reYear, width: 120 });
+});
  </script>
 
 <? pg_body ([
@@ -55,10 +59,9 @@ function refresh ()
       if (! Got ($txtFile))  continue;
 
       $lines = explode ("\n", Get ($txtFile));
-      array_pop ($lines);   // remove trailing empty from last \n
-      $lines = array_filter ($lines, fn($l) => trim ($l) !== '');
+      array_pop ($lines);              // remove trailing empty from last \n
+      $lines = array_filter ($lines, fn ($l) => trim ($l) !== '');
       $lines = array_values ($lines);
-
       if (count ($lines) == 0)  continue;
 
       $cnt  = min (4, count ($lines));
@@ -71,7 +74,7 @@ function refresh ()
 <?    foreach ($keys as $k) {
          $a  = explode ('|', $lines [$k]);
          $fn = $a [1];
-         echo "  <img src='pic/$yStr/$sStr/$fn'>\n";
+         echo "  <img src='idx/$yStr/$sStr/$fn'>\n";
       }
 ?>
  </div>

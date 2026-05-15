@@ -127,9 +127,9 @@ function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 function kick (tk)
 // song got clicked on - remake queue from there
-{ let sess = CastSess;
-dbg("kick sess="+(sess?"y":"n")+" cast="+(CastOK?"y":"n"));
-   if ((! sess) || (! CastOK))
+{
+dbg("kick sess="+(CastSess?"y":"n")+" ok="+(CastOK?"y":"n"));
+   if ((! CastSess) || (! CastOK))
       {alert ("ya ain't castin yet i think ?");   return;}
 
   let player = new cast.framework.RemotePlayer ();
@@ -153,7 +153,7 @@ dbg("kick tk="+tk);
       q [o] = { media: m, autoplay: true };
    }
 dbg("queuein' "+q.length);
-   sess.loadMedia ({ queueData: { items: q } }).then (() => {
+   CastSess.loadMedia ({ queueData: { items: q } }).then (() => {
       localStorage.setItem ('castPL', JSON.stringify ({
          pl: PL.slice (tk, tk + o),
          nm: Nm.slice (tk, tk + o)
@@ -176,7 +176,7 @@ dbg("cast init avail="+(avail?"y":"n"));                   // that's what google
       cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
       function () {
          CastSess = ctx.getCurrentSession ();
-dbg("sess state chg sess="+(CastSess?"y":"n"));
+dbg("CastSess="+(CastSess?"y":"n"));
       }
    );
    CastOK = true;

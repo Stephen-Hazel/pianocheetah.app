@@ -1,6 +1,10 @@
 // app.js
 // less typin'  (sorry not sorry) :/
 let dbg = console.log.bind (console);
+
+function log (s)
+{  $.get ('https://shaz.app/log.php', { s: encodeURIComponent (s) });  }
+
 function el  (s)  {return document.getElementById   (s);}
 function tag (s)  {return document.getElementsByTagName (s)[0];}
 function all (s)  {return document.querySelectorAll (s);}
@@ -12,7 +16,6 @@ function navOpen ()  {$('#nav-open').hide ();   $('nav').show ();
                       $('#nav-shut').show ();}
 function navShut ()  {$('#nav-open').show ();   $('nav').hide ();
                       $('#nav-shut').hide ();}
-
 let pMobl = 99;                        // force navUpd to kick on init
 
 function mobl ()  {return pMobl;}

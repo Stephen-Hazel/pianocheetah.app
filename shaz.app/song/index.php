@@ -127,6 +127,7 @@ function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 function kick (tk)
 // song got clicked on - remake queue from there
 { let sess = cast.framework.CastContext.getInstance ().getCurrentSession ();
+dbg("kick sess="+(sess?"y":"n")+" cast="+(CastOK?"y":"n"));
    if ((! sess) || (! CastOK))
       {alert ("ya ain't castin yet i think ?");   return;}
 
@@ -161,9 +162,9 @@ dbg("queuein' "+q.length);
 }
 
 
-window ['__onGCastApiAvailable'] = function (avail) {
-// cast api init
-   if (! avail)  return;
+window ['__onGCastApiAvailable'] = function (avail) {      // cast api init
+dbg("cast init avail="+(avail?"y":"n"));                   // that's what google
+   if (! avail)  return;                                   // named it :/
 
    cast.framework.CastContext.getInstance ().setOptions ({
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,

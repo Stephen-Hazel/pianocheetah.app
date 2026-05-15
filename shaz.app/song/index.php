@@ -105,7 +105,8 @@ th,td {
 <script> // ___________________________________________________________________
 let PL = <?= json_encode ($pl); ?>;    // play list
 let Nm = <?= json_encode ($nm); ?>;    // split fn into group,title,etc,dir
-let CastOK = false;
+let CastOK   = false;
+let CastSess = null;
 
 function shuf ()  {return $('#shuf').is (':checked') ? 'Y':'N';}
 
@@ -126,7 +127,7 @@ function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 
 function kick (tk)
 // song got clicked on - remake queue from there
-{ let sess = cast.framework.CastContext.getInstance ().getCurrentSession ();
+{ let sess = CastSess;
 dbg("kick sess="+(sess?"y":"n")+" cast="+(CastOK?"y":"n"));
    if ((! sess) || (! CastOK))
       {alert ("ya ain't castin yet i think ?");   return;}
@@ -166,10 +167,18 @@ window ['__onGCastApiAvailable'] = function (avail) {      // cast api init
 dbg("cast init avail="+(avail?"y":"n"));                   // that's what google
    if (! avail)  return;                                   // named it :/
 
-   cast.framework.CastContext.getInstance ().setOptions ({
+  let ctx = cast.framework.CastContext.getInstance ();
+   ctx.setOptions ({
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
       autoJoinPolicy:        chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
    });
+   ctx.addEventListener (
+      cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
+      function () {
+         CastSess = ctx.getCurrentSession ();
+dbg("sess state chg sess="+(CastSess?"y":"n"));
+      }
+   );
    CastOK = true;
 };
 

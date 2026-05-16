@@ -3,7 +3,9 @@
 let dbg = console.log.bind (console);
 
 function dbgx (s)
-{  $.get ('https://shaz.app/log.php', { s: encodeURIComponent (s) });  }
+{  dbg(s);                             // to server, too
+   $.get ('https://shaz.app/log.php', { s: encodeURIComponent (s) });
+}
 
 function el  (s)  {return document.getElementById   (s);}
 function tag (s)  {return document.getElementsByTagName (s)[0];}

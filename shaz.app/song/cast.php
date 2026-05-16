@@ -75,14 +75,16 @@ function reCheck ()
 dbgx("reCheck");
   let player = new cast.framework.RemotePlayer ();
   let plCtl  = new cast.framework.RemotePlayerController (player);
-dbgx("player");dbgx(player);
+dbgx("player,plCtl");dbgx(player);dbgx(plCtl);
    if (player.mediaInfo) {
-dbgx(player.mediaInfo);
      let fn = unroot (player.mediaInfo.contentId);
      let at = PL.indexOf (fn);
-dbgx("fn="+fn+" at="+at);
+dbgx("   fn="+fn+" at="+at);
       if (at > Tk) {
-         for (let i = Tk;  i < at;  i++)  $.get ('did.php', { did: PL [i] });
+         for (let i = Tk;  i < at;  i++) {
+dbgx("   did "+PL [i]);
+            $.get ('did.php', { did: PL [i] });
+         }
          Tk = at;
       }
       newTk ();
@@ -102,7 +104,7 @@ function lyr ()
 
 
 window ['__onGCastApiAvailable'] = function (avail) {
-dbgx("cast init avail="+(avail?"y":"n"));
+//dbgx("cast init avail="+(avail?"y":"n"));
    if (! avail)  return;
 
   let ctx = cast.framework.CastContext.getInstance ();
@@ -160,7 +162,7 @@ dbgx("cast.php ready");
      let d = JSON.parse (stored);
       PL = d.pl;
       Nm = d.nm;
-dbg("PL count="+PL.length);
+//dbg("PL count="+PL.length);
      let tb = $('#info tbody');
       tb.empty ();
       for (let i = 0;  i < PL.length;  i++) {

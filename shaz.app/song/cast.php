@@ -37,79 +37,52 @@ th,td {
 <script> // ___________________________________________________________________
 let PL = [];   // filenames "dir/song.mp3", that index.php gave us
 let Nm = [];   // "group\nextra\ntitle\ndir" for each PL entry
-let curIdx = 0;
+let Tk = 0;
 let _refreshTries = 0;
 
-function parseFn (url) {          // https://shaz.app/song/song/d/f.mp3
-   return url.substr (27);        // -> "d/f.mp3"
-}
+// https://shaz.app/song/song/d/f.mp3 => d/f.mp3
+function unroot (url)  {return url.substr (27);}
 
-function parseName (fn) {
-   let sl  = fn.indexOf  ('/');
-   let dir = fn.substring (0, sl);
-   let s   = fn.substring (sl + 1, fn.length - 4);
+function fn2nm (fn)
+{ let sl  = fn.indexOf  ('/');
+  let dir = fn.substring (0, sl);
+  let s   = fn.substring (sl + 1, fn.length - 4);
    s = s.replace (/_/g, ' ');
-   let f   = s.indexOf     ('-');
-   let l   = s.lastIndexOf ('-');
+  let f   = s.indexOf     ('-');
+  let l   = s.lastIndexOf ('-');
    if (f !== -1) {
-      let g = s.substring (0, f);
-      let t = s.substring (l + 1);
-      let x = (f === l) ? '' : s.substring (f + 1, l);
+     let g = s.substring (0, f);
+     let t = s.substring (l + 1);
+     let x = (f === l) ? '' : s.substring (f + 1, l);
       return g + '\n' + x + '\n' + t + '\n' + dir;
    }
    return '??\n\n' + s + '\n' + dir;
 }
 
 
-function reTable ()
-{
-dbgx("reTable");
-  let tb = $('#info tbody');
-   tb.empty ();
-   for (let i = 0;  i < PL.length;  i++) {
-     let a  = Nm [i].split ('\n');
-     let td = '<b>' + a [2] + '</b> ' + a [0] +
-             ' <b>' + a [3] + '</b> ' + a [1];
-      tb.append ('<tr><td>' + td + '</td></tr>');
-   }
-   $('#info tbody tr').eq (curIdx).css ('background-color', '#FFFF80');
-   if (Nm.length > curIdx) {
-     let a = Nm [curIdx].split ('\n');
+function newTk ()
+{  $('#info tbody tr').css         ('background-color', '');
+   $('#info tbody tr').eq (Tk).css ('background-color', '#FFFF80');
+   if (Tk < Nm.length) {
+     let a = Nm [Tk].split ('\n');
       document.title = a [2] + ' - ' + a [0];
    }
-   $('#status').text ((PL.length - curIdx) + ' songs left');
 }
 
 
-function loadQueue (items, curItemId)
-{ let ci = 0;
-dbgx("loadQueue");
-   for (let i = 0;  i < items.length;  i++)
-      if (items [i].itemId === curItemId)  {ci = i;  break;}
-   if (! items [ci].media)  return;
-
-  let curFn = parseFn (items [ci].media.contentId);
-  let at    = PL.indexOf (curFn);
-   if (at >= 0) {
-      for (let i = curIdx; i < at; i++)
-         $.get ('did.php', { did: PL [i] });
-      curIdx = at;
-      reTable ();
-   }
-}
-
-
-function refreshStatus ()
-{ let ctx  = cast.framework.CastContext.getInstance ();
+function reCheck ()
+{
+dbgx("reCheck");
+  let ctx  = cast.framework.CastContext.getInstance ();
   let sess = ctx.getCurrentSession ();
   let ms   = sess && sess.getMediaSession ();
-dbgx("refreshStatus");
-   if (! sess)  {_refreshTries = 0;   return;}
+   if (! sess)  {
+dbgx("no sess");
+      _refreshTries = 0;   return;}
 
-dbgx(" got sess");
    if (! ms) {
-dbgx(" ms=false tries="+_refreshTries);
-      if (_refreshTries++ < 3)  setTimeout (refreshStatus, 2000);
+dbgx(" no mediaSess tries="+_refreshTries);
+      if (_refreshTries++ < 3)  setTimeout (reCheck, 2000);
       else                      _refreshTries = 0;
       return;
    }
@@ -120,27 +93,27 @@ dbgx("_refreshTries:= 0");
       loadQueue (ms.items, ms.currentItemId);
    else if (ms.media) {
 dbgx("got ms.media");
-     let fn = parseFn (ms.media.contentId);
+     let fn = unroot (ms.media.contentId);
      let at = PL.indexOf (fn);
 dbgx("fn="+fn+" at="+at);
       if (at >= 0) {
-         for (let i = curIdx; i < at; i++)
+         for (let i = Tk; i < at; i++)
             $.get ('did.php', { did: PL [i] });
-         curIdx = at;
+         Tk = at;
       }
       else if (! PL.length) {
-         PL = [fn];   Nm = [parseName (fn)];
-         curIdx = 0;
+         PL = [fn];   Nm = [fn2nm (fn)];
+         Tk = 0;
       }
-      reTable ();
+      newTk ();
    }
 }
 
 
 function lyr ()
-{  if (curIdx >= Nm.length)  return;
+{  if (Tk >= Nm.length)  return;
 
-  let a = Nm [curIdx].split ('\n');
+  let a = Nm [Tk].split ('\n');
    window.open (
       'https://google.com/search?q=lyrics "' + a [2] + '" "' + a [0] + '"',
       'lyrics');
@@ -169,7 +142,7 @@ dbgx("   got mediaInfo");
 
          if (player.currentTime > 5) {
 dbgx("   curTime>5 so skip.php w "+player.mediaInfo.contentId);
-            $.get ('skip.php', { it: parseFn (player.mediaInfo.contentId) });
+            $.get ('skip.php', { it: unroot (player.mediaInfo.contentId) });
          }
       }
    );
@@ -181,21 +154,21 @@ dbgx("plCtl media_info_changed");
          if (!player.mediaInfo)  return;
 dbgx("   got mediaInfo");
 
-        let newFn = parseFn (player.mediaInfo.contentId);
+        let newFn = unroot (player.mediaInfo.contentId);
 dbgx("   newFn="+newFn);
         let newTk = PL.indexOf (newFn);
 dbgx("   newTk="+newTk);
-         if (newTk > curIdx) {
-            for (let i = curIdx; i < newTk; i++) {
-dbgx("      did.php fn="+PL[i]);
+         if (newTk > Tk) {
+            for (let i = Tk;  i < newTk;  i++) {
+dbgx("   did.php fn="+PL[i]);
                $.get ('did.php', { did: PL [i] });
             }
-            curIdx = newTk;
-            reTable ();
+            Tk = newTk;
+            newTk ();
          }
          else if (newTk < 0) {         // unknown song - resync from cast
-dbgx("      newTk=0 so refreshStatus");
-            refreshStatus ();
+dbgx("   newTk<0 so reCheck");
+            reCheck ();
          }
       }
    );
@@ -205,13 +178,11 @@ dbgx("      newTk=0 so refreshStatus");
       function (event) {
 dbgx("ctx session_state_changed");
         let SS = cast.framework.SessionState;
-      // NO_SESSION, SESSION_STARTING, _STARTED, _START_FAILED,
-      // _ENDING, _ENDED, _RESUMED
-        let s = event.sessionState;
+        let s  = event.sessionState;
 dbgx(s);
          if      (s === SS.SESSION_RESUMED || s === SS.SESSION_STARTED) {
 dbgx("   resumed|started");
-            _refreshTries = 0;  refreshStatus ();
+            _refreshTries = 0;  reCheck ();
          }
          else if (s === SS.SESSION_ENDED) {
 dbgx("   ended");
@@ -220,9 +191,9 @@ dbgx("   ended");
       }
    );
 
-   if (ctx.getCurrentSession ())  refreshStatus ();
-   setTimeout (refreshStatus,  4000);
-   setTimeout (refreshStatus, 10000);
+   if (ctx.getCurrentSession ())  reCheck ();
+   setTimeout (reCheck,  4000);
+   setTimeout (reCheck, 10000);
 };
 
 
@@ -236,9 +207,21 @@ dbgx("cast.php ready");
       PL = d.pl;
       Nm = d.nm;
 dbg("PL");dbg(PL);
-      reTable ();
+     let tb = $('#info tbody');
+      tb.empty ();
+      for (let i = 0;  i < PL.length;  i++) {
+        let a  = Nm [i].split ('\n');
+        let td = '<b>' + a [2] + '</b> ' + a [0] +
+                ' <b>' + a [3] + '</b> ' + a [1];
+         tb.append ('<tr><td>' + td + '</td></tr>');
+      }
+      $('#info tbody tr').eq (Tk).css ('background-color', '#FFFF80');
+      if (Tk < Nm.length) {
+        let a = Nm [Tk].split ('\n');
+         document.title = a [2] + ' - ' + a [0];
+      }
    }
-   setInterval (refreshStatus, 60000);
+   setInterval (reCheck, 60000);
 });
 </script>
 <script src=
@@ -246,7 +229,7 @@ dbg("PL");dbg(PL);
 </script>
 
 <? pg_body ([[$UC['home']." home", "..", "...take me back hooome"]]); ?>
-<google-cast-launcher></google-cast-launcher>
-<a id="lyr" style="margin-left: 6em">lyric</a><span id="status"></span>
+<span style="padding-left: 5em"></span>
+<a id="lyr">lyric</a><google-cast-launcher></google-cast-launcher>
 <table id="info" name="info"><tbody></tbody></table>
 <? pg_foot ();

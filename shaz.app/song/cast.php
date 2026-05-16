@@ -82,6 +82,7 @@ dbgx("reTable");
 
 function loadQueue (items, curItemId)
 { let ci = 0;
+dbgx("loadQueue");
    for (let i = 0;  i < items.length;  i++)
       if (items [i].itemId === curItemId)  {ci = i;  break;}
    if (! items [ci].media)  return;
@@ -102,27 +103,33 @@ function refreshStatus ()
 { let ctx  = cast.framework.CastContext.getInstance ();
   let sess = ctx.getCurrentSession ();
   let ms   = sess && sess.getMediaSession ();
+dbgx("refreshStatus");
    if (! sess)  {_refreshTries = 0;   return;}
 
+dbgx(" got sess");
    if (! ms) {
+dbgx(" ms=false tries="+_refreshTries);
       if (_refreshTries++ < 3)  setTimeout (refreshStatus, 2000);
       else                      _refreshTries = 0;
       return;
    }
 
    _refreshTries = 0;
+dbgx("_refreshTries:= 0");
    if      (ms.items && ms.items.length)
       loadQueue (ms.items, ms.currentItemId);
    else if (ms.media) {
+dbgx("got ms.media");
      let fn = parseFn (ms.media.contentId);
      let at = PL.indexOf (fn);
+dbgx("fn="+fn+" at="+at);
       if (at >= 0) {
          for (let i = 0; i < at; i++)
             $.get ('did.php', { did: PL [i] });
          PL = PL.slice (at);
          Nm = Nm.slice (at);
       }
-      else if (!PL.length) {
+      else if (! PL.length) {
          PL = [fn];   Nm = [parseName (fn)];
       }
       reTable ();
@@ -199,15 +206,16 @@ dbgx("      newTk=0 so refreshStatus");
       function (event) {
 dbgx("ctx session_state_changed");
         let SS = cast.framework.SessionState;
-        let s  = event.sessionState;
-dbgx(JSON.stringify(SS));
+      // NO_SESSION, SESSION_STARTING, _STARTED, _START_FAILED,
+      // _ENDING, _ENDED, _RESUMED
+        let s = event.sessionState;
 dbgx(s);
-         if (s === SS.SESSION_RESUMED || s === SS.SESSION_STARTED) {
-dbgx("   session_resumed session_started");
+         if      (s === SS.SESSION_RESUMED || s === SS.SESSION_STARTED) {
+dbgx("   resumed|started");
             _refreshTries = 0;  refreshStatus ();
          }
          else if (s === SS.SESSION_ENDED) {
-dbgx("   session_ended");
+dbgx("   ended");
             _refreshTries = 0;
          }
       }
@@ -220,7 +228,7 @@ dbgx("   session_ended");
 
 
 $(function () {
-   dbgx("cast.php ready");
+dbgx("cast.php ready");
    init ();
    $('#lyr').click (lyr);
   let stored = localStorage.getItem ('castPL');
@@ -228,6 +236,7 @@ $(function () {
      let d = JSON.parse (stored);
       PL = d.pl;
       Nm = d.nm;
+dbg("PL");dbg(PL);
       reTable ();
    }
    setInterval (refreshStatus, 60000);
@@ -238,11 +247,7 @@ $(function () {
 </script>
 
 <? pg_body ([[$UC['home']." home", "..", "...take me back hooome"]]); ?>
-<a id="lyr" style="margin-left: 6em">lyric</a><span id="status"></span>
 <google-cast-launcher></google-cast-launcher>
-
-<table id="info" name="info">
- <thead><tr><th></th></tr></thead>
- <tbody></tbody>
-</table>
+<a id="lyr" style="margin-left: 6em">lyric</a><span id="status"></span>
+<table id="info" name="info"><tbody></tbody></table>
 <? pg_foot ();

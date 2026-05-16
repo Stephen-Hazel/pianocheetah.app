@@ -38,7 +38,6 @@ th,td {
 let PL = [];   // filenames "dir/song.mp3", that index.php gave us
 let Nm = [];   // "group\nextra\ntitle\ndir" for each PL entry
 let Tk = 0;
-let Tries = 0;
 
 // https://shaz.app/song/song/d/f.mp3 => d/f.mp3
 function unroot (url)  {return url.substr (27);}
@@ -74,26 +73,12 @@ function reCheck ()
 // see if we're onna new song (other than Tk)
 {
 dbgx("reCheck");
-  let ctx  = cast.framework.CastContext.getInstance ();
-  let sess = ctx.getCurrentSession ();
-  let ms   = sess && sess.getMediaSession ();
-dbgx("ctx,sess,ms");dbgx(ctx); dbgx(sess); dbgx(ms);
-   if (! sess)  {
-dbgx("no sess");
-      Tries = 0;   return;}
-
-   if (! ms) {
-dbgx(" no mediaSess tries="+Tries);
-      if (Tries++ < 3)  setTimeout (reCheck, 2000);
-      else              Tries = 0;
-      return;
-   }
-
-   Tries = 0;
-dbgx("Tries:= 0");
-   if (ms.media) {
-dbgx("got ms.media");
-     let fn = unroot (ms.media.contentId);
+  let player = new cast.framework.RemotePlayer ();
+  let plCtl  = new cast.framework.RemotePlayerController (player);
+dbgx("player,plCtl");dbgx(player); dbgx(plCtl);
+   if (player.mediaInfo) {
+dbgx(player.mediaInfo);
+     let fn = unroot (player.mediaInfo.contentId);
      let at = PL.indexOf (fn);
 dbgx("fn="+fn+" at="+at);
       if (at != Tr) {
@@ -141,12 +126,11 @@ dbgx("   curTime>5 so skip.php w "+player.mediaInfo.contentId);
          }
       }
    );
-
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.MEDIA_INFO_CHANGED,
       function (event) {
 dbgx("plCtl media_info_changed");
-         if (!player.mediaInfo)  return;
+         if (! player.mediaInfo)  return;
 dbgx("   got mediaInfo");
 
         let newFn = unroot (player.mediaInfo.contentId);
@@ -161,32 +145,8 @@ dbgx("   did.php fn="+PL[i]);
             Tk = newTk;
             newTk ();
          }
-         else if (newTk < 0) {         // unknown song - resync from cast
-dbgx("   newTk<0 so reCheck");
-            reCheck ();
-         }
       }
    );
-
-   ctx.addEventListener (
-      cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
-      function (event) {
-dbgx("ctx session_state_changed");
-        let SS = cast.framework.SessionState;
-        let s  = event.sessionState;
-dbgx("   "+s);
-         if      (s === SS.SESSION_RESUMED || s === SS.SESSION_STARTED) {
-dbgx("   resumed|started");
-            Tries = 0;  reCheck ();
-         }
-         else if (s === SS.SESSION_ENDED) {
-dbgx("   ended");
-            Tries = 0;
-         }
-      }
-   );
-
-   if (ctx.getCurrentSession ())  reCheck ();
    setTimeout (reCheck,  4000);
    setTimeout (reCheck, 10000);
 };

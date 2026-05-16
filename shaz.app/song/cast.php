@@ -75,13 +75,13 @@ function reCheck ()
 dbgx("reCheck");
   let player = new cast.framework.RemotePlayer ();
   let plCtl  = new cast.framework.RemotePlayerController (player);
-dbgx("player,plCtl");dbgx(player); dbgx(plCtl);
+dbgx("player");dbgx(player);
    if (player.mediaInfo) {
 dbgx(player.mediaInfo);
      let fn = unroot (player.mediaInfo.contentId);
      let at = PL.indexOf (fn);
 dbgx("fn="+fn+" at="+at);
-      if (at != Tr) {
+      if (at > Tr) {
          for (let i = Tk;  i < at;  i++)  $.get ('did.php', { did: PL [i] });
          Tk = at;
       }
@@ -114,7 +114,7 @@ dbgx("cast init avail="+(avail?"y":"n"));
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       function (event) {
-dbgx("plCtl player_state_changed");
+dbgx("plCtl player_state_changed"); dbgx(event);
          if (event.value !== 'IDLE')  return;
 dbgx("   IDLE");
          if (! player.mediaInfo)      return;
@@ -129,7 +129,7 @@ dbgx("   curTime>5 so skip.php w "+player.mediaInfo.contentId);
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.MEDIA_INFO_CHANGED,
       function (event) {
-dbgx("plCtl media_info_changed");
+dbgx("plCtl media_info_changed"); dbgx(event);
          if (! player.mediaInfo)  return;
 dbgx("   got mediaInfo");
 

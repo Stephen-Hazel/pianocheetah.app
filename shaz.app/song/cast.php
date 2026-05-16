@@ -62,7 +62,7 @@ function parseName (fn) {
 
 function reTable ()
 {
-log("reTable");
+dbgx("reTable");
   let tb = $('#info tbody');
    tb.empty ();
    for (let i = 0;  i < PL.length;  i++) {
@@ -141,7 +141,7 @@ function lyr ()
 
 
 window ['__onGCastApiAvailable'] = function (avail) {
-log("cast init avail="+(avail?"y":"n"));
+dbgx("cast init avail="+(avail?"y":"n"));
    if (! avail)  return;
 
   let ctx = cast.framework.CastContext.getInstance ();
@@ -154,14 +154,14 @@ log("cast init avail="+(avail?"y":"n"));
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       function (event) {
-log("plCtl player_state_changed");
+dbgx("plCtl player_state_changed");
          if (event.value !== 'IDLE')  return;
-log("   IDLE");
+dbgx("   IDLE");
          if (! player.mediaInfo)      return;
-log("   got mediaInfo");
+dbgx("   got mediaInfo");
 
          if (player.currentTime > 5) {
-log("   curTime>5 so skip.php w "+player.mediaInfo.contentId);
+dbgx("   curTime>5 so skip.php w "+player.mediaInfo.contentId);
             $.get ('skip.php', { it: parseFn (player.mediaInfo.contentId) });
          }
       }
@@ -170,17 +170,17 @@ log("   curTime>5 so skip.php w "+player.mediaInfo.contentId);
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.MEDIA_INFO_CHANGED,
       function (event) {
-log("plCtl media_info_changed");
+dbgx("plCtl media_info_changed");
          if (!player.mediaInfo)  return;
-log("   got mediaInfo");
+dbgx("   got mediaInfo");
 
         let newFn = parseFn (player.mediaInfo.contentId);
-log("   newFn="+newFn);
+dbgx("   newFn="+newFn);
         let newTk = PL.indexOf (newFn);
-log("   newTk="+newTk);
+dbgx("   newTk="+newTk);
          if (newTk > 0) {              // songs before newTk have played
             for (let i = 0; i < newTk; i++) {
-log("      did.php fn="+PL[i]);
+dbgx("      did.php fn="+PL[i]);
                $.get ('did.php', { did: PL [i] });
             }
             PL = PL.slice (newTk);
@@ -188,7 +188,7 @@ log("      did.php fn="+PL[i]);
             reTable ();
          }
          else if (newTk < 0) {         // unknown song - resync from cast
-log("      newTk=0 so refreshStatus");
+dbgx("      newTk=0 so refreshStatus");
             refreshStatus ();
          }
       }
@@ -197,17 +197,17 @@ log("      newTk=0 so refreshStatus");
    ctx.addEventListener (
       cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
       function (event) {
-log("ctx session_state_changed");
+dbgx("ctx session_state_changed");
         let SS = cast.framework.SessionState;
         let s  = event.sessionState;
-log(JSON.stringify(SS));
-log(s);
+dbgx(JSON.stringify(SS));
+dbgx(s);
          if (s === SS.SESSION_RESUMED || s === SS.SESSION_STARTED) {
-log("   session_resumed session_started");
+dbgx("   session_resumed session_started");
             _refreshTries = 0;  refreshStatus ();
          }
          else if (s === SS.SESSION_ENDED) {
-log("   session_ended");
+dbgx("   session_ended");
             _refreshTries = 0;
          }
       }

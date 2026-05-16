@@ -2,9 +2,22 @@
 // less typin'  (sorry not sorry) :/
 let dbg = console.log.bind (console);
 
+const fixCirc = () => {
+   const seen = new WeakSet();
+   return (key, value) => {
+      if (typeof value === "object" && value !== null) {
+         if (seen.has(value)) {
+            return;
+         }
+         seen.add(value);
+      }
+      return value;
+   };
+};
+
 function dbgx (s)
 {  dbg (s);                            // to server, too
-   if (typeof s !== 'string') s = JSON.stringify (s);
+   if (typeof s !== 'string') s = JSON.stringify (s, fixCirc);
    $.get ('https://shaz.app/log.php', { 's': s });
 }
 

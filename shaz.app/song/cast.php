@@ -77,6 +77,7 @@ dbgx("reCheck");
   let ctx  = cast.framework.CastContext.getInstance ();
   let sess = ctx.getCurrentSession ();
   let ms   = sess && sess.getMediaSession ();
+dbgx("ctx,sess,ms");dbgx(ctx); dbgx(sess); dbgx(ms);
    if (! sess)  {
 dbgx("no sess");
       Tries = 0;   return;}
@@ -84,7 +85,7 @@ dbgx("no sess");
    if (! ms) {
 dbgx(" no mediaSess tries="+Tries);
       if (Tries++ < 3)  setTimeout (reCheck, 2000);
-      else               Tries = 0;
+      else              Tries = 0;
       return;
    }
 
@@ -173,7 +174,7 @@ dbgx("   newTk<0 so reCheck");
 dbgx("ctx session_state_changed");
         let SS = cast.framework.SessionState;
         let s  = event.sessionState;
-dbgx(s);
+dbgx("   "+s);
          if      (s === SS.SESSION_RESUMED || s === SS.SESSION_STARTED) {
 dbgx("   resumed|started");
             Tries = 0;  reCheck ();
@@ -191,7 +192,7 @@ dbgx("   ended");
 };
 
 
-$(function () {
+$(function (){
 dbgx("cast.php ready");
    init ();
    $('#lyr').click (lyr);
@@ -200,7 +201,7 @@ dbgx("cast.php ready");
      let d = JSON.parse (stored);
       PL = d.pl;
       Nm = d.nm;
-dbg("PL");dbg(PL);
+dbg("PL count="+PL.length);
      let tb = $('#info tbody');
       tb.empty ();
       for (let i = 0;  i < PL.length;  i++) {

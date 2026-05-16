@@ -4,6 +4,7 @@ let dbg = console.log.bind (console);
 
 function dbgx (s)
 {  dbg (s);                            // to server, too
+   if (typeof s !== 'string') s = JSON.stringify (s);
    $.get ('https://shaz.app/log.php', { 's': s });
 }
 

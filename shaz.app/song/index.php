@@ -128,7 +128,7 @@ function chk ()  {redo ();}            // checkbox clicked - redo (w no args)
 function kick (tk)
 // song got clicked on - remake queue from there
 {
-dbg("kick sess="+(CastSess?"y":"n")+" ok="+(CastOK?"y":"n"));
+dbgx("kick sess="+(CastSess?"y":"n")+" ok="+(CastOK?"y":"n"));
    if ((! CastSess) || (! CastOK))
       {alert ("ya ain't castin yet i think ?");   return;}
 
@@ -136,7 +136,7 @@ dbg("kick sess="+(CastSess?"y":"n")+" ok="+(CastOK?"y":"n"));
   let plCtl  = new cast.framework.RemotePlayerController (player);
    plCtl.stop ();                      // SHUSH !
 
-dbg("kick tk="+tk);
+dbgx("kick tk="+tk);
    if (tk >= PL.length)  return;
 
   let q = [];
@@ -152,7 +152,7 @@ dbg("kick tk="+tk);
       };
       q [o] = { media: m, autoplay: true };
    }
-dbg("queuein' "+q.length);
+dbgx("queuein' "+q.length);
    CastSess.loadMedia ({ queueData: { items: q } }).then (() => {
       localStorage.setItem ('castPL', JSON.stringify ({
          pl: PL.slice (tk, tk + o),
@@ -164,7 +164,7 @@ dbg("queuein' "+q.length);
 
 
 window ['__onGCastApiAvailable'] = function (avail) {      // cast api init
-dbg("cast init avail="+(avail?"y":"n"));                   // that's what google
+dbgx("cast init avail="+(avail?"y":"n"));                  // that's what google
    if (! avail)  return;                                   // named it :/
 
   let ctx = cast.framework.CastContext.getInstance ();
@@ -176,10 +176,10 @@ dbg("cast init avail="+(avail?"y":"n"));                   // that's what google
       cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
       function () {
          CastSess = ctx.getCurrentSession ();
-dbg("CastSess="+(CastSess?"y":"n"));
+dbgx("CastSess="+(CastSess?"y":"n"));
       }
    );
-dbg("CastOK=y");
+dbgx("CastOK=y");
    CastOK = true;
 };
 

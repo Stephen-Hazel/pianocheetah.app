@@ -1,6 +1,12 @@
 // app.js
 // less typin'  (sorry not sorry) :/
 let dbg = console.log.bind (console);
+
+function dbgx (s)
+{  dbg (s);                            // server too
+   $.get ('https://shaz.app/log.php', { 's': s });
+}
+
 function el  (s)  {return document.getElementById   (s);}
 function all (s)  {return document.querySelectorAll (s);}
 function hasAt (e,a)  {return e.hasAttribute (a);}

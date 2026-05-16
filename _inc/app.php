@@ -50,7 +50,7 @@ function nows ()
    return $dts . $mss;
 }
 
-function dbg ($s)  {App ("dbg.txt", nows () . " $s\n");}
+function dbg ($s)  {App ("/home/z8wo4irg6pxb/dbg", nows () . " $s\n");}
 
 function dump ($ttl, $h, $lvl = 0)
 ## dump a hash (usually) to dbg - but should do all types now :)

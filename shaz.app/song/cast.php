@@ -89,7 +89,6 @@ dbgx("   did "+PL [i]);
       }
       newTk ();
    }
-   setTimeout (reCheck, 10000);
 }
 
 
@@ -114,6 +113,9 @@ window ['__onGCastApiAvailable'] = function (avail) {
    });
   let player = new cast.framework.RemotePlayer ();
   let plCtl  = new cast.framework.RemotePlayerController (player);
+
+dbgx("init player,plCtl"); dbgx(player); dbgx(plCtl);
+
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       function (event) {
@@ -177,7 +179,7 @@ dbgx("cast.php ready");
          document.title = a [2] + ' - ' + a [0];
       }
    }
-   setInterval (reCheck, 10000);
+   setInterval (reCheck, 15000);
 });
 </script>
 <script src=

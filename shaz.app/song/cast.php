@@ -220,6 +220,7 @@ dbgx("   session_ended");
 
 
 $(function () {
+   dbgx("cast.php ready");
    init ();
    $('#lyr').click (lyr);
   let stored = localStorage.getItem ('castPL');

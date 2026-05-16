@@ -81,12 +81,13 @@ dbgx(player.mediaInfo);
      let fn = unroot (player.mediaInfo.contentId);
      let at = PL.indexOf (fn);
 dbgx("fn="+fn+" at="+at);
-      if (at > Tr) {
+      if (at > Tk) {
          for (let i = Tk;  i < at;  i++)  $.get ('did.php', { did: PL [i] });
          Tk = at;
       }
       newTk ();
    }
+   setTimeout (reCheck, 10000);
 }
 
 
@@ -147,8 +148,6 @@ dbgx("   did.php fn="+PL[i]);
          }
       }
    );
-   setTimeout (reCheck,  4000);
-   setTimeout (reCheck, 10000);
 };
 
 
@@ -176,7 +175,7 @@ dbg("PL count="+PL.length);
          document.title = a [2] + ' - ' + a [0];
       }
    }
-   setInterval (reCheck, 60000);
+   setInterval (reCheck, 10000);
 });
 </script>
 <script src=

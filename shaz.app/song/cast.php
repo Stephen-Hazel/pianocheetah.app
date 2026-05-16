@@ -37,6 +37,7 @@ th,td {
 <script> // ___________________________________________________________________
 let PL = [];   // filenames "dir/song.mp3", that index.php gave us
 let Nm = [];   // "group\nextra\ntitle\ndir" for each PL entry
+let curIdx = 0;
 let _refreshTries = 0;
 
 function parseFn (url) {          // https://shaz.app/song/song/d/f.mp3
@@ -71,12 +72,12 @@ dbgx("reTable");
              ' <b>' + a [3] + '</b> ' + a [1];
       tb.append ('<tr><td>' + td + '</td></tr>');
    }
-   $('#info tbody tr').eq (0).css ('background-color', '#FFFF80');
-   if (Nm.length > 0) {
-     let a = Nm [0].split ('\n');
+   $('#info tbody tr').eq (curIdx).css ('background-color', '#FFFF80');
+   if (Nm.length > curIdx) {
+     let a = Nm [curIdx].split ('\n');
       document.title = a [2] + ' - ' + a [0];
    }
-   $('#status').text (PL.length + ' songs left');
+   $('#status').text ((PL.length - curIdx) + ' songs left');
 }
 
 
@@ -89,11 +90,10 @@ dbgx("loadQueue");
 
   let curFn = parseFn (items [ci].media.contentId);
   let at    = PL.indexOf (curFn);
-   if (at >= 0) {                      // in localStorage list - slice to it
-      for (let i = 0; i < at; i++)
+   if (at >= 0) {
+      for (let i = curIdx; i < at; i++)
          $.get ('did.php', { did: PL [i] });
-      PL = PL.slice (at);
-      Nm = Nm.slice (at);
+      curIdx = at;
       reTable ();
    }
 }
@@ -124,13 +124,13 @@ dbgx("got ms.media");
      let at = PL.indexOf (fn);
 dbgx("fn="+fn+" at="+at);
       if (at >= 0) {
-         for (let i = 0; i < at; i++)
+         for (let i = curIdx; i < at; i++)
             $.get ('did.php', { did: PL [i] });
-         PL = PL.slice (at);
-         Nm = Nm.slice (at);
+         curIdx = at;
       }
       else if (! PL.length) {
          PL = [fn];   Nm = [parseName (fn)];
+         curIdx = 0;
       }
       reTable ();
    }
@@ -138,9 +138,9 @@ dbgx("fn="+fn+" at="+at);
 
 
 function lyr ()
-{  if (!Nm.length)  return;
+{  if (curIdx >= Nm.length)  return;
 
-  let a = Nm [0].split ('\n');
+  let a = Nm [curIdx].split ('\n');
    window.open (
       'https://google.com/search?q=lyrics "' + a [2] + '" "' + a [0] + '"',
       'lyrics');
@@ -185,13 +185,12 @@ dbgx("   got mediaInfo");
 dbgx("   newFn="+newFn);
         let newTk = PL.indexOf (newFn);
 dbgx("   newTk="+newTk);
-         if (newTk > 0) {              // songs before newTk have played
-            for (let i = 0; i < newTk; i++) {
+         if (newTk > curIdx) {
+            for (let i = curIdx; i < newTk; i++) {
 dbgx("      did.php fn="+PL[i]);
                $.get ('did.php', { did: PL [i] });
             }
-            PL = PL.slice (newTk);
-            Nm = Nm.slice (newTk);
+            curIdx = newTk;
             reTable ();
          }
          else if (newTk < 0) {         // unknown song - resync from cast

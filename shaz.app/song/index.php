@@ -179,6 +179,7 @@ dbg("cast init avail="+(avail?"y":"n"));                   // that's what google
 dbg("CastSess="+(CastSess?"y":"n"));
       }
    );
+dbg("CastOK=y");
    CastOK = true;
 };
 

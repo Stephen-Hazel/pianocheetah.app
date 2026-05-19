@@ -38,6 +38,7 @@ th,td {
 let PL = [];   // filenames "dir/song.mp3", that index.php gave us
 let Nm = [];   // "group\nextra\ntitle\ndir" for each PL entry
 let Tk = 0;
+let player, plCtl;
 
 // https://shaz.app/song/song/d/f.mp3 => d/f.mp3
 function unroot (url)  {return url.substr (27);}
@@ -57,9 +58,6 @@ function reCheck ()
 // see if we're onna new song (other than Tk)
 {
 dbgx("reCheck");
-  let player = new cast.framework.RemotePlayer ();
-  let plCtl  = new cast.framework.RemotePlayerController (player);
-dbgx("player,plCtl");dbgx(player);dbgx(plCtl);
    if (player.mediaInfo) {
      let fn = unroot (player.mediaInfo.contentId);
      let at = PL.indexOf (fn);
@@ -95,14 +93,13 @@ dbgx("cast init avail="+(avail?"y":"n"));
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
       autoJoinPolicy:        chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
    });
-  let player = new cast.framework.RemotePlayer ();
-  let plCtl  = new cast.framework.RemotePlayerController (player);
-dbgx("player,plCtl"); dbgx(player); dbgx(plCtl);
+  player = new cast.framework.RemotePlayer ();
+  plCtl  = new cast.framework.RemotePlayerController (player);
 
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       function (event) {
-dbgx("plCtl player_state_changed"); dbgx(event);
+dbgx("plCtl player_state_changed"); dbgx(event.value);
          if (event.value !== 'IDLE')  return;
 dbgx("   IDLE");
          if (! player.mediaInfo)      return;
@@ -117,7 +114,7 @@ dbgx("   curTime>5 so skip.php w "+player.mediaInfo.contentId);
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.MEDIA_INFO_CHANGED,
       function (event) {
-dbgx("plCtl media_info_changed"); dbgx(event);
+dbgx("plCtl media_info_changed"); dbgx(event.value);
          if (! player.mediaInfo)  return;
 dbgx("   got mediaInfo");
 

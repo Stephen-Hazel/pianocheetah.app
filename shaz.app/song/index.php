@@ -132,8 +132,10 @@ dbgx("kick sess="+(CastSess?"y":"n")+" ok="+(CastOK?"y":"n"));
    if ((! CastSess) || (! CastOK))
       {alert ("ya ain't castin yet i think ?");   return;}
 
-   chrome.cast.media.Media.stop ();    // SHUSH !
-dbgx("kick tk="+tk);
+   ms = CastSess.getMediaSession ()    // SHUSH !
+   if (ms)  ms.stop (null, null, null);
+
+dbgx("kick tk="+tk+"/"+PL.length);
    if (tk >= PL.length)  return;
 
   let q = [];

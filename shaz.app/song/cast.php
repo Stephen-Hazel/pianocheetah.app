@@ -165,17 +165,6 @@ dbgx("PL count="+PL.length);
 dbgx("starting setInterval");
    setInterval (reCheck, 15000);
 });
-
-
-// are we blowin up?
-window.onerror = function (msg, src, line, col, err)
-{  dbgx("JS error: " + msg + " @ " + line + ":" + col);
-   return false;
-}
-
-window.addEventListener ('unhandledrejection', function (e){
-   dbgx("unhandled promise rejection: " + e.reason);
-});
 </script>
 <script src=
    "https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1">

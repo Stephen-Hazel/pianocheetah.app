@@ -21,6 +21,16 @@ function dbgx (s)
    $.get ('https://shaz.app/log.php', { 's': s });
 }
 
+// are we blowin up?
+window.onerror = function (msg, src, line, col, err)
+{  dbgx("JS error: " + msg + " @ " + line + ":" + col);
+   return false;
+}
+
+window.addEventListener ('unhandledrejection', function (e){
+   dbgx("unhandled promise rejection: " + e.reason);
+});
+
 function el  (s)  {return document.getElementById   (s);}
 function tag (s)  {return document.getElementsByTagName (s)[0];}
 function all (s)  {return document.querySelectorAll (s);}

@@ -42,22 +42,6 @@ let Tk = 0;
 // https://shaz.app/song/song/d/f.mp3 => d/f.mp3
 function unroot (url)  {return url.substr (27);}
 
-function fn2nm (fn)
-{ let sl  = fn.indexOf  ('/');
-  let dir = fn.substring (0, sl);
-  let s   = fn.substring (sl + 1, fn.length - 4);
-   s = s.replace (/_/g, ' ');
-  let f   = s.indexOf     ('-');
-  let l   = s.lastIndexOf ('-');
-   if (f !== -1) {
-     let g = s.substring (0, f);
-     let t = s.substring (l + 1);
-     let x = (f === l) ? '' : s.substring (f + 1, l);
-      return g + '\n' + x + '\n' + t + '\n' + dir;
-   }
-   return '??\n\n' + s + '\n' + dir;
-}
-
 
 function newTk ()
 {  $('#info tbody tr').css         ('background-color', '');
@@ -103,7 +87,7 @@ function lyr ()
 
 
 window ['__onGCastApiAvailable'] = function (avail) {
-//dbgx("cast init avail="+(avail?"y":"n"));
+dbgx("cast init avail="+(avail?"y":"n"));
    if (! avail)  return;
 
   let ctx = cast.framework.CastContext.getInstance ();
@@ -113,8 +97,7 @@ window ['__onGCastApiAvailable'] = function (avail) {
    });
   let player = new cast.framework.RemotePlayer ();
   let plCtl  = new cast.framework.RemotePlayerController (player);
-
-dbgx("init player,plCtl"); dbgx(player); dbgx(plCtl);
+dbgx("player,plCtl"); dbgx(player); dbgx(plCtl);
 
    plCtl.addEventListener (
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
@@ -140,14 +123,14 @@ dbgx("   got mediaInfo");
 
         let newFn = unroot (player.mediaInfo.contentId);
 dbgx("   newFn="+newFn);
-        let newTk = PL.indexOf (newFn);
-dbgx("   newTk="+newTk);
-         if (newTk > Tk) {
-            for (let i = Tk;  i < newTk;  i++) {
+        let nxTk = PL.indexOf (newFn);
+dbgx("   nxTk="+nxTk);
+         if (nxTk > Tk) {
+            for (let i = Tk;  i < nxTk;  i++) {
 dbgx("   did.php fn="+PL[i]);
                $.get ('did.php', { did: PL [i] });
             }
-            Tk = newTk;
+            Tk = nxTk;
             newTk ();
          }
       }
@@ -156,7 +139,7 @@ dbgx("   did.php fn="+PL[i]);
 
 
 $(function (){
-dbgx("cast.php ready");
+dbgx("cast.php page ready");
    init ();
    $('#lyr').click (lyr);
   let stored = localStorage.getItem ('castPL');
@@ -164,7 +147,7 @@ dbgx("cast.php ready");
      let d = JSON.parse (stored);
       PL = d.pl;
       Nm = d.nm;
-//dbg("PL count="+PL.length);
+dbgx("PL count="+PL.length);
      let tb = $('#info tbody');
       tb.empty ();
       for (let i = 0;  i < PL.length;  i++) {
@@ -179,6 +162,7 @@ dbgx("cast.php ready");
          document.title = a [2] + ' - ' + a [0];
       }
    }
+dbgx("starting setInterval");
    setInterval (reCheck, 15000);
 });
 </script>

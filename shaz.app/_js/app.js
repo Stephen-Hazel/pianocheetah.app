@@ -17,7 +17,7 @@ const fixCirc = () => {
 
 function dbgx (s)
 {  dbg (s);                            // to server, too
-   if (typeof s !== 'string') s = JSON.stringify (s, fixCirc);
+   if (typeof s !== 'string') s = JSON.stringify (s, fixCirc ());
    $.get ('https://shaz.app/log.php', { 's': s });
 }
 

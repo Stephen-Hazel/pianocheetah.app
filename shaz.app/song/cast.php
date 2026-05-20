@@ -93,6 +93,13 @@ dbgx("cast init avail="+(avail?"y":"n"));
       receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
       autoJoinPolicy:        chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
    });
+dbgx("cast state after setOptions: "+ctx.getCastState());
+   ctx.addEventListener (
+      cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
+      function (event) {
+dbgx("session_state_changed: "+event.sessionState);
+      }
+   );
   Player = new cast.framework.RemotePlayer ();
   PlCtl  = new cast.framework.RemotePlayerController (Player);
 

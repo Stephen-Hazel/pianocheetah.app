@@ -106,8 +106,9 @@ dbgx("   IDLE");
 dbgx("   got mediaInfo");
 
          if (Player.currentTime > 5) {
-dbgx("   curTime>5 so skip.php w "+Player.mediaInfo.contentId);
-            $.get ('skip.php', { it: unroot (Player.mediaInfo.contentId) });
+           let fn = unroot (Player.mediaInfo.contentId);
+dbgx("   curTime>5 so skip.php w "+fn);
+            $.get ('skip.php', { it: fn });
          }
       }
    );
@@ -165,14 +166,17 @@ dbgx("starting setInterval");
    document.addEventListener ('visibilitychange', function () {
       if (document.visibilityState !== 'visible')  return;
       if (! Player)  return;
+
 dbgx("visibilitychange");
      let ctx  = cast.framework.CastContext.getInstance ();
      let sess = ctx.getCurrentSession ();
       if (! sess)  return;
-     let ms   = sess.getMediaSession ();
+
+     let ms = sess.getMediaSession ();
       if (! ms || ! ms.media)  return;
-     let fn   = unroot (ms.media.contentId);
-     let at   = PL.indexOf (fn);
+
+     let fn = unroot (ms.media.contentId);
+     let at = PL.indexOf (fn);
 dbgx("   fn="+fn+" at="+at);
       if (at > Tk) {
          for (let i = Tk;  i < at;  i++)

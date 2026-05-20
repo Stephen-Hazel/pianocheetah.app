@@ -44,6 +44,16 @@ let Player, PlCtl;
 function unroot (url)  {return url.substr (27);}
 
 
+function sessMediaFn ()
+{  let ctx  = cast.framework.CastContext.getInstance ();
+   let sess = ctx.getCurrentSession ();
+   if (! sess)  return null;
+   let ms   = sess.getMediaSession ();
+   if (! ms || ! ms.media)  return null;
+   return unroot (ms.media.contentId);
+}
+
+
 function newTk ()
 {  $('#info tbody tr').css         ('background-color', '');
    $('#info tbody tr').eq (Tk).css ('background-color', '#FFFF80');
@@ -58,19 +68,20 @@ function reCheck ()
 // see if we're onna new song (other than Tk)
 {
 dbgx("reCheck");
-   if (Player.mediaInfo) {
-     let fn = unroot (Player.mediaInfo.contentId);
-     let at = PL.indexOf (fn);
+   let fn = Player && Player.mediaInfo
+      ? unroot (Player.mediaInfo.contentId)
+      : sessMediaFn ();
+   if (! fn)  return;
+   let at = PL.indexOf (fn);
 dbgx("   fn="+fn+" at="+at);
-      if (at > Tk) {
-         for (let i = Tk;  i < at;  i++) {
+   if (at > Tk) {
+      for (let i = Tk;  i < at;  i++) {
 dbgx("   did "+PL [i]);
-            $.get ('did.php', { did: PL [i] });
-         }
-         Tk = at;
+         $.get ('did.php', { did: PL [i] });
       }
-      newTk ();
+      Tk = at;
    }
+   newTk ();
 }
 
 
@@ -100,6 +111,19 @@ dbgx("cast init avail="+(avail?"y":"n"));
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       function (event) {
 dbgx("PlCtl player_state_changed"); dbgx(event.value);
+         if (event.value === 'PLAYING' && ! Player.mediaInfo) {
+           let fn = sessMediaFn ();
+dbgx("   PLAYING+noMedia fn="+(fn||"null"));
+            if (fn) {
+              let at = PL.indexOf (fn);
+               if (at > Tk) {
+                  for (let i = Tk;  i < at;  i++)
+                     $.get ('did.php', { did: PL [i] });
+                  Tk = at;
+               }
+               newTk ();
+            }
+         }
          if (event.value !== 'IDLE')  return;
 dbgx("   IDLE");
          if (! Player.mediaInfo)      return;
@@ -168,16 +192,10 @@ dbgx("starting setInterval");
       if (! Player)  return;
 
 dbgx("visibilitychange");
-     let ctx  = cast.framework.CastContext.getInstance ();
-     let sess = ctx.getCurrentSession ();
-      if (! sess)  return;
-
-     let ms = sess.getMediaSession ();
-      if (! ms || ! ms.media)  return;
-
-     let fn = unroot (ms.media.contentId);
+     let fn = sessMediaFn ();
+dbgx("   fn="+(fn||"null"));
+      if (! fn)  return;
      let at = PL.indexOf (fn);
-dbgx("   fn="+fn+" at="+at);
       if (at > Tk) {
          for (let i = Tk;  i < at;  i++)
             $.get ('did.php', { did: PL [i] });

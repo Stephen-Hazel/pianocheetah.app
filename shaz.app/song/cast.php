@@ -137,6 +137,23 @@ dbgx("   curTime>5 so skip.php w "+fn);
       }
    );
    PlCtl.addEventListener (
+      cast.framework.RemotePlayerEventType.IS_MEDIA_LOADED_CHANGED,
+      function (event) {
+dbgx("PlCtl is_media_loaded="+event.value);
+         if (! event.value)  return;
+        let fn = sessMediaFn ();
+dbgx("   fn="+(fn||"null"));
+         if (! fn)  return;
+        let at = PL.indexOf (fn);
+         if (at > Tk) {
+            for (let i = Tk;  i < at;  i++)
+               $.get ('did.php', { did: PL [i] });
+            Tk = at;
+         }
+         newTk ();
+      }
+   );
+   PlCtl.addEventListener (
       cast.framework.RemotePlayerEventType.MEDIA_INFO_CHANGED,
       function (event) {
 dbgx("PlCtl media_info_changed"); dbgx(event.value);

@@ -161,6 +161,26 @@ dbgx("PL count="+PL.length);
    }
 dbgx("starting setInterval");
    setInterval (reCheck, 15000);
+
+   document.addEventListener ('visibilitychange', function () {
+      if (document.visibilityState !== 'visible')  return;
+      if (! Player)  return;
+dbgx("visibilitychange");
+     let ctx  = cast.framework.CastContext.getInstance ();
+     let sess = ctx.getCurrentSession ();
+      if (! sess)  return;
+     let ms   = sess.getMediaSession ();
+      if (! ms || ! ms.media)  return;
+     let fn   = unroot (ms.media.contentId);
+     let at   = PL.indexOf (fn);
+dbgx("   fn="+fn+" at="+at);
+      if (at > Tk) {
+         for (let i = Tk;  i < at;  i++)
+            $.get ('did.php', { did: PL [i] });
+         Tk = at;
+         newTk ();
+      }
+   });
 });
 </script>
 <script src=

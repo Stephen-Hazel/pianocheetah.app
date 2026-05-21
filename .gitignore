@@ -7,5 +7,6 @@ shaz.app/shazbook/.env
 shaz.app/pic/pic
 shaz.app/pic/idx
 shaz.app/song/song
-shaz.app/song/did*
+shaz.app/song/did.txt
+shaz.app/song/did/*.txt
 shaz.app/song/skip*

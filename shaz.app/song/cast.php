@@ -89,17 +89,38 @@ dbgx("cast init avail="+(avail?"y":"n"));
    if (! avail)  return;
 
   let ctx = cast.framework.CastContext.getInstance ();
-   ctx.setOptions ({
-      receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
-      autoJoinPolicy:        chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
-   });
+  let retryTimer = null;
+
+   function doConnect () {
+      ctx.setOptions ({
+         receiverApplicationId:
+            chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+         autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+      });
 dbgx("cast state after setOptions: "+ctx.getCastState());
+   }
+
    ctx.addEventListener (
       cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
       function (event) {
 dbgx("session_state_changed: "+event.sessionState);
+        let ss = cast.framework.SessionState;
+         if (event.sessionState === ss.SESSION_RESUMED ||
+             event.sessionState === ss.SESSION_STARTED) {
+            clearTimeout (retryTimer);
+         }
       }
    );
+
+   doConnect ();
+   retryTimer = setTimeout (function () {
+     let state = ctx.getCastState ();
+dbgx("retry check - state="+state);
+      if (state !== cast.framework.CastState.CONNECTED) {
+dbgx("retrying doConnect");
+         doConnect ();
+      }
+   }, 5000);
   Player = new cast.framework.RemotePlayer ();
   PlCtl  = new cast.framework.RemotePlayerController (Player);
 

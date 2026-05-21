@@ -1,9 +1,6 @@
 shaz
    song/tunz
-      index.php will put the same song into did a couple times
-      did.txt should be by _a,_b,St,An
-         when did.php does last one, clear just that dir's did.txt lines
-      cast.php doesn't monitor current song good enough for did,skip
+      redo did.txt into did/_a.txt (per dir)
 
    pic
       start a year preview w random pics per dir

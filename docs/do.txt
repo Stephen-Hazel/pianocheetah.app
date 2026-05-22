@@ -1,6 +1,14 @@
+pcheetah
+   doc
+      screencast videos just of songs
+      WAY LESS text n all docs into videos
+
+   piano
+      better pic of my piano,drum
+
 shaz
    song/tunz
-      redo did.txt into did/_a.txt (per dir)
+      do casting
 
    pic
       start a year preview w random pics per dir
@@ -10,11 +18,3 @@ shaz
 
    me
       latest
-
-pcheetah
-   doc
-      screencast videos just of songs
-      WAY LESS text n all docs into videos
-
-   piano
-      better pic of my piano,drum

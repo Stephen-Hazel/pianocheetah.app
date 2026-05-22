@@ -31,12 +31,11 @@ require_once ("_inc/app.php");
 
 <a     class='nav-4' href="me"  >meee</a>way too much bout Steve<br>
 <a     class='nav-5' href="pic" >pics</a>allll my pics<br>
-<a     class='nav-6' href="song">songs</a>tunes i dig  (and Annie)"<br>
-<a pop class='nav-7' href="https://www.youtube.com/@SteveHazel/videos"
+<a pop class='nav-6' href="https://www.youtube.com/@SteveHazel/videos"
                                 >videos</a>i took<br>
-<a pop class='nav-8' href="https://www.facebook.com/stephen.hazel"
+<a pop class='nav-7' href="https://www.facebook.com/stephen.hazel"
                                 >facebook</a>is dumb !!<br>
-<a     class='nav-9' href="shazbook"
+<a     class='nav-8' href="shazbook"
                                 >shazbook</a>is also dumb :)<br>
                                 <br>
 <img src="img/wilee.jpg">

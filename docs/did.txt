@@ -3,6 +3,7 @@
    smap.php for makin sitemap.xml
    cast in song/index.php works good
    new cast.php monitors the queue and kicks did.php pretty well
+   welp, gotta kill song*  :)  build casting into the app :/
 
 202604 song - no need for regular song page just cast now
    claude fixes next func and version probs and it works properly now

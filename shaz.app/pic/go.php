@@ -1,5 +1,4 @@
-#!/usr/bin/env php
-<? ## go.php - setup my site pic dir with index .txt files and thumbnails
+<?php ## go.php - setup my site pic dir with index .txt files and thumbnails
 
 function Got ($fn)  {return file_exists ($fn);}
 function Get ($fn)  {return file_get_contents ($fn);}

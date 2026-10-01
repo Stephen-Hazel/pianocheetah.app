@@ -1,3 +1,6 @@
+clear out _/picclip/ico_etc  and rasPi stuff
+   and old srcEtc
+
 pcheetah
    doc
       screencast videos just of songs

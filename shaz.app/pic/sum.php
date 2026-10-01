@@ -4,6 +4,8 @@ require_once ("../_inc/app.php");
 
    $y = arg ('y', '');
    $Year = LstDir ("idx",       'd');   sort ($Year);
+   $y = ($y != '') ? (int)$y : count ($Year)-1;
+   $y = max (0, min ($y, count ($Year)-1));
    $yStr = $Year [$y];
 
    $PSet = LstDir ("idx/$yStr", 'd');   sort ($PSet);
@@ -80,7 +82,7 @@ function reYear ()
 
 function full ()
 { const it = document.querySelector ('#big');
-   if            (it.requestFullScreen)       it.requestFullscreen ();
+   if            (it.requestFullscreen)       it.requestFullscreen ();
    else if (it.webkitRequestFullscreen) it.webkitRequestFullscreen ();
    else if     (it.msRequestFullscreen)     it.msRequestFullscreen ();
    if            (document.fullscreenElement)       document.exitFullscreen ();
@@ -94,14 +96,14 @@ function openBig (el)
 {  big2 (el.dataset.path, el.dataset.fn, el.dataset.cm);  }
 
 function big2 (path, fn, cm)
-{ let or = screen.orientation.type.substr (0, 4);
+{ let or = matchMedia ('(orientation: landscape)').matches;
   let h  = "<center>\n" +
             "<div id='big' onclick='full(); un();'>\n" +
             " <p id='bigtxt'>" + cm + "</p>\n" +
             "</div>\n</center>\n";
    $("#full").html (h);
-   if (or == 'land')  $('#big').css ('height', '94vh');
-   else               $('#big').css ('width',  '100vw');
+   if (or)  $('#big').css ('height', '94vh');
+   else     $('#big').css ('width',  '100vw');
    $('#big').css ('background-image', 'url("' + path + fn + '")');
    full ();
 }
@@ -124,7 +126,7 @@ $(function ()
       if (! Got ($txtFile))  continue;
 
       $lines = explode ("\n", Get ($txtFile));
-      array_pop ($lines);              // remove trailing empty from last \n
+   // remove trailing empty from last \n
       $lines = array_filter ($lines, fn ($l) => trim ($l) !== '');
       $lines = array_values ($lines);
       if (count ($lines) == 0)  continue;
@@ -145,9 +147,10 @@ $(function ()
          $cls  = ($a [0] == 'L') ? 'pic-l' : 'pic-p';
          $dCm  = htmlspecialchars ($cm, ENT_QUOTES);
          $dFn  = htmlspecialchars ($fn, ENT_QUOTES);
+         $dDir = htmlspecialchars ("$yStr/$sStr/", ENT_QUOTES);
          echo "  <div class='$cls' onclick='openBig(this)'" .
-              " data-path='pic/$yStr/$sStr/' data-fn='$dFn' data-cm='$dCm'>\n" .
-              "   <img src='idx/$yStr/$sStr/$fn'>\n" .
+              " data-path='pic/$dDir' data-fn='$dFn' data-cm='$dCm'>\n" .
+              "  <img src='idx/$dDir$dFn'>\n" .
               ($cm ? "   <div class='piccomment'>$cm</div>\n" : "") .
               "  </div>\n";
       }

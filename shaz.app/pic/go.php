@@ -50,23 +50,31 @@ echo "      makin\n";
          $idx = [];
          foreach ($fLst as $f) {
             $i = "$Top/$y/$s/$f";
-            list ($w, $h, $type, $attr) = getimagesize ($i);
+            $sz = @getimagesize ($i);
+            if ($sz === false)  continue;   // not a pic - skip
+            list ($w, $h) = $sz;
+            $ex = @exif_read_data ($i);
+            $or = 1;
+            if ($ex && isset ($ex ['Orientation']))
+               $or = $ex ['Orientation'];
+            if ($or >= 5)  list ($w, $h) = [$h, $w];  // rotate 90
+
             if ($w > $h)  $LP = 'L';   else $LP = 'P';
             $idx[] = "$LP|$f|";
          }
          Put ("$Idx/$y/$s.txt", implode ("\n", $idx) . "\n");
       }
 
-      system ('rm -f "'."$Idx/$y/$s/*".'"');
+      system ('rm -f '. escapeshellarg ("$Idx/$y/$s") . '/*');
       foreach (explode ("\n", Get ("$Idx/$y/$s.txt")) as $x) {
          if ($x == '')  continue;      // price of always \n term'd lines
                                        // from text editors
-         list ($LP, $f, $cm) = explode ('|', $x);
-         $i = "$Top/$y/$s/$f";
-         $o = "$Idx/$y/$s/$f";
-         if ($LP == 'L')
-              $c = 'ffmpeg -i "'.$i.'" -vf scale=-1:320 "'.$o.'"';
-         else $c = 'ffmpeg -i "'.$i.'" -vf scale=-1:480 "'.$o.'"';
+         list ($LP, $f) = explode ('|', $x);
+         $i  = "$Top/$y/$s/$f";
+         $o  = "$Idx/$y/$s/$f";
+         $sc = ($LP == 'L') ? 320 : 480;
+         $c  = 'ffmpeg -nostdin -y -i ' . escapeshellarg ($i) .
+                   " -vf scale=-1:$sc " . escapeshellarg ($o);
          system ("$c 2>/dev/null");
       }
    }

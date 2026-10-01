@@ -8,15 +8,17 @@ function LstDir ($p, $df)
 {  $lst = [];
    $naw = ['.', '..'];
    $d = dir ($p);
+   if ($d === false)  die ("can't open dir $p\n");
    while (($e = $d->read ()) !== false)
       if ( (($df == 'd') &&    is_dir ("$p/$e") && (! in_array ($e, $naw))) ||
            (($df != 'd') && (! is_dir ("$p/$e"))) )
          $lst [] = $e;
+   $d->close ();
    return $lst;
 }
 
-$Top = "/home/sh/_/web/pc/shaz.app/pic/pic";
-$Idx = "/home/sh/_/web/pc/shaz.app/pic/idx";
+$Top = __DIR__ . "/pic";
+$Idx = __DIR__ . "/idx";
 
 $x = LstDir ("$Top", 'd');
 sort ($x);

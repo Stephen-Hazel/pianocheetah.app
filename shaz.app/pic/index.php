@@ -15,6 +15,7 @@ require_once ("../_inc/app.php");
 
 ## if no y arg use last year we got
    $yPos = ($y != '') ? $y : count ($Year)-1;
+   $yPos = max (0, min ((int)$yPos, count ($Year)-1));
    $yStr = $Year [$yPos];
 
    $PSet = LstDir ("idx/$yStr", 'd');   sort ($PSet);
@@ -22,12 +23,14 @@ require_once ("../_inc/app.php");
 ## if no s arg, use 1st ps of year (but last if no year - doin latest)
    if ($s == 99)  $s = count ($PSet)-1;
    $sPos = ($s != '') ? $s : (($y != '') ? 0 : count ($PSet)-1);
+   $sPos = max (0, min ((int)$sPos, count ($PSet)-1));
    $sStr = $PSet [$sPos];
 #dump("yPos=$yPos yStr=$yStr  d=".($d?"Y":"N")."  Year:", $Year);
 #dump("sPos=$sPos sStr=$sStr PSet:", $PSet);
 
    $Pic = explode ("\n", Get ("idx/$yStr/$sStr.txt"));
-   array_pop ($Pic);                   # kill last empty row from last \n
+## kill last empty row from last \n
+   $Pic = array_values (array_filter ($Pic, fn ($l) => trim ($l) !== ''));
 #dump("pic:", $Pic);                   # cuz list of line\n leaves extra \n
 
 ## page comment
@@ -115,7 +118,7 @@ function prevSet ()
 function nextSet ()
 { let s = $('#pset').prop ('selectedIndex'),
       y = $('#year').prop ('selectedIndex');
-   if (s < pic.length-1) reArg (y, s+1);   else reArg (y+1, 0);
+   if (s < $('#pset option').length-1)  reArg (y, s+1);   else reArg (y+1, 0);
 }
 
 function full (fn = '')
@@ -124,7 +127,7 @@ function full (fn = '')
 //dbg("fn"); dbg(fn);
 //   if (fn != '')  it.style.backgroundImage = fn;
 
-   if            (it.requestFullScreen)       it.requestFullscreen ();
+   if            (it.requestFullscreen)       it.requestFullscreen ();
    else if (it.webkitRequestFullscreen) it.webkitRequestFullscreen ();
    else if     (it.msRequestFullscreen)     it.msRequestFullscreen ();
 
@@ -140,15 +143,15 @@ function big (p)
   let a = pic [p].split ('|');
   let fn = a[1];
   let cm = a[2];
-  let or = screen.orientation.type.substr (0,4);
+  let or = matchMedia ('(orientation: landscape)').matches;
    h += "<center>\n" +
         "<div id='big' onclick='full(); un();'>\n" +
         " <p  id='bigtxt'>"+cm+"</p>\n" +
         "</div>\n" +
         "</center>\n";
    $("#full").html (h);
-   if (or == 'land')  $('#big').css ('height', '94vh');
-   else               $('#big').css ('width' , '100vw');
+   if (or)  $('#big').css ('height', '94vh');
+   else     $('#big').css ('width' , '100vw');
    $('#big').css ('background-image', 'url("' + path + fn + '")');
    full (path + fn);
 }
@@ -176,7 +179,7 @@ $(function () {
    if (($yPos+1 < count ($Year)) || ($sPos+1 < count ($PSet))) { ?>
  <button id='nextset' title='next set of pics'>NextSet</button>
 <? } ?>
- <button id="yearsum">YearSum</button></a><br>
+ <button id="yearsum">YearSum</button><br>
 <? if ($pCom != '')  echo "<span class='comment'>$pCom</span>\n"; ?>
 </span>
 <center>

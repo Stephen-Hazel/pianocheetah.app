@@ -11,4 +11,4 @@ Here's my notes:
  <a pop href="did.html">did</a>
 
 You'll find my debug log at
- - /home/you/.var/app/app.shaz.pianocheetah/config/dbg.txt
+ - /home/you/.var/app/app.shaz.util/config/dbg.txt

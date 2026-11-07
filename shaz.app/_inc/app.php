@@ -131,6 +131,7 @@ function pg_head ($ttl, $css, $js, $h = '')      ## html head title css js
    http_response_code (200);
    header ("set Access-Control-Allow-Origin '*'");
    $pre = ($h != '') ? "" : "../";     ## home doesn't need ../ path prefix
+   $url = "https://$ROOT" . strtok ($_SERVER ['REQUEST_URI'], '?');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -139,6 +140,11 @@ function pg_head ($ttl, $css, $js, $h = '')      ## html head title css js
  <meta name="viewport"     content="width=device-width, initial-scale=1.0">
  <meta name="robots"       content="follow, all">
  <meta name="description"  content="<?= $DESC ?>">
+ <link rel="canonical"     href="<?= $url ?>">
+ <meta property="og:type"  content="website">
+ <meta property="og:url"   content="<?= $url ?>">
+ <meta property="og:title" content="<?= $DESC ?>">
+ <meta property="og:image" content="https://<?= $ROOT ?>/img/favicon.png">
  <title><?= $ttl ?></title>
  <link href="https://<?= $ROOT ?>/img/favicon.png" rel="Shortcut Icon" />
 <? require_once "google_tag_head.html";

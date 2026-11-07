@@ -1,3 +1,8 @@
 <IfModule mod_headers.c>
     Header set Access-Control-Allow-Origin "*"
 </IfModule>
+
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^shaz\.app$ [NC]
+RewriteRule ^(.*)$ https://shaz.app/$1 [R=301,L]

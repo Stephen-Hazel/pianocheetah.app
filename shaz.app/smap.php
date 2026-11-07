@@ -1,5 +1,5 @@
 <?php
-// Run from CLI: php gen_sitemap.php
+// Run from CLI: php smap.php
 
 $base_url = 'https://shaz.app';
 $root     = __DIR__;

@@ -159,7 +159,6 @@ function pg_body ($nav, $h = '')       ## /head body nav /nav main
 { global $UC; ?>
 </head>
 <body>
-<? require_once "google_tag_body.html"; ?>
 <a   id='nav-open'><span class='c0'>m</span><span class='c3'>e</span><span
                          class='c6'>n</span><span class='c9'>u</span></a>
 <div id='nav-shut'></div>

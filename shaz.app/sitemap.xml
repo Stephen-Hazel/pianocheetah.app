@@ -6,7 +6,7 @@
 
 <url>
   <loc>https://shaz.app/</loc>
-  <lastmod>2026-04-20T00:03:28+00:00</lastmod>
+  <lastmod>2026-11-07T21:00:38+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 
@@ -41,14 +41,32 @@
 </url>
 
 <url>
+  <loc>https://shaz.app/log.php</loc>
+  <lastmod>2026-05-16T18:02:47+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+
+<url>
   <loc>https://shaz.app/me/</loc>
   <lastmod>2025-11-15T18:34:04+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
 <url>
+  <loc>https://shaz.app/pic/go.php</loc>
+  <lastmod>2026-10-01T15:18:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
   <loc>https://shaz.app/pic/</loc>
-  <lastmod>2026-02-06T15:55:25+00:00</lastmod>
+  <lastmod>2026-10-01T14:56:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/pic/sum.php</loc>
+  <lastmod>2026-10-01T14:57:54+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
@@ -60,7 +78,7 @@
 
 <url>
   <loc>https://shaz.app/shazware/do.html</loc>
-  <lastmod>2026-01-10T19:52:13+00:00</lastmod>
+  <lastmod>2026-10-05T14:54:04+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
@@ -77,32 +95,26 @@
 </url>
 
 <url>
-  <loc>https://shaz.app/song/did.php</loc>
-  <lastmod>2025-09-20T16:14:36+00:00</lastmod>
+  <loc>https://shaz.app/tunez/did.html</loc>
+  <lastmod>2026-11-07T21:00:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
 <url>
-  <loc>https://shaz.app/song/</loc>
-  <lastmod>2026-04-26T00:55:31+00:00</lastmod>
+  <loc>https://shaz.app/tunez/do.html</loc>
+  <lastmod>2026-11-07T21:00:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
 <url>
-  <loc>https://shaz.app/song/list.php</loc>
-  <lastmod>2026-04-12T18:55:23+00:00</lastmod>
+  <loc>https://shaz.app/tunez/</loc>
+  <lastmod>2026-11-07T21:00:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
 <url>
-  <loc>https://shaz.app/song/skip.php</loc>
-  <lastmod>2026-02-18T21:44:11+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-<url>
-  <loc>https://shaz.app/t/naw_index.php</loc>
-  <lastmod>2026-01-25T20:15:47+00:00</lastmod>
+  <loc>https://shaz.app/tunez/privacy.html</loc>
+  <lastmod>2026-11-07T21:00:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 

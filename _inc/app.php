@@ -130,6 +130,7 @@ function pg_head ($ttl, $css, $js, $h = '')      ## html head title css js
    header ("set Access-Control-Allow-Origin '*'");
    $pre = ($h != '') ? "" : "../";     ## home doesn't need ../ path prefix
    $url = "https://$ROOT" . strtok ($_SERVER ['REQUEST_URI'], '?');
+   $ogt = htmlspecialchars ($ttl, ENT_QUOTES, 'UTF-8', false);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -141,8 +142,12 @@ function pg_head ($ttl, $css, $js, $h = '')      ## html head title css js
  <link rel="canonical"     href="<?= $url ?>">
  <meta property="og:type"  content="website">
  <meta property="og:url"   content="<?= $url ?>">
- <meta property="og:title" content="<?= $DESC ?>">
- <meta property="og:image" content="https://<?= $ROOT ?>/img/favicon.png">
+ <meta property="og:title" content="<?= $ogt ?>">
+ <meta property="og:description" content="<?= $DESC ?>">
+ <meta property="og:image" content="https://<?= $ROOT ?>/img/og.png">
+ <meta property="og:image:width"  content="1200">
+ <meta property="og:image:height" content="630">
+ <meta name="twitter:card" content="summary_large_image">
  <title><?= $ttl ?></title>
  <link href="https://<?= $ROOT ?>/img/favicon.png" rel="Shortcut Icon" />
 <? require_once "google_tag_head.html";

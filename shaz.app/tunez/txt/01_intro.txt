@@ -1,0 +1,30 @@
+an android music player for your own music folder
+ <img style="float: right; height: 8em;" src="img/icon.png">
+ `bg1`SHazTunez` plays the mp3, flac, ogg n wav files you already
+ have, straight from one folder on your phone.
+No accounts, no streaming service, no ads.
+
+it's open <a href="?pg=2">source :)</a>
+
+
+<h3>get it</h3>
+ - google play - coming soon
+
+ - or build it from the <a pop href="https://github.com/Stephen-Hazel/tunez">source</a>
+
+
+<h3>what it does</h3>
+ - `bg2`rate` your songs your own way - the rating is just the end of the
+   file name, so re-rating a song is a rename
+
+ - `bg3`shuf` mixes all the ratings you check n won't repeat a song
+   till you've heard em all
+
+ - `bg4`cast` to a chromecast on your wifi
+
+ - lock screen n headphone controls, album art, lyrics lookup
+
+
+<img src="img/screen-1.png" style="height: 30em;"> <img src="img/screen-2.png" style="height: 30em;">
+
+<a href="privacy.html">privacy policy</a> - short version: it collects nothing

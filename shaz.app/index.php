@@ -24,6 +24,9 @@ require_once ("_inc/app.php");
 <a id='b'     class='nav-2' href='shazware'
  >shazware</a>some cool file utilities<br>
 
+<a id='d'     class='nav-9' href='tunez'
+ >tunez</a>android music player<br>
+
 <a id='c'     class='nav-3' href='linux'
  >linux</a>...you should try it :)<br>
 

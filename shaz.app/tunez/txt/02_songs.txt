@@ -1,0 +1,29 @@
+naming your songs
+Put your songs in Music/tunez on your phone (mp3, flac, ogg or wav).
+ Subfolders are fine - their names show up next to the song.
+
+<h3>file names</h3>
+<b>artist &#96; year album track# &#96; title &#96; rating.mp3</b>
+
+ - the middle part is optional
+
+ - your subfolder name gets tacked onto the middle part
+
+ - the rating is whatever's after the last &#96; - any short word you
+   like.  every rating on your songs becomes a checkbox at the top
+
+ - songs named any other way get tidied into that form for you, with
+   the rating `bg2`new` so you can rate em later
+
+
+<h3>ratings</h3>
+ours are
+ - `bg1`a` - songs we both like n could hear over n over
+
+ - `bg2`b` - songs we both like but once max please
+
+ - `bg3`aAn` `bg3`bAn` - annie's songs (that i don't like)
+
+ - `bg4`aSt` `bg4`bSt` - steve's songs (that she doesn't like)
+
+Keep em short or they use up tons of room at the top of the app.

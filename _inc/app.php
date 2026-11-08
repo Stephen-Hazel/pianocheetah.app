@@ -1,7 +1,7 @@
 <? # _inc/app.php - common junk
 
 $ROOT = "pianocheetah.app";
-$DESC = "pianocheetah, software, piano, practice";
+$DESC = "Learn songs on piano with simplified notes";
 $UC = [
    "ar-lft" => "&#9664;",
    "ar-rit" => "&#9658;",

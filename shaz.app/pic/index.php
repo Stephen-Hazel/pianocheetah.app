@@ -40,9 +40,9 @@ require_once ("../_inc/app.php");
             ($y != '' || $s != '') ? "?y=$yPos&s=$sPos" : '',
             ['title' => strtr (preg_replace ('/^[\d_]+/', '', $sStr), '_', ' ')
                         ?: $sStr,
-             'desc'  => empty ($pCom) ? "itsa pic?" : $pCom,
              'img'   => "https://shaz.app/pic/idx/$yStr/$sStr/" .
-                        explode ('|', $Pic [0])[1]]);
+                        explode ('|', $Pic [0])[1]]
+            + (empty ($pCom) ? [] : ['desc' => $pCom]));
 ?>
  <meta property="og:site_name"   content="Stevez pics - <?= $yStr ?>" />
  <style>

@@ -125,12 +125,15 @@ function pg_js ($js, $p)
    }
 }
 #_______________________________________________________________________________
-function pg_head ($ttl, $css, $js, $h = '', $q = '')   ## html head ttl css js
-{ global $ROOT, $DESC;
+function pg_head ($ttl, $css, $js, $h = '', $q = '', $og = [])
+{ global $ROOT, $DESC;                 ## html head ttl css js
+                                       ## $og: desc override
    header ("set Access-Control-Allow-Origin '*'");
    $pre = ($h != '') ? "" : "../";     ## home doesn't need ../ path prefix
    $url = "https://$ROOT" . strtok ($_SERVER ['REQUEST_URI'], '?') . $q;
    $ogt = htmlspecialchars ($ttl, ENT_QUOTES, 'UTF-8', false);
+   $ogd = htmlspecialchars (aGet ($og, 'desc', $DESC),
+                            ENT_QUOTES, 'UTF-8', false);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -138,12 +141,12 @@ function pg_head ($ttl, $css, $js, $h = '', $q = '')   ## html head ttl css js
  <meta charset="UTF-8">
  <meta name="viewport"     content="width=device-width, initial-scale=1.0">
  <meta name="robots"       content="follow, all">
- <meta name="description"  content="<?= $DESC ?>">
+ <meta name="description"  content="<?= $ogd ?>">
  <link rel="canonical"     href="<?= $url ?>">
  <meta property="og:type"  content="website">
  <meta property="og:url"   content="<?= $url ?>">
  <meta property="og:title" content="<?= $ogt ?>">
- <meta property="og:description" content="<?= $DESC ?>">
+ <meta property="og:description" content="<?= $ogd ?>">
  <meta property="og:image" content="https://<?= $ROOT ?>/img/og.png">
  <meta property="og:image:width"  content="1200">
  <meta property="og:image:height" content="630">
@@ -189,6 +192,15 @@ function pg_body ($nav)                ## /head body nav /nav main
 function pg_foot ()                    ## /main /body /html  (dumb for now)
 {  echo "</main>\n\n</body></html>\n";  }
 #_______________________________________________________________________________
+function txtDesc ($aLn)                ## doc page body lines => meta desc
+{  $s = preg_replace ('/`[^`]*`([^`]*)`/', '$1', implode (' ', $aLn));
+   $s = html_entity_decode (strip_tags ($s), ENT_QUOTES, 'UTF-8');
+   $s = trim (preg_replace ('/\s+/u', ' ', $s));
+   if (strlen ($s) <= 155)  return $s;
+   if (! preg_match ('/^.{40,155}(?=\s)/su', $s, $m))  return '';
+   return rtrim ($m [0], ' ,.;:-') . '...';
+}
+#_______________________________________________________________________________
 function doc ($dir)
 { global $UC;
    $pLst = LstDir ("../$dir/txt", 'f');
@@ -205,15 +217,18 @@ function doc ($dir)
       : [$p,  "?pg=$i",             $pTtl [$i]];
    }
 
+   $aLn = explode ("\n", Get ("txt/$pg"));
+   array_shift ($aLn);
+   $d   = txtDesc ($aLn);
+
    pg_head ($pTtl [$ipg], "jqui app", "jqui app", '',
-            ((int) $ipg) ? "?pg=" . (int) $ipg : '');
+            ((int) $ipg) ? "?pg=" . (int) $ipg : '',
+            ($d != '') ? ['desc' => $d] : []);
    ?>
    <script>
    $(function () {init ();});
    </script>
    <? pg_body ($nav);
-   $aLn = explode ("\n", Get ("txt/$pg"));
-   array_shift ($aLn);
 
    $out = "<h1>".$pTtl [$ipg]."</h1><br>\n";
    $li  = 0;

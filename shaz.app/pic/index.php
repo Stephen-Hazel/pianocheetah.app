@@ -44,8 +44,7 @@ require_once ("../_inc/app.php");
              'img'   => "https://shaz.app/pic/idx/$yStr/$sStr/" .
                         explode ('|', $Pic [0])[1]]);
 ?>
- <meta property="og:site_name"   content="Stevez pics - <?=
-                                  substr ($sStr,0,6) ?>" />
+ <meta property="og:site_name"   content="Stevez pics - <?= $yStr ?>" />
  <style>
 body.dtop main {
    width: 100%;

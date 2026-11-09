@@ -6,32 +6,8 @@
 
 <url>
   <loc>https://shaz.app/</loc>
-  <lastmod>2026-11-07T21:00:38+00:00</lastmod>
+  <lastmod>2026-11-09T15:43:31+00:00</lastmod>
   <priority>1.00</priority>
-</url>
-
-<url>
-  <loc>https://shaz.app/linux/b.html</loc>
-  <lastmod>2026-01-08T00:37:51+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-<url>
-  <loc>https://shaz.app/linux/fp2sh.html</loc>
-  <lastmod>2025-12-29T16:20:06+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-<url>
-  <loc>https://shaz.app/linux/fpak.html</loc>
-  <lastmod>2026-01-06T15:56:52+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-<url>
-  <loc>https://shaz.app/linux/fpak2.html</loc>
-  <lastmod>2026-01-08T00:37:35+00:00</lastmod>
-  <priority>0.80</priority>
 </url>
 
 <url>
@@ -120,31 +96,13 @@
 
 <url>
   <loc>https://shaz.app/pic/</loc>
-  <lastmod>2026-10-01T14:56:24+00:00</lastmod>
+  <lastmod>2026-11-09T15:43:31+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
 <url>
   <loc>https://shaz.app/pic/sum.php</loc>
   <lastmod>2026-10-01T14:57:54+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-<url>
-  <loc>https://shaz.app/shazware/did.html</loc>
-  <lastmod>2026-01-10T19:51:57+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-<url>
-  <loc>https://shaz.app/shazware/do.html</loc>
-  <lastmod>2026-10-05T14:54:04+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-<url>
-  <loc>https://shaz.app/shazware/fp2sh.html</loc>
-  <lastmod>2025-12-29T16:20:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
@@ -211,18 +169,6 @@
 <url>
   <loc>https://shaz.app/shazware/?pg=10</loc>
   <lastmod>2026-10-05T14:53:27+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-<url>
-  <loc>https://shaz.app/tunez/did.html</loc>
-  <lastmod>2026-11-07T21:00:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-<url>
-  <loc>https://shaz.app/tunez/do.html</loc>
-  <lastmod>2026-11-07T21:00:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 

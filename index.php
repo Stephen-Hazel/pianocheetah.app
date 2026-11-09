@@ -24,7 +24,7 @@ require_once "_inc/app.php";
  class='c6'>h</span><span class='c7'>e</span><span class='c8'>e</span><span
  class='c9'>t</span><span class='ca'>a</span><span class='cb'>h</span>
 </center></span>
-<a href="doc"><img id='logo' src="img/logo.png"></a>
+<a href="doc/"><img id='logo' src="img/logo.png"></a>
 <div id='dontmess' style='display:none'><center>
  HEY !! &nbsp;Don't MESS with PianoCheetah !!
  <img id='dontimg' src='img/dontmess.jpg'>
@@ -45,7 +45,7 @@ require_once "_inc/app.php";
  Oh, and it's <a href="misc/?pg=0"><img id="free" src="img/free.png"></a>
  <br><br>
 
- <a id='go' class='nav-4' btn href="doc">let's go</a>
+ <a id='go' class='nav-4' btn href="doc/">let's go</a>
 </div>
 </main>
 

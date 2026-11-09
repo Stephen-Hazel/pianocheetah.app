@@ -28,6 +28,9 @@ function walk ($dir, $skip_abs) {
       else if (!is_dir ($full) && in_array (
          pathinfo ($item, PATHINFO_EXTENSION), ['php', 'html']
       )) {
+         // skip meta refresh redirect stubs - nothing to index
+         if (stripos (file_get_contents ($full),
+                      'http-equiv="refresh"') !== false)  continue;
          $files [] = $full;
       }
    }

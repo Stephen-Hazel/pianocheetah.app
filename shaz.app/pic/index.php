@@ -36,13 +36,11 @@ require_once ("../_inc/app.php");
 ## page comment
    $r0 = explode ('|', $Pic [0]);   $pCom = aGet ($r0, 3);
 
-   pg_head ("pic", "jqui app", "jqui app");
+   pg_head ("pic", "jqui app", "jqui app", '',
+            ($y != '' || $s != '') ? "?y=$yPos&s=$sPos" : '');
 ?>
- <meta property="og:type"        content="website" />
  <meta property="og:site_name"   content="Stevez pics - <?=
                                   substr ($sStr,0,6) ?>" />
- <meta property="og:url"         content="https://shaz.app/pic/<?=
-                                  "?y=$yPos&s=$sPos" ?>" />
  <meta property="og:title"       content="<?= substr ($sStr,7) ?>" />
  <meta property="og:image"       content="https://shaz.app/pic/idx/<?=
                                   "$yStr/$sStr/".explode ('|',$Pic[0])[1] ?>" />

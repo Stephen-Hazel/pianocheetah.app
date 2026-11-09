@@ -21,24 +21,24 @@ require_once ("_inc/app.php");
 <a id='a' pop class='nav-1' href='https://pianocheetah.app'
  >pianocheetah</a>let's play some pianooo<br>
 
-<a id='b'     class='nav-2' href='shazware'
+<a id='b'     class='nav-2' href='shazware/'
  >shazware</a>some cool file utilities<br>
 
-<a id='d'     class='nav-9' href='tunez'
+<a id='d'     class='nav-9' href='tunez/'
  >tunez</a>android music player<br>
 
-<a id='c'     class='nav-3' href='linux'
+<a id='c'     class='nav-3' href='linux/'
  >linux</a>...you should try it :)<br>
 
 <br>
 
-<a     class='nav-4' href="me"  >meee</a>way too much bout Steve<br>
-<a     class='nav-5' href="pic" >pics</a>allll my pics<br>
+<a     class='nav-4' href="me/"  >meee</a>way too much bout Steve<br>
+<a     class='nav-5' href="pic/" >pics</a>allll my pics<br>
 <a pop class='nav-6' href="https://www.youtube.com/@SteveHazel/videos"
                                 >videos</a>i took<br>
 <a pop class='nav-7' href="https://www.facebook.com/stephen.hazel"
                                 >facebook</a>is dumb !!<br>
-<a     class='nav-8' href="shazbook"
+<a     class='nav-8' href="shazbook/"
                                 >shazbook</a>is also dumb :)<br>
                                 <br>
 <img src="img/wilee.jpg">

@@ -1,4 +1,5 @@
 development and debuggin
+desc: ShazWare is open source C++ - source on GitHub, the stv library, to do list, release notes and where to find the debug log.
 I make changes to these things from time to time.
  But my main love is pianocheetah :)
 

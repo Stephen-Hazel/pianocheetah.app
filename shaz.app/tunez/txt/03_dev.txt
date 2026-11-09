@@ -1,4 +1,5 @@
 development and debuggin
+desc: SHazTunez is open source Kotlin, built in Android Studio - source on GitHub, a to do list and release notes.
 It's kotlin, all in android studio.
 
 Here's the source:

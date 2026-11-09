@@ -199,12 +199,26 @@ function pg_body ($nav, $h = '')       ## /head body nav /nav main
 function pg_foot ()                    ## /main /body /html  (dumb for now)
 {  echo "</main>\n\n</body></html>\n";  }
 #_______________________________________________________________________________
-function txtDesc ($aLn)                ## doc page body lines => meta desc
-{  $s = preg_replace ('/`[^`]*`([^`]*)`/', '$1', implode (' ', $aLn));
+function txtTxt ($s)                   ## doc page markup => plain text
+{  $s = preg_replace ('/`[^`]*`([^`]*)`/', '$1', $s);
    $s = html_entity_decode (strip_tags ($s), ENT_QUOTES, 'UTF-8');
-   $s = trim (preg_replace ('/\s+/u', ' ', $s));
-   if (strlen ($s) <= 155)  return $s;
-   if (! preg_match ('/^.{40,155}(?=\s)/su', $s, $m))  return '';
+   return trim (preg_replace ('/\s+/u', ' ', $s));
+}
+
+function txtDesc ($aLn)                ## doc page body lines => meta desc
+{  $s = implode ("\n", $aLn);          ## no pre blocks
+   $s = preg_replace ('#<pre.*?</pre>#si', '', $s);
+   $d = '';                            ## 1st prose paragraph (or 2)
+   foreach (preg_split ('/\n\s*\n/', $s) as $p) {
+      $t = txtTxt ($p);                ## skip mostly markup (link lists)
+      $r = preg_replace (['/<img[^>]*>/i', '/`[^`]*`([^`]*)`/'],
+                         ['', '$1'], $p);
+      if (($t == '') || (strlen ($t) * 3 < strlen (trim ($r))))  continue;
+      $d = ($d == '') ? $t : "$d $t";
+      if (strlen ($d) >= 80)  break;
+   }
+   if (strlen ($d) <= 155)  return $d;
+   if (! preg_match ('/^.{40,155}(?=\s)/su', $d, $m))  return '';
    return rtrim ($m [0], ' ,.;:-') . '...';
 }
 #_______________________________________________________________________________
@@ -226,7 +240,10 @@ function doc ($dir)
 
    $aLn = explode ("\n", Get ("txt/$pg"));
    array_shift ($aLn);
-   $d   = txtDesc ($aLn);
+   $d   = '';                          ## optional desc: line after title
+   if (substr ($aLn [0] ?? '', 0, 5) == 'desc:')
+      $d = trim (substr (array_shift ($aLn), 5));
+   if ($d == '')  $d = txtDesc ($aLn);
 
    pg_head ($pTtl [$ipg], "jqui app", "jqui app", '',
             ((int) $ipg) ? "?pg=" . (int) $ipg : '',

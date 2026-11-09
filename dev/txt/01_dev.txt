@@ -1,4 +1,5 @@
  yeah this is open source :)
+desc: PianoCheetah is open source - C++ and Qt source on GitHub, the stv library, a to do list and release notes.
 
 Here's the source:
 <a pop href="https://github.com/Stephen-Hazel/PianoCheetah">c++ n Qt</a>

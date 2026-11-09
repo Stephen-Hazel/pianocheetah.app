@@ -37,15 +37,15 @@ require_once ("../_inc/app.php");
    $r0 = explode ('|', $Pic [0]);   $pCom = aGet ($r0, 3);
 
    pg_head ("pic", "jqui app", "jqui app", '',
-            ($y != '' || $s != '') ? "?y=$yPos&s=$sPos" : '');
+            ($y != '' || $s != '') ? "?y=$yPos&s=$sPos" : '',
+            ['title' => strtr (preg_replace ('/^[\d_]+/', '', $sStr), '_', ' ')
+                        ?: $sStr,
+             'desc'  => empty ($pCom) ? "itsa pic?" : $pCom,
+             'img'   => "https://shaz.app/pic/idx/$yStr/$sStr/" .
+                        explode ('|', $Pic [0])[1]]);
 ?>
  <meta property="og:site_name"   content="Stevez pics - <?=
                                   substr ($sStr,0,6) ?>" />
- <meta property="og:title"       content="<?= substr ($sStr,7) ?>" />
- <meta property="og:image"       content="https://shaz.app/pic/idx/<?=
-                                  "$yStr/$sStr/".explode ('|',$Pic[0])[1] ?>" />
- <meta property="og:description" content="<?=
-                                  empty ($pCom)?"itsa pic?":$pCom ?>" />
  <style>
 body.dtop main {
    width: 100%;

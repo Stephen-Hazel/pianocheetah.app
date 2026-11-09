@@ -126,13 +126,19 @@ function pg_js ($js, $p)
    }
 }
 #_______________________________________________________________________________
-function pg_head ($ttl, $css, $js, $h = '', $q = '')   ## html head ttl css js
-{ global $ROOT, $DESC;
+function pg_head ($ttl, $css, $js, $h = '', $q = '', $og = [])
+{ global $ROOT, $DESC;                 ## html head ttl css js
+                                       ## $og: title desc img overrides
    http_response_code (200);
    header ("set Access-Control-Allow-Origin '*'");
    $pre = ($h != '') ? "" : "../";     ## home doesn't need ../ path prefix
    $url = "https://$ROOT" . strtok ($_SERVER ['REQUEST_URI'], '?') . $q;
-   $ogt = htmlspecialchars ($ttl, ENT_QUOTES, 'UTF-8', false);
+   $ogt = htmlspecialchars (aGet ($og, 'title', $ttl),
+                            ENT_QUOTES, 'UTF-8', false);
+   $ogd = htmlspecialchars (aGet ($og, 'desc', $DESC),
+                            ENT_QUOTES, 'UTF-8', false);
+   $ogi = htmlspecialchars (aGet ($og, 'img', "https://$ROOT/img/og.png"),
+                            ENT_QUOTES, 'UTF-8', false);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -145,10 +151,12 @@ function pg_head ($ttl, $css, $js, $h = '', $q = '')   ## html head ttl css js
  <meta property="og:type"  content="website">
  <meta property="og:url"   content="<?= $url ?>">
  <meta property="og:title" content="<?= $ogt ?>">
- <meta property="og:description" content="<?= $DESC ?>">
- <meta property="og:image" content="https://<?= $ROOT ?>/img/og.png">
+ <meta property="og:description" content="<?= $ogd ?>">
+ <meta property="og:image" content="<?= $ogi ?>">
+<? if (! isset ($og ['img'])) { ?>
  <meta property="og:image:width"  content="1200">
  <meta property="og:image:height" content="630">
+<? } ?>
  <meta name="twitter:card" content="summary_large_image">
  <title><?= $ttl ?></title>
  <link href="https://<?= $ROOT ?>/img/favicon.png" rel="Shortcut Icon" />

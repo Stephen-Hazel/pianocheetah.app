@@ -23,8 +23,50 @@
 </url>
 
 <url>
+  <loc>https://pianocheetah.app/dev/?pg=1</loc>
+  <lastmod>2026-01-10T22:04:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
   <loc>https://pianocheetah.app/doc/</loc>
   <lastmod>2025-11-06T02:42:21+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/doc/?pg=1</loc>
+  <lastmod>2026-01-10T21:02:45+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/doc/?pg=2</loc>
+  <lastmod>2026-01-10T17:13:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/doc/?pg=3</loc>
+  <lastmod>2026-01-10T19:55:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/doc/?pg=4</loc>
+  <lastmod>2025-12-14T21:03:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/doc/?pg=5</loc>
+  <lastmod>2025-12-16T15:41:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/doc/?pg=6</loc>
+  <lastmod>2026-01-10T17:54:24+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
@@ -41,8 +83,68 @@
 </url>
 
 <url>
+  <loc>https://pianocheetah.app/midi/?pg=1</loc>
+  <lastmod>2025-12-21T21:48:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/midi/?pg=2</loc>
+  <lastmod>2025-12-21T21:57:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/midi/?pg=3</loc>
+  <lastmod>2025-12-21T22:06:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/midi/?pg=4</loc>
+  <lastmod>2025-12-21T22:12:33+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/midi/?pg=5</loc>
+  <lastmod>2025-12-21T22:32:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/midi/?pg=6</loc>
+  <lastmod>2025-12-21T22:36:35+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/midi/?pg=7</loc>
+  <lastmod>2025-12-21T22:39:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/midi/?pg=8</loc>
+  <lastmod>2025-12-21T22:44:50+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
   <loc>https://pianocheetah.app/misc/</loc>
   <lastmod>2025-11-05T16:11:40+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/misc/?pg=1</loc>
+  <lastmod>2025-11-08T16:58:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/misc/?pg=2</loc>
+  <lastmod>2025-11-08T16:59:11+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
@@ -53,8 +155,38 @@
 </url>
 
 <url>
+  <loc>https://pianocheetah.app/piano/?pg=1</loc>
+  <lastmod>2025-12-18T16:01:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/piano/?pg=2</loc>
+  <lastmod>2025-12-21T21:38:54+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
   <loc>https://pianocheetah.app/practice/</loc>
   <lastmod>2025-11-05T16:12:53+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/practice/?pg=1</loc>
+  <lastmod>2025-12-21T22:04:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/practice/?pg=2</loc>
+  <lastmod>2025-12-20T22:07:44+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://pianocheetah.app/practice/?pg=3</loc>
+  <lastmod>2025-12-20T23:50:43+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 

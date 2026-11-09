@@ -125,11 +125,11 @@ function pg_js ($js, $p)
    }
 }
 #_______________________________________________________________________________
-function pg_head ($ttl, $css, $js, $h = '')      ## html head title css js
+function pg_head ($ttl, $css, $js, $h = '', $q = '')   ## html head ttl css js
 { global $ROOT, $DESC;
    header ("set Access-Control-Allow-Origin '*'");
    $pre = ($h != '') ? "" : "../";     ## home doesn't need ../ path prefix
-   $url = "https://$ROOT" . strtok ($_SERVER ['REQUEST_URI'], '?');
+   $url = "https://$ROOT" . strtok ($_SERVER ['REQUEST_URI'], '?') . $q;
    $ogt = htmlspecialchars ($ttl, ENT_QUOTES, 'UTF-8', false);
 ?>
 <!DOCTYPE html>
@@ -205,7 +205,8 @@ function doc ($dir)
       : [$p,  "?pg=$i",             $pTtl [$i]];
    }
 
-   pg_head ($pTtl [$ipg], "jqui app", "jqui app");
+   pg_head ($pTtl [$ipg], "jqui app", "jqui app", '',
+            ((int) $ipg) ? "?pg=" . (int) $ipg : '');
    ?>
    <script>
    $(function () {init ();});

@@ -65,6 +65,22 @@ foreach ($files as $file) {
       'lastmod'  => date ('c', filemtime ($file)),
       'priority' => $priority,
    ];
+
+   // doc dirs: index.php?pg=N for each txt/ page past the first
+   $txt = dirname ($file) . '/txt';
+   if (basename ($file) === 'index.php' && is_dir ($txt)) {
+      $pgs = array_values (array_filter (
+         scandir ($txt), fn ($f) => !is_dir ($txt . '/' . $f)
+      ));
+      sort ($pgs);
+      for ($i = 1; $i < count ($pgs); $i++) {
+         $urls [] = [
+            'loc'      => $base_url . '/' . $url_path . '?pg=' . $i,
+            'lastmod'  => date ('c', filemtime ($txt . '/' . $pgs [$i])),
+            'priority' => $priority,
+         ];
+      }
+   }
 }
 
 $xml  = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";

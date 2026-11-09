@@ -41,6 +41,36 @@
 </url>
 
 <url>
+  <loc>https://shaz.app/linux/?pg=1</loc>
+  <lastmod>2025-12-28T18:59:48+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/linux/?pg=2</loc>
+  <lastmod>2025-12-29T15:48:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/linux/?pg=3</loc>
+  <lastmod>2025-12-30T16:16:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/linux/?pg=4</loc>
+  <lastmod>2026-01-06T15:35:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/linux/?pg=5</loc>
+  <lastmod>2026-01-08T01:41:21+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
   <loc>https://shaz.app/log.php</loc>
   <lastmod>2026-05-16T18:02:47+00:00</lastmod>
   <priority>1.00</priority>
@@ -49,6 +79,36 @@
 <url>
   <loc>https://shaz.app/me/</loc>
   <lastmod>2025-11-15T18:34:04+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/me/?pg=1</loc>
+  <lastmod>2025-11-15T18:57:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/me/?pg=2</loc>
+  <lastmod>2025-11-15T19:10:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/me/?pg=3</loc>
+  <lastmod>2025-11-15T19:09:56+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/me/?pg=4</loc>
+  <lastmod>2025-11-15T19:17:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/me/?pg=5</loc>
+  <lastmod>2025-11-15T19:19:29+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
@@ -95,6 +155,66 @@
 </url>
 
 <url>
+  <loc>https://shaz.app/shazware/?pg=1</loc>
+  <lastmod>2026-01-10T20:37:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/shazware/?pg=2</loc>
+  <lastmod>2025-11-27T01:36:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/shazware/?pg=3</loc>
+  <lastmod>2025-11-27T01:43:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/shazware/?pg=4</loc>
+  <lastmod>2025-11-27T01:45:16+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/shazware/?pg=5</loc>
+  <lastmod>2025-11-27T01:50:24+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/shazware/?pg=6</loc>
+  <lastmod>2025-11-27T22:21:21+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/shazware/?pg=7</loc>
+  <lastmod>2025-11-27T22:21:48+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/shazware/?pg=8</loc>
+  <lastmod>2025-11-27T22:31:47+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/shazware/?pg=9</loc>
+  <lastmod>2022-10-31T01:29:13+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/shazware/?pg=10</loc>
+  <lastmod>2026-10-05T14:53:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
   <loc>https://shaz.app/tunez/did.html</loc>
   <lastmod>2026-11-07T21:00:15+00:00</lastmod>
   <priority>0.80</priority>
@@ -109,6 +229,18 @@
 <url>
   <loc>https://shaz.app/tunez/</loc>
   <lastmod>2026-11-07T21:00:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/tunez/?pg=1</loc>
+  <lastmod>2026-11-07T21:00:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://shaz.app/tunez/?pg=2</loc>
+  <lastmod>2026-11-07T21:00:26+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 

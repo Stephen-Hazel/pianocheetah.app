@@ -5,3 +5,8 @@
 RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.pianocheetah\.app$ [NC]
 RewriteRule ^ https://pianocheetah.app%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^pianocheetah\.app$ [NC]
+RewriteRule ^download/index\.html$ https://pianocheetah.app/ [R=301,L]
+RewriteCond %{HTTP_HOST} ^pianocheetah\.app$ [NC]
+RewriteRule ^(.*/)?index\.html$ https://pianocheetah.app/$1 [R=301,L]

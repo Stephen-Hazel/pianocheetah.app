@@ -220,6 +220,11 @@ function doc ($dir)
    $pLst = LstDir ("../$dir/txt", 'f');
 
    $ipg  = arg ('pg', 0);
+   if (! ctype_digit ((string) $ipg) || ($ipg >= count ($pLst))) {
+      header ("Location: " . strtok ($_SERVER ['REQUEST_URI'], '?'), true,
+              301);                    ## bad pg => doc's 1st page
+      exit;
+   }
    $pg   = $pLst [$ipg];
    $ttl  = substr ($pg, 3, -4);
    $pTtl = [];

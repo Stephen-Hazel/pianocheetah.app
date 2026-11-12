@@ -23,8 +23,8 @@ I was working on a vanilla midi app when it came out, and I changed my ways
 
 Here's Clair de Lune.  Think you could play that?  Bet ya could.
 Or you could play just the right hand - to the right of that red line.
-<img src="img/screen_ez.png">
+<img src="img/screen_ez_2026.11.png">
 
 
 The real song looks like this - No thanks!!  I'm just a human.
-<img src="img/screen.png">
+<img src="img/screen_2026.11.png">

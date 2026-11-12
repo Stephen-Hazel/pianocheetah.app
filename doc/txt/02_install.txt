@@ -20,7 +20,7 @@ Pick the directory to <b>-put-</b> the pianocheetah dir into.
 Then you'll have to wait around (sorry).
 <img src="img/wait.png">
 After that, MidiConfig will pop up:
-<img src="img/midicfg.png">
+<img src="img/midicfg_2026.11.png">
 Where you pick each midi device's name and type.
 
  - if your device type isn't there, just pick <b>default</b>

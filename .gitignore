@@ -12,3 +12,5 @@ shaz.app/song/did/*.txt
 shaz.app/song/skip*
 download/
 shaz.app/t/
+shaz.app/.claude/
+shaz.app/pic/.claude/

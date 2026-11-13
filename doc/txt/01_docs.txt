@@ -3,20 +3,20 @@ Hey man.  You remember guitar hero, right?
 Playing the guitar wasn't real, but it was fun.
 On drums it wasn't a game it was real :)
 And keyboards - <b>super DUUUMB</b> !
+Therefore...  pianocheetah !
 
-I was working on a vanilla midi app when it came out, and I changed my ways
- real fast to make pianocheetah.
+ - for keyboards and drums.  (electric ones)
 
- - for keyboards and drums.  (midi ones)
+ - song notes are squished to 1 per hand max and your hands stay put.
 
- - song notes are converted to 10 max.  just fingers - no hand hopping.
+ - notes are shown aligned to your fingers - normal people notation.
 
- - notes are shown aligned to your fingers in a "normal people" notation.
+ - you set the tempo (time variation) and note velocities (feel).
 
- - you set the tempo and note velocities (feel).  the rest of the tracks
-   follow <b>you</b>.
+ - background tracks play along with you at your tempo and velocity.
 
- - not a DAW!!  We're playing piano, not mixing.
+ - you can play a song with your feel as haltingly as you like and
+   the halts are gone when you play it back and save it.
 
 <a pop href="https://youtu.be/1Qh76D03y4Q?si=ruuBUk2K3O0F5FKU&t=155"
   >intro video</a>

@@ -12,14 +12,7 @@ Got <a pop href="https://shaz.app/linux"
 
  - (uninstall with a right click on that start menu item)
 
-The first time you run PianoCheetah, you'll see...
-<img src="img/oh_hi.png">
-Pick the directory to <b>-put-</b> the pianocheetah dir into.
-(don't include "pianocheetah" part)
-<img src="img/pick.png">
-Then you'll have to wait around (sorry).
-<img src="img/wait.png">
-After that, MidiConfig will pop up:
+The first time you run PianoCheetah, you'll see MidiConfig...
 <img src="img/midicfg_2026.11.png">
 Where you pick each midi device's name and type.
 

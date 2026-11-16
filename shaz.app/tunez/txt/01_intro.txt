@@ -27,5 +27,4 @@ No accounts, no streaming service, no ads.
 
 <img src="img/screen-1.png" style="height: 30em; margin-right: 1.5em;"> <img src="img/screen-2.png" style="height: 30em;">
 
-
 <a href="privacy.html">privacy policy</a> - short version: it collects nothing

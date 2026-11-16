@@ -4,12 +4,11 @@ an android music player for your own music folder
  have, straight from one folder on your phone.
 No accounts, no streaming service, no ads.
 
-it's open <a href="?pg=2">source :)</a>
-
 
 <h3>get it</h3>
- - google play - coming soon.  till then, <a pop href="https://play.google.com/apps/testing/app.shaz.tunez">become a tester</a>
-   n get it on your phone
+ - google play - coming soon.  till then, email
+   <a href="mailto:sh@shaz.app">sh@shaz.app</a> to become a tester, then you can
+   <a pop href="https://play.google.com/apps/testing/app.shaz.tunez">get the app now</a>
 
  - or build it from the <a pop href="https://github.com/Stephen-Hazel/tunez">source</a>
 

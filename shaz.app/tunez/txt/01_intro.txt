@@ -5,7 +5,7 @@ an android music player for your own music folder
 No accounts, no streaming service, no ads.
 
 
-<h3>get it</h3>
+<h3 style="clear: both;">get it</h3>
  - google play - coming soon.  till then, email
    <a href="mailto:sh@shaz.app">sh@shaz.app</a> to become a tester, then you can
    <a pop href="https://play.google.com/apps/testing/app.shaz.tunez">get the app now</a>

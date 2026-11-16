@@ -25,6 +25,6 @@ No accounts, no streaming service, no ads.
  - lock screen n headphone controls, album art, lyrics lookup
 
 
-<img src="img/screen-1.png" style="height: 30em; margin-right: 1.5em;"> <img src="img/screen-2.png" style="height: 30em;">
+<img src="img/screen-1.png" style="width: 47%; margin-right: 4%;"><img src="img/screen-2.png" style="width: 47%;">
 
 <a href="privacy.html">privacy policy</a> - short version: it collects nothing

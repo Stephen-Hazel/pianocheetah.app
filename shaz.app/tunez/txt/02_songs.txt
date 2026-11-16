@@ -3,6 +3,10 @@ Put your songs in Music/tunez on your phone (mp3, flac, ogg or wav).
  Subfolders are fine - their names show up next to the song.
 
 <h3>file names</h3>
+Use a good file renamer to get the &#96; characters in -
+ <a pop href="https://shaz.app/shazware/">shazware</a> RenEm on linux.
+Also the FileManager+ app is good for getting your songs to your phone.
+
 <b>artist &#96; year album track# &#96; title &#96; rating.mp3</b>
 
  - the middle part is optional

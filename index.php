@@ -59,7 +59,10 @@ require_once "_inc/app.php";
   email me:
   <a btn href="mailto:sh@shaz.app?subject=pianocheetah">sh@shaz.app</a><br>
   facebook:
-  <a btn pop href="https://facebook.com/PianoCheetah">blog</a>
+  <a btn pop href="https://facebook.com/PianoCheetah">blog</a><br>
+  mastodon:
+  <a btn pop rel="me" href="https://mastodon.social/@PianoCheetah"
+   >@PianoCheetah</a>
  </div>
  <div id='rit'>
   <h3>...meh</h3>
